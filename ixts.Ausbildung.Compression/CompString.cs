@@ -11,7 +11,10 @@ namespace ixts.Ausbildung.Compression
         public String Encode(String str)
         {
             var sBuilder = new StringBuilder();
-            sBuilder.Append(GetNextGroup(str));
+            while(point < str.Length)
+            {
+                sBuilder.Append(GetNextGroup(str));
+            }
             return sBuilder.ToString();
         }
 
