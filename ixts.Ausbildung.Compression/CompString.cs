@@ -45,6 +45,22 @@ namespace ixts.Ausbildung.Compression
             return group.ToString();
         }
 
+        public String CompressGroup(String group)
+        {
+            if (group.Length < 3)
+            {
+                return group;
+            }
+            else
+            {
+                var compressedGroup = new StringBuilder();
+                compressedGroup.Append("-");
+                compressedGroup.Append(group.Length);
+                compressedGroup.Append(group[0]);
+                return compressedGroup.ToString();
+            }
+        }
+
 
     }
 }
