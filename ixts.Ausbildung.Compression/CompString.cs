@@ -5,6 +5,9 @@ namespace ixts.Ausbildung.Compression
 {
     public class RunLengthEncoder
     {
+        private const int MAXCOUNTERVALUE = 9;
+        private const int MINTOCOMPRESSVALUE = 3;
+        private const String MARKER = "-";
         private char lastElement;
         private int point;
 
@@ -25,7 +28,7 @@ namespace ixts.Ausbildung.Compression
             {
                 if (str[i] == lastElement || i == 0)
                 {
-                    if (group.Length == 9)
+                    if (group.Length == MAXCOUNTERVALUE)
                     {
                         point = i;
                         return CompressGroup(group.ToString());
@@ -47,14 +50,14 @@ namespace ixts.Ausbildung.Compression
 
         public String CompressGroup(String group)
         {
-            if (group.Length < 3)
+            if (group.Length < MINTOCOMPRESSVALUE)
             {
                 return group;
             }
             else
             {
                 var compressedGroup = new StringBuilder();
-                compressedGroup.Append("-");
+                compressedGroup.Append(MARKER);
                 compressedGroup.Append(group.Length);
                 compressedGroup.Append(group[0]);
                 return compressedGroup.ToString();
