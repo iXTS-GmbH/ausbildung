@@ -28,7 +28,7 @@ namespace ixts.Ausbildung.Compression
                     if (group.Length == 9)
                     {
                         point = i;
-                        return group.ToString();
+                        return CompressGroup(group.ToString());
                     }
                     lastElement = str[i];
                     group.Append(str[i]);
@@ -37,12 +37,12 @@ namespace ixts.Ausbildung.Compression
                 {
                     lastElement = str[i];
                     point = i;
-                    return group.ToString();
+                    return CompressGroup(group.ToString());
 
                 }
             }
             point = str.Length;
-            return group.ToString();
+            return CompressGroup(group.ToString());
         }
 
         public String CompressGroup(String group)
