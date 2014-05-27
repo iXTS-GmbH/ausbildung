@@ -42,5 +42,15 @@ namespace ixts.Ausbildung.Compression.Test
             Assert.AreEqual(expected, actual);
         }
 
+        [TestCase("AAAAAA", "-6A")]//Komprimierbare Gruppe
+        [TestCase("------", "-6-")]//Komprimierbare Gruppe aus Markern
+        [TestCase("AA", "AA")]//Nicht Komprimierbare Gruppe
+        [TestCase("--", "--")]//Nicht Komprimierbare Gruppe aus Markern
+        public void CompressGroup(String str, String expected)
+        {
+            String actual = sut.CompressGroup(str);
+            Assert.AreEqual(expected, actual);
+        }
+
     }
 }
