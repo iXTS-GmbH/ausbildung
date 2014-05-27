@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.Compression", "ixts.Ausbildung.Compression\ixts.Ausbildung.Compression.csproj", "{5D42E2DE-F5EE-426F-87B0-55C10228B579}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A75797FF-0433-4D29-858A-E626F68D4054}"
+	ProjectSection(SolutionItems) = preProject
+		ixts.Ausbildung.vsmdi = ixts.Ausbildung.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.Compression.Test", "ixts.Ausbildung.Compression.Test\ixts.Ausbildung.Compression.Test.csproj", "{E4A3351F-1448-4807-A037-0394B32FC82F}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = ixts.Ausbildung.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D42E2DE-F5EE-426F-87B0-55C10228B579}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D42E2DE-F5EE-426F-87B0-55C10228B579}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D42E2DE-F5EE-426F-87B0-55C10228B579}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D42E2DE-F5EE-426F-87B0-55C10228B579}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4A3351F-1448-4807-A037-0394B32FC82F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4A3351F-1448-4807-A037-0394B32FC82F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4A3351F-1448-4807-A037-0394B32FC82F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4A3351F-1448-4807-A037-0394B32FC82F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
