@@ -27,6 +27,20 @@ namespace ixts.Ausbildung.Compression.Test
         {
             String actual = sut.Encode(str);
             Assert.AreEqual(expected, actual);
-        }  
+        }
+
+        [TestCase("AAAABBBBBBCCCC", "AAAA")] //Nur Gruppen
+        [TestCase("TESTSTRING", "T")] //Keine Gruppen
+        [TestCase("AAAAAABBCCCCCCDEEEE", "AAAAAA")] //Gruppen und Einzelne
+        [TestCase("TEST-STRING", "T")] //Mit Marker ohne Gruppen
+        [TestCase("AAAA-BBBB-CCCC-DDDD-EEEE", "AAAA")]
+        [TestCase("AAAAAAAAAAAAAAAAAAAA", "AAAAAAAAA")] //Überlange Gruppe
+        [TestCase("AAAAAAAAAA-AAAAAAAAAA", "AAAAAAAAA")] //Überlange Gruppe mit Markern
+        public void GetNextGroup(String str, String expected)
+        {
+            String actual = sut.GetNextGroup(str);
+            Assert.AreEqual(expected, actual);
+        }
+
     }
 }
