@@ -13,12 +13,20 @@ namespace ixts.Ausbildung.Compression
 
         public String Encode(String str)
         {
-            var sBuilder = new StringBuilder();
-            while(point < str.Length)
+            if (str != null)
             {
-                sBuilder.Append(GetNextGroup(str));
+                var sBuilder = new StringBuilder();
+                while (point < str.Length)
+                {
+                    sBuilder.Append(GetNextGroup(str));
+                }
+                return sBuilder.ToString();
             }
-            return sBuilder.ToString();
+            else
+            {
+                str = "";
+                return str;
+            }
         }
 
         public String GetNextGroup(String str)

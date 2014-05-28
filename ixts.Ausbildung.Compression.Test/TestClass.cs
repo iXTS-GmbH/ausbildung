@@ -53,11 +53,17 @@ namespace ixts.Ausbildung.Compression.Test
         }
 
         [TestCase("XAX4X")]
-        public void different_Marker(String expected)
+        public void Different_Marker(String expected)
         {
             sut.Marker("X");
             var actual = sut.Encode("XAXXXX");
             Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        [TestCase]
+        public void Empty_Input()
+        {
+            Assert.That(sut.Encode(null), Is.Empty);
         }
     }
 }
