@@ -7,7 +7,7 @@ namespace ixts.Ausbildung.Compression
     {
         private const int MAXCOUNTERVALUE = 9;
         private const int MINTOCOMPRESSVALUE = 3;
-        private const String MARKER = "-";
+        private String marker = "-";
         private char lastElement;
         private int point;
 
@@ -57,11 +57,16 @@ namespace ixts.Ausbildung.Compression
             else
             {
                 var compressedGroup = new StringBuilder();
-                compressedGroup.Append(MARKER);
+                compressedGroup.Append(marker);
                 compressedGroup.Append(group.Length);
                 compressedGroup.Append(group[0]);
                 return compressedGroup.ToString();
             }
+        }
+
+        public void Marker(String newmarker)
+        {
+            marker = newmarker;
         }
 
 

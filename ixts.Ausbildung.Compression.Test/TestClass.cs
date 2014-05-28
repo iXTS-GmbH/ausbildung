@@ -52,5 +52,12 @@ namespace ixts.Ausbildung.Compression.Test
             Assert.AreEqual(expected, actual);
         }
 
+        [TestCase("XAX4X")]
+        public void different_Marker(String expected)
+        {
+            sut.Marker("X");
+            var actual = sut.Encode("XAXXXX");
+            Assert.That(actual, Is.EqualTo(expected));
+        }
     }
 }
