@@ -19,10 +19,10 @@ namespace ixts.Ausbildung.Compression.Test
         [TestCase("AAAABBBBBBCCCC", "-4A-6B-4C")] //Nur Gruppen
         [TestCase("TESTSTRING", "TESTSTRING")] //Keine Gruppen
         [TestCase("AAAAAABBCCCCCCDEEEE", "-6ABB-6CD-4E")] //Gruppen und Einzelne
-        [TestCase("TEST-STRING", "TEST-STRING")] //Mit Marker ohne Gruppen
-        [TestCase("AAAA-BBBB-CCCC-DDDD-EEEE", "-4A--4B--4C--4D--4E")]
+        [TestCase("TEST-STRING", "TEST-1-STRING")] //Mit Marker ohne Gruppen
+        [TestCase("AAAA-BBBB-CCCC-DDDD-EEEE", "-4A-1--4B-1--4C-1--4D-1--4E")]
         [TestCase("AAAAAAAAAAAAAAAAAAAA", "-9A-9AAA")] //Überlange Gruppe
-        [TestCase("AAAAAAAAAA-AAAAAAAAAA", "-9AA--9AA")] //Überlange Gruppe mit Markern
+        [TestCase("AAAAAAAAAA-AAAAAAAAAA", "-9AA-1--9AA")] //Überlange Gruppe mit Markern
         public void CanGetCompString(String str, String expected) //Eingabe und ergebnis
         {
             String actual = sut.Encode(str);
@@ -45,17 +45,17 @@ namespace ixts.Ausbildung.Compression.Test
         [TestCase("AAAAAA", "-6A")]//Komprimierbare Gruppe
         [TestCase("------", "-6-")]//Komprimierbare Gruppe aus Markern
         [TestCase("AA", "AA")]//Nicht Komprimierbare Gruppe
-        [TestCase("--", "--")]//Nicht Komprimierbare Gruppe aus Markern
+        [TestCase("--", "-2-")]//Nicht Komprimierbare Gruppe aus Markern
         public void CompressGroup(String str, String expected)
         {
             String actual = sut.CompressGroup(str);
             Assert.AreEqual(expected, actual);
         }
 
-        [TestCase("XAX4X")]
+        [TestCase("X1XAX4X")]
         public void Different_Marker(String expected)
         {
-            sut.Marker("X");
+            sut.Marker('X');
             var actual = sut.Encode("XAXXXX");
             Assert.That(actual, Is.EqualTo(expected));
         }

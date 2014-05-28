@@ -7,7 +7,7 @@ namespace ixts.Ausbildung.Compression
     {
         private const int MAXCOUNTERVALUE = 9;
         private const int MINTOCOMPRESSVALUE = 3;
-        private String marker = "-";
+        private char marker = '-';
         private char lastElement;
         private int point;
 
@@ -58,7 +58,7 @@ namespace ixts.Ausbildung.Compression
 
         public String CompressGroup(String group)
         {
-            if (group.Length < MINTOCOMPRESSVALUE)
+            if (group.Length < MINTOCOMPRESSVALUE && group[0] != marker)
             {
                 return group;
             }
@@ -72,7 +72,7 @@ namespace ixts.Ausbildung.Compression
             }
         }
 
-        public void Marker(String newmarker)
+        public void Marker(char newmarker)
         {
             marker = newmarker;
         }
