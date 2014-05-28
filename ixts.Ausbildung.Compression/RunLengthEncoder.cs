@@ -80,7 +80,23 @@ namespace ixts.Ausbildung.Compression
 
         public Byte[] DataEncode(Byte[] bA)
         {
-            return null;
+            if (bA != null)
+            {
+                var bl = new List<Byte>();
+                while (point < bA.Length)
+                {
+                    List<Byte> nextgroup = GetNextByteGroup(bA);
+                    for (int i = 0; i < nextgroup.Count; i++)
+                    {
+                        bl.Add(nextgroup[i]);
+                    }
+
+                }
+            }
+            else
+            {
+                return bA;
+            }
         }
 
     }
