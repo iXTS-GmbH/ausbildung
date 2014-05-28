@@ -20,7 +20,7 @@ namespace ixts.Ausbildung.Compression.Test
         [TestCase("TESTSTRING", "TESTSTRING")] //Keine Gruppen
         [TestCase("AAAAAABBCCCCCCDEEEE", "-6ABB-6CD-4E")] //Gruppen und Einzelne
         [TestCase("TEST-STRING", "TEST-1-STRING")] //Mit Marker ohne Gruppen
-        [TestCase("AAAA-BBBB-CCCC-DDDD-EEEE", "-4A-1--4B-1--4C-1--4D-1--4E")]
+        [TestCase("AAAA-BBBB-CCCC-DDDD-EEEE", "-4A-1--4B-1--4C-1--4D-1--4E")]//Mit Marker und Gruppen
         [TestCase("AAAAAAAAAAAAAAAAAAAA", "-9A-9AAA")] //Überlange Gruppe
         [TestCase("AAAAAAAAAA-AAAAAAAAAA", "-9AA-1--9AA")] //Überlange Gruppe mit Markern
         public void CanGetCompString(String str, String expected) //Eingabe und ergebnis
@@ -61,9 +61,24 @@ namespace ixts.Ausbildung.Compression.Test
         }
 
         [TestCase]
-        public void Empty_Input()
+        public void Empty_InputString()
         {
             Assert.That(sut.Encode(null), Is.Empty);
+        }
+
+        [TestCase]
+        public void CanGetCompData()
+        {
+            var ba = new Byte[]{100,100,100,100,100};
+            var expected = new Byte[]{0,5,100};
+            var encodedba = sut.DataEncode(ba);
+            Assert.AreEqual(expected, encodedba);
+        }
+
+        [TestCase]
+        public void Empty_InputArray()
+        {
+            Assert.AreEqual(sut.DataEncode(null),null);
         }
     }
 }

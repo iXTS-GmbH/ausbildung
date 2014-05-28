@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace ixts.Ausbildung.Compression
@@ -77,6 +78,10 @@ namespace ixts.Ausbildung.Compression
             marker = newmarker;
         }
 
+        public Byte[] DataEncode(Byte[] bA)
+        {
+            return null;
+        }
 
     }
 }

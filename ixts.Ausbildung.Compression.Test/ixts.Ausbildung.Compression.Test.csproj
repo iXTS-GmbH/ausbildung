@@ -48,6 +48,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ixts.Ausbildung.Compression.ConsoleApp\ixts.Ausbildung.Compression.ConsoleApp.csproj">
+      <Project>{61CCF807-30EF-418C-9470-766FFD0F287A}</Project>
+      <Name>ixts.Ausbildung.Compression.ConsoleApp</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ixts.Ausbildung.Compression\ixts.Ausbildung.Compression.csproj">
       <Project>{5D42E2DE-F5EE-426F-87B0-55C10228B579}</Project>
       <Name>ixts.Ausbildung.Compression</Name>
