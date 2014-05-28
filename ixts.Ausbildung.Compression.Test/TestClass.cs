@@ -80,5 +80,14 @@ namespace ixts.Ausbildung.Compression.Test
         {
             Assert.AreEqual(sut.DataEncode(null),null);
         }
+
+        [TestCase]
+        public void GetNextByteGroup()
+        {
+            var ba = new Byte[] {100,100,100,100,100,101,101,101,101,101};
+            var expected = new Byte[] {0,5,100};
+            var nextGroup = sut.GetNextByteGroup(ba);
+            Assert.AreEqual(expected, nextGroup);
+        }
     }
 }

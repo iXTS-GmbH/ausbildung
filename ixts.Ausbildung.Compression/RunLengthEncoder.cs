@@ -7,9 +7,11 @@ namespace ixts.Ausbildung.Compression
     public class RunLengthEncoder
     {
         private const int MAXCOUNTERVALUE = 9;
+        private const int MAXBYTEVALUE = 255;
         private const int MINTOCOMPRESSVALUE = 3;
         private char marker = '-';
         private char lastElement;
+        private Byte lastByte;
         private int point;
 
         public String Encode(String str)
@@ -21,6 +23,7 @@ namespace ixts.Ausbildung.Compression
                 {
                     sBuilder.Append(GetNextGroup(str));
                 }
+                point = 0;
                 return sBuilder.ToString();
             }
             else
@@ -83,20 +86,61 @@ namespace ixts.Ausbildung.Compression
             if (bA != null)
             {
                 var bl = new List<Byte>();
-                while (point < bA.Length)
-                {
-                    List<Byte> nextgroup = GetNextByteGroup(bA);
-                    for (int i = 0; i < nextgroup.Count; i++)
+                    Byte[] nextgroup = GetNextByteGroup(bA);
+                    for (int i = 0; i < nextgroup.Length; i++)
                     {
                         bl.Add(nextgroup[i]);
                     }
-
-                }
+                return bl.ToArray();
             }
             else
             {
                 return bA;
             }
+        }
+
+        public Byte[] GetNextByteGroup(Byte[] bA)
+        {
+            var group = new List<Byte>{};
+            for (var i = point; i < bA.Length; i++)
+            {
+                if (bA[i] == lastByte || i == 0)
+                {
+                    if (group.Count == MAXBYTEVALUE)
+                    {
+                        point = i;
+                        return group.ToArray();
+                    }
+                    lastByte = bA[i];
+                    group.Add(bA[i]);
+                }
+                else
+                {
+                    lastByte = bA[i];
+                    point = i;
+                    return group.ToArray();
+                }
+            }
+            point = bA.Length;
+            return group.ToArray();
+        }
+
+        public Byte[] CompByteGroup(Byte[] group)
+        {
+            if (group.Length < MINTOCOMPRESSVALUE && group[0] != 0)
+            {
+                return group;
+            }
+            else
+            {
+                var compressedGroup = new List<Byte>{};
+                compressedGroup.Add(Convert.ToByte(0));
+                var length = new byte();
+                compressedGroup.Add(Convert.ToByte(group.Length));
+                compressedGroup.Add(group[0]);
+                return compressedGroup.ToArray();
+            }
+
         }
 
     }
