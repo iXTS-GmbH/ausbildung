@@ -12,28 +12,31 @@ namespace ixts.Ausbildung.Compression.ConsoleApp
         static void Main(string[] args)
         {
             var rle = new RunLengthEncoder();
+            if (args[0] != "-x"){
+                String toCompDataName = args[0];
+                String newDataName = args[1];
+                String path = Path.GetFullPath(toCompDataName);
 
-            //String toCompDataName = args[0];
-            //String newDataName = args[1];
-            String toCompDataName = "Desertx256.bmp";
-            String newDataName = "Desertx256.rle";
-            String path = Path.GetFullPath(toCompDataName);
-
-            Bitmap orgImg = (Bitmap)Image.FromFile(@path);
-            var ms = new MemoryStream();
-            orgImg.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
-            byte[] orgImgBytes = ms.ToArray();
-            var encImgBytes = rle.Encode(orgImgBytes);
-            var shrunkenprocent = 100 - (encImgBytes.Length/(orgImgBytes.Length/100));
-            var shrunkenvalue = orgImgBytes.Length - encImgBytes.Length;
-            Console.WriteLine("Datei " + toCompDataName + " wurde Komprimiert - Kompressionsrate: " + shrunkenprocent + "%(" + shrunkenvalue + "bytes)");
-            //Console.WriteLine("Datei " + toCompDataName + " wurde Komprimiert - Kompressionsrate: " + shrunkenprocent + "%");
-            String newpath = Path.GetFullPath(newDataName);
-            var bw = new BinaryWriter(File.Open(@newpath, FileMode.OpenOrCreate));
-            bw.Write(encImgBytes);
-            bw.Flush();
-            bw.Close();
-            Console.ReadLine();
+                Bitmap orgImg = (Bitmap)Image.FromFile(@path);
+                var ms = new MemoryStream();
+                orgImg.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+                byte[] orgImgBytes = ms.ToArray();
+                var encImgBytes = rle.Encode(orgImgBytes);
+                var shrunkenprocent = 100 - (encImgBytes.Length/(orgImgBytes.Length/100));
+                var shrunkenvalue = orgImgBytes.Length - encImgBytes.Length;
+                Console.WriteLine("Datei " + toCompDataName + " wurde Komprimiert - Kompressionsrate: " + shrunkenprocent + "%(" + shrunkenvalue + "bytes)");
+                String newpath = Path.GetFullPath(newDataName);
+                var bw = new BinaryWriter(File.Open(@newpath, FileMode.OpenOrCreate));
+                bw.Write(encImgBytes);
+                bw.Flush();
+                bw.Close();
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine();
+                //Hier kommt die Dekomprimier-Funktion hin
+            }
         }
     }
 }
