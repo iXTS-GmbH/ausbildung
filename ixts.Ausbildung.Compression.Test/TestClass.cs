@@ -16,78 +16,69 @@ namespace ixts.Ausbildung.Compression.Test
             sut = new RunLengthEncoder();
         }
 
-        [TestCase("AAAABBBBBBCCCC", "-4A-6B-4C")] //Nur Gruppen
+        [TestCase("AAAABBBBBBCCCC", "04A06B04C")] //Nur Gruppen
         [TestCase("TESTSTRING", "TESTSTRING")] //Keine Gruppen
-        [TestCase("AAAAAABBCCCCCCDEEEE", "-6ABB-6CD-4E")] //Gruppen und Einzelne
-        [TestCase("TEST-STRING", "TEST-1-STRING")] //Mit Marker ohne Gruppen
-        [TestCase("AAAA-BBBB-CCCC-DDDD-EEEE", "-4A-1--4B-1--4C-1--4D-1--4E")]//Mit Marker und Gruppen
-        [TestCase("AAAAAAAAAAAAAAAAAAAA", "-9A-9AAA")] //Überlange Gruppe
-        [TestCase("AAAAAAAAAA-AAAAAAAAAA", "-9AA-1--9AA")] //Überlange Gruppe mit Markern
+        [TestCase("AAAAAABBCCCCCCDEEEE", "06ABB06CD04E")] //Gruppen und Einzelne
+        [TestCase("TEST0STRING", "TEST010STRING")] //Mit Marker ohne Gruppen
+        [TestCase("AAAA0BBBB0CCCC0DDDD0EEEE", "04A01004B01004C01004D01004E")]//Mit Marker und Gruppen
+        [TestCase("AAAAAAAAAAAAAAAAAAAA", "09A09AAA")] //Überlange Gruppe
+        [TestCase("AAAAAAAAAA0AAAAAAAAAA", "09AA01009AA")] //Überlange Gruppe mit Markern
         public void CanGetCompString(String str, String expected) //Eingabe und ergebnis
         {
-            String actual = sut.Encode(str);
-            Assert.AreEqual(expected, actual);
+            var bA = sut.StringToByteArray(str);
+            var actual = sut.Encode(bA);
+            var expect = sut.StringToByteArray(expected);
+            Assert.AreEqual(expect, actual);
         }
 
-        [TestCase("AAAABBBBBBCCCC", "-4A")] //Nur Gruppen
+        [TestCase("AAAABBBBBBCCCC", "04A")] //Nur Gruppen
         [TestCase("TESTSTRING", "T")] //Keine Gruppen
-        [TestCase("AAAAAABBCCCCCCDEEEE", "-6A")] //Gruppen und Einzelne
+        [TestCase("AAAAAABBCCCCCCDEEEE", "06A")] //Gruppen und Einzelne
         [TestCase("TEST-STRING", "T")] //Mit Marker ohne Gruppen
-        [TestCase("AAAA-BBBB-CCCC-DDDD-EEEE", "-4A")]
-        [TestCase("AAAAAAAAAAAAAAAAAAAA", "-9A")] //Überlange Gruppe
-        [TestCase("AAAAAAAAAA-AAAAAAAAAA", "-9A")] //Überlange Gruppe mit Markern
+        [TestCase("AAAA-BBBB-CCCC-DDDD-EEEE", "04A")]
+        [TestCase("AAAAAAAAAAAAAAAAAAAA", "09A")] //Überlange Gruppe
+        [TestCase("AAAAAAAAAA-AAAAAAAAAA", "09A")] //Überlange Gruppe mit Markern
         public void GetNextGroup(String str, String expected)
         {
-            String actual = sut.GetNextGroup(str);
-            Assert.AreEqual(expected, actual);
+            var bA = sut.StringToByteArray(str);
+            var actual = sut.GetNextGroup(bA);
+            var expect = sut.StringToByteArray(expected);
+            Assert.AreEqual(expect, actual);
         }
 
-        [TestCase("AAAAAA", "-6A")]//Komprimierbare Gruppe
-        [TestCase("------", "-6-")]//Komprimierbare Gruppe aus Markern
+        [TestCase("AAAAAA", "06A")]//Komprimierbare Gruppe
+        [TestCase("000000", "060")]//Komprimierbare Gruppe aus Markern
         [TestCase("AA", "AA")]//Nicht Komprimierbare Gruppe
-        [TestCase("--", "-2-")]//Nicht Komprimierbare Gruppe aus Markern
+        [TestCase("00", "020")]//Nicht Komprimierbare Gruppe aus Markern
         public void CompressGroup(String str, String expected)
         {
-            String actual = sut.CompressGroup(str);
-            Assert.AreEqual(expected, actual);
+            var bA = sut.StringToByteArray(str);
+            var actual = sut.CompressGroup(bA);
+            var expect = sut.StringToByteArray(expected);
+            Assert.AreEqual(expect, actual);
         }
-
         [TestCase("X1XAX4X")]
         public void Different_Marker(String expected)
         {
             sut.Marker('X');
-            var actual = sut.Encode("XAXXXX");
-            Assert.That(actual, Is.EqualTo(expected));
+            var actual = sut.Encode(sut.StringToByteArray("XAXXXX"));
+            var expect = sut.StringToByteArray(expected);
+            Assert.AreEqual(expect, actual);
         }
 
         [TestCase]
         public void Empty_InputString()
         {
-            Assert.That(sut.Encode(null), Is.Empty);
+            Assert.AreEqual(sut.Encode(null),null);
         }
 
         [TestCase]
-        public void CanGetCompData()
+        public void StringToByteArray()
         {
-            var ba = new Byte[]{100,100,100,100,100};
-            var expected = new Byte[]{0,5,100};
-            var encodedba = sut.DataEncode(ba);
-            Assert.AreEqual(expected, encodedba);
-        }
-
-        [TestCase]
-        public void Empty_InputArray()
-        {
-            Assert.AreEqual(sut.DataEncode(null),null);
-        }
-
-        [TestCase]
-        public void GetNextByteGroup()
-        {
-            var ba = new Byte[] {100,100,100,100,100,101,101,101,101,101};
-            var expected = new Byte[] {0,5,100};
-            var nextGroup = sut.GetNextByteGroup(ba);
-            Assert.AreEqual(expected, nextGroup);
+            var expected = new Byte[] {48,48,48,48,48};
+            const String str = "00000";
+            var actual = sut.StringToByteArray(str);
+            Assert.AreEqual(expected, actual);
         }
     }
 }

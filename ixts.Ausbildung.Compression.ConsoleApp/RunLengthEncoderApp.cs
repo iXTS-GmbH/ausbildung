@@ -19,8 +19,9 @@ namespace ixts.Ausbildung.Compression.ConsoleApp
             var ms = new MemoryStream();
             orgImg.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
             byte[] orgImgBytes = ms.ToArray();
-            rle.DataEncode(orgImgBytes);
-            
+            var encImgBytes = rle.Encode(orgImgBytes);
+            //Console.WriteLine(orgImgBytes.Length);
+            //Console.WriteLine(encImgBytes.Length);
             //Console.WriteLine("Datei" + toCompDateiName + "wurde Komprimiert");
             Console.ReadLine();
         }
