@@ -7,7 +7,7 @@ namespace ixts.Ausbildung.Compression
 {
     public class RunLengthEncoder
     {
-        private const int MAX_COUNTER_VALUE = 9;
+        private const int MAX_COUNTER_VALUE = 255;
         private const int MIN_TO_COMPRESS_VALUE = 3;
         private char marker = '0';
         private Byte lastByte;
@@ -76,8 +76,7 @@ namespace ixts.Ausbildung.Compression
             {
                 var compressedGroup = new List<Byte> {};
                 compressedGroup.Add(Convert.ToByte(marker));
-                String length = group.Length.ToString();
-                compressedGroup.Add(Convert.ToByte(length[0]));
+                compressedGroup.Add(Convert.ToByte(group.Length));
                 compressedGroup.Add(group[0]);
                 return compressedGroup.ToArray();
             }
@@ -92,5 +91,7 @@ namespace ixts.Ausbildung.Compression
             }
             return bA.ToArray();
         }
+
+
     }
 }

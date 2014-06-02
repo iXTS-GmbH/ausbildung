@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 
 
@@ -16,61 +17,74 @@ namespace ixts.Ausbildung.Compression.Test
             sut = new RunLengthEncoder();
         }
 
-        [TestCase("AAAABBBBBBCCCC", "04A06B04C")] //Nur Gruppen
-        [TestCase("TESTSTRING", "TESTSTRING")] //Keine Gruppen
-        [TestCase("AAAAAABBCCCCCCDEEEE", "06ABB06CD04E")] //Gruppen und Einzelne
-        [TestCase("TEST0STRING", "TEST010STRING")] //Mit Marker ohne Gruppen
-        [TestCase("AAAA0BBBB0CCCC0DDDD0EEEE", "04A01004B01004C01004D01004E")]//Mit Marker und Gruppen
-        [TestCase("AAAAAAAAAAAAAAAAAAAA", "09A09AAA")] //Überlange Gruppe
-        [TestCase("AAAAAAAAAA0AAAAAAAAAA", "09AA01009AA")] //Überlange Gruppe mit Markern
-        public void CanGetCompString(String str, String expected) //Eingabe und ergebnis
+        [TestCaseSource("CanGetCompStringSource")] //Nur Gruppen
+        public void CanGetCompString(Byte[] bA, Byte[] expected) //Eingabe und ergebnis
         {
-            var bA = sut.StringToByteArray(str);
             var actual = sut.Encode(bA);
-            var expect = sut.StringToByteArray(expected);
-            Assert.AreEqual(expect, actual);
+            Assert.AreEqual(expected, actual);
         }
 
-        [TestCase("AAAABBBBBBCCCC", "04A")] //Nur Gruppen
-        [TestCase("TESTSTRING", "T")] //Keine Gruppen
-        [TestCase("AAAAAABBCCCCCCDEEEE", "06A")] //Gruppen und Einzelne
-        [TestCase("TEST-STRING", "T")] //Mit Marker ohne Gruppen
-        [TestCase("AAAA-BBBB-CCCC-DDDD-EEEE", "04A")]
-        [TestCase("AAAAAAAAAAAAAAAAAAAA", "09A")] //Überlange Gruppe
-        [TestCase("AAAAAAAAAA0AAAAAAAAAA", "09A")] //Überlange Gruppe mit Markern
-        public void GetNextGroup(String str, String expected)
+        private static readonly object[] CanGetCompStringSource =
+            {
+                new object[]{new Byte[]{65,65,65,65,66,66,66,66,66,66,67,67,67,67}, new Byte[]{48,4,65,48,6,66,48,4,67}},
+                new object[]{new Byte[]{84,69,83,84,83,84,82,73,78,71}, new Byte[]{84,69,83,84,83,84,82,73,78,71}},
+                new object[]{new Byte[]{65,65,65,65,65,65,66,66,67,67,67,67,67,67,68,69,69,69,69}, new Byte[]{48,6,65,66,66,48,6,67,68,48,4,69}},
+                new object[]{new Byte[]{84,69,83,84,48,83,84,82,73,78,71}, new Byte[]{84,69,83,84,48,1,48,83,84,82,73,78,71}},
+                new object[]{new Byte[]{65,65,65,65,48,66,66,66,66,48,67,67,67,67,48,68,68,68,68,48,69,69,69,69}, new Byte[]{48,4,65,48,1,48,48,4,66,48,1,48,48,4,67,48,1,48,48,4,68,48,1,48,48,4,69}},
+                new object[]{new Byte[]{65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65}, new Byte[]{48,20,65}},
+                new object[]{new Byte[]{65,65,65,65,65,65,65,65,65,65,48,65,65,65,65,65,65,65,65,65,65}, new Byte[]{48,10,65,48,1,48,48,10,65}},
+                
+            };
+
+        [TestCaseSource("GetNextGroupSource")] 
+        public void GetNextGroup(Byte[] bA, Byte[] expected)
         {
-            var bA = sut.StringToByteArray(str);
             var actual = sut.GetNextGroup(bA);
-            var expect = sut.StringToByteArray(expected);
-            Assert.AreEqual(expect, actual);
+            Assert.AreEqual(expected, actual);
         }
 
-        [TestCase("AAAAAA", "06A")]//Komprimierbare Gruppe
-        [TestCase("000000", "060")]//Komprimierbare Gruppe aus Markern
-        [TestCase("AA", "AA")]//Nicht Komprimierbare Gruppe
-        [TestCase("00", "020")]//Nicht Komprimierbare Gruppe aus Markern
-        public void CompressGroup(String str, String expected)
+        private static readonly object[] GetNextGroupSource =
+            {
+                new object[]{new Byte[]{65,65,65,65,66,66,66,66,67,67,67,67},new Byte[]{48,4,65}},//Nur Gruppen
+                new object[]{new Byte[]{84,69,83,84,83,84,82,73,78,71},new Byte[]{84}},//Keine Gruppen
+                new object[]{new Byte[]{65,65,65,65,65,65,66,66,67,67,67,67,67,67,68,69,69,69,69},new Byte[]{48,6,65}},//Gruppen und Einzelne
+                new object[]{new Byte[]{84,69,83,84,48,83,84,82,73,78,71},new Byte[]{84}},//Mit Marker ohne Gruppen
+                new object[]{new Byte[]{65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65},new Byte[]{48,20,65}},//Überlange Gruppe
+                new object[]{new Byte[]{65,65,65,65,65,65,65,65,65,65,48,65,65,65,65,65,65,65,65,65,65},new Byte[]{48,10,65}}//Überlange Gruppe mit Markern
+            };
+
+        [TestCaseSource("CompressGroupSource")]
+        public void CompressGroup(Byte[] bA, Byte[] expected)
         {
-            var bA = sut.StringToByteArray(str);
             var actual = sut.CompressGroup(bA);
-            var expect = sut.StringToByteArray(expected);
-            Assert.AreEqual(expect, actual);
+            Assert.AreEqual(expected, actual);
         }
-        [TestCase("X1XAX4X")]
-        public void Different_Marker(String expected)
+
+        private static readonly object[] CompressGroupSource = 
+            {
+                new object[]{new Byte[]{65,65,65,65,65,65},new Byte[]{48,6,65}}, //Komprimierbare Gruppe
+                new object[]{new Byte[]{48,48,48,48,48,48},new Byte[]{48,6,48}}, //Komprimierbare Gruppe aus Markern
+                new object[]{new Byte[]{65,65},new Byte[]{65,65}}, //Nicht Komprimierbare Gruppe
+                new object[]{new Byte[]{48,48},new Byte[]{48,2,48}},//Nicht Komprimierbare Gruppe aus Markern
+            };
+
+        [TestCaseSource("DifferentMarkerSource")]
+        public void DifferentMarker(Byte[] expected)
         {
             sut.Marker('X');
             var actual = sut.Encode(sut.StringToByteArray("XAXXXX"));
-            var expect = sut.StringToByteArray(expected);
-            Assert.AreEqual(expect, actual);
+            Assert.AreEqual(expected, actual);
         }
-
+        static readonly Byte[][] DifferentMarkerSource =
+        {
+                new Byte[] { 88,1,88,65,88,4,88 }
+        };
         [TestCase]
         public void Empty_InputString()
         {
             Assert.AreEqual(sut.Encode(null),null);
         }
+
 
         [TestCase]
         public void StringToByteArray()
@@ -78,6 +92,19 @@ namespace ixts.Ausbildung.Compression.Test
             var expected = new Byte[] {48,48,48,48,48};
             const String str = "00000";
             var actual = sut.StringToByteArray(str);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestCase]
+        public void MAX_COUNTER_VALUE_CHECK()
+        {
+            var Bl = new List<Byte>{};
+            for (int i = 0; i < 256; i++)
+            {
+                Bl.Add(Convert.ToByte('A'));
+            }
+            var actual = sut.Encode(Bl.ToArray());
+            var expected = new Byte[] {48,255,65,65};
             Assert.AreEqual(expected, actual);
         }
     }
