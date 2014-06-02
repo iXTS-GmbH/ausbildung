@@ -14,15 +14,19 @@ namespace ixts.Ausbildung.Compression.ConsoleApp
             var rle = new RunLengthEncoder();
 
             //String toCompDateiName = args[0];
-            Bitmap orgImg = (Bitmap) Image.FromFile(@"C:\Users\mkaestl.IXTS\Projekte\Ausbildung\ausbildung\bild.png");
-
+            String toCompDateiName = "bild.bmp";
+            Bitmap orgImg = (Bitmap) Image.FromFile(@"C:\Users\mkaestl.IXTS\Projekte\Ausbildung\ausbildung\bild.bmp");
+            //Bitmap orgImg = (Bitmap)Image.FromFile(@"C:\Users\mkaestl.IXTS\Desktop\Desertx16.bmp");
             var ms = new MemoryStream();
-            orgImg.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+            orgImg.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
             byte[] orgImgBytes = ms.ToArray();
             var encImgBytes = rle.Encode(orgImgBytes);
             //Console.WriteLine(orgImgBytes.Length);
             //Console.WriteLine(encImgBytes.Length);
-            //Console.WriteLine("Datei" + toCompDateiName + "wurde Komprimiert");
+            var shrunkenprocent = encImgBytes.Length/(orgImgBytes.Length/100);
+            var shrunkenvalue = orgImgBytes.Length - encImgBytes.Length;
+            Console.WriteLine("Datei " + toCompDateiName + " wurde Komprimiert - Kompressionsrate: " + shrunkenprocent + "%(" + shrunkenvalue + "bytes)");
+            //Console.WriteLine("Datei " + toCompDateiName + " wurde Komprimiert - Kompressionsrate: " + shrunkenprocent + "%");
             Console.ReadLine();
         }
     }

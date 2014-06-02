@@ -76,7 +76,7 @@ namespace ixts.Ausbildung.Compression
             {
                 var compressedGroup = new List<Byte> {};
                 compressedGroup.Add(Convert.ToByte(marker));
-                var length = group.Length.ToString();
+                String length = group.Length.ToString();
                 compressedGroup.Add(Convert.ToByte(length[0]));
                 compressedGroup.Add(group[0]);
                 return compressedGroup.ToArray();

@@ -37,7 +37,7 @@ namespace ixts.Ausbildung.Compression.Test
         [TestCase("TEST-STRING", "T")] //Mit Marker ohne Gruppen
         [TestCase("AAAA-BBBB-CCCC-DDDD-EEEE", "04A")]
         [TestCase("AAAAAAAAAAAAAAAAAAAA", "09A")] //Überlange Gruppe
-        [TestCase("AAAAAAAAAA-AAAAAAAAAA", "09A")] //Überlange Gruppe mit Markern
+        [TestCase("AAAAAAAAAA0AAAAAAAAAA", "09A")] //Überlange Gruppe mit Markern
         public void GetNextGroup(String str, String expected)
         {
             var bA = sut.StringToByteArray(str);
