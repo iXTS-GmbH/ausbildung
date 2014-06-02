@@ -13,20 +13,26 @@ namespace ixts.Ausbildung.Compression.ConsoleApp
         {
             var rle = new RunLengthEncoder();
 
-            //String toCompDateiName = args[0];
-            String toCompDateiName = "bild.bmp";
-            //Bitmap orgImg = (Bitmap) Image.FromFile(@"C:\Users\mkaestl.IXTS\Projekte\Ausbildung\ausbildung\bild.bmp");
-            Bitmap orgImg = (Bitmap)Image.FromFile(@"C:\Users\mkaestl.IXTS\Desktop\Desertx256.bmp");
+            //String toCompDataName = args[0];
+            //String newDataName = args[1];
+            String toCompDataName = "Desertx256.bmp";
+            String newDataName = "Desertx256.rle";
+            String path = Path.GetFullPath(toCompDataName);
+
+            Bitmap orgImg = (Bitmap)Image.FromFile(@path);
             var ms = new MemoryStream();
             orgImg.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
             byte[] orgImgBytes = ms.ToArray();
             var encImgBytes = rle.Encode(orgImgBytes);
-            //Console.WriteLine(orgImgBytes.Length);
-            //Console.WriteLine(encImgBytes.Length);
             var shrunkenprocent = 100 - (encImgBytes.Length/(orgImgBytes.Length/100));
             var shrunkenvalue = orgImgBytes.Length - encImgBytes.Length;
-            Console.WriteLine("Datei " + toCompDateiName + " wurde Komprimiert - Kompressionsrate: " + shrunkenprocent + "%(" + shrunkenvalue + "bytes)");
-            //Console.WriteLine("Datei " + toCompDateiName + " wurde Komprimiert - Kompressionsrate: " + shrunkenprocent + "%");;
+            Console.WriteLine("Datei " + toCompDataName + " wurde Komprimiert - Kompressionsrate: " + shrunkenprocent + "%(" + shrunkenvalue + "bytes)");
+            //Console.WriteLine("Datei " + toCompDataName + " wurde Komprimiert - Kompressionsrate: " + shrunkenprocent + "%");
+            String newpath = Path.GetFullPath(newDataName);
+            var bw = new BinaryWriter(File.Open(@newpath, FileMode.OpenOrCreate));
+            bw.Write(encImgBytes);
+            bw.Flush();
+            bw.Close();
             Console.ReadLine();
         }
     }
