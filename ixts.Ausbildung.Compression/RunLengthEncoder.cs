@@ -9,13 +9,13 @@ namespace ixts.Ausbildung.Compression
     {
         private const int MAX_COUNTER_VALUE = 255;
         private const int MIN_TO_COMPRESS_VALUE = 3;
-        private char marker = '0';
+        private Byte marker;
         private Byte lastByte;
         private int point;
 
         public void Marker(char newmarker)
         {
-            marker = newmarker;
+            marker = Convert.ToByte(newmarker);
         }
 
         public Byte[] Encode(Byte[] bA)

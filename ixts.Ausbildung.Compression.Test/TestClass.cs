@@ -26,13 +26,13 @@ namespace ixts.Ausbildung.Compression.Test
 
         private static readonly object[] CanGetCompStringSource =
             {
-                new object[]{new Byte[]{65,65,65,65,66,66,66,66,66,66,67,67,67,67}, new Byte[]{48,4,65,48,6,66,48,4,67}},
+                new object[]{new Byte[]{65,65,65,65,66,66,66,66,66,66,67,67,67,67}, new Byte[]{0,4,65,0,6,66,0,4,67}},
                 new object[]{new Byte[]{84,69,83,84,83,84,82,73,78,71}, new Byte[]{84,69,83,84,83,84,82,73,78,71}},
-                new object[]{new Byte[]{65,65,65,65,65,65,66,66,67,67,67,67,67,67,68,69,69,69,69}, new Byte[]{48,6,65,66,66,48,6,67,68,48,4,69}},
-                new object[]{new Byte[]{84,69,83,84,48,83,84,82,73,78,71}, new Byte[]{84,69,83,84,48,1,48,83,84,82,73,78,71}},
-                new object[]{new Byte[]{65,65,65,65,48,66,66,66,66,48,67,67,67,67,48,68,68,68,68,48,69,69,69,69}, new Byte[]{48,4,65,48,1,48,48,4,66,48,1,48,48,4,67,48,1,48,48,4,68,48,1,48,48,4,69}},
-                new object[]{new Byte[]{65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65}, new Byte[]{48,20,65}},
-                new object[]{new Byte[]{65,65,65,65,65,65,65,65,65,65,48,65,65,65,65,65,65,65,65,65,65}, new Byte[]{48,10,65,48,1,48,48,10,65}},
+                new object[]{new Byte[]{65,65,65,65,65,65,66,66,67,67,67,67,67,67,68,69,69,69,69}, new Byte[]{0,6,65,66,66,0,6,67,68,0,4,69}},
+                new object[]{new Byte[]{84,69,83,84,0,83,84,82,73,78,71}, new Byte[]{84,69,83,84,0,1,0,83,84,82,73,78,71}},
+                new object[]{new Byte[]{65,65,65,65,0,66,66,66,66,0,67,67,67,67,0,68,68,68,68,0,69,69,69,69}, new Byte[]{0,4,65,0,1,0,0,4,66,0,1,0,0,4,67,0,1,0,0,4,68,0,1,0,0,4,69}},
+                new object[]{new Byte[]{65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65}, new Byte[]{0,20,65}},
+                new object[]{new Byte[]{65,65,65,65,65,65,65,65,65,65,0,65,65,65,65,65,65,65,65,65,65}, new Byte[]{0,10,65,0,1,0,0,10,65}},
                 
             };
 
@@ -45,12 +45,12 @@ namespace ixts.Ausbildung.Compression.Test
 
         private static readonly object[] GetNextGroupSource =
             {
-                new object[]{new Byte[]{65,65,65,65,66,66,66,66,67,67,67,67},new Byte[]{48,4,65}},//Nur Gruppen
+                new object[]{new Byte[]{65,65,65,65,66,66,66,66,67,67,67,67},new Byte[]{0,4,65}},//Nur Gruppen
                 new object[]{new Byte[]{84,69,83,84,83,84,82,73,78,71},new Byte[]{84}},//Keine Gruppen
-                new object[]{new Byte[]{65,65,65,65,65,65,66,66,67,67,67,67,67,67,68,69,69,69,69},new Byte[]{48,6,65}},//Gruppen und Einzelne
-                new object[]{new Byte[]{84,69,83,84,48,83,84,82,73,78,71},new Byte[]{84}},//Mit Marker ohne Gruppen
-                new object[]{new Byte[]{65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65},new Byte[]{48,20,65}},//Überlange Gruppe
-                new object[]{new Byte[]{65,65,65,65,65,65,65,65,65,65,48,65,65,65,65,65,65,65,65,65,65},new Byte[]{48,10,65}}//Überlange Gruppe mit Markern
+                new object[]{new Byte[]{65,65,65,65,65,65,66,66,67,67,67,67,67,67,68,69,69,69,69},new Byte[]{0,6,65}},//Gruppen und Einzelne
+                new object[]{new Byte[]{84,69,83,84,0,83,84,82,73,78,71},new Byte[]{84}},//Mit Marker ohne Gruppen
+                new object[]{new Byte[]{65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65},new Byte[]{0,20,65}},//Überlange Gruppe
+                new object[]{new Byte[]{65,65,65,65,65,65,65,65,65,65,0,65,65,65,65,65,65,65,65,65,65},new Byte[]{0,10,65}}//Überlange Gruppe mit Markern
             };
 
         [TestCaseSource("CompressGroupSource")]
@@ -62,10 +62,10 @@ namespace ixts.Ausbildung.Compression.Test
 
         private static readonly object[] CompressGroupSource = 
             {
-                new object[]{new Byte[]{65,65,65,65,65,65},new Byte[]{48,6,65}}, //Komprimierbare Gruppe
-                new object[]{new Byte[]{48,48,48,48,48,48},new Byte[]{48,6,48}}, //Komprimierbare Gruppe aus Markern
+                new object[]{new Byte[]{65,65,65,65,65,65},new Byte[]{0,6,65}}, //Komprimierbare Gruppe
+                new object[]{new Byte[]{0,0,0,0,0,0},new Byte[]{0,6,0}}, //Komprimierbare Gruppe aus Markern
                 new object[]{new Byte[]{65,65},new Byte[]{65,65}}, //Nicht Komprimierbare Gruppe
-                new object[]{new Byte[]{48,48},new Byte[]{48,2,48}},//Nicht Komprimierbare Gruppe aus Markern
+                new object[]{new Byte[]{0,0},new Byte[]{0,2,0}},//Nicht Komprimierbare Gruppe aus Markern
             };
 
         [TestCaseSource("DifferentMarkerSource")]
@@ -104,7 +104,7 @@ namespace ixts.Ausbildung.Compression.Test
                 Bl.Add(Convert.ToByte('A'));
             }
             var actual = sut.Encode(Bl.ToArray());
-            var expected = new Byte[] {48,255,65,65};
+            var expected = new Byte[] {0,255,65,65};
             Assert.AreEqual(expected, actual);
         }
     }

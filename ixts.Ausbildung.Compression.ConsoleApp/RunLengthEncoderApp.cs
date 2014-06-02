@@ -34,7 +34,7 @@ namespace ixts.Ausbildung.Compression.ConsoleApp
             }
             else
             {
-                Console.WriteLine();
+                Console.WriteLine("In Arbeit");
                 //Hier kommt die Dekomprimier-Funktion hin
             }
         }
