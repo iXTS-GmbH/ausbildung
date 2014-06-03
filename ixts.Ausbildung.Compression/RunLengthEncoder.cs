@@ -92,7 +92,7 @@ namespace ixts.Ausbildung.Compression
             return bA.ToArray();
         }
 
-        public Byte[] Decode(Byte[] bA)
+        public Byte[] Decode(Byte[] bA) //Ergebnisse Sammeln
         {
             if (bA != null)
             {
@@ -114,7 +114,12 @@ namespace ixts.Ausbildung.Compression
             }
         }
 
-        public Byte[] GetNextDeCodeGroup(Byte[] bA)
+        public Byte[] GetNextDeCodeGroup(Byte[] bA) //Gruppen identifizieren
+        {
+            return null;
+        }
+
+        public Byte[] DeCompGroup(Byte[]group) //Gruppen bearbeiten
         {
             return null;
         }
