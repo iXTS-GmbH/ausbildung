@@ -92,19 +92,26 @@ namespace ixts.Ausbildung.Compression
             return bA.ToArray();
         }
 
-        public Byte[] DeCode(Byte[] bA)
+        public Byte[] Decode(Byte[] bA)
         {
-            var bL = new List<Byte> {};
-            while (currentPosition < bA.Length)
+            if (bA != null)
             {
-                Byte[] nextgroup = GetNextDeCodeGroup(bA);
-                for (int i = 0; i < nextgroup.Length; i++)
+                var bL = new List<Byte> {};
+                while (currentPosition < bA.Length)
                 {
-                    bL.Add(nextgroup[i]);
+                    Byte[] nextgroup = GetNextDeCodeGroup(bA);
+                    for (int i = 0; i < nextgroup.Length; i++)
+                    {
+                        bL.Add(nextgroup[i]);
+                    }
                 }
+                currentPosition = 0;
+                return bL.ToArray();
             }
-            currentPosition = 0;
-            return bL.ToArray();
+            else
+            {
+                return null;
+            }
         }
 
         public Byte[] GetNextDeCodeGroup(Byte[] bA)

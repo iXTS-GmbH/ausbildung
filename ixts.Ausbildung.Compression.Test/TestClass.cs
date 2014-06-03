@@ -76,7 +76,7 @@ namespace ixts.Ausbildung.Compression.Test
                 new Byte[] { 88,1,88,65,88,4,88 }
         };
         [TestCase]
-        public void Empty_InputString()
+        public void Empty_InputArray()
         {
             Assert.AreEqual(sut.Encode(null),null);
         }
@@ -107,7 +107,7 @@ namespace ixts.Ausbildung.Compression.Test
         [TestCaseSource("CanGetDeCompArraySource")]
         public void CanGetDeCompArray(Byte[] bA, Byte[] expected)
         {
-            var actual = sut.DeCode(bA);
+            var actual = sut.Decode(bA);
             Assert.AreEqual(expected,actual);
         }
 
@@ -128,8 +128,14 @@ namespace ixts.Ausbildung.Compression.Test
                 bL.Add(Convert.ToByte('A'));
             }
             var expected = bL.ToArray();
-            var actual = sut.DeCode(bA);
+            var actual = sut.Decode(bA);
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestCase]
+        public void Empty_Input_Decomp_Array()
+        {
+            Assert.AreEqual(sut.Decode(null), null);
         }
     }
 }
