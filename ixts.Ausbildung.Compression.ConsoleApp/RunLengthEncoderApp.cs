@@ -36,6 +36,13 @@ namespace ixts.Ausbildung.Compression.ConsoleApp
             {
                 Console.WriteLine("In Arbeit");
                 //Hier kommt die Dekomprimier-Funktion hin
+                String toDeCompDataName = args[1];
+                String newDataName = args[2];
+                String path = Path.GetFullPath(toDeCompDataName);
+                var orgimgBytes = File.ReadAllBytes(@path);
+                //Hier kommt die DekomprimierMethode hin
+
+                Console.ReadKey();
             }
         }
     }
