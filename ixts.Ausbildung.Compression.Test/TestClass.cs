@@ -141,7 +141,7 @@ namespace ixts.Ausbildung.Compression.Test
         [TestCaseSource("GetNextDeCompGroupSource")]
         public void GetNextDeCompGroup(Byte[] bA, Byte[] expected)
         {
-            var actual = sut.GetNextDeCodeGroup(bA);
+            var actual = sut.GetNextDeCompGroup(bA);
             Assert.AreEqual(expected, actual);
         }
 
