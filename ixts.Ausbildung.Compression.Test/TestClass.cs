@@ -123,7 +123,7 @@ namespace ixts.Ausbildung.Compression.Test
         {
             var bA = new Byte[] { 0, 255, 65 };
             var bL = new List<Byte> { };
-            for (int i = 0; i < 256; i++)
+            for (int i = 0; i < 255; i++)
             {
                 bL.Add(Convert.ToByte('A'));
             }

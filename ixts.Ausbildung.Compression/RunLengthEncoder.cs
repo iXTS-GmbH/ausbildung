@@ -92,14 +92,14 @@ namespace ixts.Ausbildung.Compression
             return bA.ToArray();
         }
 
-        public Byte[] Decode(Byte[] bA) //Ergebnisse Sammeln
+        public Byte[] Decode(Byte[] bA)
         {
             if (bA != null)
             {
                 var bL = new List<Byte> {};
                 while (currentPosition < bA.Length)
                 {
-                    Byte[] nextgroup = GetNextDeCodeGroup(bA);
+                    Byte[] nextgroup = GetNextDeCompGroup(bA);
                     for (int i = 0; i < nextgroup.Length; i++)
                     {
                         bL.Add(nextgroup[i]);
@@ -114,36 +114,42 @@ namespace ixts.Ausbildung.Compression
             }
         }
 
-        public Byte[] GetNextDeCompGroup(Byte[] bA) //Gruppen identifizieren
+        public Byte[] GetNextDeCompGroup(Byte[] bA)
         {
             var group = new List<Byte> {};
-            for (int i = currentPosition; i < bA.Length; i++)
+            if (bA[currentPosition] == 0)
             {
-                if (bA[i] == 0)
-                {
-                    group.Add(bA[i]);
-                    group.Add(bA[i+1]);
-                    group.Add(bA[i+2]);
-                    i = i + 2;
-                    currentPosition = i;
-                    return DeCompressGroup(group.ToArray());
+                group.Add(bA[currentPosition]);
+                group.Add(bA[currentPosition+1]);
+                group.Add(bA[currentPosition+2]);
+                currentPosition = currentPosition + 3;
+                return DeCompressGroup(group.ToArray());
 
-                }
-                else
-                {
-                    group.Add(bA[i]);
-                    currentPosition = i;
-                    return DeCompressGroup(group.ToArray());
-                }
             }
-
-
-            return null;
+            else
+            {
+                group.Add(bA[currentPosition]);
+                currentPosition++;
+                return DeCompressGroup(group.ToArray());
+            }
         }
 
-        public Byte[] DeCompressGroup(Byte[]group) //Gruppen bearbeiten
+        public Byte[] DeCompressGroup(Byte[]group)
         {
-            return null;
+            if (group.Length == 3)
+            {
+                int count = group[1];
+                var bL = new List<Byte>{};
+                for (int i = 0; i < count; i++)
+                {
+                    bL.Add(group[2]);
+                }
+                return bL.ToArray();
+            }
+            else
+            {
+                return group;
+            }
         }
     }
 }
