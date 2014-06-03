@@ -150,5 +150,19 @@ namespace ixts.Ausbildung.Compression.Test
                 new object[]{new Byte[]{0,4,65,0,5,66,0,4,67,0,7,68},new Byte[]{65,65,65,65}},//Nur Gruppen
                 new object[]{new Byte[]{84,69,83,84,83,84,82,73,78,71},new Byte[]{84}},//Keine Gruppen
             };
+
+        [TestCaseSource("DeCompressGroupSource")]
+        public void DeCompressGroup(Byte[] group, Byte[] expected)
+        {
+            var actual = sut.DeCompressGroup(group);
+            Assert.AreEqual(expected,actual);
+        }
+
+        private static readonly object[] DeCompressGroupSource =
+            {
+                new object[]{new Byte[]{0,6,65},new Byte[]{65,65,65,65,65,65}}, //Dekomprimierbare Gruppe
+                new object[]{new Byte[]{0,6,0},new Byte[]{0,0,0,0,0,0}}, //Dekomprimierbare Gruppe aus Markern
+                new object[]{new Byte[]{65},new Byte[]{65}}, //Nicht Dekomprimierbare Gruppe
+            };
     }
 }

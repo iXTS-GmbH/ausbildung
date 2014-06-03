@@ -126,14 +126,14 @@ namespace ixts.Ausbildung.Compression
                     group.Add(bA[i+2]);
                     i = i + 2;
                     currentPosition = i;
-                    return DeCompGroup(group.ToArray());
+                    return DeCompressGroup(group.ToArray());
 
                 }
                 else
                 {
                     group.Add(bA[i]);
                     currentPosition = i;
-                    return DeCompGroup(group.ToArray());
+                    return DeCompressGroup(group.ToArray());
                 }
             }
 
@@ -141,7 +141,7 @@ namespace ixts.Ausbildung.Compression
             return null;
         }
 
-        public Byte[] DeCompGroup(Byte[]group) //Gruppen bearbeiten
+        public Byte[] DeCompressGroup(Byte[]group) //Gruppen bearbeiten
         {
             return null;
         }
