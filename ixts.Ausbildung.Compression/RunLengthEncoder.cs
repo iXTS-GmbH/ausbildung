@@ -11,7 +11,7 @@ namespace ixts.Ausbildung.Compression
         private const int MIN_TO_COMPRESS_VALUE = 3;
         private Byte marker;
         private Byte lastByte;
-        private int point;
+        private int currentPosition;
 
         public void Marker(char newmarker)
         {
@@ -23,7 +23,7 @@ namespace ixts.Ausbildung.Compression
             if (bA != null)
             {
                 var bl = new List<Byte>();
-                while (point < bA.Length)
+                while (currentPosition < bA.Length)
                 {
                     Byte[] nextgroup = GetNextGroup(bA);
                     for (int i = 0; i < nextgroup.Length; i++)
@@ -31,7 +31,7 @@ namespace ixts.Ausbildung.Compression
                         bl.Add(nextgroup[i]);
                     }
                 }
-                point = 0;
+                currentPosition = 0;
                 return bl.ToArray();
             }
             else
@@ -43,13 +43,13 @@ namespace ixts.Ausbildung.Compression
         public Byte[] GetNextGroup(Byte[] bA)
         {
             var group = new List<Byte> {};
-            for (var i = point; i < bA.Length; i++)
+            for (var i = currentPosition; i < bA.Length; i++)
             {
                 if (bA[i] == lastByte || i == 0)
                 {
                     if (group.Count == MAX_COUNTER_VALUE)
                     {
-                        point = i;
+                        currentPosition = i;
                         return CompressGroup(group.ToArray());
                     }
                     lastByte = bA[i];
@@ -58,11 +58,11 @@ namespace ixts.Ausbildung.Compression
                 else
                 {
                     lastByte = bA[i];
-                    point = i;
+                    currentPosition = i;
                     return CompressGroup(group.ToArray());
                 }
             }
-            point = bA.Length;
+            currentPosition = bA.Length;
             return CompressGroup(group.ToArray());
         }
 
@@ -92,6 +92,9 @@ namespace ixts.Ausbildung.Compression
             return bA.ToArray();
         }
 
-
+        public Byte[] DeCode(Byte[] bA)
+        {
+            return null;
+        }
     }
 }

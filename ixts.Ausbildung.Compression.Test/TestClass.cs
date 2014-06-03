@@ -17,22 +17,20 @@ namespace ixts.Ausbildung.Compression.Test
             sut = new RunLengthEncoder();
         }
 
-        [TestCaseSource("CanGetCompStringSource")] //Nur Gruppen
-        public void CanGetCompString(Byte[] bA, Byte[] expected) //Eingabe und ergebnis
+        [TestCaseSource("CanGetCompArraySource")]
+        public void CanGetCompArray(Byte[] bA, Byte[] expected) //Eingabe und ergebnis
         {
             var actual = sut.Encode(bA);
             Assert.AreEqual(expected, actual);
         }
 
-        private static readonly object[] CanGetCompStringSource =
+        private static readonly object[] CanGetCompArraySource =
             {
-                new object[]{new Byte[]{65,65,65,65,66,66,66,66,66,66,67,67,67,67}, new Byte[]{0,4,65,0,6,66,0,4,67}},
-                new object[]{new Byte[]{84,69,83,84,83,84,82,73,78,71}, new Byte[]{84,69,83,84,83,84,82,73,78,71}},
-                new object[]{new Byte[]{65,65,65,65,65,65,66,66,67,67,67,67,67,67,68,69,69,69,69}, new Byte[]{0,6,65,66,66,0,6,67,68,0,4,69}},
-                new object[]{new Byte[]{84,69,83,84,0,83,84,82,73,78,71}, new Byte[]{84,69,83,84,0,1,0,83,84,82,73,78,71}},
-                new object[]{new Byte[]{65,65,65,65,0,66,66,66,66,0,67,67,67,67,0,68,68,68,68,0,69,69,69,69}, new Byte[]{0,4,65,0,1,0,0,4,66,0,1,0,0,4,67,0,1,0,0,4,68,0,1,0,0,4,69}},
-                new object[]{new Byte[]{65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65}, new Byte[]{0,20,65}},
-                new object[]{new Byte[]{65,65,65,65,65,65,65,65,65,65,0,65,65,65,65,65,65,65,65,65,65}, new Byte[]{0,10,65,0,1,0,0,10,65}},
+                new object[]{new Byte[]{65,65,65,65,66,66,66,66,66,66,67,67,67,67}, new Byte[]{0,4,65,0,6,66,0,4,67}}, //Nur Gruppen
+                new object[]{new Byte[]{84,69,83,84,83,84,82,73,78,71}, new Byte[]{84,69,83,84,83,84,82,73,78,71}}, //Keine Gruppen
+                new object[]{new Byte[]{65,65,65,65,65,65,66,66,67,67,67,67,67,67,68,69,69,69,69}, new Byte[]{0,6,65,66,66,0,6,67,68,0,4,69}}, //Gruppen und Einzelne
+                new object[]{new Byte[]{84,69,83,84,0,83,84,82,73,78,71}, new Byte[]{84,69,83,84,0,1,0,83,84,82,73,78,71}}, //Mit Marker ohne Gruppen
+                new object[]{new Byte[]{65,65,65,65,0,66,66,66,66,0,67,67,67,67,0,68,68,68,68,0,69,69,69,69}, new Byte[]{0,4,65,0,1,0,0,4,66,0,1,0,0,4,67,0,1,0,0,4,68,0,1,0,0,4,69}}, //Mit Marker und Gruppen
                 
             };
 
@@ -49,8 +47,6 @@ namespace ixts.Ausbildung.Compression.Test
                 new object[]{new Byte[]{84,69,83,84,83,84,82,73,78,71},new Byte[]{84}},//Keine Gruppen
                 new object[]{new Byte[]{65,65,65,65,65,65,66,66,67,67,67,67,67,67,68,69,69,69,69},new Byte[]{0,6,65}},//Gruppen und Einzelne
                 new object[]{new Byte[]{84,69,83,84,0,83,84,82,73,78,71},new Byte[]{84}},//Mit Marker ohne Gruppen
-                new object[]{new Byte[]{65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65},new Byte[]{0,20,65}},//Überlange Gruppe
-                new object[]{new Byte[]{65,65,65,65,65,65,65,65,65,65,0,65,65,65,65,65,65,65,65,65,65},new Byte[]{0,10,65}}//Überlange Gruppe mit Markern
             };
 
         [TestCaseSource("CompressGroupSource")]
@@ -75,7 +71,7 @@ namespace ixts.Ausbildung.Compression.Test
             var actual = sut.Encode(sut.StringToByteArray("XAXXXX"));
             Assert.AreEqual(expected, actual);
         }
-        static readonly Byte[][] DifferentMarkerSource =
+        private static readonly Byte[][] DifferentMarkerSource =
         {
                 new Byte[] { 88,1,88,65,88,4,88 }
         };
@@ -96,15 +92,43 @@ namespace ixts.Ausbildung.Compression.Test
         }
 
         [TestCase]
-        public void MAX_COUNTER_VALUE_CHECK()
+        public void MAX_COUNTER_VALUE_COMPRESS_CHECK()
         {
-            var Bl = new List<Byte>{};
+            var bL = new List<Byte>{};
             for (int i = 0; i < 256; i++)
             {
-                Bl.Add(Convert.ToByte('A'));
+                bL.Add(Convert.ToByte('A'));
             }
-            var actual = sut.Encode(Bl.ToArray());
+            var actual = sut.Encode(bL.ToArray());
             var expected = new Byte[] {0,255,65,65};
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestCaseSource("CanGetDeCompArraySource")]
+        public void CanGetDeCompArray(Byte[] bA, Byte[] expected)
+        {
+            var actual = sut.DeCode(bA);
+            Assert.AreEqual(expected,actual);
+        }
+
+        private static readonly object[] CanGetDeCompArraySource =
+            { 
+                new object[]{new Byte[]{0,4,65,0,6,66,0,4,67}, new Byte[]{65,65,65,65,66,66,66,66,66,66,67,67,67,67}}, //Nur Gruppen
+                new object[]{new Byte[]{84,69,83,84,83,84,82,73,78,71}, new Byte[]{84,69,83,84,83,84,82,73,78,71}}, //Keine Gruppen
+                new object[]{new Byte[]{0,6,65,66,66,0,6,67,68,0,4,69}, new Byte[]{65,65,65,65,65,65,66,66,67,67,67,67,67,67,68,69,69,69,69}}, //Gruppen und Einzelne
+            };
+
+        [TestCase]
+        public void MAX_COUNTER_VALUE_DECOMPRESS_CHECK()
+        {
+            var bA = new Byte[] { 0, 255, 65 };
+            var bL = new List<Byte> { };
+            for (int i = 0; i < 256; i++)
+            {
+                bL.Add(Convert.ToByte('A'));
+            }
+            var expected = bL.ToArray();
+            var actual = sut.DeCode(bA);
             Assert.AreEqual(expected, actual);
         }
     }
