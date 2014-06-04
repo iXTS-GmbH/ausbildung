@@ -146,12 +146,25 @@ namespace ixts.Ausbildung.Compression.Test
         public void MAX_COUNTER_VALUE_COMPRESS_CHECK()
         {
             var buffer = new List<Byte>();
-            for (int i = 0; i < 256; i++)//Das sind 256 'T'
+            for (int i = 0; i < 256; i++)
             {
                 buffer.Add(Convert.ToByte('T'));
             }
             var actual = sut.Encode(buffer.ToArray(), 1);
             var expected = new List<Byte> {0,255,84,84};
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestCase]
+        public void OVER_MAX_COUNTER_VALUE_COMPRESS_CHECK()
+        {
+            var buffer = new List<Byte>();
+            for (int i = 0; i < 510; i++)
+            {
+                buffer.Add(Convert.ToByte('T'));
+            }
+            var actual = sut.Encode(buffer.ToArray(), 1);
+            var expected = new List<Byte> { 0, 255, 84, 0,255,84 };
             Assert.AreEqual(expected, actual);
         }
     }

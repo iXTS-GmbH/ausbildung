@@ -111,5 +111,26 @@ namespace ixts.Ausbildung.Compression.Test
                 new object[]{new List<Byte>{0,3,0,0,0,0},new Byte[]{0,0,0,0,0,0,0,0,0,0,0,0},4}, //Dekomprimierbare Gruppe aus Markern
                 new object[]{new List<Byte>{65,65,65,65},new Byte[]{65,65,65,65},4}, //Nicht Dekomprimierbare Gruppe
             };
+
+        [TestCase]
+        public void StringToByteArray()
+        {
+            var expected = new Byte[] { 48, 48, 48, 48, 48 };
+            const String str = "00000";
+            var actual = sut.StringToByteArray(str);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestCaseSource("DifferentMarkerSource")]
+        public void DifferentMarker(Byte[] buffer, Byte[] expected)
+        {
+            sut.Marker('X');
+            var actual = sut.Decode(buffer, 1);
+            Assert.AreEqual(expected, actual);
+        }
+        private static readonly object[] DifferentMarkerSource =
+        {
+                new object[]{new Byte[] {88,1,88,65,88,4,88},new Byte[]{88,65,88,88,88,88} }
+        };
     }
 }

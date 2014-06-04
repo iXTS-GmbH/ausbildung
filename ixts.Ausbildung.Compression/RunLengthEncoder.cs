@@ -61,6 +61,7 @@ namespace ixts.Ausbildung.Compression
                     {
                         currentPosition = i + checkRange - 1;
                         var afterGroup = new List<Byte>();
+                        //Das hat laut CCB keinen Test
                         if (currentPosition + checkRange < bytes.Length)
                         {
                             for (int j = 0; j < checkRange; j++)
@@ -69,7 +70,7 @@ namespace ixts.Ausbildung.Compression
                             }
                         lastBytes = afterGroup; 
                         }
-
+                        //
                         return CompressGroup(group, checkRange);
                     }
                     for (int l = 0; l < nextGroup.Count; l++)
