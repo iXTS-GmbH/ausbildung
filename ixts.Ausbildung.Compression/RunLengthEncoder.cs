@@ -44,24 +44,34 @@ namespace ixts.Ausbildung.Compression
         public List<Byte> GetNextGroup(Byte[] bytes, int checkRange)
         {
             var group = new List<Byte> ();
-            for (var i = currentPosition; i < bytes.Length; i = i + checkRange) 
+            for (var i = currentPosition; i < bytes.Length; i = i + checkRange)
             {
                 var nextGroup = new List<Byte>();
                     for (int j = 0; j < checkRange; j++)
                     {
-                        if (bytes.Length - 1 > i+j)
+                        if (bytes.Length - 1 >= i+j)
                         {
                             nextGroup.Add(bytes[i + j]);
                         }
                     }
                 if (i == 0 || nextGroup.SequenceEqual(lastBytes))
                 {
-                    if (group.Count == MAX_COUNTER_VALUE)
+                    lastBytes = nextGroup;
+                    if (group.Count >= MAX_COUNTER_VALUE)
                     {
                         currentPosition = i + checkRange - 1;
+                        var afterGroup = new List<Byte>();
+                        if (currentPosition + checkRange < bytes.Length)
+                        {
+                            for (int j = 0; j < checkRange; j++)
+                            {
+                                afterGroup.Add(bytes[currentPosition + j]);
+                            }
+                        lastBytes = afterGroup; 
+                        }
+
                         return CompressGroup(group, checkRange);
                     }
-                    lastBytes = nextGroup;
                     for (int l = 0; l < nextGroup.Count; l++)
                     {
                         group.Add(nextGroup[l]);
@@ -76,7 +86,7 @@ namespace ixts.Ausbildung.Compression
 
             }
             currentPosition = bytes.Length;
-            return CompressGroup(group, checkRange);
+            return CompressGroup(group,checkRange);
         }
 
         public List<Byte> CompressGroup(List<Byte> group, int checkRange)

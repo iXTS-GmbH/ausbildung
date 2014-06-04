@@ -19,7 +19,7 @@ namespace ixts.Ausbildung.Compression.ConsoleApp
                 var checkRange = 1;
                 if (args.Length == 3)
                 {
-                    checkRange = Convert.ToInt32(args[2]); //Warum nimmt er das nicht mit?
+                    checkRange = Convert.ToInt32(args[2]);
                 }
                 var path = Path.GetFullPath(toCompFileName);
                 var orgImgBytes = File.ReadAllBytes(@path);
@@ -29,19 +29,24 @@ namespace ixts.Ausbildung.Compression.ConsoleApp
                 Console.WriteLine("Datei {0} wurde Komprimiert - Kompressionsrate: {1}%({2}bytes)", toCompFileName, Convert.ToInt64(shrunkenprocent), shrunkenvalue );
                 var newpath = Path.GetFullPath(newDataName);
                 File.WriteAllBytes(newpath,encImgBytes);
-                Console.ReadKey();
+                //Console.ReadKey();
             }
             else
             {
                 var toDeCompFileName = args[1];
                 var newDataName = args[2];
+                var checkRange = 1;
+                if (args.Length == 4)
+                {
+                    checkRange = Convert.ToInt32(args[3]);
+                }
                 var path = Path.GetFullPath(toDeCompFileName);
                 var newpath = Path.GetFullPath(newDataName);
                 var orgimgBytes = File.ReadAllBytes(@path);
-                var decimgBytes = rld.Decode(orgimgBytes);
+                var decimgBytes = rld.Decode(orgimgBytes, checkRange);
                 File.WriteAllBytes(newpath,decimgBytes);
                 Console.WriteLine("Datei {0} wurde dekomprimiert", toDeCompFileName);
-                Console.ReadKey();
+                //Console.ReadKey();
             }
         }
     }

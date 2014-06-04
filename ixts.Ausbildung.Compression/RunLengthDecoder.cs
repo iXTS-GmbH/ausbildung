@@ -15,14 +15,14 @@ namespace ixts.Ausbildung.Compression
             marker = Convert.ToByte(newmarker);
         }
 
-        public Byte[] Decode(Byte[] bytes)
+        public Byte[] Decode(Byte[] bytes, int checkRange)
         {
             if (bytes != null)
             {
                 var buffer = new List<Byte>();
                 while (currentPosition < bytes.Length)
                 {
-                    var nextgroup = GetNextDeCompGroup(bytes);
+                    var nextgroup = GetNextDeCompGroup(bytes, checkRange);
                     for (int i = 0; i < nextgroup.Count; i++)
                     {
                         buffer.Add(nextgroup[i]);
@@ -34,32 +34,42 @@ namespace ixts.Ausbildung.Compression
             return null;
         }
 
-        public List<Byte> GetNextDeCompGroup(Byte[] bA)
+        public List<Byte> GetNextDeCompGroup(Byte[] bytes, int checkRange)
         {
             var group = new List<Byte> ();
-            if (bA[currentPosition] == marker)
+            if (bytes[currentPosition] == marker) 
             {
-                group.Add(bA[currentPosition]);
-                group.Add(bA[currentPosition + 1]);
-                group.Add(bA[currentPosition + 2]);
-                currentPosition = currentPosition + 3;
-                return DeCompressGroup(group);
+                for (int i = 0; i < checkRange + 2; i++)
+                {
+                   group.Add(bytes[currentPosition + i]); 
+                }
+                currentPosition = currentPosition + 2 + checkRange;
+                return DeCompressGroup(group, checkRange);
 
             }
-            group.Add(bA[currentPosition]);
-            currentPosition++;
-            return DeCompressGroup(group);
+            for (int i = 0; i < checkRange; i++)
+                {
+                if (bytes.Length - 1 >= currentPosition + i){
+                    group.Add(bytes[currentPosition + i]);
+                }
+            }
+            
+            currentPosition = currentPosition + checkRange;
+            return DeCompressGroup(group, checkRange);
         }
 
-        public List<Byte> DeCompressGroup(List<Byte> group)
+        public List<Byte> DeCompressGroup(List<Byte> group, int checkRange) //Eventuell ist hier ein Fehler
         {
-            if (group.Count == 3)
+            if (group.Count == 2 + checkRange)
             {
                 var count = Convert.ToInt16(group[1]);
                 var buffer = new List<Byte> ();
                 for (int i = 0; i < count; i++)
                 {
-                    buffer.Add(group[2]);
+                    for (int j = 0; j < checkRange; j++)
+                    {
+                        buffer.Add(group[2+j]);
+                    }
                 }
                 return buffer;
             }
