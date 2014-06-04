@@ -20,7 +20,7 @@ namespace ixts.Ausbildung.Compression.Test
         [TestCaseSource("CanGetCompArraySource")]
         public void CanGetCompArray(Byte[] bA, Byte[] expected)
         {
-            var actual = sut.Encode(bA);
+            var actual = sut.Encode(bA, 1);
             Assert.AreEqual(expected, actual);
         }
 
@@ -37,7 +37,7 @@ namespace ixts.Ausbildung.Compression.Test
         [TestCaseSource("GetNextGroupSource")] 
         public void GetNextGroup(Byte[] bA, Byte[] expected)
         {
-            var actual = sut.GetNextGroup(bA);
+            var actual = sut.GetNextGroup(bA, 1);
             Assert.AreEqual(expected, actual);
         }
 
@@ -52,7 +52,7 @@ namespace ixts.Ausbildung.Compression.Test
         [TestCaseSource("CompressGroupSource")]
         public void CompressGroup(List<Byte> bA, List<Byte> expected)
         {
-            var actual = sut.CompressGroup(bA);
+            var actual = sut.CompressGroup(bA, 1);
             Assert.AreEqual(expected, actual);
         }
 
@@ -68,7 +68,7 @@ namespace ixts.Ausbildung.Compression.Test
         public void DifferentMarker(Byte[] expected)
         {
             sut.Marker('X');
-            var actual = sut.Encode(sut.StringToByteArray("XAXXXX"));
+            var actual = sut.Encode(sut.StringToByteArray("XAXXXX"), 1);
             Assert.AreEqual(expected, actual);
         }
         private static readonly Byte[][] DifferentMarkerSource =
@@ -78,7 +78,7 @@ namespace ixts.Ausbildung.Compression.Test
         [TestCase]
         public void Empty_InputArray()
         {
-            Assert.AreEqual(sut.Encode(null),null);
+            Assert.AreEqual(sut.Encode(null, 1),null);
         }
 
 
@@ -94,12 +94,12 @@ namespace ixts.Ausbildung.Compression.Test
         [TestCase]
         public void MAX_COUNTER_VALUE_COMPRESS_CHECK()
         {
-            var bL = new List<Byte>{};
+            var bL = new List<Byte>();
             for (int i = 0; i < 256; i++)
             {
                 bL.Add(Convert.ToByte('A'));
             }
-            var actual = sut.Encode(bL.ToArray());
+            var actual = sut.Encode(bL.ToArray(), 1);
             var expected = new Byte[] {0,255,65,65};
             Assert.AreEqual(expected, actual);
         }

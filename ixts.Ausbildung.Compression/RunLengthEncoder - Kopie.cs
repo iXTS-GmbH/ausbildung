@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Globalization;
 using System.Text;
 
 namespace ixts.Ausbildung.Compression
@@ -10,14 +10,14 @@ namespace ixts.Ausbildung.Compression
         private const int MAX_COUNTER_VALUE = 255;
         private const int MIN_TO_COMPRESS_VALUE = 3;
         private Byte marker;
-        private List<Byte> lastBytes;
+        private Byte lastByte;
         private int currentPosition;
 
         public void Marker(char newmarker)
         {
             marker = Convert.ToByte(newmarker);
         }
-        
+        //
         public Byte[] Encode(Byte[] bytes,int checkRange)
         {
             if (bytes != null)
@@ -41,39 +41,27 @@ namespace ixts.Ausbildung.Compression
             return null;
         }
 
-        public List<Byte> GetNextGroup(Byte[] bytes, int checkRange)
+        public List<Byte> GetNextGroup(Byte[] bytes, int checkRange) //Hier muss ich die checkRange richtig implementieren
         {
             var group = new List<Byte> ();
-            for (var i = currentPosition; i < bytes.Length; i = i + checkRange) 
+            for (var i = currentPosition; i < bytes.Length; i++)
             {
-                var nextGroup = new List<Byte>();
-                    for (int j = 0; j < checkRange; j++)
-                    {
-                        if (bytes.Length - 1 > i+j)
-                        {
-                            nextGroup.Add(bytes[i + j]);
-                        }
-                    }
-                if (i == 0 || nextGroup.SequenceEqual(lastBytes))
+                if (bytes[i] == lastByte || i == 0)
                 {
                     if (group.Count == MAX_COUNTER_VALUE)
                     {
-                        currentPosition = i + checkRange - 1;
+                        currentPosition = i;
                         return CompressGroup(group, checkRange);
                     }
-                    lastBytes = nextGroup;
-                    for (int l = 0; l < nextGroup.Count; l++)
-                    {
-                        group.Add(nextGroup[l]);
-                    }
+                    lastByte = bytes[i];
+                    group.Add(bytes[i]);
                 }
                 else
                 {
-                    lastBytes = nextGroup;
+                    lastByte = bytes[i];
                     currentPosition = i;
                     return CompressGroup(group, checkRange);
                 }
-
             }
             currentPosition = bytes.Length;
             return CompressGroup(group, checkRange);
@@ -81,7 +69,7 @@ namespace ixts.Ausbildung.Compression
 
         public List<Byte> CompressGroup(List<Byte> group, int checkRange)
         {
-            if (group.Count/checkRange < MIN_TO_COMPRESS_VALUE && group[0] != marker)
+            if (group.Count < MIN_TO_COMPRESS_VALUE && group[0] != marker)
             {
                 return group;
             }

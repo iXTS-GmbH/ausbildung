@@ -65,5 +65,10 @@ namespace ixts.Ausbildung.Compression
             }
             return group;
         }
+
+        public Byte[] StringToByteArray(String str)
+        {
+            return Encoding.ASCII.GetBytes(str);
+        }
     }
 }
