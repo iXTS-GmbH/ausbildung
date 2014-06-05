@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using NUnit.Framework;
 
 
@@ -7,7 +8,7 @@ using NUnit.Framework;
 namespace ixts.Ausbildung.Compression.Test
 {
     [TestFixture]
-    public class RunLengthEncodeTests
+    public class RunLengthcEncoderTests
     {
         private RunLengthEncoder sut;
 
@@ -166,6 +167,34 @@ namespace ixts.Ausbildung.Compression.Test
             var actual = sut.Encode(buffer.ToArray(), 1);
             var expected = new List<Byte> { 0, 255, 84, 0,255,84 };
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestCase("Desertx16org.bmp", 393334, 1, "Desertx16x1.rle")]
+        [TestCase("Desertx16org.bmp", 393334, 2, "Desertx16x2.rle")]
+        [TestCase("Desertx16org.bmp", 393334, 3, "Desertx16x3.rle")]
+        [TestCase("Desertx16org.bmp", 393334, 4, "Desertx16x4.rle")]
+        [TestCase("Desertx24org.bmp", 2359350, 1, "Desertx24x1.rle")]
+        [TestCase("Desertx24org.bmp", 2359350, 2, "Desertx24x2.rle")]
+        [TestCase("Desertx24org.bmp", 2359350, 3, "Desertx24x3.rle")]
+        [TestCase("Desertx24org.bmp", 2359350, 4, "Desertx24x4.rle")]
+        [TestCase("Desertx256org.bmp", 787510, 1, "Desertx256x1.rle")]
+        [TestCase("Desertx256org.bmp", 787510, 2, "Desertx256x2.rle")]
+        [TestCase("Desertx256org.bmp", 787510, 3, "Desertx256x3.rle")]
+        [TestCase("Desertx256org.bmp", 787510, 4, "Desertx256x4.rle")]
+        [TestCase("DesertxMonoorg.bmp", 98366, 1, "DesertxMonox1.rle")]
+        [TestCase("DesertxMonoorg.bmp", 98366, 2, "DesertxMonox2.rle")]
+        [TestCase("DesertxMonoorg.bmp", 98366, 3, "DesertxMonox3.rle")]
+        [TestCase("DesertxMonoorg.bmp", 98366, 4, "DesertxMonox4.rle")]
+        public void Complete_Encoding_Check_With_Desert_Img(String orgFileName, int bufferSize, int checkRange, String encFileName)
+        {
+            const string path = @"C:\Users\mkaestl.IXTS\Projekte\Ausbildung\ausbildung\ixts.Ausbildung.Compression.ConsoleApp\bin\Debug\";
+            var fs = File.OpenRead(@path + orgFileName);
+            fs.Position = 0;
+            var buffer = new Byte[bufferSize];
+            fs.Read(buffer, 0, bufferSize);
+            var encoded = sut.Encode(buffer, checkRange);
+            File.WriteAllBytes(@path + encFileName, encoded);
+            fs.Close();
         }
     }
 }

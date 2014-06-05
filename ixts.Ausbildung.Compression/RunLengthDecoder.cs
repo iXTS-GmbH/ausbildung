@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -18,16 +19,29 @@ namespace ixts.Ausbildung.Compression
         public Byte[] Decode(Byte[] bytes, int checkRange)
         {
             if (bytes != null)
-            {
+                {
                 var buffer = new List<Byte>();
+                var fs = File.OpenRead(@"C:\Users\mkaestl.IXTS\Projekte\Ausbildung\ausbildung\ixts.Ausbildung.Compression.ConsoleApp\bin\Debug\Desertx16org.bmp");
                 while (currentPosition < bytes.Length)
                 {
                     var nextgroup = GetNextDeCompGroup(bytes, checkRange);
+                    var Breakpoint = 0;
                     for (int i = 0; i < nextgroup.Count; i++)
                     {
                         buffer.Add(nextgroup[i]);
                     }
+                    //Hier schnied ich die überprüfung rein
+                    //var prüfArray = new Byte[buffer.Count];
+
+                    //fs.Position = 0;
+                    //fs.Read(prüfArray, 0, buffer.Count);
+                    //if (!prüfArray.SequenceEqual(buffer))
+                    //{
+                    //    var BreakPoint = 0;
+                    //}
+                    //
                 }
+                fs.Close();
                 currentPosition = 0;
                 return buffer.ToArray();
             }
@@ -58,7 +72,7 @@ namespace ixts.Ausbildung.Compression
             return DeCompressGroup(group, checkRange);
         }
 
-        public List<Byte> DeCompressGroup(List<Byte> group, int checkRange) //Eventuell ist hier ein Fehler
+        public List<Byte> DeCompressGroup(List<Byte> group, int checkRange)
         {
             if (group.Count == 2 + checkRange)
             {

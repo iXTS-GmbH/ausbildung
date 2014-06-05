@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ixts.Ausbildung.Compression
 {
-    public class RunLengthEncoder
+    public class RunLengthEncoder //Also ein EncodingFehler
     {
         private const int MAX_COUNTER_VALUE = 255;
         private const int MIN_TO_COMPRESS_VALUE = 3;
@@ -27,8 +27,8 @@ namespace ixts.Ausbildung.Compression
                 while (currentPosition < bytes.Length)
                 {
                     var nextgroup = GetNextGroup(bytes, checkRange);
-
-                    for (int i = 0; i < nextgroup.Count; i++)
+                    var breakPoint = 0;
+                    for (int i = 0; i < nextgroup.Count; i++) //Es ist kein AddFehler
                     {
                         buffer.Add(nextgroup[i]);
                     }
@@ -46,6 +46,10 @@ namespace ixts.Ausbildung.Compression
             var group = new List<Byte> ();
             for (var i = currentPosition; i < bytes.Length; i = i + checkRange)
             {
+                if (group.Count == 510)
+                {
+                    var breakPoint = 0;
+                }
                 var nextGroup = new List<Byte>();
                     for (int j = 0; j < checkRange; j++)
                     {
@@ -57,20 +61,9 @@ namespace ixts.Ausbildung.Compression
                 if (i == 0 || nextGroup.SequenceEqual(lastBytes))
                 {
                     lastBytes = nextGroup;
-                    if (group.Count >= MAX_COUNTER_VALUE)
+                    if (group.Count/checkRange >= MAX_COUNTER_VALUE)
                     {
-                        currentPosition = i + checkRange - 1;
-                        var afterGroup = new List<Byte>();
-                        //Das hat laut CCB keinen Test
-                        if (currentPosition + checkRange < bytes.Length)
-                        {
-                            for (int j = 0; j < checkRange; j++)
-                            {
-                                afterGroup.Add(bytes[currentPosition + j]);
-                            }
-                        lastBytes = afterGroup; 
-                        }
-                        //
+                        currentPosition = i;
                         return CompressGroup(group, checkRange);
                     }
                     for (int l = 0; l < nextGroup.Count; l++)
