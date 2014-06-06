@@ -46,10 +46,6 @@ namespace ixts.Ausbildung.Compression
             var group = new List<Byte> ();
             for (var i = currentPosition; i < bytes.Length; i = i + checkRange)
             {
-                if (group.Count == 510)
-                {
-                    var breakPoint = 0;
-                }
                 var nextGroup = new List<Byte>();
                     for (int j = 0; j < checkRange; j++)
                     {

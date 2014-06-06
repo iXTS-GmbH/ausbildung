@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Drawing;
 
 namespace ixts.Ausbildung.Compression.ConsoleApp
 {
@@ -25,8 +21,7 @@ namespace ixts.Ausbildung.Compression.ConsoleApp
                 var orgImgBytes = File.ReadAllBytes(@path);
                 var encImgBytes = rle.Encode(orgImgBytes, checkRange);
                 var shrunkenprocent = 100 - (Convert.ToDouble(encImgBytes.Length)/(Convert.ToDouble(orgImgBytes.Length)/100.0));
-                var shrunkenvalue = orgImgBytes.Length - encImgBytes.Length;
-                Console.WriteLine("Datei {0} wurde Komprimiert - Kompressionsrate: {1}%({2}bytes)", toCompFileName, Convert.ToInt64(shrunkenprocent), shrunkenvalue );
+                Console.WriteLine("Datei {0} wurde Komprimiert - Kompressionsrate: {1}%", toCompFileName, Convert.ToInt64(shrunkenprocent));
                 var newpath = Path.GetFullPath(newDataName);
                 File.WriteAllBytes(newpath,encImgBytes);
                 //Console.ReadKey();
