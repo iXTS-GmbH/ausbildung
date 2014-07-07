@@ -55,5 +55,16 @@ namespace ixts.Ausbildung.Geometry.Test
             var actual = Point.IsSame(NPoint, within);
             Assert.AreEqual(expected,actual);
         }
+
+        [TestCase(1,1,1,0,2,1)] //Auf X-Achse verschieben
+        [TestCase(1,1,0,1,1,2)] //Auf Y-Achse verschieden
+        [TestCase(1,1,1,1,2,2)] //Auf Beiden Achsen verschieben
+        public void MovedTest(double PointX, double PointY, double MoveX, double MoveY, double expectedX, double expectedY)
+        {
+            var Point = new Point(PointX, PointY);
+            var expected = new Point(expectedX, expectedY);
+            var actual = Point.Moved(MoveX, MoveY);
+            Assert.AreEqual(expected,actual);
+        }
     }
 }

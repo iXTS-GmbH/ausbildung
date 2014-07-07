@@ -39,5 +39,11 @@ namespace ixts.Ausbildung.Geometry
             return distance <= within;
 
         }
+
+        public Point Moved(double x, double y)
+        {
+            var MovedPoint = new Point(this.x + x, this.y + y);
+            return MovedPoint;
+        }
     }
 }
