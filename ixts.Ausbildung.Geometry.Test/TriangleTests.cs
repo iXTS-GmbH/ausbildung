@@ -6,6 +6,16 @@ namespace ixts.Ausbildung.Geometry.Test
     [TestFixture]
     class TriangleTests
     {
+        private Triangle sut;
+
+        [SetUp]
+        public void SetUp()
+        {
+            var a = new Point(1, 2);
+            var b = new Point(3, 2);
+            var c = new Point(2, 3);
+            sut = new Triangle(a, b, c);
+        }
 
         [TestCaseSource("ConstruktorTestSource")]
         public void ConstrukterTest(Point a,Point b, Point c, Point eA, Point eB, Point eC)
@@ -25,17 +35,19 @@ namespace ixts.Ausbildung.Geometry.Test
                 new object[]{new Point(1,2), new Point(3,2), new Point(2,3), new Point(1,2), new Point(3,2), new Point(2,3)}
             };
 
-        [TestCaseSource("PerimeterTestSource")]
-        public void PerimeterTest(Point a, Point b, Point c, double expected)
+        [TestCase(4.8284271247461898)]
+        public void PerimeterTest(double expected)
         {
-            var triangle = new Triangle(a, b, c);
-            var actual = triangle.Perimeter();
+            var actual = sut.Perimeter();
             Assert.AreEqual(expected,actual);
         }
 
-        public static readonly object[] PerimeterTestSource =
-            {
-                new object[]{new Point(1,2), new Point(3,2), new Point(2,3), 4.8284271247461898}
-            };
+        [TestCase(1)]
+        public void AreaTest(double expected)
+        {
+            var actual = sut.Area();
+            Assert.AreEqual(expected, actual);
+        }
+
     }
 }

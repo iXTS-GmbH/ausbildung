@@ -44,5 +44,14 @@ namespace ixts.Ausbildung.Geometry
             double perimeter = sA + sB + sC;
             return perimeter;
         }
+
+        public double Area()
+        {
+            double trapez1 = 0.5 * (c.Y + a.Y) * (c.X - a.X);
+            double trapez2 = 0.5 * (b.Y + c.Y) * (b.X - c.X);
+            double trapez3 = 0.5 * (b.Y + a.Y) * (b.X - a.X);
+            double flaeche = Math.Abs(trapez1 + trapez2 - trapez3);
+            return flaeche;
+        }
     }
 }
