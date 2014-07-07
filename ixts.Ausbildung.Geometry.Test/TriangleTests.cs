@@ -7,13 +7,22 @@ namespace ixts.Ausbildung.Geometry.Test
     class TriangleTests
     {
 
-        [TestCase(1,2,3,1,2,3)]
-        public void ConstrukterTest(double expectedA, double expectedB, double expectedC, double a, double b, double c)
+        [TestCaseSource("ConstruktorTestSource")]
+        public void ConstrukterTest(Point a,Point b, Point c, Point eA, Point eB, Point eC)
         {
             var actual = new Triangle(a,b,c);
-            Assert.AreEqual(expectedA, actual.A);
-            Assert.AreEqual(expectedB, actual.B);
-            Assert.AreEqual(expectedC, actual.C);
+            Assert.AreEqual(actual.A.X, eA.X);
+            Assert.AreEqual(actual.A.Y, eA.Y);
+            Assert.AreEqual(actual.B.X, eB.X);
+            Assert.AreEqual(actual.B.Y, eB.Y);
+            Assert.AreEqual(actual.C.X, eC.X);
+            Assert.AreEqual(actual.C.Y, eC.Y);
+            
         }
+
+        public static readonly object[] ConstruktorTestSource =
+            {
+                new object[]{new Point(1,2), new Point(3,2), new Point(2,3), new Point(1,2), new Point(3,2), new Point(2,3)}
+            };
     }
 }
