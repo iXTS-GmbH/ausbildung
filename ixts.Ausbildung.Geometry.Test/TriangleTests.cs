@@ -46,7 +46,7 @@ namespace ixts.Ausbildung.Geometry.Test
         public void AreaTest(double expected)
         {
             var actual = sut.Area();
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected, actual,0.001);
         }
 
 

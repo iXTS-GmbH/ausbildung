@@ -50,10 +50,10 @@ namespace ixts.Ausbildung.Geometry
         double sA = b.Distance(c);
         double sB = c.Distance(a);
         double sC = a.Distance(b);
-        
-        double s = (sA + sB + sC)/2 //Seitenlaengen
-        double flaeche = Math.Sqrt(s*(s-sA)*(s-sB)*(s-sC))
-        return flaeche;
+
+            double s = (sA + sB + sC)/2; 
+            double flaeche = Math.Sqrt(s*(s - sA)*(s - sB)*(s - sC)); 
+            return flaeche;
         }
     }
 }
