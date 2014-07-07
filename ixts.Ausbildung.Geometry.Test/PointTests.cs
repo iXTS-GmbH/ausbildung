@@ -64,7 +64,8 @@ namespace ixts.Ausbildung.Geometry.Test
             var Point = new Point(PointX, PointY);
             var expected = new Point(expectedX, expectedY);
             var actual = Point.Moved(MoveX, MoveY);
-            Assert.AreEqual(expected,actual);
+            Assert.AreEqual(expected.X(),actual.X());
+            Assert.AreEqual(expected.Y(),actual.Y());
         }
     }
 }
