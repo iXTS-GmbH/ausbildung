@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace ixts.Ausbildung.Geometry
 {
@@ -15,35 +12,51 @@ namespace ixts.Ausbildung.Geometry
             this.y = y;
         }
 
-        public double X()
+        public double X
         {
-            return x;
+            get
+            {
+               return x;
+            }
+            set 
+            { 
+                x = value; 
+            }
         }
 
-        public double Y()
+        public double Y
         {
-            return y;
+            get 
+            { 
+                return y;
+            }
+            set
+            {
+                y = value;
+            }
+            
+            
         }
 
-        public double Distance(Point NPoint)
+        public double Distance(Point nPoint)
         {
-            double disX = (NPoint.x - this.x)*(NPoint.x - this.x);
-            double disY = (NPoint.y - this.y)*(NPoint.y - this.y);
+            double disX = (nPoint.x - this.x)*(nPoint.x - this.x);
+            double disY = (nPoint.y - this.y)*(nPoint.y - this.y);
             double distance = Math.Sqrt(disX + disY);
             return distance;
         }
 
-        public Boolean IsSame(Point NPoint, double within)
+        public Boolean IsSame(Point nPoint, double within)
         {
-            double distance = this.Distance(NPoint);
+            double distance = this.Distance(nPoint);
             return distance <= within;
 
         }
 
-        public Point Moved(double x, double y)
+        public Point Moved(double moveX, double moveY)
         {
-            var MovedPoint = new Point(this.x + x, this.y + y);
-            return MovedPoint;
+            var movedPoint = new Point(this.x + moveX, this.y + moveY);
+            return movedPoint;
         }
     }
 }
