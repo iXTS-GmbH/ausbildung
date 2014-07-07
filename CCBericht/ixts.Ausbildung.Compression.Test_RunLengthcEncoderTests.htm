@@ -15,9 +15,9 @@
 <tr><th>Class:</th><td>ixts.Ausbildung.Compression.Test.RunLengthcEncoderTests</td></tr>
 <tr><th>Assembly:</th><td>ixts.Ausbildung.Compression.Test</td></tr>
 <tr><th>File(s):</th><td><a href="#CUsersmkaestlIXTSProjekteAusbildungausbildungixtsAusbildungCompressionTestRunLengthEncoderTestscs">C:\Users\mkaestl.IXTS\Projekte\Ausbildung\ausbildung\ixts.Ausbildung.Compression.Test\RunLengthEncoderTests.cs</a></td></tr>
-<tr><th>Coverage:</th><td>100%</td></tr>
-<tr><th>Covered lines:</th><td>61</td></tr>
-<tr><th>Uncovered lines:</th><td>0</td></tr>
+<tr><th>Coverage:</th><td>88.5%</td></tr>
+<tr><th>Covered lines:</th><td>54</td></tr>
+<tr><th>Uncovered lines:</th><td>7</td></tr>
 <tr><th>Coverable lines:</th><td>61</td></tr>
 <tr><th>Total lines:</th><td>200</td></tr>
 </tbody>
@@ -35,7 +35,7 @@
 <tr><td title="System.Void ixts.Ausbildung.Compression.Test.RunLengthcEncoderTests::StringToByteArray()">StringToByteArray()</td><td>1</td><td>100</td><td>100</td></tr>
 <tr><td title="System.Void ixts.Ausbildung.Compression.Test.RunLengthcEncoderTests::MAX_COUNTER_VALUE_COMPRESS_CHECK()">MAX_COUNTER_VALUE_COMPRESS_CHECK()</td><td>2</td><td>100</td><td>100</td></tr>
 <tr><td title="System.Void ixts.Ausbildung.Compression.Test.RunLengthcEncoderTests::OVER_MAX_COUNTER_VALUE_COMPRESS_CHECK()">OVER_MAX_COUNTER_VALUE_COMPRESS_CHECK()</td><td>2</td><td>100</td><td>100</td></tr>
-<tr><td title="System.Void ixts.Ausbildung.Compression.Test.RunLengthcEncoderTests::Complete_Encoding_Check_With_Desert_Img(System.String,System.Int32,System.Int32,System.String)">Complete_Encoding_Check_With_Desert_Img(...)</td><td>1</td><td>100</td><td>100</td></tr>
+<tr><td title="System.Void ixts.Ausbildung.Compression.Test.RunLengthcEncoderTests::Complete_Encoding_Check_With_Desert_Img(System.String,System.Int32,System.Int32,System.String)">Complete_Encoding_Check_With_Desert_Img(...)</td><td>1</td><td>22.22</td><td>100</td></tr>
 <tr><td title="System.Void ixts.Ausbildung.Compression.Test.RunLengthcEncoderTests::.cctor()">.cctor()</td><td>1</td><td>100</td><td>100</td></tr>
 </tbody>
 </table>
@@ -235,17 +235,17 @@
 <tr data-coverage="{'AllTestMethods': {'VC': '16', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">16</td><td class="rightmargin right"><code>189</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</code></td></tr>
 <tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>190</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;string&nbsp;path&nbsp;=&nbsp;@&quot;C:\Users\mkaestl.IXTS\Projekte\Ausbildung\ausbildung\ixts.Ausbildung.Compression.Conso</code></td></tr>
 <tr data-coverage="{'AllTestMethods': {'VC': '16', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">16</td><td class="rightmargin right"><code>191</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;fs&nbsp;=&nbsp;File.OpenRead(@path&nbsp;+&nbsp;orgFileName);</code></td></tr>
-<tr data-coverage="{'AllTestMethods': {'VC': '16', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">16</td><td class="rightmargin right"><code>192</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fs.Position&nbsp;=&nbsp;0;</code></td></tr>
-<tr data-coverage="{'AllTestMethods': {'VC': '16', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">16</td><td class="rightmargin right"><code>193</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;buffer&nbsp;=&nbsp;new&nbsp;Byte[bufferSize];</code></td></tr>
-<tr data-coverage="{'AllTestMethods': {'VC': '16', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">16</td><td class="rightmargin right"><code>194</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fs.Read(buffer,&nbsp;0,&nbsp;bufferSize);</code></td></tr>
-<tr data-coverage="{'AllTestMethods': {'VC': '16', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">16</td><td class="rightmargin right"><code>195</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;encoded&nbsp;=&nbsp;sut.Encode(buffer,&nbsp;checkRange);</code></td></tr>
-<tr data-coverage="{'AllTestMethods': {'VC': '16', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">16</td><td class="rightmargin right"><code>196</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File.WriteAllBytes(@path&nbsp;+&nbsp;encFileName,&nbsp;encoded);</code></td></tr>
-<tr data-coverage="{'AllTestMethods': {'VC': '16', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">16</td><td class="rightmargin right"><code>197</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fs.Close();</code></td></tr>
-<tr data-coverage="{'AllTestMethods': {'VC': '16', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">16</td><td class="rightmargin right"><code>198</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin rightmargin right">0</td><td class="rightmargin right"><code>192</code></td><td class="lightred"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fs.Position&nbsp;=&nbsp;0;</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin rightmargin right">0</td><td class="rightmargin right"><code>193</code></td><td class="lightred"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;buffer&nbsp;=&nbsp;new&nbsp;Byte[bufferSize];</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin rightmargin right">0</td><td class="rightmargin right"><code>194</code></td><td class="lightred"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fs.Read(buffer,&nbsp;0,&nbsp;bufferSize);</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin rightmargin right">0</td><td class="rightmargin right"><code>195</code></td><td class="lightred"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;encoded&nbsp;=&nbsp;sut.Encode(buffer,&nbsp;checkRange);</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin rightmargin right">0</td><td class="rightmargin right"><code>196</code></td><td class="lightred"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File.WriteAllBytes(@path&nbsp;+&nbsp;encFileName,&nbsp;encoded);</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin rightmargin right">0</td><td class="rightmargin right"><code>197</code></td><td class="lightred"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fs.Close();</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '0', 'LVS': 'red'}}"><td class="red">&nbsp;</td><td class="leftmargin rightmargin right">0</td><td class="rightmargin right"><code>198</code></td><td class="lightred"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></td></tr>
 <tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>199</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;}</code></td></tr>
 <tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>200</code></td><td class="lightgray"><code>}</code></td></tr>
 </tbody>
 </table>
-<div class="footer">Generated by: ReportGenerator 1.9.1.0<br />05.06.2014 - 13:34:31<br /><a href="http://www.palmmedia.de">www.palmmedia.de</a></div></div>
+<div class="footer">Generated by: ReportGenerator 1.9.1.0<br />07.07.2014 - 15:41:01<br /><a href="http://www.palmmedia.de">www.palmmedia.de</a></div></div>
 <script type="text/javascript" src="combined.js"></script>
 </body></html>

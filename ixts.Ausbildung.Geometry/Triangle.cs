@@ -47,11 +47,13 @@ namespace ixts.Ausbildung.Geometry
 
         public double Area()
         {
-            double trapez1 = 0.5 * (c.Y + a.Y) * (c.X - a.X);
-            double trapez2 = 0.5 * (b.Y + c.Y) * (b.X - c.X);
-            double trapez3 = 0.5 * (b.Y + a.Y) * (b.X - a.X);
-            double flaeche = Math.Abs(trapez1 + trapez2 - trapez3);
-            return flaeche;
+        double sA = b.Distance(c);
+        double sB = c.Distance(a);
+        double sC = a.Distance(b);
+        
+        double s = (sA + sB + sC)/2 //Seitenlaengen
+        double flaeche = Math.Sqrt(s*(s-sA)*(s-sB)*(s-sC))
+        return flaeche;
         }
     }
 }

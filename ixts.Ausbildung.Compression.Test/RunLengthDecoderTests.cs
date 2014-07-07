@@ -134,34 +134,34 @@ namespace ixts.Ausbildung.Compression.Test
                 new object[]{new Byte[] {88,1,88,65,88,4,88},new Byte[]{88,65,88,88,88,88} }
         };
 
-        [TestCase("Desertx16org.bmp","Desertx16x1.rle" , 393334, 1,"Desertx16x1.bmp")]
-        [TestCase("Desertx16org.bmp", "Desertx16x2.rle", 393334, 2, "Desertx16x2.bmp")]
-        [TestCase("Desertx16org.bmp", "Desertx16x3.rle", 393334, 3, "Desertx16x3.bmp")]
-        [TestCase("Desertx16org.bmp", "Desertx16x4.rle", 393334, 4, "Desertx16x4.bmp")]
-        [TestCase("Desertx24org.bmp", "Desertx24x1.rle", 2359350, 1, "Desertx24x1.bmp")]
-        [TestCase("Desertx24org.bmp", "Desertx24x2.rle", 2359350, 2, "Desertx24x2.bmp")]
-        [TestCase("Desertx24org.bmp", "Desertx24x3.rle", 2359350, 3, "Desertx24x3.bmp")]
-        [TestCase("Desertx24org.bmp", "Desertx24x4.rle", 2359350, 4, "Desertx24x4.bmp")]
-        [TestCase("Desertx256org.bmp", "Desertx256x1.rle", 787510, 1, "Desertx256x1.bmp")]
-        [TestCase("Desertx256org.bmp", "Desertx256x2.rle", 787510, 2, "Desertx256x2.bmp")]
-        [TestCase("Desertx256org.bmp", "Desertx256x3.rle", 787510, 3, "Desertx256x3.bmp")]
-        [TestCase("Desertx256org.bmp", "Desertx256x4.rle", 787510, 4, "Desertx256x4.bmp")]
-        [TestCase("DesertxMonoorg.bmp", "DesertxMonox1.rle", 98366, 1, "DesertxMonox1.bmp")]
-        [TestCase("DesertxMonoorg.bmp", "DesertxMonox2.rle", 98366, 2, "DesertxMonox2.bmp")]
-        [TestCase("DesertxMonoorg.bmp", "DesertxMonox3.rle", 98366, 3, "DesertxMonox3.bmp")]
-        [TestCase("DesertxMonoorg.bmp", "DesertxMonox4.rle", 98366, 4, "DesertxMonox4.bmp")]
-        public void Complete_Decoding_Check(String orgFileName,String encFileName,int bufferSize, int checkRange,String decFileName)
-        {
-            const string path = @"C:\Users\mkaestl.IXTS\Projekte\Ausbildung\ausbildung\ixts.Ausbildung.Compression.ConsoleApp\bin\Debug\";
-            var fs = File.OpenRead(@path + orgFileName);
-            fs.Position = 0; 
-            var buffer = new Byte[bufferSize];
-            fs.Read(buffer, 0, bufferSize);
-            var encoded = File.ReadAllBytes(@path + encFileName);
-            var actual = sut.Decode(encoded, checkRange);
-            File.WriteAllBytes(@path + decFileName, actual);
-            Assert.AreEqual(buffer, actual);
-            fs.Close();
-        }
+        //[TestCase("Desertx16org.bmp","Desertx16x1.rle" , 393334, 1,"Desertx16x1.bmp")]
+        //[TestCase("Desertx16org.bmp", "Desertx16x2.rle", 393334, 2, "Desertx16x2.bmp")]
+        //[TestCase("Desertx16org.bmp", "Desertx16x3.rle", 393334, 3, "Desertx16x3.bmp")]
+        //[TestCase("Desertx16org.bmp", "Desertx16x4.rle", 393334, 4, "Desertx16x4.bmp")]
+        //[TestCase("Desertx24org.bmp", "Desertx24x1.rle", 2359350, 1, "Desertx24x1.bmp")]
+        //[TestCase("Desertx24org.bmp", "Desertx24x2.rle", 2359350, 2, "Desertx24x2.bmp")]
+        //[TestCase("Desertx24org.bmp", "Desertx24x3.rle", 2359350, 3, "Desertx24x3.bmp")]
+        //[TestCase("Desertx24org.bmp", "Desertx24x4.rle", 2359350, 4, "Desertx24x4.bmp")]
+        //[TestCase("Desertx256org.bmp", "Desertx256x1.rle", 787510, 1, "Desertx256x1.bmp")]
+        //[TestCase("Desertx256org.bmp", "Desertx256x2.rle", 787510, 2, "Desertx256x2.bmp")]
+        //[TestCase("Desertx256org.bmp", "Desertx256x3.rle", 787510, 3, "Desertx256x3.bmp")]
+        //[TestCase("Desertx256org.bmp", "Desertx256x4.rle", 787510, 4, "Desertx256x4.bmp")]
+        //[TestCase("DesertxMonoorg.bmp", "DesertxMonox1.rle", 98366, 1, "DesertxMonox1.bmp")]
+        //[TestCase("DesertxMonoorg.bmp", "DesertxMonox2.rle", 98366, 2, "DesertxMonox2.bmp")]
+        //[TestCase("DesertxMonoorg.bmp", "DesertxMonox3.rle", 98366, 3, "DesertxMonox3.bmp")]
+        //[TestCase("DesertxMonoorg.bmp", "DesertxMonox4.rle", 98366, 4, "DesertxMonox4.bmp")]
+        //public void Complete_Decoding_Check(String orgFileName,String encFileName,int bufferSize, int checkRange,String decFileName)
+        //{
+        //    const string path = @"C:\Users\mkaestl.IXTS\Projekte\Ausbildung\ausbildung\ixts.Ausbildung.Compression.ConsoleApp\bin\Debug\";
+        //    var fs = File.OpenRead(@path + orgFileName);
+        //    fs.Position = 0; 
+        //    var buffer = new Byte[bufferSize];
+        //    fs.Read(buffer, 0, bufferSize);
+        //    var encoded = File.ReadAllBytes(@path + encFileName);
+        //    var actual = sut.Decode(encoded, checkRange);
+        //    File.WriteAllBytes(@path + decFileName, actual);
+        //    Assert.AreEqual(buffer, actual);
+        //    fs.Close();
+        //}
     }
 }

@@ -21,7 +21,6 @@ namespace ixts.Ausbildung.Compression
             if (bytes != null)
                 {
                 var buffer = new List<Byte>();
-                var fs = File.OpenRead(@"C:\Users\mkaestl.IXTS\Projekte\Ausbildung\ausbildung\ixts.Ausbildung.Compression.ConsoleApp\bin\Debug\Desertx16org.bmp");
                 while (currentPosition < bytes.Length)
                 {
                     var nextgroup = GetNextDeCompGroup(bytes, checkRange);
@@ -30,18 +29,7 @@ namespace ixts.Ausbildung.Compression
                     {
                         buffer.Add(nextgroup[i]);
                     }
-                    //Hier schnied ich die überprüfung rein
-                    //var prüfArray = new Byte[buffer.Count];
-
-                    //fs.Position = 0;
-                    //fs.Read(prüfArray, 0, buffer.Count);
-                    //if (!prüfArray.SequenceEqual(buffer))
-                    //{
-                    //    var BreakPoint = 0;
-                    //}
-                    //
                 }
-                fs.Close();
                 currentPosition = 0;
                 return buffer.ToArray();
             }
