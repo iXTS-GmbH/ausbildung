@@ -7,7 +7,7 @@ namespace ixts.Ausbildung.Geometry.Test
     public class PointTests
     {
         [TestCase(1,2,1,2)]
-        public void KonstruktorTest(double expectedX,double expectedY, double x, double y)
+        public void ConstruktorTest(double expectedX,double expectedY, double x, double y)
         {
 
             var actual = new Point(x, y);
