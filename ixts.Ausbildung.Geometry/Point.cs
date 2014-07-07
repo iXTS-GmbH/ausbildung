@@ -33,5 +33,11 @@ namespace ixts.Ausbildung.Geometry
             return distance;
         }
 
+        public Boolean IsSame(Point NPoint, double within)
+        {
+            double distance = this.Distance(NPoint);
+            return distance <= within;
+
+        }
     }
 }

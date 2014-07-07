@@ -40,5 +40,20 @@ namespace ixts.Ausbildung.Geometry.Test
             var actual = Point.Distance(NPoint);
             Assert.AreEqual(expected,actual);
         }
+
+        [TestCase(1,1,1,1,1,true)] // NPoint == Point 
+        [TestCase(0,1,0,2,2,true)] // NPoint innerhalb within X-Verschieden
+        [TestCase(1,0,2,0,2,true)] // NPoint innerhalb within Y-Verschieden
+        [TestCase(1,1,2,2,2,true)] // NPoint innerhalb within Beide Verschieden
+        [TestCase(1,0,3,0,1,false)] // NPoint ausserhalb within X-Verschieden
+        [TestCase(0,1,0,3,1,false)] // NPoint ausserhalb within Y-Verschieden
+        [TestCase(1,1,2,2,1,false)] // NPoint ausserhalb within Beide Verschieden
+        public void IsSameTest(double PointX, double PointY, double NPointX, double NPointY,double within , Boolean expected)
+        {
+            var Point = new Point(PointX, PointY);
+            var NPoint = new Point(NPointX, NPointY);
+            var actual = Point.IsSame(NPoint, within);
+            Assert.AreEqual(expected,actual);
+        }
     }
 }
