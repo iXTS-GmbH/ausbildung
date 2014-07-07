@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ixts.Ausbildung.Compression
 {
-    public class RunLengthEncoder //Also ein EncodingFehler
+    public class RunLengthEncoder 
     {
         private const int MAX_COUNTER_VALUE = 255;
         private const int MIN_TO_COMPRESS_VALUE = 3;
@@ -28,7 +28,7 @@ namespace ixts.Ausbildung.Compression
                 {
                     var nextgroup = GetNextGroup(bytes, checkRange);
                     var breakPoint = 0;
-                    for (int i = 0; i < nextgroup.Count; i++) //Es ist kein AddFehler
+                    for (int i = 0; i < nextgroup.Count; i++)
                     {
                         buffer.Add(nextgroup[i]);
                     }

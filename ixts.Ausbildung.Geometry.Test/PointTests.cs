@@ -9,7 +9,15 @@ namespace ixts.Ausbildung.Geometry.Test
     [TestFixture]
     public class PointTests
     {
+        private Point sut;
 
-        //Hier kommen die Tests 
+        [TestCase(1.0,2.0,1.0,2.0)]
+        public void KonstruktorTest(double expectedX,double expectedY, double x, double y)
+        {
+
+            var actual = new Point(x, y);
+            Assert.AreEqual(expectedX, actual.x);
+            Assert.AreEqual(expectedY, actual.y);
+        }
     }
 }
