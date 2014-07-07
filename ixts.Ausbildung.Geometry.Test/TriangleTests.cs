@@ -35,20 +35,27 @@ namespace ixts.Ausbildung.Geometry.Test
                 new object[]{new Point(1,2), new Point(3,2), new Point(2,3), new Point(1,2), new Point(3,2), new Point(2,3)}
             };
 
-        [TestCase(4.8284271247461898)]
+        [TestCase(4.8284271247461898)] //2 + sqrt(2) + sqrt(2)
         public void PerimeterTest(double expected)
         {
             var actual = sut.Perimeter();
             Assert.AreEqual(expected,actual);
         }
 
-        [TestCase(1)]
-        public void AreaTest(double expected)
+        [TestCaseSource("AreaTestSource")]
+        public void AreaTest(Point a, Point b, Point c,double expected)
         {
-            var actual = sut.Area();
+            var triangle = new Triangle(a, b, c);
+            var actual = triangle.Area();
             Assert.AreEqual(expected, actual,0.001);
         }
 
+        public static readonly object[] AreaTestSource =
+            {
+                new object[]{new Point(1,2), new Point(3,2), new Point(2,3), 1},
+                new object[]{new Point(1,2), new Point(1,2), new Point(1,2), 0},
+
+            };
 
     }
 }
