@@ -35,7 +35,7 @@ namespace ixts.Ausbildung.Geometry.Test
 
         public static readonly object[] PerimeterTestSource =
             {
-                new object[]{new Point(1,2), new Point(3,2), new Point(2,3), 5}
+                new object[]{new Point(1,2), new Point(3,2), new Point(2,3), 4.8284271247461898}
             };
     }
 }

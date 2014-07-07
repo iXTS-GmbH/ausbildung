@@ -38,7 +38,11 @@ namespace ixts.Ausbildung.Geometry
 
         public double Perimeter()
         {
-            return 0;
+            double sA = b.Distance(c);
+            double sB = c.Distance(a);
+            double sC = a.Distance(b);
+            double perimeter = sA + sB + sC;
+            return perimeter;
         }
     }
 }
