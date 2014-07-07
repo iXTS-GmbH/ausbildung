@@ -30,9 +30,9 @@ namespace ixts.Ausbildung.Geometry.Test
             Assert.AreEqual(expected, actual.Y());
         }
 
-        [TestCase(0,1,0,2,1)]//  X-Gleich
-        [TestCase(1,0,1,0,1)]// Y-Gleich
-        [TestCase(1,2,2,1,1)]// Beide Verschieden
+        [TestCase(0,1,0,2,1)]// X-Verschieden
+        [TestCase(1,0,2,0,1)]// Y-Verschieden
+        [TestCase(1, 2, 2, 1, 1.4142135623730951)]// Beide Verschieden
         public void DistanceTest(double PointX, double PointY, double NPointX, double NPointY, double expected)
         {
             var Point = new Point(PointX, PointY);

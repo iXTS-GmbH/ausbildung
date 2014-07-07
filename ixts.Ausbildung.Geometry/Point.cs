@@ -25,10 +25,12 @@ namespace ixts.Ausbildung.Geometry
             return y;
         }
 
-        public double Distance(object NPoint)
+        public double Distance(Point NPoint)
         {
-
-            return 0;
+            double disX = (NPoint.x - this.x)*(NPoint.x - this.x);
+            double disY = (NPoint.y - this.y)*(NPoint.y - this.y);
+            double distance = Math.Sqrt(disX + disY);
+            return distance;
         }
 
     }
