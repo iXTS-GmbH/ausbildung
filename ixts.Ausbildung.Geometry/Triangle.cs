@@ -98,27 +98,15 @@ namespace ixts.Ausbildung.Geometry
 
         public Boolean IsSame(Triangle t, double within)
         {
-            Boolean isSamecheck= a.X + within >= t.A.X && a.X - within <= t.A.X;//t.A.X liegt im rahmen
-
-            if (isSamecheck){
-                isSamecheck = a.Y + within >= t.A.Y && a.Y - within <= t.A.Y;//t.A.Y liegt im rahmen
-            }
-
-            if (isSamecheck){
-                isSamecheck = b.X + within >= t.B.X && b.X - within <= t.B.X;//t.B.X liegt im rahmen
-            }
-            if (isSamecheck)
+            var quadvalues = new[] { t.A.X, t.A.Y, t.B.X, t.B.Y, t.C.X, t.C.Y };
+            var selfvalues = new[] { a.X, a.Y, b.X, b.Y, c.X, c.Y };
+            var isSamecheck = selfvalues[0] + within >= quadvalues[0] && selfvalues[0] - within <= quadvalues[0];
+            for (var i = 0; i < selfvalues.Length; i++)
             {
-                isSamecheck = b.Y + within >= t.B.Y && b.Y - within <= t.B.Y;//t.B.Y liegt im rahmen
-            }
-
-            if (isSamecheck)
-            {
-                isSamecheck = c.X + within >= t.C.X && c.X - within <= t.C.X;//t.C.X liegt im rahmen
-            }
-            if (isSamecheck)
-            {
-                isSamecheck = c.Y + within >= t.C.Y && c.Y - within <= t.C.Y;//t.C.Y liegt im rahmen
+                if (isSamecheck)
+                {
+                    isSamecheck = selfvalues[i] + within >= quadvalues[i] && selfvalues[i] - within <= quadvalues[i];
+                }
             }
             return isSamecheck;
         }

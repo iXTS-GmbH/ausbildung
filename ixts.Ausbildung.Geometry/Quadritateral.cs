@@ -109,39 +109,18 @@ namespace ixts.Ausbildung.Geometry
 
         public Boolean IsSame(Quadritateral quad, double within)
         {
-            Boolean isSamecheck = a.X + within >= quad.A.X && a.X - within <= quad.A.X;//quad.A.X liegt im rahmen
-
-            if (isSamecheck){
-                isSamecheck = a.Y + within >= quad.A.Y && a.Y - within <= quad.A.Y;//quad.A.Y liegt im rahmen
-            }
-
-            if (isSamecheck){
-                isSamecheck = b.X + within >= quad.B.X && b.X - within <= quad.B.X;//quad.B.X liegt im rahmen
-            }
-            if (isSamecheck)
+            var quadvalues = new[] { quad.A.X, quad.A.Y, quad.B.X, quad.B.Y, quad.C.X, quad.C.Y, quad.D.X, quad.D.Y, };
+            var selfvalues = new[] {a.X, a.Y, b.X, b.Y, c.X, c.Y, d.X, d.Y};
+            var isSamecheck = selfvalues[0] + within >= quadvalues[0] && selfvalues[0] - within <= quadvalues[0];
+            for (var i = 0; i < selfvalues.Length;i++)
             {
-                isSamecheck = b.Y + within >= quad.B.Y && b.Y - within <= quad.B.Y;//quad.B.Y liegt im rahmen
-            }
-
-            if (isSamecheck)
-            {
-                isSamecheck = c.X + within >= quad.C.X && c.X - within <= quad.C.X;//quad.C.X liegt im rahmen
-            }
-            if (isSamecheck)
-            {
-                isSamecheck = c.Y + within >= quad.C.Y && c.Y - within <= quad.C.Y;//quad.C.Y liegt im rahmen
-            }
-            if (isSamecheck)
-            {
-                isSamecheck = d.X + within >= quad.D.X && d.X - within <= quad.D.X;//quad.D.X liegt im rahmen
-            }
-            if (isSamecheck)
-            {
-                isSamecheck = d.Y + within >= quad.D.Y && d.Y - within <= quad.D.Y;//quad.D.Y liegt im rahmen
+                if (isSamecheck)
+                {
+                    isSamecheck = selfvalues[i] + within >= quadvalues[i] && selfvalues[i] - within <= quadvalues[i];
+                }
             }
             return isSamecheck;
         }
-
         public Quadritateral Moved(double dx, double dy)
         {
             var mA = new Point(a.X + dx,a.Y + dy);
