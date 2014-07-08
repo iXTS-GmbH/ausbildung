@@ -186,7 +186,12 @@ namespace ixts.Ausbildung.Geometry
 
         public Triangle Zoomed(Point p, double f)
         {
-            return null;
+
+            var zA = new Point((a.X - p.X)*f + p.X, (a.Y - p.Y)*f + p.Y); //Erst wird der Vektor berechnet dieser mit dem Faktor multipliziert und die Koordinate des Punktes addiert
+            var zB = new Point((b.X - p.X)*f + p.X, (b.Y - p.Y)*f + p.Y);
+            var zC = new Point((c.X - p.X)*f + p.X, (c.Y - p.Y)*f + p.Y);
+            var zTriangle = new Triangle(zA, zB, zC);
+            return zTriangle;
         }
     }
 }

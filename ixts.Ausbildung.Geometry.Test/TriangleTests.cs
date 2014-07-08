@@ -176,9 +176,9 @@ namespace ixts.Ausbildung.Geometry.Test
 
         public static readonly object[] SecZoomedTestSource =
             {
-                new object[]{new Point(1,1),2, new Triangle(new Point(3,5),new Point(7,5),new Point(5,7))},        //f > 1
-                new object[]{new Point(1,1),1, new Triangle(new Point(2,3),new Point(4,3),new Point(3,4))},        //f = 1
-                new object[]{new Point(1,1),0.5,new Triangle(new Point(1.5,2),new Point(2.5,2),new Point(2,2.5))}, //0 < 1 < 1
+                new object[]{new Point(1,1),2, new Triangle(new Point(1,3),new Point(5,3),new Point(3,5))},        //f > 1
+                new object[]{new Point(1,1),1, new Triangle(new Point(1,2),new Point(3,2),new Point(2,3))},        //f = 1
+                new object[]{new Point(1,1),0.5,new Triangle(new Point(1,1.5),new Point(2,1.5),new Point(1.5,2))}, //0 < 1 < 1
                 new object[]{new Point(1,1),0, new Triangle(new Point(1,1),new Point(1,1),new Point(1,1))}         //f = 0
             };
     }
