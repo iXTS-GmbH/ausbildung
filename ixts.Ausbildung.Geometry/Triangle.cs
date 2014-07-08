@@ -177,7 +177,11 @@ namespace ixts.Ausbildung.Geometry
 
         public Triangle Zoomed(double f)
         {
-            return null;
+            var zA = new Point(a.X*f, a.Y*f);
+            var zB = new Point(b.X*f, b.Y*f);
+            var zC = new Point(c.X*f, c.Y*f);
+            var zTriangle = new Triangle(zA, zB, zC);
+            return zTriangle;
         }
     }
 }

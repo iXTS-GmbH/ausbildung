@@ -155,9 +155,10 @@ namespace ixts.Ausbildung.Geometry.Test
 
         public static readonly object[] ZoomedTestSource =
             {
-                new object[]{2, new Triangle(new Point(2,4),new Point(6,4),new Point(4,6))},//f > 1
-                new object[]{1, new Triangle(new Point(1,2),new Point(3,2),new Point(2,3))}, //f = 1
-                new object[]{0, new Triangle(new Point(0,0),new Point(0,0),new Point(0,0))} //f = 0
+                new object[]{2, new Triangle(new Point(2,4),new Point(6,4),new Point(4,6))},        //f > 1
+                new object[]{1, new Triangle(new Point(1,2),new Point(3,2),new Point(2,3))},        //f = 1
+                new object[]{0.5,new Triangle(new Point(0.5,1),new Point(1.5,1),new Point(1,1.5))}, //0 < 1 < 1
+                new object[]{0, new Triangle(new Point(0,0),new Point(0,0),new Point(0,0))}         //f = 0
 
             };
     }
