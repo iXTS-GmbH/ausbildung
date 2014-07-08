@@ -174,5 +174,10 @@ namespace ixts.Ausbildung.Geometry
             var mTriangle = new Triangle(mA, mB, mC);
             return mTriangle;
         }
+
+        public Triangle Zoomed(double f)
+        {
+            return null;
+        }
     }
 }

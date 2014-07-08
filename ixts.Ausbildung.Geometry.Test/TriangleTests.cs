@@ -140,5 +140,25 @@ namespace ixts.Ausbildung.Geometry.Test
                 new object[]{-1,1,new Triangle(new Point(0,3),new Point(2,3),new Point(1,4))}, //Nach untenrechts verschieben
                 new object[]{-1,-1,new Triangle(new Point(0,1),new Point(2,1),new Point(1,2))}  //Nuch untenlinks verschieben
             };
+
+        [TestCaseSource("ZoomedTestSource")]
+        public void ZoomedTest(double f, Triangle expected)
+        {
+            var actual = sut.Zoomed(f);
+            Assert.AreEqual(expected.A.X, actual.A.X);
+            Assert.AreEqual(expected.A.Y, actual.A.Y);
+            Assert.AreEqual(expected.B.X, actual.B.X);
+            Assert.AreEqual(expected.B.Y, actual.B.Y);
+            Assert.AreEqual(expected.C.X, actual.C.X);
+            Assert.AreEqual(expected.C.Y, actual.C.Y);
+        }
+
+        public static readonly object[] ZoomedTestSource =
+            {
+                new object[]{2, new Triangle(new Point(2,4),new Point(6,4),new Point(4,6))},//f > 1
+                new object[]{1, new Triangle(new Point(1,2),new Point(3,2),new Point(2,3))}, //f = 1
+                new object[]{0, new Triangle(new Point(0,0),new Point(0,0),new Point(0,0))} //f = 0
+
+            };
     }
 }
