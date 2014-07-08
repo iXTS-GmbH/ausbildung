@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace ixts.Ausbildung.Geometry
 {
@@ -64,37 +61,37 @@ namespace ixts.Ausbildung.Geometry
             return lowerLeft;
         }
 
-        public double LowestValue(double a, double b, double c)
+        public double LowestValue(double lA, double lB, double lC)
         {
             double lValue;
 
-            if (a < c)
+            if (lA < lC)
             {
-                if (a < b)
+                if (lA < lB)
                 {
-                    lValue = a;
+                    lValue = lA;
                 }
                 else
                 {
-                    lValue = b;
+                    lValue = lB;
                 }
             }
             else
             {
-                if (a > b)
+                if (lA > lB)
                 {
-                    if (c > b)
+                    if (lC > lB)
                     {
-                        lValue = b;
+                        lValue = lB;
                     }
                     else
                     {
-                        lValue = c;
+                        lValue = lC;
                     }
                 }
                 else
                 {
-                    lValue = c;
+                    lValue = lC;
                 }
             }
 
@@ -110,30 +107,30 @@ namespace ixts.Ausbildung.Geometry
             return upperRight;
         }
 
-        public double HighestValue(double a, double b, double c)
+        public double HighestValue(double hA, double hB, double hC)
         {
             double hValue;
 
-            if (a > c)
+            if (hA > hC)
             {
-                if (a > b)
+                if (hA > hB)
                 {
-                    hValue = a;
+                    hValue = hA;
                 }
                 else
                 {
-                    hValue = b;
+                    hValue = hB;
                 }
             }
             else
             {
-                if (b < c)
+                if (hB < hC)
                 {
-                    hValue = c;
+                    hValue = hC;
                 }
                 else
                 {
-                    hValue = b;
+                    hValue = hB;
                 }
             }
             return hValue;
@@ -141,8 +138,8 @@ namespace ixts.Ausbildung.Geometry
 
         public Boolean IsSame(Triangle t, double within)
         {
-            Boolean isSamecheck;
-            isSamecheck = a.X + within >= t.A.X && a.X - within <= t.A.X;//t.A.X liegt im rahmen
+            Boolean isSamecheck= a.X + within >= t.A.X && a.X - within <= t.A.X;//t.A.X liegt im rahmen
+
             if (isSamecheck){
                 isSamecheck = a.Y + within >= t.A.Y && a.Y - within <= t.A.Y;//t.A.Y liegt im rahmen
             }
@@ -187,7 +184,7 @@ namespace ixts.Ausbildung.Geometry
         public Triangle Zoomed(Point p, double f)
         {
 
-            var zA = new Point((a.X - p.X)*f + p.X, (a.Y - p.Y)*f + p.Y); //Erst wird der Vektor berechnet dieser mit dem Faktor multipliziert und die Koordinate des Punktes addiert
+            var zA = new Point((a.X - p.X)*f + p.X, (a.Y - p.Y)*f + p.Y);
             var zB = new Point((b.X - p.X)*f + p.X, (b.Y - p.Y)*f + p.Y);
             var zC = new Point((c.X - p.X)*f + p.X, (c.Y - p.Y)*f + p.Y);
             var zTriangle = new Triangle(zA, zB, zC);
