@@ -97,5 +97,18 @@ namespace ixts.Ausbildung.Geometry.Test
             var actual = sut.HighestValue(a, b, c);
             Assert.AreEqual(expected,actual);
         }
+
+        [TestCaseSource("IsSameTestSource")]
+        public void IsSameTest(Triangle triangle, double within, Boolean expected)
+        {
+            var actual = sut.IsSame(triangle, within);
+            Assert.AreEqual(expected, actual);
+        }
+
+        public static readonly object[] IsSameTestSource =
+            {
+                new object[]{new Triangle(new Point(1,2),new Point(3,2),new Point(2,3)), 1, true},
+                new object[]{new Triangle(new Point(1,1),new Point(1,1),new Point(1,1)), 1, false}
+            };
     }
 }

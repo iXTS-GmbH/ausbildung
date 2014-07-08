@@ -135,10 +135,13 @@ namespace ixts.Ausbildung.Geometry
                 {
                     hValue = b;
                 }
-
             }
-
             return hValue;
+        }
+
+        public Boolean IsSame(Triangle t, double within)
+        {
+            return false;
         }
     }
 }
