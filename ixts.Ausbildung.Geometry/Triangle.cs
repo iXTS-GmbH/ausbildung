@@ -57,12 +57,44 @@ namespace ixts.Ausbildung.Geometry
 
         public Point LowerLeft()
         {
-            var test = new Point(0, 0);
-            //was ich brauch:
-            //Den niedrigsten und höchsten Y-Wert der Drei Punkte
-            //Den niedrigsten und höchsten X-Wert der Drei Punkte
-            //Die Linke untere Ecke ist demnach der Punkte (NX/NY)
-            return test;
+            double lX, 
+                   lY;
+            if (a.X < c.X)
+            {
+                if (a.X < b.X)
+                {
+                    lX = a.X;
+                }
+                else
+                {
+                    lX = b.X;
+                }
+            }
+            else
+            {
+                if (a.X > b.X)
+                {
+                    if (c.X > b.X)
+                    {
+                        lX = b.X;
+                    }
+                    else
+                    {
+                        lX = c.X;
+                    }
+                }
+                else
+                {
+                    lX = c.X;
+                }
+            }
+            var lowerLeft = new Point(lX,lY);
+            return lowerLeft;
+        }
+
+        public double LowestValue(double a, double b, double c)
+        {
+            return 0;
         }
     }
 }
