@@ -123,6 +123,7 @@ namespace ixts.Ausbildung.Geometry
             return isSamecheck;
         }
 
+
         public Triangle Moved(double dx, double dy)
         {
             var mA = new Point(a.X + dx, a.Y + dy);

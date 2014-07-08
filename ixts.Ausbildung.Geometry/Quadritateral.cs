@@ -67,7 +67,7 @@ namespace ixts.Ausbildung.Geometry
 
         public Point LowerLeft()
         {
-            var lX = LowestValue(new[] { a.Y, b.Y, c.Y, d.X });
+            var lX = LowestValue(new[] { a.X, b.X, c.X, d.X });
             var lY = LowestValue(new[] { a.Y, b.Y, c.Y, d.Y });
             var lowerLeft = new Point(lX, lY);
             return lowerLeft;
@@ -88,12 +88,28 @@ namespace ixts.Ausbildung.Geometry
 
         public Point UpperRight()
         {
-            return null;
+            var hX = HighestValue(new[] {a.X, b.X, c.X, d.X});
+            var hY = HighestValue(new[] {a.Y, b.Y, c.Y, d.Y});
+            var upperRight = new Point(hX, hY);
+            return upperRight;
         }
 
         public double HighestValue(double[] values)
         {
-            return 0;
+            var hValue = values[0];
+            for (var i = 0; i < values.Length; i++)
+            {
+                if (values[i] > hValue)
+                {
+                    hValue = values[i];
+                }
+            }
+            return hValue;
+        }
+
+        public Boolean IsSame(Quadritateral quad, double within)
+        {
+            return false;
         }
     }
 }

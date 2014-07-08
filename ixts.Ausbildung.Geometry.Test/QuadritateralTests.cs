@@ -81,5 +81,25 @@ namespace ixts.Ausbildung.Geometry.Test
             {
                 new object[]{new Quadritateral(new Point(1,2), new Point(3,2), new Point(3,4), new Point(1,4)), new Point(3,4)}
             };
+        [TestCaseSource("IsSameTestSource")]
+        public void IsSameTest(Quadritateral quad, double within, Boolean expected)
+        {
+            var actual = sut.IsSame(quad, within);
+            Assert.AreEqual(expected,actual);
+        }
+
+        public static readonly object[] IsSameTestSource =
+            {
+                new object[]{new Quadritateral(new Point(1,2),new Point(3,2),new Point(2,3), new Point(1,4)), 1, true}, //innerhalb des Rahmens
+
+                new object[]{new Quadritateral(new Point(1,0),new Point(3,2),new Point(2,3), new Point(1,4)), 1, false}, //außerhalb des Rahmens 1 Wert  (aY)
+                new object[]{new Quadritateral(new Point(1,0),new Point(3,0),new Point(2,3), new Point(1,4)), 1, false}, //außerhalb des Rahmens 2 Werte (aY,bY)
+                new object[]{new Quadritateral(new Point(1,0),new Point(3,0),new Point(0,3), new Point(1,4)), 1, false}, //außerhalb des Rahmens 3 Werte (aY,bY,cX)
+                new object[]{new Quadritateral(new Point(1,0),new Point(3,0),new Point(0,3), new Point(1,2)), 1, false}, //außerhalb des Rahmens 4 Werte (aY,bY,cX,dY)
+                new object[]{new Quadritateral(new Point(1,0),new Point(1,0),new Point(0,3), new Point(1,2)), 1, false}, //außerhalb des Rahmens 5 Werte (aY,b,cX,dY)
+                new object[]{new Quadritateral(new Point(1,0),new Point(1,0),new Point(0,1), new Point(1,2)), 1, false}, //außerhalb des Rahmens 6 Werte (aY,b,c,dY)
+                new object[]{new Quadritateral(new Point(-1,0),new Point(1,0),new Point(0,1), new Point(1,2)), 1, false}, //außerhalb des Rahmens 7 Werte (a,b,c,dY)
+                new object[]{new Quadritateral(new Point(-1,0),new Point(1,0),new Point(0,1), new Point(-1,2)), 1, false} //außerhalb des Rahmens 8 Werte (a,b,c,d)
+            };
     }
 }
