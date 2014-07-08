@@ -68,5 +68,18 @@ namespace ixts.Ausbildung.Geometry.Test
             {
                 new object[]{new Quadritateral(new Point(1,2), new Point(3,2), new Point(3,4), new Point(1,4)), new Point(1,2)},
             };
+
+        [TestCaseSource("UpperRightTestSource")]
+        public void UpperRightTest(Quadritateral quad, Point expected)
+        {
+            var actual = quad.UpperRight();
+            Assert.AreEqual(expected.X,actual.X);
+            Assert.AreEqual(expected.Y,actual.Y);
+        }
+
+        public static readonly object[] UpperRightTestSource =
+            {
+                new object[]{new Quadritateral(new Point(1,2), new Point(3,2), new Point(3,4), new Point(1,4)), new Point(3,4)}
+            };
     }
 }

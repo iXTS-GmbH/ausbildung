@@ -85,5 +85,15 @@ namespace ixts.Ausbildung.Geometry
             }
             return lValue;
         }
+
+        public Point UpperRight()
+        {
+            return null;
+        }
+
+        public double HighestValue(double[] values)
+        {
+            return 0;
+        }
     }
 }
