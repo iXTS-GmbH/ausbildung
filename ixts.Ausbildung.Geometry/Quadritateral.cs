@@ -46,7 +46,12 @@ namespace ixts.Ausbildung.Geometry
 
         public double Perimeter()
         {
-            return 0;
+            var disA = a.Distance(b);
+            var disB = b.Distance(c);
+            var disC = c.Distance(d);
+            var disD = d.Distance(a);
+            var perimeter = disA + disB + disC + disD;
+            return perimeter;
         }
     }
 }
