@@ -100,5 +100,16 @@ namespace ixts.Ausbildung.Geometry
 
             return lValue;
         }
+
+        public Point UpperRight()
+        {
+            var test = new Point(1, 1);
+            return test;
+        }
+
+        public double HighestValue(double a, double b, double c)
+        {
+            return 0;
+        }
     }
 }

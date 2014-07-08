@@ -71,9 +71,30 @@ namespace ixts.Ausbildung.Geometry.Test
                 new object[]{new Triangle(new Point(1,1),new Point(1,1),new Point(1,1)), new Point(1,1)}
             };
         [TestCase(1,2,3,1)]
-        public void LittlestValueTest(double a,double b, double c,double expected)
+        public void LowestValueTest(double a,double b, double c,double expected)
         {
             var actual = sut.LowestValue(a, b, c);
+            Assert.AreEqual(expected,actual);
+        }
+
+        [TestCaseSource("UpperRightTestSource")]
+        public void UpperRightTest(Triangle triangle, Point expected)
+        {
+            var actual = triangle.UpperRight();
+            Assert.AreEqual(expected.X,actual.X);
+            Assert.AreEqual(expected.Y, actual.Y);
+        }
+
+        public static readonly object[] UpperRightTestSource =
+            {
+                new object[]{new Triangle(new Point(1,2),new Point(3,2),new Point(2,3)), new Point(3,3)},
+                new object[]{new Triangle(new Point(1,1),new Point(1,1),new Point(1,1)), new Point(1,1)}
+            };
+
+        [TestCase(1, 2, 3, 3)]
+        public void HighestValueTest(double a, double b, double c, double expected)
+        {
+            var actual = sut.HighestValue(a, b, c);
             Assert.AreEqual(expected,actual);
         }
     }
