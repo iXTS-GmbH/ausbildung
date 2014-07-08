@@ -144,7 +144,12 @@ namespace ixts.Ausbildung.Geometry
 
         public Quadritateral Moved(double dx, double dy)
         {
-            return null;
+            var mA = new Point(a.X + dx,a.Y + dy);
+            var mB = new Point(b.X + dx,b.Y + dy);
+            var mC = new Point(c.X + dx,c.Y + dy);
+            var mD = new Point(d.X + dx,d.Y + dy);
+            var mQuad = new Quadritateral(mA, mB, mC, mD);
+            return mQuad;
         }
     }
 }
