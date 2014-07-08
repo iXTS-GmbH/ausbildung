@@ -36,5 +36,11 @@ namespace ixts.Ausbildung.Geometry.Test
                 new object[]{new Point(1,2), new Point(3,2), new Point(3,4), new Point(1,4), new Point(1,2), new Point(3,2), new Point(3,4), new Point(1,4)}
             };
 
+        [TestCase(8)]
+        public void PerimeterTest(double expected)
+        {
+            var actual = sut.Perimeter();
+            Assert.AreEqual(expected,actual);
+        }
     }
 }

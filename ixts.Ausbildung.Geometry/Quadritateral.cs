@@ -43,5 +43,10 @@ namespace ixts.Ausbildung.Geometry
             get { return d; }
             set { d = value; }
         }
+
+        public double Perimeter()
+        {
+            return 0;
+        }
     }
 }
