@@ -163,8 +163,12 @@ namespace ixts.Ausbildung.Geometry
             {
                 isSamecheck = c.Y + within >= t.C.Y && c.Y - within <= t.C.Y;//t.C.X liegt im rahmen
             }
-
             return isSamecheck;
+        }
+
+        public Triangle Moved(double dx, double dy)
+        {
+            return null;
         }
     }
 }

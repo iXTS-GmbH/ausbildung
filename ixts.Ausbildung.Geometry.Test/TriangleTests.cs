@@ -116,5 +116,29 @@ namespace ixts.Ausbildung.Geometry.Test
                 new object[]{new Triangle(new Point(1,0),new Point(1,0),new Point(0,1)), 1, false}, //außerhalb des Rahmens 5 Werte (aY,b,c)
                 new object[]{new Triangle(new Point(-1,0),new Point(1,0),new Point(0,1)), 1, false} //außerhalb des Rahmens 6 Werte (a,b,c)
             };
+
+        [TestCaseSource("MovedTestSource")]
+        public void MovedTest(double dx , double dy, Triangle expected)
+        {
+            var actual = sut.Moved(dx, dy);
+            Assert.AreEqual(expected.A.X,actual.A.X);
+            Assert.AreEqual(expected.A.Y,actual.A.Y);
+            Assert.AreEqual(expected.B.X,actual.B.X);
+            Assert.AreEqual(expected.B.Y,actual.B.Y);
+            Assert.AreEqual(expected.C.X,actual.C.X);
+            Assert.AreEqual(expected.C.Y,actual.C.Y);
+        }
+
+        public static readonly object[] MovedTestSource =
+            {
+                new object[]{1,0,new Triangle(new Point(2,2),new Point(4,2),new Point(3,3))}, //Nach oben verschieben
+                new object[]{-1,0,new Triangle(new Point(0,2),new Point(2,2),new Point(1,3))}, //Nach unten verschieben
+                new object[]{0,-1,new Triangle(new Point(1,1),new Point(3,1),new Point(2,2))}, //Nach links verschieben
+                new object[]{0,1,new Triangle(new Point(1,3),new Point(3,3),new Point(2,4))}, //Nach rechts verschieben
+                new object[]{1,-1,new Triangle(new Point(2,1),new Point(4,1),new Point(3,2))}, //Nach obenlinks verschieben
+                new object[]{1,1,new Triangle(new Point(2,3),new Point(4,3),new Point(3,4))}, //Nach obenrechts verschieben
+                new object[]{-1,1,new Triangle(new Point(0,3),new Point(2,3),new Point(1,4))}, //Nach untenrechts verschieben
+                new object[]{-1,-1,new Triangle(new Point(0,1),new Point(2,1),new Point(1,2))}  //Nuch untenlinks verschieben
+            };
     }
 }
