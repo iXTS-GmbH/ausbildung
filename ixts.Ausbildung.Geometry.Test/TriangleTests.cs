@@ -161,5 +161,25 @@ namespace ixts.Ausbildung.Geometry.Test
                 new object[]{0, new Triangle(new Point(0,0),new Point(0,0),new Point(0,0))}         //f = 0
 
             };
+
+        [TestCaseSource("SecZoomedTestSource")]
+        public void SecZoomedTest(Point p, double f, Triangle expected)
+        {
+            var actual = sut.Zoomed(p, f);
+                        Assert.AreEqual(expected.A.X, actual.A.X);
+            Assert.AreEqual(expected.A.Y, actual.A.Y);
+            Assert.AreEqual(expected.B.X, actual.B.X);
+            Assert.AreEqual(expected.B.Y, actual.B.Y);
+            Assert.AreEqual(expected.C.X, actual.C.X);
+            Assert.AreEqual(expected.C.Y, actual.C.Y);
+        }
+
+        public static readonly object[] SecZoomedTestSource =
+            {
+                new object[]{new Point(1,1),2, new Triangle(new Point(3,5),new Point(7,5),new Point(5,7))},        //f > 1
+                new object[]{new Point(1,1),1, new Triangle(new Point(2,3),new Point(4,3),new Point(3,4))},        //f = 1
+                new object[]{new Point(1,1),0.5,new Triangle(new Point(1.5,2),new Point(2.5,2),new Point(2,2.5))}, //0 < 1 < 1
+                new object[]{new Point(1,1),0, new Triangle(new Point(1,1),new Point(1,1),new Point(1,1))}         //f = 0
+            };
     }
 }

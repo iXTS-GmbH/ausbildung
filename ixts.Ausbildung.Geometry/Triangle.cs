@@ -183,5 +183,10 @@ namespace ixts.Ausbildung.Geometry
             var zTriangle = new Triangle(zA, zB, zC);
             return zTriangle;
         }
+
+        public Triangle Zoomed(Point p, double f)
+        {
+            return null;
+        }
     }
 }
