@@ -133,7 +133,12 @@ namespace ixts.Ausbildung.Geometry
 
         public Quadritateral Zoomed(double f)
         {
-            return null;
+            var zA = new Point(a.X*f,a.Y*f);
+            var zB = new Point(b.X*f,b.Y*f);
+            var zC = new Point(c.X*f,c.Y*f);
+            var zD = new Point(d.X*f,d.Y*f);
+            var zQuad = new Quadritateral(zA, zB, zC, zD);
+            return zQuad;
         }
     }
 }

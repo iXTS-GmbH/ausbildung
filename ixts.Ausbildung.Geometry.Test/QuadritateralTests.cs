@@ -147,7 +147,7 @@ namespace ixts.Ausbildung.Geometry.Test
             {
                 
                 new object[]{0, new Quadritateral(new Point(0,0),new Point(0,0),new Point(0,0),new Point(0,0))},//f = 0
-                new object[]{0.5,new Quadritateral(new Point(0.5,1),new Point(1.5,2),new Point(1.5,2),new Point(0.5,2))},//1 > f > 0
+                new object[]{0.5,new Quadritateral(new Point(0.5,1),new Point(1.5,1),new Point(1.5,2),new Point(0.5,2))},//1 > f > 0
                 new object[]{1,new Quadritateral(new Point(1,2),new Point(3,2),new Point(3,4),new Point(1,4))},//f = 1
                 new object[]{2,new Quadritateral(new Point(2,4),new Point(6,4),new Point(6,8),new Point(2,8))}//f > 1
             };
