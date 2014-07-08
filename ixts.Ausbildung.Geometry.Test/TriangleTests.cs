@@ -70,7 +70,7 @@ namespace ixts.Ausbildung.Geometry.Test
                 new object[]{new Triangle(new Point(1,2),new Point(3,2),new Point(2,3)), new Point(1,2)},
                 new object[]{new Triangle(new Point(1,1),new Point(1,1),new Point(1,1)), new Point(1,1)}
             };
-        [TestCase()]
+        [TestCase(1,2,3,1)]
         public void LittlestValueTest(double a,double b, double c,double expected)
         {
             var actual = sut.LowestValue(a, b, c);

@@ -57,44 +57,48 @@ namespace ixts.Ausbildung.Geometry
 
         public Point LowerLeft()
         {
-            double lX, 
-                   lY;
-            if (a.X < c.X)
-            {
-                if (a.X < b.X)
-                {
-                    lX = a.X;
-                }
-                else
-                {
-                    lX = b.X;
-                }
-            }
-            else
-            {
-                if (a.X > b.X)
-                {
-                    if (c.X > b.X)
-                    {
-                        lX = b.X;
-                    }
-                    else
-                    {
-                        lX = c.X;
-                    }
-                }
-                else
-                {
-                    lX = c.X;
-                }
-            }
+            double lX = LowestValue(a.X,b.X,c.X); 
+            double lY = LowestValue(a.Y,b.Y,c.Y);
+
             var lowerLeft = new Point(lX,lY);
             return lowerLeft;
         }
 
         public double LowestValue(double a, double b, double c)
         {
-            return 0;
+            double lValue;
+
+            if (a < c)
+            {
+                if (a < b)
+                {
+                    lValue = a;
+                }
+                else
+                {
+                    lValue = b;
+                }
+            }
+            else
+            {
+                if (a > b)
+                {
+                    if (c > b)
+                    {
+                        lValue = b;
+                    }
+                    else
+                    {
+                        lValue = c;
+                    }
+                }
+                else
+                {
+                    lValue = c;
+                }
+            }
+
+            return lValue;
         }
     }
 }
