@@ -53,7 +53,7 @@ namespace ixts.Ausbildung.Geometry.Test
         public static readonly object[] AreaTestSource =
             {
                 new object[]{new Point(1,2), new Point(3,2), new Point(2,3), 1},
-                new object[]{new Point(1,2), new Point(1,2), new Point(1,2), 0},
+                new object[]{new Point(1,2), new Point(1,2), new Point(1,2), 0}
 
             };
 
@@ -70,13 +70,18 @@ namespace ixts.Ausbildung.Geometry.Test
                 new object[]{new Triangle(new Point(1,2),new Point(3,2),new Point(2,3)), new Point(1,2)},
                 new object[]{new Triangle(new Point(1,1),new Point(1,1),new Point(1,1)), new Point(1,1)}
             };
+
         [TestCase(1,2,3,1)]
         public void LowestValueTest(double a,double b, double c,double expected)
         {
             var actual = sut.LowestValue(new []{a, b, c});
             Assert.AreEqual(expected,actual);
         }
-
+       public static readonly object[] UpperRightTestSource =
+            {
+                new object[]{new Triangle(new Point(1,2),new Point(3,2),new Point(2,3)), new Point(3,3)},
+                new object[]{new Triangle(new Point(1,1),new Point(1,1),new Point(1,1)), new Point(1,1)}
+            };
         [TestCaseSource("UpperRightTestSource")]
         public void UpperRightTest(Triangle triangle, Point expected)
         {
@@ -85,11 +90,7 @@ namespace ixts.Ausbildung.Geometry.Test
             Assert.AreEqual(expected.Y, actual.Y);
         }
 
-        public static readonly object[] UpperRightTestSource =
-            {
-                new object[]{new Triangle(new Point(1,2),new Point(3,2),new Point(2,3)), new Point(3,3)},
-                new object[]{new Triangle(new Point(1,1),new Point(1,1),new Point(1,1)), new Point(1,1)}
-            };
+ 
 
         [TestCase(1, 2, 3, 3)]
         public void HighestValueTest(double a, double b, double c, double expected)
@@ -112,9 +113,9 @@ namespace ixts.Ausbildung.Geometry.Test
                 new object[]{new Triangle(new Point(1,1),new Point(1,1),new Point(1,3)), 1, false}, //außerhalb des Rahmens 1 Wert (bX)
                 new object[]{new Triangle(new Point(1,1),new Point(1,1),new Point(1,1)), 1, false}, //außerhalb des Rahmens 2 Werte (bX,cY)
                 new object[]{new Triangle(new Point(1,0),new Point(1,1),new Point(1,1)), 1, false}, //außerhalb des Rahmens 3 Werte (aY,bX,cY)
-                new object[]{new Triangle(new Point(1,0),new Point(1,0),new Point(1,1)), 1, false}, //außerhalb des Rahmens 4 Werte (aY,b,cY)
-                new object[]{new Triangle(new Point(1,0),new Point(1,0),new Point(0,1)), 1, false}, //außerhalb des Rahmens 5 Werte (aY,b,c)
-                new object[]{new Triangle(new Point(-1,0),new Point(1,0),new Point(0,1)), 1, false} //außerhalb des Rahmens 6 Werte (a,b,c)
+                new object[]{new Triangle(new Point(1,0),new Point(1,0),new Point(1,1)), 1, false}, //außerhalb des Rahmens 4 Werte (aY,B,cY)
+                new object[]{new Triangle(new Point(1,0),new Point(1,0),new Point(0,1)), 1, false}, //außerhalb des Rahmens 5 Werte (aY,B,C)
+                new object[]{new Triangle(new Point(-1,0),new Point(1,0),new Point(0,1)), 1, false} //außerhalb des Rahmens 6 Werte (A,B,C)
             };
 
         [TestCaseSource("MovedTestSource")]
@@ -178,7 +179,7 @@ namespace ixts.Ausbildung.Geometry.Test
             {
                 new object[]{new Point(1,1),2, new Triangle(new Point(1,3),new Point(5,3),new Point(3,5))},        //f > 1
                 new object[]{new Point(1,1),1, new Triangle(new Point(1,2),new Point(3,2),new Point(2,3))},        //f = 1
-                new object[]{new Point(1,1),0.5,new Triangle(new Point(1,1.5),new Point(2,1.5),new Point(1.5,2))}, //0 < 1 < 1
+                new object[]{new Point(1,1),0.5,new Triangle(new Point(1,1.5),new Point(2,1.5),new Point(1.5,2))}, //0 < f < 1
                 new object[]{new Point(1,1),0, new Triangle(new Point(1,1),new Point(1,1),new Point(1,1))}         //f = 0
             };
     }

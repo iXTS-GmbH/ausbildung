@@ -4,49 +4,31 @@ namespace ixts.Ausbildung.Geometry
 {
     public class Triangle
     {
-        protected Point a;
-        protected Point b;
-        protected Point c;
+        public Point A;
+        public Point B;
+        public Point C;
 
         public Triangle(Point a,Point b, Point c)
         {
-            this.a = a;
-            this.b = b;
-            this.c = c;
-        }
-
-        public Point A
-        {
-            get { return a; }
-            set { a = value; }
-        }
-
-        public Point B
-        {
-            get { return b; }
-            set { b = value; }
-        }
-
-        public Point C
-        {
-            get { return c; }
-            set { c = value; }
+            A = a;
+            B = b;
+            C = c;
         }
 
         public double Perimeter()
         {
-            double sA = b.Distance(c);
-            double sB = c.Distance(a);
-            double sC = a.Distance(b);
+            double sA = B.Distance(C);
+            double sB = C.Distance(A);
+            double sC = A.Distance(B);
             double perimeter = sA + sB + sC;
             return perimeter;
         }
 
         public double Area()
         {
-            double sA = b.Distance(c);
-            double sB = c.Distance(a);
-            double sC = a.Distance(b);
+            double sA = B.Distance(C);
+            double sB = C.Distance(A);
+            double sC = A.Distance(B);
             double s = (sA + sB + sC)/2; 
             double flaeche = Math.Sqrt(s*(s - sA)*(s - sB)*(s - sC)); 
             return flaeche;
@@ -54,8 +36,8 @@ namespace ixts.Ausbildung.Geometry
 
         public Point LowerLeft()
         {
-            double lX = LowestValue(new []{a.X,b.X,c.X}); 
-            double lY = LowestValue(new []{a.Y,b.Y,c.Y});
+            double lX = LowestValue(new []{A.X,B.X,C.X}); 
+            double lY = LowestValue(new []{A.Y,B.Y,C.Y});
 
             var lowerLeft = new Point(lX,lY);
             return lowerLeft;
@@ -76,8 +58,8 @@ namespace ixts.Ausbildung.Geometry
 
         public Point UpperRight()
         {
-            var hX = HighestValue(new []{a.X, b.X, c.X});
-            var hY = HighestValue(new []{a.Y, b.Y, c.Y});
+            var hX = HighestValue(new []{A.X, B.X, C.X});
+            var hY = HighestValue(new []{A.Y, B.Y, C.Y});
 
             var upperRight = new Point(hX, hY);
             return upperRight;
@@ -98,14 +80,14 @@ namespace ixts.Ausbildung.Geometry
 
         public Boolean IsSame(Triangle t, double within)
         {
-            var quadvalues = new[] { t.A.X, t.A.Y, t.B.X, t.B.Y, t.C.X, t.C.Y };
-            var selfvalues = new[] { a.X, a.Y, b.X, b.Y, c.X, c.Y };
-            var isSamecheck = selfvalues[0] + within >= quadvalues[0] && selfvalues[0] - within <= quadvalues[0];
+            var tvalues = new[] { t.A.X, t.A.Y, t.B.X, t.B.Y, t.C.X, t.C.Y };
+            var selfvalues = new[] { A.X, A.Y, B.X, B.Y, C.X, C.Y };
+            var isSamecheck = selfvalues[0] + within >= tvalues[0] && selfvalues[0] - within <= tvalues[0];
             for (var i = 0; i < selfvalues.Length; i++)
             {
                 if (isSamecheck)
                 {
-                    isSamecheck = selfvalues[i] + within >= quadvalues[i] && selfvalues[i] - within <= quadvalues[i];
+                    isSamecheck = selfvalues[i] + within >= tvalues[i] && selfvalues[i] - within <= tvalues[i];
                 }
             }
             return isSamecheck;
@@ -114,18 +96,18 @@ namespace ixts.Ausbildung.Geometry
 
         public Triangle Moved(double dx, double dy)
         {
-            var mA = new Point(a.X + dx, a.Y + dy);
-            var mB = new Point(b.X + dx, b.Y + dy);
-            var mC = new Point(c.X + dx, c.Y + dy);
+            var mA = new Point(A.X + dx, A.Y + dy);
+            var mB = new Point(B.X + dx, B.Y + dy);
+            var mC = new Point(C.X + dx, C.Y + dy);
             var mTriangle = new Triangle(mA, mB, mC);
             return mTriangle;
         }
 
         public Triangle Zoomed(double f)
         {
-            var zA = new Point(a.X*f, a.Y*f);
-            var zB = new Point(b.X*f, b.Y*f);
-            var zC = new Point(c.X*f, c.Y*f);
+            var zA = new Point(A.X*f, A.Y*f);
+            var zB = new Point(B.X*f, B.Y*f);
+            var zC = new Point(C.X*f, C.Y*f);
             var zTriangle = new Triangle(zA, zB, zC);
             return zTriangle;
         }
@@ -133,9 +115,9 @@ namespace ixts.Ausbildung.Geometry
         public Triangle Zoomed(Point p, double f)
         {
 
-            var zA = new Point((a.X - p.X)*f + p.X, (a.Y - p.Y)*f + p.Y);
-            var zB = new Point((b.X - p.X)*f + p.X, (b.Y - p.Y)*f + p.Y);
-            var zC = new Point((c.X - p.X)*f + p.X, (c.Y - p.Y)*f + p.Y);
+            var zA = new Point((A.X - p.X)*f + p.X, (A.Y - p.Y)*f + p.Y);
+            var zB = new Point((B.X - p.X)*f + p.X, (B.Y - p.Y)*f + p.Y);
+            var zC = new Point((C.X - p.X)*f + p.X, (C.Y - p.Y)*f + p.Y);
             var zTriangle = new Triangle(zA, zB, zC);
             return zTriangle;
         }
