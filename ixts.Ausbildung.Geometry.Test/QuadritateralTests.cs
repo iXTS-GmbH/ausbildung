@@ -101,5 +101,32 @@ namespace ixts.Ausbildung.Geometry.Test
                 new object[]{new Quadritateral(new Point(-1,0),new Point(1,0),new Point(0,1), new Point(1,2)), 1, false}, //außerhalb des Rahmens 7 Werte (a,b,c,dY)
                 new object[]{new Quadritateral(new Point(-1,0),new Point(1,0),new Point(0,1), new Point(-1,2)), 1, false} //außerhalb des Rahmens 8 Werte (a,b,c,d)
             };
+
+        [TestCaseSource("MovedTestSource")]
+        public void MovedTest(double dx, double dy, Quadritateral expected)
+        {
+            var actual = sut.Moved(dx,dy);
+            Assert.AreEqual(expected.A.X, actual.A.X);
+            Assert.AreEqual(expected.A.Y, actual.A.Y);
+            Assert.AreEqual(expected.B.X, actual.B.X);
+            Assert.AreEqual(expected.B.Y, actual.B.Y);
+            Assert.AreEqual(expected.C.X, actual.C.X);
+            Assert.AreEqual(expected.C.Y, actual.C.Y);
+            Assert.AreEqual(expected.D.X, actual.D.X);
+            Assert.AreEqual(expected.D.Y, actual.D.Y);
+        }
+
+        public static readonly object[] MovedTestSource =
+            {
+                new object[]{0,1,new Quadritateral(new Point(1,3), new Point(3,3), new Point(3,5), new Point(1,5))},//Nach oben verschieben
+                new object[]{0,-1,new Quadritateral(new Point(1,1), new Point(3,1), new Point(3,3), new Point(1,3))},//Nach unten verschieben
+                new object[]{-1,0,new Quadritateral(new Point(0,2), new Point(2,2), new Point(2,4), new Point(0,4))},//Nach links verschieben
+                new object[]{1,0,new Quadritateral(new Point(2,2), new Point(4,2), new Point(4,4), new Point(2,4))},//Nach rechts verschieben
+
+                new object[]{-1,1,new Quadritateral(new Point(0,3), new Point(2,3), new Point(2,5), new Point(0,5))},//Nach obenlinks verschieben
+                new object[]{1,1,new Quadritateral(new Point(2,3), new Point(4,3), new Point(4,5), new Point(2,5))},//Nach obenrechts verschieben
+                new object[]{1,-1,new Quadritateral(new Point(2,1), new Point(4,1), new Point(4,3), new Point(2,3))},//Nach untenrechts verschieben
+                new object[]{-1,-1,new Quadritateral(new Point(0,1), new Point(2,1), new Point(2,3), new Point(0,3))},//Nach untenLinks verschieben
+            };
     }
 }

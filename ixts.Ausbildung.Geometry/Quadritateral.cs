@@ -141,5 +141,10 @@ namespace ixts.Ausbildung.Geometry
             }
             return isSamecheck;
         }
+
+        public Quadritateral Moved(double dx, double dy)
+        {
+            return null;
+        }
     }
 }
