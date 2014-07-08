@@ -54,83 +54,43 @@ namespace ixts.Ausbildung.Geometry
 
         public Point LowerLeft()
         {
-            double lX = LowestValue(a.X,b.X,c.X); 
-            double lY = LowestValue(a.Y,b.Y,c.Y);
+            double lX = LowestValue(new []{a.X,b.X,c.X}); 
+            double lY = LowestValue(new []{a.Y,b.Y,c.Y});
 
             var lowerLeft = new Point(lX,lY);
             return lowerLeft;
         }
 
-        public double LowestValue(double lA, double lB, double lC)
+        public double LowestValue(double[] values)
         {
-            double lValue;
-
-            if (lA < lC)
+            var lValue = values[0];
+            for (var i = 0; i < values.Length; i++)
             {
-                if (lA < lB)
+                if (values[i] < lValue)
                 {
-                    lValue = lA;
-                }
-                else
-                {
-                    lValue = lB;
+                    lValue = values[i];
                 }
             }
-            else
-            {
-                if (lA > lB)
-                {
-                    if (lC > lB)
-                    {
-                        lValue = lB;
-                    }
-                    else
-                    {
-                        lValue = lC;
-                    }
-                }
-                else
-                {
-                    lValue = lC;
-                }
-            }
-
             return lValue;
         }
 
         public Point UpperRight()
         {
-            var hX = HighestValue(a.X, b.X, c.X);
-            var hY = HighestValue(a.Y, b.Y, c.Y);
+            var hX = HighestValue(new []{a.X, b.X, c.X});
+            var hY = HighestValue(new []{a.Y, b.Y, c.Y});
 
             var upperRight = new Point(hX, hY);
             return upperRight;
         }
 
-        public double HighestValue(double hA, double hB, double hC)
+        public double HighestValue(double[] values)
         {
-            double hValue;
-
-            if (hA > hC)
+            var hValue = values[0];
+            for (var i = 0; i < values.Length; i++)
             {
-                if (hA > hB)
+                if (values[i] > hValue)
                 {
-                    hValue = hA;
-                }
-                else
-                {
-                    hValue = hB;
-                }
-            }
-            else
-            {
-                if (hB < hC)
-                {
-                    hValue = hC;
-                }
-                else
-                {
-                    hValue = hB;
+                    hValue = values[i];
                 }
             }
             return hValue;

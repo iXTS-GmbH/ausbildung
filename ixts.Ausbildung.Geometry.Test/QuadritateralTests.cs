@@ -42,5 +42,31 @@ namespace ixts.Ausbildung.Geometry.Test
             var actual = sut.Perimeter();
             Assert.AreEqual(expected,actual);
         }
+
+        [TestCaseSource("AreaTestSource")]
+        public void AreaTest(Quadritateral quad, double expected)
+        {
+            var actual = quad.Area();
+            Assert.AreEqual(expected,actual,0.01);
+        }
+
+        public static readonly object[] AreaTestSource =
+            {
+                new object[]{new Quadritateral(new Point(1,1),new Point(1,1),new Point(1,1), new Point(1,1)),0},//Area = 0
+                new object[]{new Quadritateral(new Point(1,2),new Point(3,2),new Point(3,4), new Point(1,4)),4}//Area != 0
+            };
+
+        [TestCaseSource("LowerLeftTestSource")]
+        public void LowerLeftTest(Quadritateral quad,Point expected)
+        {
+            var actual = quad.LowerLeft();
+            Assert.AreEqual(expected.X, actual.X);
+            Assert.AreEqual(expected.Y, actual.Y);
+        }
+
+        public static readonly object[] LowerLeftTestSource =
+            {
+                new object[]{new Quadritateral(new Point(1,2), new Point(3,2), new Point(3,4), new Point(1,4)), new Point(1,2)},
+            };
     }
 }

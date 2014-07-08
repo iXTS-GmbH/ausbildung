@@ -73,7 +73,7 @@ namespace ixts.Ausbildung.Geometry.Test
         [TestCase(1,2,3,1)]
         public void LowestValueTest(double a,double b, double c,double expected)
         {
-            var actual = sut.LowestValue(a, b, c);
+            var actual = sut.LowestValue(new []{a, b, c});
             Assert.AreEqual(expected,actual);
         }
 
@@ -94,7 +94,7 @@ namespace ixts.Ausbildung.Geometry.Test
         [TestCase(1, 2, 3, 3)]
         public void HighestValueTest(double a, double b, double c, double expected)
         {
-            var actual = sut.HighestValue(a, b, c);
+            var actual = sut.HighestValue(new[]{a, b, c});
             Assert.AreEqual(expected,actual);
         }
 
