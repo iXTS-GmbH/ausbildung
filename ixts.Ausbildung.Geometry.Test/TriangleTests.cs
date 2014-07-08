@@ -107,8 +107,14 @@ namespace ixts.Ausbildung.Geometry.Test
 
         public static readonly object[] IsSameTestSource =
             {
-                new object[]{new Triangle(new Point(1,2),new Point(3,2),new Point(2,3)), 1, true},
-                new object[]{new Triangle(new Point(1,1),new Point(1,1),new Point(1,1)), 1, false}
+                new object[]{new Triangle(new Point(1,2),new Point(3,2),new Point(2,3)), 1, true}, //innerhalb des Rahmens
+
+                new object[]{new Triangle(new Point(1,1),new Point(1,1),new Point(1,3)), 1, false}, //außerhalb des Rahmens 1 Wert (bX)
+                new object[]{new Triangle(new Point(1,1),new Point(1,1),new Point(1,1)), 1, false}, //außerhalb des Rahmens 2 Werte (bX,cY)
+                new object[]{new Triangle(new Point(1,0),new Point(1,1),new Point(1,1)), 1, false}, //außerhalb des Rahmens 3 Werte (aY,bX,cY)
+                new object[]{new Triangle(new Point(1,0),new Point(1,0),new Point(1,1)), 1, false}, //außerhalb des Rahmens 4 Werte (aY,b,cY)
+                new object[]{new Triangle(new Point(1,0),new Point(1,0),new Point(0,1)), 1, false}, //außerhalb des Rahmens 5 Werte (aY,b,c)
+                new object[]{new Triangle(new Point(-1,0),new Point(1,0),new Point(0,1)), 1, false} //außerhalb des Rahmens 6 Werte (a,b,c)
             };
     }
 }

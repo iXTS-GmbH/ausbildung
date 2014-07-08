@@ -141,7 +141,30 @@ namespace ixts.Ausbildung.Geometry
 
         public Boolean IsSame(Triangle t, double within)
         {
-            return false;
+            Boolean isSamecheck;
+            isSamecheck = a.X + within >= t.A.X && a.X - within <= t.A.X;//t.A.X liegt im rahmen
+            if (isSamecheck){
+                isSamecheck = a.Y + within >= t.A.Y && a.Y - within <= t.A.Y;//t.A.Y liegt im rahmen
+            }
+
+            if (isSamecheck){
+                isSamecheck = b.X + within >= t.B.X && b.X - within <= t.B.X;//t.B.X liegt im rahmen
+            }
+            if (isSamecheck)
+            {
+                isSamecheck = b.Y + within >= t.B.Y && b.Y - within <= t.B.Y;//t.B.Y liegt im rahmen
+            }
+
+            if (isSamecheck)
+            {
+                isSamecheck = c.X + within >= t.C.X && c.X - within <= t.C.X;//t.C.X liegt im rahmen
+            }
+            if (isSamecheck)
+            {
+                isSamecheck = c.Y + within >= t.C.Y && c.Y - within <= t.C.Y;//t.C.X liegt im rahmen
+            }
+
+            return isSamecheck;
         }
     }
 }
