@@ -47,13 +47,22 @@ namespace ixts.Ausbildung.Geometry
 
         public double Area()
         {
-        double sA = b.Distance(c);
-        double sB = c.Distance(a);
-        double sC = a.Distance(b);
-
+            double sA = b.Distance(c);
+            double sB = c.Distance(a);
+            double sC = a.Distance(b);
             double s = (sA + sB + sC)/2; 
             double flaeche = Math.Sqrt(s*(s - sA)*(s - sB)*(s - sC)); 
             return flaeche;
+        }
+
+        public Point LowerLeft()
+        {
+            var test = new Point(0, 0);
+            //was ich brauch:
+            //Den niedrigsten und höchsten Y-Wert der Drei Punkte
+            //Den niedrigsten und höchsten X-Wert der Drei Punkte
+            //Die Linke untere Ecke ist demnach der Punkte (NX/NY)
+            return test;
         }
     }
 }

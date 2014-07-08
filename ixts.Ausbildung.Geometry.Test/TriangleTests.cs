@@ -57,5 +57,18 @@ namespace ixts.Ausbildung.Geometry.Test
 
             };
 
+        [TestCaseSource("LowerLeftTestSource")]
+        public void LowerLeftTest(Triangle triangle ,Point expected)
+        {
+            var actual = triangle.LowerLeft();
+            Assert.AreEqual(expected.X,actual.X);
+            Assert.AreEqual(expected.Y,expected.Y);
+        }
+
+        public static readonly object[] LowerLeftTestSource =
+            {
+                new object[]{new Triangle(new Point(1,2),new Point(3,2),new Point(2,3)), new Point(1,2)},
+                new object[]{new Triangle(new Point(1,1),new Point(1,1),new Point(1,1)), new Point(1,1)}
+            };
     }
 }
