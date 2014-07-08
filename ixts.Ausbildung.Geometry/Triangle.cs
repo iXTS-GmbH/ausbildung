@@ -103,13 +103,42 @@ namespace ixts.Ausbildung.Geometry
 
         public Point UpperRight()
         {
-            var test = new Point(1, 1);
-            return test;
+            var hX = HighestValue(a.X, b.X, c.X);
+            var hY = HighestValue(a.Y, b.Y, c.Y);
+
+            var upperRight = new Point(hX, hY);
+            return upperRight;
         }
 
         public double HighestValue(double a, double b, double c)
         {
-            return 0;
+            double hValue;
+
+            if (a > c)
+            {
+                if (a > b)
+                {
+                    hValue = a;
+                }
+                else
+                {
+                    hValue = b;
+                }
+            }
+            else
+            {
+                if (b < c)
+                {
+                    hValue = c;
+                }
+                else
+                {
+                    hValue = b;
+                }
+
+            }
+
+            return hValue;
         }
     }
 }
