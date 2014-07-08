@@ -118,7 +118,7 @@ namespace ixts.Ausbildung.Geometry
             }
             if (isSamecheck)
             {
-                isSamecheck = c.Y + within >= t.C.Y && c.Y - within <= t.C.Y;//t.C.X liegt im rahmen
+                isSamecheck = c.Y + within >= t.C.Y && c.Y - within <= t.C.Y;//t.C.Y liegt im rahmen
             }
             return isSamecheck;
         }

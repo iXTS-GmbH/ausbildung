@@ -109,7 +109,37 @@ namespace ixts.Ausbildung.Geometry
 
         public Boolean IsSame(Quadritateral quad, double within)
         {
-            return false;
+            Boolean isSamecheck = a.X + within >= quad.A.X && a.X - within <= quad.A.X;//quad.A.X liegt im rahmen
+
+            if (isSamecheck){
+                isSamecheck = a.Y + within >= quad.A.Y && a.Y - within <= quad.A.Y;//quad.A.Y liegt im rahmen
+            }
+
+            if (isSamecheck){
+                isSamecheck = b.X + within >= quad.B.X && b.X - within <= quad.B.X;//quad.B.X liegt im rahmen
+            }
+            if (isSamecheck)
+            {
+                isSamecheck = b.Y + within >= quad.B.Y && b.Y - within <= quad.B.Y;//quad.B.Y liegt im rahmen
+            }
+
+            if (isSamecheck)
+            {
+                isSamecheck = c.X + within >= quad.C.X && c.X - within <= quad.C.X;//quad.C.X liegt im rahmen
+            }
+            if (isSamecheck)
+            {
+                isSamecheck = c.Y + within >= quad.C.Y && c.Y - within <= quad.C.Y;//quad.C.Y liegt im rahmen
+            }
+            if (isSamecheck)
+            {
+                isSamecheck = d.X + within >= quad.D.X && d.X - within <= quad.D.X;//quad.D.X liegt im rahmen
+            }
+            if (isSamecheck)
+            {
+                isSamecheck = d.Y + within >= quad.D.Y && d.Y - within <= quad.D.Y;//quad.D.Y liegt im rahmen
+            }
+            return isSamecheck;
         }
     }
 }
