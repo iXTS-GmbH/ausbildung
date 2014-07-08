@@ -130,5 +130,10 @@ namespace ixts.Ausbildung.Geometry
             var mQuad = new Quadritateral(mA, mB, mC, mD);
             return mQuad;
         }
+
+        public Quadritateral Zoomed(double f)
+        {
+            return null;
+        }
     }
 }

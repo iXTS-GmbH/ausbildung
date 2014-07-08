@@ -128,5 +128,28 @@ namespace ixts.Ausbildung.Geometry.Test
                 new object[]{1,-1,new Quadritateral(new Point(2,1), new Point(4,1), new Point(4,3), new Point(2,3))},//Nach untenrechts verschieben
                 new object[]{-1,-1,new Quadritateral(new Point(0,1), new Point(2,1), new Point(2,3), new Point(0,3))},//Nach untenLinks verschieben
             };
+
+        [TestCaseSource("ZoomedTestSource")]
+        public void ZoomedTest(double f, Quadritateral expected)
+        {
+            var actual = sut.Zoomed(f);
+            Assert.AreEqual(expected.A.X, actual.A.X);
+            Assert.AreEqual(expected.A.Y, actual.A.Y);
+            Assert.AreEqual(expected.B.X, actual.B.X);
+            Assert.AreEqual(expected.B.Y, actual.B.Y);
+            Assert.AreEqual(expected.C.X, actual.C.X);
+            Assert.AreEqual(expected.C.Y, actual.C.Y);
+            Assert.AreEqual(expected.D.X, actual.D.X);
+            Assert.AreEqual(expected.D.Y, actual.D.Y);
+        }
+
+        public static readonly object[] ZoomedTestSource =
+            {
+                
+                new object[]{0, new Quadritateral(new Point(0,0),new Point(0,0),new Point(0,0),new Point(0,0))},//f = 0
+                new object[]{0.5,new Quadritateral(new Point(0.5,1),new Point(1.5,2),new Point(1.5,2),new Point(0.5,2))},//1 > f > 0
+                new object[]{1,new Quadritateral(new Point(1,2),new Point(3,2),new Point(3,4),new Point(1,4))},//f = 1
+                new object[]{2,new Quadritateral(new Point(2,4),new Point(6,4),new Point(6,8),new Point(2,8))}//f > 1
+            };
     }
 }
