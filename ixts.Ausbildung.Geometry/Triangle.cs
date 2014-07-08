@@ -168,7 +168,11 @@ namespace ixts.Ausbildung.Geometry
 
         public Triangle Moved(double dx, double dy)
         {
-            return null;
+            var mA = new Point(a.X + dx, a.Y + dy);
+            var mB = new Point(b.X + dx, b.Y + dy);
+            var mC = new Point(c.X + dx, c.Y + dy);
+            var mTriangle = new Triangle(mA, mB, mC);
+            return mTriangle;
         }
     }
 }
