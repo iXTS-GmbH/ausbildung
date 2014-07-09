@@ -3,27 +3,19 @@ using System.Linq;
 
 namespace ixts.Ausbildung.Geometry
 {
-    public class Triangle
+    public class Triangle:Polygon
     {
         private Point A;
         private Point B;
         private Point C;
-        private Point[] points = new Point[3];
+        public new Point[] Points;
 
     public Triangle(Point a, Point b, Point c)
         {
             A = a;
             B = b;
             C = c;
-            points = new Point[]{a,b,c};
-        }
-        public double Perimeter()
-        {
-            double sA = B.Distance(C);
-            double sB = C.Distance(A);
-            double sC = A.Distance(B);
-            double perimeter = sA + sB + sC;
-            return perimeter;
+            Points = new []{a,b,c};
         }
 
         public double Area()
@@ -53,20 +45,20 @@ namespace ixts.Ausbildung.Geometry
             return upperRight;
         }
 
-        public Boolean IsSame(Triangle t, double within)
-        {
-            var tvalues = new[] { t.A.X, t.A.Y, t.B.X, t.B.Y, t.C.X, t.C.Y };
-            var selfvalues = new[] { A.X, A.Y, B.X, B.Y, C.X, C.Y };
-            var isSamecheck = selfvalues[0] + within >= tvalues[0] && selfvalues[0] - within <= tvalues[0];
-            for (var i = 0; i < selfvalues.Length; i++)
-            {
-                if (isSamecheck)
-                {
-                    isSamecheck = selfvalues[i] + within >= tvalues[i] && selfvalues[i] - within <= tvalues[i];
-                }
-            }
-            return isSamecheck;
-        }
+        //public Boolean IsSame(Triangle t, double within)
+        //{
+        //    var tvalues = new[] { t.A.X, t.A.Y, t.B.X, t.B.Y, t.C.X, t.C.Y };
+        //    var selfvalues = new[] { A.X, A.Y, B.X, B.Y, C.X, C.Y };
+        //    var isSamecheck = selfvalues[0] + within >= tvalues[0] && selfvalues[0] - within <= tvalues[0];
+        //    for (var i = 0; i < selfvalues.Length; i++)
+        //    {
+        //        if (isSamecheck)
+        //        {
+        //            isSamecheck = selfvalues[i] + within >= tvalues[i] && selfvalues[i] - within <= tvalues[i];
+        //        }
+        //    }
+        //    return isSamecheck;
+        //}
 
 
         public Triangle Moved(double dx, double dy)

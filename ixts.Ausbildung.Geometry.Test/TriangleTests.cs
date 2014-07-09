@@ -55,23 +55,23 @@ namespace ixts.Ausbildung.Geometry.Test
             Assert.AreEqual(expected.Y, actual.Y);
         }
 
-        [TestCaseSource("IsSameTestSource")]
-        public void IsSameTest(Triangle triangle, double within, Boolean expected)
-        {
-            var actual = sut.IsSame(triangle, within);
-            Assert.AreEqual(expected, actual);
-        }
+        //[TestCaseSource("IsSameTestSource")]
+        //public void IsSameTest(Triangle triangle, double within, Boolean expected)
+        //{
+        //    var actual = sut.IsSame(triangle, within);
+        //    Assert.AreEqual(expected, actual);
+        //}
 
-        public static readonly object[] IsSameTestSource =
-            {
-                new object[]{new Triangle(new Point(1,2),new Point(3,2),new Point(2,3)), 1, true}, //innerhalb des Rahmens
-                new object[]{new Triangle(new Point(1,1),new Point(1,1),new Point(1,3)), 1, false}, //außerhalb des Rahmens 1 Wert (bX)
-                new object[]{new Triangle(new Point(1,1),new Point(1,1),new Point(1,1)), 1, false}, //außerhalb des Rahmens 2 Werte (bX,cY)
-                new object[]{new Triangle(new Point(1,0),new Point(1,1),new Point(1,1)), 1, false}, //außerhalb des Rahmens 3 Werte (aY,bX,cY)
-                new object[]{new Triangle(new Point(1,0),new Point(1,0),new Point(1,1)), 1, false}, //außerhalb des Rahmens 4 Werte (aY,B,cY)
-                new object[]{new Triangle(new Point(1,0),new Point(1,0),new Point(0,1)), 1, false}, //außerhalb des Rahmens 5 Werte (aY,B,C)
-                new object[]{new Triangle(new Point(-1,0),new Point(1,0),new Point(0,1)), 1, false} //außerhalb des Rahmens 6 Werte (A,B,C)
-            };
+        //public static readonly object[] IsSameTestSource =
+        //    {
+        //        new object[]{new Triangle(new Point(1,2),new Point(3,2),new Point(2,3)), 1, true}, //innerhalb des Rahmens
+        //        new object[]{new Triangle(new Point(1,1),new Point(1,1),new Point(1,3)), 1, false}, //außerhalb des Rahmens 1 Wert (bX)
+        //        new object[]{new Triangle(new Point(1,1),new Point(1,1),new Point(1,1)), 1, false}, //außerhalb des Rahmens 2 Werte (bX,cY)
+        //        new object[]{new Triangle(new Point(1,0),new Point(1,1),new Point(1,1)), 1, false}, //außerhalb des Rahmens 3 Werte (aY,bX,cY)
+        //        new object[]{new Triangle(new Point(1,0),new Point(1,0),new Point(1,1)), 1, false}, //außerhalb des Rahmens 4 Werte (aY,B,cY)
+        //        new object[]{new Triangle(new Point(1,0),new Point(1,0),new Point(0,1)), 1, false}, //außerhalb des Rahmens 5 Werte (aY,B,C)
+        //        new object[]{new Triangle(new Point(-1,0),new Point(1,0),new Point(0,1)), 1, false} //außerhalb des Rahmens 6 Werte (A,B,C)
+        //    };
 
         [TestCaseSource("MovedTestSource")]
         public void MovedTest(double dx , double dy, Triangle expected)
