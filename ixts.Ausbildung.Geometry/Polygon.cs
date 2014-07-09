@@ -71,32 +71,37 @@ namespace ixts.Ausbildung.Geometry
 
         public Polygon Moved(double dx, double dy) //Muss ich Patrick fragen bezüglich des erstellens des neuen objekts
         {
+            //
             return null;
         }
 
         public Polygon Zoomed(double f)//siehe Moved
         {
+            //
             return null;
         }
 
         public Polygon Zoomed(Point p, double f)//siehe Moved
         {
+            //
             return null;
         }
 
         public Polygon Rotate(double w)//siehe Moved
         {
+            //
             return null;
         }
 
         public Polygon Rotate(Point p, double w)//siehe Moved
         {
+            //
             return null;
         }
 
-        public Point Middle()//Koordinaten von UpperRight mit LowerLeft subtrahieren und durch 2 teilen = Mittelpunktkoordinaten
+        public Point Middle()
         {
-            return null;
+            return new Point((UpperRight().X - LowerLeft().X)/2, (UpperRight().Y - LowerLeft().Y)/2 );
         }
 
     }

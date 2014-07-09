@@ -9,5 +9,6 @@ namespace ixts.Ausbildung.Geometry.Test
     [TestFixture]
     class PolygonTests
     {
+
     }
 }
