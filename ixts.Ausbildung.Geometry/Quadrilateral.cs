@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Linq;
 
 namespace ixts.Ausbildung.Geometry
 {
     public class Quadrilateral
     {
-        public Point A;
-        public Point B;
-        public Point C;
-        public Point D;
+        private Point A;
+        private Point B;
+        private Point C;
+        private Point D;
 
         public Quadrilateral(Point a, Point b, Point c, Point d)
         {
@@ -42,44 +43,18 @@ namespace ixts.Ausbildung.Geometry
 
         public Point LowerLeft()
         {
-            var lX = LowestValue(new[] { A.X, B.X, C.X, D.X });
-            var lY = LowestValue(new[] { A.Y, B.Y, C.Y, D.Y });
+            var lX = new [] { A.X, B.X, C.X, D.X }.Min();
+            var lY = new [] { A.Y, B.Y, C.Y, D.Y }.Min();
             var lowerLeft = new Point(lX, lY);
             return lowerLeft;
         }
 
-        public double LowestValue(double[] values)
-        {
-            var lValue = values[0];
-            for (var i = 0; i < values.Length; i++)
-            {
-                if (values[i] < lValue)
-                {
-                    lValue = values[i];
-                }
-            }
-            return lValue;
-        }
-
         public Point UpperRight()
         {
-            var hX = HighestValue(new[] {A.X, B.X, C.X, D.X});
-            var hY = HighestValue(new[] {A.Y, B.Y, C.Y, D.Y});
+            var hX = new[] {A.X, B.X, C.X, D.X}.Max();
+            var hY = new[] {A.Y, B.Y, C.Y, D.Y}.Max();
             var upperRight = new Point(hX, hY);
             return upperRight;
-        }
-
-        public double HighestValue(double[] values)
-        {
-            var hValue = values[0];
-            for (var i = 0; i < values.Length; i++)
-            {
-                if (values[i] > hValue)
-                {
-                    hValue = values[i];
-                }
-            }
-            return hValue;
         }
 
         public Boolean IsSame(Quadrilateral quad, double within)

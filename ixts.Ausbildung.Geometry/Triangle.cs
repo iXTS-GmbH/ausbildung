@@ -1,20 +1,22 @@
 ﻿using System;
+using System.Linq;
 
 namespace ixts.Ausbildung.Geometry
 {
     public class Triangle
     {
-        public Point A;
-        public Point B;
-        public Point C;
+        private Point A;
+        private Point B;
+        private Point C;
+        private Point[] points = new Point[3];
 
-        public Triangle(Point a,Point b, Point c)
+    public Triangle(Point a, Point b, Point c)
         {
             A = a;
             B = b;
             C = c;
+            points = new Point[]{a,b,c};
         }
-
         public double Perimeter()
         {
             double sA = B.Distance(C);
@@ -36,46 +38,19 @@ namespace ixts.Ausbildung.Geometry
 
         public Point LowerLeft()
         {
-            double lX = LowestValue(new []{A.X,B.X,C.X}); 
-            double lY = LowestValue(new []{A.Y,B.Y,C.Y});
-
+            var lX = new [] {A.X, B.X, C.X}.Min();
+            var lY = new [] {A.Y, B.Y, C.Y}.Min();
             var lowerLeft = new Point(lX,lY);
             return lowerLeft;
         }
 
-        public double LowestValue(double[] values)
-        {
-            var lValue = values[0];
-            for (var i = 0; i < values.Length; i++)
-            {
-                if (values[i] < lValue)
-                {
-                    lValue = values[i];
-                }
-            }
-            return lValue;
-        }
-
         public Point UpperRight()
         {
-            var hX = HighestValue(new []{A.X, B.X, C.X});
-            var hY = HighestValue(new []{A.Y, B.Y, C.Y});
+            double hX = new [] { A.X, B.X, C.X }.Max();
+            double hY = new [] { A.Y, B.Y, C.Y }.Max();
 
             var upperRight = new Point(hX, hY);
             return upperRight;
-        }
-
-        public double HighestValue(double[] values)
-        {
-            var hValue = values[0];
-            for (var i = 0; i < values.Length; i++)
-            {
-                if (values[i] > hValue)
-                {
-                    hValue = values[i];
-                }
-            }
-            return hValue;
         }
 
         public Boolean IsSame(Triangle t, double within)
