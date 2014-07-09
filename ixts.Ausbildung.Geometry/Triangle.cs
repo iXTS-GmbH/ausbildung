@@ -18,48 +18,22 @@ namespace ixts.Ausbildung.Geometry
             Points = new []{a,b,c};
         }
 
-        public double Area()
-        {
-            double sA = B.Distance(C);
-            double sB = C.Distance(A);
-            double sC = A.Distance(B);
-            double s = (sA + sB + sC)/2; 
-            double flaeche = Math.Sqrt(s*(s - sA)*(s - sB)*(s - sC)); 
-            return flaeche;
-        }
-
-        public Point LowerLeft()
-        {
-            var lX = new [] {A.X, B.X, C.X}.Min();
-            var lY = new [] {A.Y, B.Y, C.Y}.Min();
-            var lowerLeft = new Point(lX,lY);
-            return lowerLeft;
-        }
-
-        public Point UpperRight()
-        {
-            double hX = new [] { A.X, B.X, C.X }.Max();
-            double hY = new [] { A.Y, B.Y, C.Y }.Max();
-
-            var upperRight = new Point(hX, hY);
-            return upperRight;
-        }
-
-        //public Boolean IsSame(Triangle t, double within)
+        //public Point LowerLeft()
         //{
-        //    var tvalues = new[] { t.A.X, t.A.Y, t.B.X, t.B.Y, t.C.X, t.C.Y };
-        //    var selfvalues = new[] { A.X, A.Y, B.X, B.Y, C.X, C.Y };
-        //    var isSamecheck = selfvalues[0] + within >= tvalues[0] && selfvalues[0] - within <= tvalues[0];
-        //    for (var i = 0; i < selfvalues.Length; i++)
-        //    {
-        //        if (isSamecheck)
-        //        {
-        //            isSamecheck = selfvalues[i] + within >= tvalues[i] && selfvalues[i] - within <= tvalues[i];
-        //        }
-        //    }
-        //    return isSamecheck;
+        //    var lX = new [] {A.X, B.X, C.X}.Min();
+        //    var lY = new [] {A.Y, B.Y, C.Y}.Min();
+        //    var lowerLeft = new Point(lX,lY);
+        //    return lowerLeft;
         //}
 
+        //public Point UpperRight()
+        //{
+        //    double hX = new [] { A.X, B.X, C.X }.Max();
+        //    double hY = new [] { A.Y, B.Y, C.Y }.Max();
+
+        //    var upperRight = new Point(hX, hY);
+        //    return upperRight;
+        //}
 
         public Triangle Moved(double dx, double dy)
         {
