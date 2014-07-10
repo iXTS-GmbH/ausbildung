@@ -131,8 +131,18 @@ namespace ixts.Ausbildung.Geometry
 
         public Polygon Rotate(Point point, double angle)
         {
-            
-            return null;
+            //Vorgehen:
+            //Punkte so verschieben das point(x,y) = Point(0,0)
+            //Mit Rotate drehen
+            //Punkte um vorher geändertes maß zurückverschieben
+            var mpoints = new List<Point>();
+            for (int i = 0; i < Points.Length; i++)
+            {
+               mpoints.Add(Points[i].Moved(-point.X, -point.Y));
+            }
+            var movedPolygon = new Polygon(mpoints.ToArray()).Rotate(angle);
+            var rotatedPolygon = movedPolygon.Moved(point.X, point.Y);
+            return rotatedPolygon;
         }
 
         public Point Middle()

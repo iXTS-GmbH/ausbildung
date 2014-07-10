@@ -174,11 +174,18 @@ namespace ixts.Ausbildung.Geometry.Test
             Assert.AreEqual(expected.Y, actual.Y);
         }
 
-        [TestCase]
-        public void EquilateralTest()
+        [TestCaseSource("EquilateralTestSource")]//Gleichseitig
+        public void EquilateralTest(Boolean expected, Triangle triangle)
         {
-            //Wenn alles andere geht
+            var actual = triangle.Equilateral();
+            Assert.AreEqual(expected,actual);
         }
+
+        public static readonly object[] EquilateralTestSource =
+            {
+                new object[]{true, new Triangle(new []{new Point(1,1),new Point(5,1), new Point(2.5,5)})},//Was ist ein gleichseitiges dreieck
+                new object[]{false, new Triangle(new []{new Point(1,2),new Point(3,2), new Point(2,3)})}
+            };
 
         [TestCase]
         public void IsoscelesTest()

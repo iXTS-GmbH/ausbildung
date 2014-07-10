@@ -41,8 +41,8 @@ namespace ixts.Ausbildung.Geometry
 
         public double Distance(Point nPoint)
         {
-            double disX = (nPoint.x - this.x)*(nPoint.x - this.x);
-            double disY = (nPoint.y - this.y)*(nPoint.y - this.y);
+            double disX = (nPoint.x - x)*(nPoint.x - x);
+            double disY = (nPoint.y - y)*(nPoint.y - y);
             double distance = Math.Sqrt(disX + disY);
             return distance;
         }

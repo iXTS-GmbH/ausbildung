@@ -10,12 +10,12 @@ namespace ixts.Ausbildung.Geometry
 
         }
 
-        public Boolean Equilateral()
+        public Boolean Equilateral()//Gleichseitig
         {
             return false;
         }
 
-        public Boolean Isosceles()
+        public Boolean Isosceles()//Gleichschenklig
         {
             return false;
         }
