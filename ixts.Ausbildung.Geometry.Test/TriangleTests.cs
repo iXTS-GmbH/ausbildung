@@ -100,12 +100,12 @@ namespace ixts.Ausbildung.Geometry.Test
         public void ZoomedTest(double f, Triangle expected)
         {
             var actual = sut.Zoomed(f);
-            Assert.AreEqual(sut.Points[0].X, actual.Points[0].X);
-            Assert.AreEqual(sut.Points[0].Y, actual.Points[0].Y);
-            Assert.AreEqual(sut.Points[1].X, actual.Points[1].X);
-            Assert.AreEqual(sut.Points[1].Y, actual.Points[1].Y);
-            Assert.AreEqual(sut.Points[2].X, actual.Points[2].X);
-            Assert.AreEqual(sut.Points[2].Y, actual.Points[2].Y); 
+            Assert.AreEqual(expected.Points[0].X, actual.Points[0].X);
+            Assert.AreEqual(expected.Points[0].Y, actual.Points[0].Y);
+            Assert.AreEqual(expected.Points[1].X, actual.Points[1].X);
+            Assert.AreEqual(expected.Points[1].Y, actual.Points[1].Y);
+            Assert.AreEqual(expected.Points[2].X, actual.Points[2].X);
+            Assert.AreEqual(expected.Points[2].Y, actual.Points[2].Y); 
         }
 
         public static readonly object[] ZoomedTestSource =
