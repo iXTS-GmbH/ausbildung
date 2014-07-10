@@ -4,8 +4,9 @@ namespace ixts.Ausbildung.Geometry
 {
     public class Point
     {
-        protected double x;
-        protected double y;
+        private double x;
+        private double y;
+
         public Point(double x,double y)
         {
             this.x = x;

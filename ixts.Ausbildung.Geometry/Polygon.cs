@@ -5,14 +5,14 @@ namespace ixts.Ausbildung.Geometry
 {
     public class Polygon
     {
-        public Point[] Points;
+        protected Point[] Points;
 
-        //public Polygon()
-        //{
+        public Polygon(Point[] points)
+        {
+            Points = points;
+        }
 
-        //}
-
-        public double Perimeter() //Eventuell muss ich das Array als Parameter einspeisen
+        public double Perimeter()
         {
             var perimeter = 0.0;
             for (var i = 0; i < Points.Length; i++)
@@ -29,15 +29,15 @@ namespace ixts.Ausbildung.Geometry
             return perimeter;
         }
 
-        //public double Area() //wie muss ich Patrick fragen
-        //{
+        public double Area() //Muss ich Patrick nach allgemeiner Formel fragen (oder googlen)
+        {
         //double sA = B.Distance(C);
         //double sB = C.Distance(A);
         //double sC = A.Distance(B);
         //double s = (sA + sB + sC) / 2;
         //double flaeche = Math.Sqrt(s * (s - sA) * (s - sB) * (s - sC)); //Fläche Dreieck
-        //    return 0;
-        //}
+            return 0;
+        }
 
         public Point LowerLeft() //Erst Lists mit x und y werten füllen dann [].Min und einen Point mit den ergebnissen als Parameter zurückgeben
         {
@@ -52,8 +52,7 @@ namespace ixts.Ausbildung.Geometry
         public Boolean IsSame(Polygon p, double within) //
         {
 
-            var isSamecheck = Points[0].X + within >= p.Points[0].X && Points[0].X - within <= p.Points[0].X;
-            isSamecheck = Points[0].Y + within >= p.Points[0].Y && Points[0].Y - within <= p.Points[0].Y;
+            Boolean isSamecheck = true;
             for (var i = 0; i < Points.Length; i++)
             {
                 if (isSamecheck)
@@ -69,31 +68,30 @@ namespace ixts.Ausbildung.Geometry
             return isSamecheck;
         }
 
-        public Polygon Moved(double dx, double dy) //Muss ich Patrick fragen bezüglich des erstellens des neuen objekts
+        public Polygon Moved(double dx, double dy)
+        {
+            return null;
+        }
+
+        public Polygon Zoomed(double f)
         {
             //
             return null;
         }
 
-        public Polygon Zoomed(double f)//siehe Moved
+        public Polygon Zoomed(Point p, double f)
         {
             //
             return null;
         }
 
-        public Polygon Zoomed(Point p, double f)//siehe Moved
+        public Polygon Rotate(double w)
         {
             //
             return null;
         }
 
-        public Polygon Rotate(double w)//siehe Moved
-        {
-            //
-            return null;
-        }
-
-        public Polygon Rotate(Point p, double w)//siehe Moved
+        public Polygon Rotate(Point p, double w)
         {
             //
             return null;
@@ -106,3 +104,31 @@ namespace ixts.Ausbildung.Geometry
 
     }
 }
+
+        //public Triangle Moved(double dx, double dy)
+        //{
+        //    var mA = new Point(A.X + dx, A.Y + dy);
+        //    var mB = new Point(B.X + dx, B.Y + dy);
+        //    var mC = new Point(C.X + dx, C.Y + dy);
+        //    var mTriangle = new Triangle(mA, mB, mC);
+        //    return mTriangle;
+        //}
+
+        //public Triangle Zoomed(double f)
+        //{
+        //    var zA = new Point(A.X*f, A.Y*f);
+        //    var zB = new Point(B.X*f, B.Y*f);
+        //    var zC = new Point(C.X*f, C.Y*f);
+        //    var zTriangle = new Triangle(zA, zB, zC);
+        //    return zTriangle;
+        //}
+
+        //public Triangle Zoomed(Point p, double f)
+        //{
+
+        //    var zA = new Point((A.X - p.X)*f + p.X, (A.Y - p.Y)*f + p.Y);
+        //    var zB = new Point((B.X - p.X)*f + p.X, (B.Y - p.Y)*f + p.Y);
+        //    var zC = new Point((C.X - p.X)*f + p.X, (C.Y - p.Y)*f + p.Y);
+        //    var zTriangle = new Triangle(zA, zB, zC);
+        //    return zTriangle;
+        //}
