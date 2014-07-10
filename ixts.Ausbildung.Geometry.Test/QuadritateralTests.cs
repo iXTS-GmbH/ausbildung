@@ -85,12 +85,17 @@ namespace ixts.Ausbildung.Geometry.Test
                 new object[]{new Quadrilateral(new []{new Point(-1,0),new Point(1,0),new Point(0,1), new Point(-1,2)}), 1, false} //außerhalb des Rahmens 8 Werte (A,B,C,d)
             };
 
-        //[TestCaseSource("MovedTestSource")]
-        //public void MovedTest(double dx, double dy, Quadrilateral expected)
-        //{
-        //    var actual = sut.Moved(dx,dy);
-        //    Assert.AreEqual(expected,actual);
-        //}
+        [TestCaseSource("MovedTestSource")]
+        public void MovedTest(double dx, double dy, Quadrilateral expected)
+        {
+            var actual = sut.Moved(dx, dy);
+            Assert.AreEqual(expected.Points[0].X, actual.Points[0].X);
+            Assert.AreEqual(expected.Points[0].Y, actual.Points[0].Y);
+            Assert.AreEqual(expected.Points[1].X, actual.Points[1].X);
+            Assert.AreEqual(expected.Points[1].Y, actual.Points[1].Y);
+            Assert.AreEqual(expected.Points[2].X, actual.Points[2].X);
+            Assert.AreEqual(expected.Points[2].Y, actual.Points[2].Y);
+        }
 
         public static readonly object[] MovedTestSource =
             {
@@ -98,19 +103,23 @@ namespace ixts.Ausbildung.Geometry.Test
                 new object[]{0,-1,new Quadrilateral(new []{new Point(1,1), new Point(3,1), new Point(3,3), new Point(1,3)})},//Nach unten verschieben
                 new object[]{-1,0,new Quadrilateral(new []{new Point(0,2), new Point(2,2), new Point(2,4), new Point(0,4)})},//Nach links verschieben
                 new object[]{1,0,new Quadrilateral(new []{new Point(2,2), new Point(4,2), new Point(4,4), new Point(2,4)})},//Nach rechts verschieben
-
                 new object[]{-1,1,new Quadrilateral(new []{new Point(0,3), new Point(2,3), new Point(2,5), new Point(0,5)})},//Nach obenlinks verschieben
                 new object[]{1,1,new Quadrilateral(new []{new Point(2,3), new Point(4,3), new Point(4,5), new Point(2,5)})},//Nach obenrechts verschieben
                 new object[]{1,-1,new Quadrilateral(new []{new Point(2,1), new Point(4,1), new Point(4,3), new Point(2,3)})},//Nach untenrechts verschieben
                 new object[]{-1,-1,new Quadrilateral(new []{new Point(0,1), new Point(2,1), new Point(2,3), new Point(0,3)})}//Nach untenLinks verschieben
             };
 
-        //[TestCaseSource("ZoomedTestSource")]
-        //public void ZoomedTest(double f, Quadrilateral expected)
-        //{
-        //    var actual = sut.Zoomed(f);
-        //    Assert.AreEqual(expected,actual);
-        //}
+        [TestCaseSource("ZoomedTestSource")]
+        public void ZoomedTest(double f, Quadrilateral expected)
+        {
+            var actual = sut.Zoomed(f);
+            Assert.AreEqual(expected.Points[0].X, actual.Points[0].X);
+            Assert.AreEqual(expected.Points[0].Y, actual.Points[0].Y);
+            Assert.AreEqual(expected.Points[1].X, actual.Points[1].X);
+            Assert.AreEqual(expected.Points[1].Y, actual.Points[1].Y);
+            Assert.AreEqual(expected.Points[2].X, actual.Points[2].X);
+            Assert.AreEqual(expected.Points[2].Y, actual.Points[2].Y); 
+        }
 
         public static readonly object[] ZoomedTestSource =
             {
@@ -120,15 +129,21 @@ namespace ixts.Ausbildung.Geometry.Test
                 new object[]{1,new Quadrilateral(new []{new Point(1,2),new Point(3,2),new Point(3,4),new Point(1,4)})},//f = 1
                 new object[]{2,new Quadrilateral(new []{new Point(2,4),new Point(6,4),new Point(6,8),new Point(2,8)})}//f > 1
             };
-        [TestCase]
-        public void RotateTest()
+        [TestCase(360)]
+        public void RotateTest(double angle)
         {
-            //Muss ich mir noch Formel suchen
+            var actual = sut.Rotate(angle);
+            Assert.AreEqual(sut.Points[0].X, actual.Points[0].X);
+            Assert.AreEqual(sut.Points[0].Y, actual.Points[0].Y);
+            Assert.AreEqual(sut.Points[1].X, actual.Points[1].X);
+            Assert.AreEqual(sut.Points[1].Y, actual.Points[1].Y);
+            Assert.AreEqual(sut.Points[2].X, actual.Points[2].X);
+            Assert.AreEqual(sut.Points[2].Y, actual.Points[2].Y); 
         }
         [TestCase]
         public void PointRotareTest()
         {
-            //siehe RotateTest
+            //in Arbeit
         }
         [TestCase]
         public void MiddleTest()

@@ -138,8 +138,8 @@ namespace ixts.Ausbildung.Geometry.Test
                 new object[]{new Point(1,1),1, new Triangle(new []{new Point(1,2),new Point(3,2),new Point(2,3)})},             //f = 1
                 new object[]{new Point(1,1),0.5,new Triangle(new []{new Point(1,1.5),new Point(2,1.5),new Point(1.5,2)})},      //0 < f < 1
                 new object[]{new Point(1,1),0, new Triangle(new []{new Point(1,1),new Point(1,1),new Point(1,1)})},             //f = 0
-                new object[]{new Point(1,1),-0.5,new Triangle(new []{new Point(1,0.5),new Point(0,0.5),new Point(0.5,0)})},     //-1 < f < 0 //Hier ist etwas glaub ich nicht ganz richtig
-                new object[]{new Point(1,1),-1, new Triangle(new []{new Point(1,0),new Point(-1,0),new Point(0,-1)})}       //f = -1     //
+                new object[]{new Point(1,1),-0.5,new Triangle(new []{new Point(1,0.5),new Point(0,0.5),new Point(0.5,0)})},     //-1 < f < 0 
+                new object[]{new Point(1,1),-1, new Triangle(new []{new Point(1,0),new Point(-1,0),new Point(0,-1)})}           //f = -1     
             };
         [TestCase(360)]
         public void RotateTest(double angle)
