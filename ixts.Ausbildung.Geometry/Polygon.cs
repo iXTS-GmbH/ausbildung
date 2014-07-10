@@ -1,5 +1,7 @@
 ﻿
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ixts.Ausbildung.Geometry
 {
@@ -39,20 +41,31 @@ namespace ixts.Ausbildung.Geometry
             return 0;
         }
 
-        public Point LowerLeft() //Erst Lists mit x und y werten füllen dann [].Min und einen Point mit den ergebnissen als Parameter zurückgeben
+        public Point LowerLeft()
         {
-            
-
-
-            return null;
+            var xValues = new List<double>();
+            var yValues = new List<double>();
+            foreach (Point point in Points)
+            {
+                xValues.Add(point.X);
+                yValues.Add(point.Y);
+            }
+            return new Point(xValues.ToArray().Min(), yValues.ToArray().Min());
         }
 
-        public Point UpperRight() //Erst Lists mit x und y werten füllen dann [].Max und einen Point mit den ergebnissen als Parameter zurückgeben
+        public Point UpperRight()
         {
-            return null;
+            var xValues = new List<double>();
+            var yValues = new List<double>();
+            foreach (Point point in Points)
+            {
+                xValues.Add(point.X);
+                yValues.Add(point.Y);
+            }
+            return new Point(xValues.ToArray().Max(), yValues.ToArray().Max());
         }
 
-        public Boolean IsSame(Polygon polygon, double within) //
+        public Boolean IsSame(Polygon polygon, double within)
         {
 
             Boolean isSamecheck = true;
@@ -78,25 +91,25 @@ namespace ixts.Ausbildung.Geometry
 
         public Polygon Zoomed(double factor)
         {
-            //
+            
             return null;
         }
 
         public Polygon Zoomed(Point point, double factor)
         {
-            //
+            
             return null;
         }
 
         public Polygon Rotate(double angle)
         {
-            //
+            
             return null;
         }
 
         public Polygon Rotate(Point point, double angle)
         {
-            //
+            
             return null;
         }
 
