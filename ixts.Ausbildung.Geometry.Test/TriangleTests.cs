@@ -152,10 +152,17 @@ namespace ixts.Ausbildung.Geometry.Test
             Assert.AreEqual(sut.Points[2].X, actual.Points[2].X); 
             Assert.AreEqual(sut.Points[2].Y, actual.Points[2].Y); 
         }
-        [TestCase]
-        public void PointRotareTest()
+        [TestCase(360)]
+        public void PointRotateTest(double angle)
         {
-            //in Arbeit
+            var point = sut.Middle();
+            var actual = sut.Rotate(point, angle);
+            Assert.AreEqual(sut.Points[0].X, actual.Points[0].X);
+            Assert.AreEqual(sut.Points[0].Y, actual.Points[0].Y);
+            Assert.AreEqual(sut.Points[1].X, actual.Points[1].X);
+            Assert.AreEqual(sut.Points[1].Y, actual.Points[1].Y);
+            Assert.AreEqual(sut.Points[2].X, actual.Points[2].X);
+            Assert.AreEqual(sut.Points[2].Y, actual.Points[2].Y); 
         }
         [TestCase]
         public void MiddleTest()
