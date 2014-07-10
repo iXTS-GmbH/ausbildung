@@ -49,14 +49,14 @@ namespace ixts.Ausbildung.Geometry
 
         public Boolean IsSame(Point nPoint, double within)
         {
-            double distance = this.Distance(nPoint);
+            double distance = Distance(nPoint);
             return distance <= within;
 
         }
 
         public Point Moved(double moveX, double moveY)
         {
-            var movedPoint = new Point(this.x + moveX, this.y + moveY);
+            var movedPoint = new Point(x + moveX, y + moveY);
             return movedPoint;
         }
     }

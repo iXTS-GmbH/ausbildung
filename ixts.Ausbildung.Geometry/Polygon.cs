@@ -131,10 +131,6 @@ namespace ixts.Ausbildung.Geometry
 
         public Polygon Rotate(Point point, double angle)
         {
-            //Vorgehen:
-            //Punkte so verschieben das point(x,y) = Point(0,0)
-            //Mit Rotate drehen
-            //Punkte um vorher geändertes maß zurückverschieben
             var mpoints = new List<Point>();
             for (int i = 0; i < Points.Length; i++)
             {
@@ -152,13 +148,3 @@ namespace ixts.Ausbildung.Geometry
 
     }
 }
-
-        //public Triangle Zoomed(Point p, double f)
-        //{
-
-        //    var zA = new Point((A.X - p.X)*f + p.X, (A.Y - p.Y)*f + p.Y);
-        //    var zB = new Point((B.X - p.X)*f + p.X, (B.Y - p.Y)*f + p.Y);
-        //    var zC = new Point((C.X - p.X)*f + p.X, (C.Y - p.Y)*f + p.Y);
-        //    var zTriangle = new Triangle(zA, zB, zC);
-        //    return zTriangle;
-        //}

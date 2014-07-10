@@ -171,11 +171,18 @@ namespace ixts.Ausbildung.Geometry.Test
             Assert.AreEqual(expected.Y, actual.Y);
         }
 
-        [TestCase]
-        public void QuadratTest()
+        [TestCaseSource("QuadratTestSource")]
+        public void QuadratTest(Boolean expected, Quadrilateral quad)
         {
-            //erst wenn alles andere geht
+            var actual = quad.Quadrat();
+            Assert.AreEqual(expected, actual);
         }
+
+        public static readonly object[] QuadratTestSource =
+            {
+                new object[]{true, new Quadrilateral(new []{new Point(1,1),new Point(1,5),new Point(5,5), new Point(5,1)})},
+                new object[]{false,new Quadrilateral(new []{new Point(1,1),new Point(1,5),new Point(5,5), new Point(5,2)}) }
+            };
 
         [TestCase]
         public void ParallelogrammTest()

@@ -32,9 +32,9 @@ namespace ixts.Ausbildung.Geometry.Test
         [TestCase(1, 2, 2, 1, 1.4142135623730951)]// Beide Verschieden
         public void DistanceTest(double pointX, double pointY, double nPointX, double nPointY, double expected)
         {
-            var Point = new Point(pointX, pointY);
-            var NPoint = new Point(nPointX, nPointY);
-            var actual = Point.Distance(NPoint);
+            var point = new Point(pointX, pointY);
+            var nPoint = new Point(nPointX, nPointY);
+            var actual = point.Distance(nPoint);
             Assert.AreEqual(expected,actual);
         }
 
