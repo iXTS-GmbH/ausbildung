@@ -7,7 +7,7 @@ namespace ixts.Ausbildung.Geometry
 {
     public class Polygon
     {
-        protected Point[] Points;
+        public Point[] Points;
 
         public Polygon(Point[] points)
         {
@@ -86,25 +86,47 @@ namespace ixts.Ausbildung.Geometry
 
         public Polygon Moved(double moveX, double moveY)
         {
-            return null;
+            var mpoints = new List<Point>();
+            for (int i = 0; i < Points.Length; i++)
+            {
+                mpoints.Add(new Point(Points[i].X + moveX, Points[i].Y + moveY));
+            }
+            return new Polygon(mpoints.ToArray());//Muss spezialform (Triangle,Quadliteral) zurückgeben
         }
 
         public Polygon Zoomed(double factor)
         {
-            
-            return null;
+            var mpoints = new List<Point>();
+            for (int i = 0; i < Points.Length; i++)
+            {
+                mpoints.Add(new Point(Points[i].X*factor, Points[i].Y*factor));
+            }
+            return new Polygon(mpoints.ToArray());//Muss spezialform (Triangle,Quadliteral) zurückgeben
         }
 
         public Polygon Zoomed(Point point, double factor)
         {
-            
-            return null;
+
+            var mPoints = new List<Point>();
+            for (int i = 0; i < Points.Length; i++)
+            {
+                mPoints.Add(new Point((Points[i].X - point.X) * factor + point.X, (Points[i].Y - point.Y) * factor + point.Y));
+            }
+            return new Polygon(mPoints.ToArray());//Muss spezialform (Triangle,Quadliteral) zurückgeben
         }
 
         public Polygon Rotate(double angle)
         {
-            
-            return null;
+            var rPoints = new List<Point>();
+            for (int i = 0; i < Points.Length; i++)
+            {
+                var rX = Points[i].X * Math.Cos(angle*Math.PI/180) + Points[i].Y * Math.Sin(angle*Math.PI/180);            //x' = x·cosφ + y·sinφ
+                var rY = Points[i].X * (0 - Math.Sin(angle*Math.PI/180)) + Points[i].Y * Math.Cos(angle*Math.PI/180);      //y' = x·(-sinφ) + y·cosφ
+                rX = Math.Round(rX, 2);
+                rY = Math.Round(rY, 2);
+                rPoints.Add(new Point(rX,rY));
+            }
+            return new Polygon(rPoints.ToArray());
         }
 
         public Polygon Rotate(Point point, double angle)
@@ -115,29 +137,11 @@ namespace ixts.Ausbildung.Geometry
 
         public Point Middle()
         {
-            return new Point((UpperRight().X - LowerLeft().X)/2, (UpperRight().Y - LowerLeft().Y)/2 );
+            return new Point((UpperRight().X - LowerLeft().X)/2 + LowerLeft().X, (UpperRight().Y - LowerLeft().Y)/2 + LowerLeft().X );
         }
 
     }
 }
-
-        //public Triangle Moved(double dx, double dy)
-        //{
-        //    var mA = new Point(A.X + dx, A.Y + dy);
-        //    var mB = new Point(B.X + dx, B.Y + dy);
-        //    var mC = new Point(C.X + dx, C.Y + dy);
-        //    var mTriangle = new Triangle(mA, mB, mC);
-        //    return mTriangle;
-        //}
-
-        //public Triangle Zoomed(double f)
-        //{
-        //    var zA = new Point(A.X*f, A.Y*f);
-        //    var zB = new Point(B.X*f, B.Y*f);
-        //    var zC = new Point(C.X*f, C.Y*f);
-        //    var zTriangle = new Triangle(zA, zB, zC);
-        //    return zTriangle;
-        //}
 
         //public Triangle Zoomed(Point p, double f)
         //{

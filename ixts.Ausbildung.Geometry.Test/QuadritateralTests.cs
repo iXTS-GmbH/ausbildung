@@ -26,12 +26,12 @@ namespace ixts.Ausbildung.Geometry.Test
             Assert.AreEqual(expected,actual);
         }
 
-        [TestCaseSource("AreaTestSource")]
-        public void AreaTest(Quadrilateral quad, double expected)
-        {
-            var actual = quad.Area();
-            Assert.AreEqual(expected,actual,0.01);
-        }
+        //[TestCaseSource("AreaTestSource")]
+        //public void AreaTest(Quadrilateral quad, double expected)
+        //{
+        //    var actual = quad.Area();
+        //    Assert.AreEqual(expected,actual,0.01);
+        //}
 
         public static readonly object[] AreaTestSource =
             {
@@ -85,19 +85,12 @@ namespace ixts.Ausbildung.Geometry.Test
                 new object[]{new Quadrilateral(new []{new Point(-1,0),new Point(1,0),new Point(0,1), new Point(-1,2)}), 1, false} //außerhalb des Rahmens 8 Werte (A,B,C,d)
             };
 
-        [TestCaseSource("MovedTestSource")]
-        public void MovedTest(double dx, double dy, Quadrilateral expected)
-        {
-            //var actual = sut.Moved(dx,dy);
-            //Assert.AreEqual(expected.A.X, actual.A.X);
-            //Assert.AreEqual(expected.A.Y, actual.A.Y);
-            //Assert.AreEqual(expected.B.X, actual.B.X);
-            //Assert.AreEqual(expected.B.Y, actual.B.Y);
-            //Assert.AreEqual(expected.C.X, actual.C.X);
-            //Assert.AreEqual(expected.C.Y, actual.C.Y);
-            //Assert.AreEqual(expected.D.X, actual.D.X);
-            //Assert.AreEqual(expected.D.Y, actual.D.Y);
-        }
+        //[TestCaseSource("MovedTestSource")]
+        //public void MovedTest(double dx, double dy, Quadrilateral expected)
+        //{
+        //    var actual = sut.Moved(dx,dy);
+        //    Assert.AreEqual(expected,actual);
+        //}
 
         public static readonly object[] MovedTestSource =
             {
@@ -112,19 +105,12 @@ namespace ixts.Ausbildung.Geometry.Test
                 new object[]{-1,-1,new Quadrilateral(new []{new Point(0,1), new Point(2,1), new Point(2,3), new Point(0,3)})}//Nach untenLinks verschieben
             };
 
-        [TestCaseSource("ZoomedTestSource")]
-        public void ZoomedTest(double f, Quadrilateral expected)
-        {
-            //var actual = sut.Zoomed(f);
-            //Assert.AreEqual(expected.A.X, actual.A.X);
-            //Assert.AreEqual(expected.A.Y, actual.A.Y);
-            //Assert.AreEqual(expected.B.X, actual.B.X);
-            //Assert.AreEqual(expected.B.Y, actual.B.Y);
-            //Assert.AreEqual(expected.C.X, actual.C.X);
-            //Assert.AreEqual(expected.C.Y, actual.C.Y);
-            //Assert.AreEqual(expected.D.X, actual.D.X);
-            //Assert.AreEqual(expected.D.Y, actual.D.Y);
-        }
+        //[TestCaseSource("ZoomedTestSource")]
+        //public void ZoomedTest(double f, Quadrilateral expected)
+        //{
+        //    var actual = sut.Zoomed(f);
+        //    Assert.AreEqual(expected,actual);
+        //}
 
         public static readonly object[] ZoomedTestSource =
             {
@@ -147,7 +133,11 @@ namespace ixts.Ausbildung.Geometry.Test
         [TestCase]
         public void MiddleTest()
         {
-            //muss erst UpperRight und LowerLeft funktionieren
+            var quad = new Quadrilateral(new[] {new Point(1, 1), new Point(3, 1), new Point(3, 3), new Point(1,3)});
+            var expected = new Point(2, 2);
+            var actual = quad.Middle();
+            Assert.AreEqual(expected.X, actual.X);
+            Assert.AreEqual(expected.Y, actual.Y);
         }
 
         [TestCase]

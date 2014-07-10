@@ -24,16 +24,16 @@ namespace ixts.Ausbildung.Geometry.Test
             Assert.AreEqual(expected,actual);
         }
 
-        [TestCase(1)]
-        public void AreaTest(double expected)
-        {
-            var a = new Point(1, 2);
-            var b = new Point(3, 2);
-            var c = new Point(2, 3);
-            var triangle = new Triangle(new []{a, b, c});
-            var actual = triangle.Area();
-            Assert.AreEqual(expected, actual, 0.001);
-        }
+        //[TestCase(1)]
+        //public void AreaTest(double expected)
+        //{
+        //    var a = new Point(1, 2);
+        //    var b = new Point(3, 2);
+        //    var c = new Point(2, 3);
+        //    var triangle = new Triangle(new []{a, b, c});
+        //    var actual = triangle.Area();
+        //    Assert.AreEqual(expected, actual, 0.001);
+        //}
 
         [TestCase]
         public void LowerLeftTest()
@@ -74,15 +74,15 @@ namespace ixts.Ausbildung.Geometry.Test
             };
 
         [TestCaseSource("MovedTestSource")]
-        public void MovedTest(double dx , double dy, Triangle expected)
+        public void MovedTest(double dx, double dy, Triangle expected)
         {
-            //var actual = sut.Moved(dx, dy);
-            //Assert.AreEqual(expected.A.X,actual.A.X);
-            //Assert.AreEqual(expected.A.Y,actual.A.Y);
-            //Assert.AreEqual(expected.B.X,actual.B.X);
-            //Assert.AreEqual(expected.B.Y,actual.B.Y);
-            //Assert.AreEqual(expected.C.X,actual.C.X);
-            //Assert.AreEqual(expected.C.Y,actual.C.Y);
+            var actual = sut.Moved(dx, dy);
+            Assert.AreEqual(expected.Points[0].X, actual.Points[0].X);
+            Assert.AreEqual(expected.Points[0].Y, actual.Points[0].Y);
+            Assert.AreEqual(expected.Points[1].X, actual.Points[1].X);
+            Assert.AreEqual(expected.Points[1].Y, actual.Points[1].Y);
+            Assert.AreEqual(expected.Points[2].X, actual.Points[2].X);
+            Assert.AreEqual(expected.Points[2].Y, actual.Points[2].Y);
         }
 
         public static readonly object[] MovedTestSource =
@@ -99,13 +99,13 @@ namespace ixts.Ausbildung.Geometry.Test
         [TestCaseSource("ZoomedTestSource")]
         public void ZoomedTest(double f, Triangle expected)
         {
-            //var actual = sut.Zoomed(f);
-            //Assert.AreEqual(expected.A.X, actual.A.X);
-            //Assert.AreEqual(expected.A.Y, actual.A.Y);
-            //Assert.AreEqual(expected.B.X, actual.B.X);
-            //Assert.AreEqual(expected.B.Y, actual.B.Y);
-            //Assert.AreEqual(expected.C.X, actual.C.X);
-            //Assert.AreEqual(expected.C.Y, actual.C.Y);
+            var actual = sut.Zoomed(f);
+            Assert.AreEqual(sut.Points[0].X, actual.Points[0].X);
+            Assert.AreEqual(sut.Points[0].Y, actual.Points[0].Y);
+            Assert.AreEqual(sut.Points[1].X, actual.Points[1].X);
+            Assert.AreEqual(sut.Points[1].Y, actual.Points[1].Y);
+            Assert.AreEqual(sut.Points[2].X, actual.Points[2].X);
+            Assert.AreEqual(sut.Points[2].Y, actual.Points[2].Y); 
         }
 
         public static readonly object[] ZoomedTestSource =
@@ -123,13 +123,13 @@ namespace ixts.Ausbildung.Geometry.Test
         [TestCaseSource("PointZoomedTestSource")]
         public void PointZoomedTest(Point p, double f, Triangle expected)
         {
-            //var actual = sut.Zoomed(p, f);
-            //Assert.AreEqual(expected.A.Y, actual.A.X);
-            //Assert.AreEqual(expected.A.Y, actual.A.Y);
-            //Assert.AreEqual(expected.B.X, actual.B.X);
-            //Assert.AreEqual(expected.B.Y, actual.B.Y);
-            //Assert.AreEqual(expected.C.X, actual.C.X);
-            //Assert.AreEqual(expected.C.Y, actual.C.Y);
+            var actual = sut.Zoomed(p, f);
+            Assert.AreEqual(expected.Points[0].X, actual.Points[0].X);
+            Assert.AreEqual(expected.Points[0].Y, actual.Points[0].Y);
+            Assert.AreEqual(expected.Points[1].X, actual.Points[1].X);
+            Assert.AreEqual(expected.Points[1].Y, actual.Points[1].Y);
+            Assert.AreEqual(expected.Points[2].X, actual.Points[2].X);
+            Assert.AreEqual(expected.Points[2].Y, actual.Points[2].Y); 
         }
 
         public static readonly object[] PointZoomedTestSource =
@@ -141,20 +141,30 @@ namespace ixts.Ausbildung.Geometry.Test
                 new object[]{new Point(1,1),-0.5,new Triangle(new []{new Point(1,0.5),new Point(0,0.5),new Point(0.5,0)})},     //-1 < f < 0 //Hier ist etwas glaub ich nicht ganz richtig
                 new object[]{new Point(1,1),-1, new Triangle(new []{new Point(1,0),new Point(-1,0),new Point(0,-1)})}       //f = -1     //
             };
-        [TestCase]
-        public void RotateTest()
+        [TestCase(360)]
+        public void RotateTest(double angle)
         {
-            //Muss ich mir noch Formel suchen
+            var actual = sut.Rotate(angle);
+            Assert.AreEqual(sut.Points[0].X, actual.Points[0].X); 
+            Assert.AreEqual(sut.Points[0].Y, actual.Points[0].Y); 
+            Assert.AreEqual(sut.Points[1].X, actual.Points[1].X); 
+            Assert.AreEqual(sut.Points[1].Y, actual.Points[1].Y); 
+            Assert.AreEqual(sut.Points[2].X, actual.Points[2].X); 
+            Assert.AreEqual(sut.Points[2].Y, actual.Points[2].Y); 
         }
         [TestCase]
         public void PointRotareTest()
         {
-            //siehe RotateTest
+            //in Arbeit
         }
         [TestCase]
         public void MiddleTest()
         {
-            //muss erst UpperRight und LowerLeft funktionieren
+            var triangle = new Triangle(new []{new Point(1,1),new Point(3,1),new Point(2,3)});
+            var expected = new Point(2,2);
+            var actual = triangle.Middle();
+            Assert.AreEqual(expected.X, actual.X);
+            Assert.AreEqual(expected.Y, actual.Y);
         }
 
         [TestCase]
