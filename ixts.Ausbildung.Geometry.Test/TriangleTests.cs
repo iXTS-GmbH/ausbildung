@@ -183,7 +183,7 @@ namespace ixts.Ausbildung.Geometry.Test
 
         public static readonly object[] EquilateralTestSource =
             {
-                new object[]{true, new Triangle(new []{new Point(1,1),new Point(5,1), new Point(2.5,5)})},//Suche Gleichseitiges Dreieck
+                new object[]{true, new Triangle(new []{new Point(1,1),new Point(5,1), new Point(3,4.464)})},//Suche Gleichseitiges Dreieck
                 new object[]{false, new Triangle(new []{new Point(1,2),new Point(3,2), new Point(2,3)})}
             };
 
