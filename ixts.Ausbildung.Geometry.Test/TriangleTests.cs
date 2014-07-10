@@ -187,10 +187,17 @@ namespace ixts.Ausbildung.Geometry.Test
                 new object[]{false, new Triangle(new []{new Point(1,2),new Point(3,2), new Point(2,3)})}
             };
 
-        [TestCase]
-        public void IsoscelesTest()
+        [TestCaseSource("IsoscelesTestSource")]
+        public void IsoscelesTest(Boolean expected, Triangle triangle)
         {
-            //Wenn alles andere geht
+            var actual = triangle.Isosceles();
+            Assert.AreEqual(expected,actual);
         }
+
+        public static readonly object[] IsoscelesTestSource =
+            {
+                new object[]{false, new Triangle(new []{new Point(1,1),new Point(5,1), new Point(4,5)})},//Suche Gleichseitiges Dreieck
+                new object[]{true, new Triangle(new []{new Point(1,2),new Point(3,2), new Point(2,3)})}
+            };
     }
 }
