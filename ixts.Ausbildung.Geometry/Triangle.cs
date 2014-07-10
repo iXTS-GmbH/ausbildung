@@ -19,7 +19,10 @@ namespace ixts.Ausbildung.Geometry
 
         public Boolean Isosceles()//Gleichschenklig
         {
-            return false;
+            var check = Points[0].Distance(Points[1]) == Points[1].Distance(Points[2]) ||
+                        Points[1].Distance(Points[2]) == Points[2].Distance(Points[0]) ||
+                        Points[2].Distance(Points[0]) == Points[0].Distance(Points[1]);
+            return check;
         }
     }
 }
