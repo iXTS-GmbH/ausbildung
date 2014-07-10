@@ -41,6 +41,9 @@ namespace ixts.Ausbildung.Geometry
 
         public Point LowerLeft() //Erst Lists mit x und y werten füllen dann [].Min und einen Point mit den ergebnissen als Parameter zurückgeben
         {
+            
+
+
             return null;
         }
 
@@ -49,7 +52,7 @@ namespace ixts.Ausbildung.Geometry
             return null;
         }
 
-        public Boolean IsSame(Polygon p, double within) //
+        public Boolean IsSame(Polygon polygon, double within) //
         {
 
             Boolean isSamecheck = true;
@@ -57,41 +60,41 @@ namespace ixts.Ausbildung.Geometry
             {
                 if (isSamecheck)
                 {
-                    isSamecheck = Points[i].X + within >= p.Points[i].X && Points[i].X - within <= p.Points[i].X;
+                    isSamecheck = Points[i].X + within >= polygon.Points[i].X && Points[i].X - within <= polygon.Points[i].X;
                 }
                 if (isSamecheck)
                 {
-                    isSamecheck = Points[i].Y + within >= p.Points[i].Y && Points[i].Y - within <= p.Points[i].Y;
+                    isSamecheck = Points[i].Y + within >= polygon.Points[i].Y && Points[i].Y - within <= polygon.Points[i].Y;
                 }
 
             }
             return isSamecheck;
         }
 
-        public Polygon Moved(double dx, double dy)
+        public Polygon Moved(double moveX, double moveY)
         {
             return null;
         }
 
-        public Polygon Zoomed(double f)
-        {
-            //
-            return null;
-        }
-
-        public Polygon Zoomed(Point p, double f)
+        public Polygon Zoomed(double factor)
         {
             //
             return null;
         }
 
-        public Polygon Rotate(double w)
+        public Polygon Zoomed(Point point, double factor)
         {
             //
             return null;
         }
 
-        public Polygon Rotate(Point p, double w)
+        public Polygon Rotate(double angle)
+        {
+            //
+            return null;
+        }
+
+        public Polygon Rotate(Point point, double angle)
         {
             //
             return null;
