@@ -98,6 +98,7 @@
             this.btn_zoomMinus.TabIndex = 5;
             this.btn_zoomMinus.Text = "-";
             this.btn_zoomMinus.UseVisualStyleBackColor = true;
+            this.btn_zoomMinus.Click += new System.EventHandler(this.btn_zoomMinus_Click);
             // 
             // btn_zoomPlus
             // 

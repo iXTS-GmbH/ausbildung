@@ -138,8 +138,17 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
             if (lb_ListofForms.SelectedIndex >= 0)
             {
                 var middlepoint = listOfForms[lb_ListofForms.SelectedIndex].Middle();
-                listOfForms[lb_ListofForms.SelectedIndex] = listOfForms[lb_ListofForms.SelectedIndex].Zoomed(
-                    middlepoint, 2);
+                listOfForms[lb_ListofForms.SelectedIndex] = listOfForms[lb_ListofForms.SelectedIndex].Zoomed(middlepoint, 2);
+                Polygon_Change();
+            }
+        }
+
+        private void btn_zoomMinus_Click(object sender, EventArgs e)
+        {
+            if (lb_ListofForms.SelectedIndex >= 0)
+            {
+                var middlepoint = listOfForms[lb_ListofForms.SelectedIndex].Middle();
+                listOfForms[lb_ListofForms.SelectedIndex] = listOfForms[lb_ListofForms.SelectedIndex].Zoomed(middlepoint, 0.5);
                 Polygon_Change();
             }
         }
