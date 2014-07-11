@@ -24,16 +24,16 @@ namespace ixts.Ausbildung.Geometry.Test
             Assert.AreEqual(expected,actual);
         }
 
-        //[TestCase(1)]
-        //public void AreaTest(double expected)
-        //{
-        //    var a = new Point(1, 2);
-        //    var b = new Point(3, 2);
-        //    var c = new Point(2, 3);
-        //    var triangle = new Triangle(new []{a, b, c});
-        //    var actual = triangle.Area();
-        //    Assert.AreEqual(expected, actual, 0.001);
-        //}
+        [TestCase(1)]
+        public void AreaTest(double expected)
+        {
+            var a = new Point(1, 2);
+            var b = new Point(3, 2);
+            var c = new Point(2, 3);
+            var triangle = new Triangle(new[] { a, b, c });
+            var actual = triangle.Area();
+            Assert.AreEqual(expected, actual, 0.001);
+        }
 
         [TestCase]
         public void LowerLeftTest()

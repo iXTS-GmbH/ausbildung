@@ -26,12 +26,12 @@ namespace ixts.Ausbildung.Geometry.Test
             Assert.AreEqual(expected,actual);
         }
 
-        //[TestCaseSource("AreaTestSource")]
-        //public void AreaTest(Quadrilateral quad, double expected)
-        //{
-        //    var actual = quad.Area();
-        //    Assert.AreEqual(expected,actual,0.01);
-        //}
+        [TestCaseSource("AreaTestSource")]
+        public void AreaTest(Quadrilateral quad, double expected)
+        {
+            var actual = quad.Area();
+            Assert.AreEqual(expected, actual, 0.01);
+        }
 
         public static readonly object[] AreaTestSource =
             {

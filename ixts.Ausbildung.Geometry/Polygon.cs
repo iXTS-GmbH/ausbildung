@@ -31,14 +31,25 @@ namespace ixts.Ausbildung.Geometry
             return perimeter;
         }
 
-        public double Area() //Muss ich Patrick nach allgemeiner Formel fragen (oder googlen)
+        public double Area()
         {
-        //double sA = B.Distance(C);
-        //double sB = C.Distance(A);
-        //double sC = A.Distance(B);
-        //double s = (sA + sB + sC) / 2;
-        //double flaeche = Math.Sqrt(s * (s - sA) * (s - sB) * (s - sC)); //Fläche Dreieck
-            return 0;
+            double sum1 = 0;
+            double sum2 = 0;
+            for (int i = 0; i < Points.Length; i++) //Formel: A = (n.X*n+1.Y (n.X*0.Y(Ende)) - n.Y*n+1.X (n.Y*0.X(Ende)))/2
+            {
+                if (i == Points.Length - 1)
+                {
+                    sum1 = sum1 + Points[i].X*Points[0].Y;
+                    sum2 = sum2 + Points[i].Y*Points[0].X;
+                }
+                else
+                {
+                    sum1 = sum1 + Points[i].X*Points[i + 1].Y;
+                    sum2 = sum2 + Points[i].Y*Points[i + 1].X;
+                }
+            }
+            double flaeche = (sum1 - sum2)/2;
+            return flaeche;
         }
 
         public Point LowerLeft()
@@ -91,7 +102,7 @@ namespace ixts.Ausbildung.Geometry
             {
                 mpoints.Add(new Point(Points[i].X + moveX, Points[i].Y + moveY));
             }
-            return new Polygon(mpoints.ToArray());//Muss spezialform (Triangle,Quadliteral) zurückgeben
+            return new Polygon(mpoints.ToArray());
         }
 
         public Polygon Zoomed(double factor)
@@ -101,7 +112,7 @@ namespace ixts.Ausbildung.Geometry
             {
                 mpoints.Add(new Point(Points[i].X*factor, Points[i].Y*factor));
             }
-            return new Polygon(mpoints.ToArray());//Muss spezialform (Triangle,Quadliteral) zurückgeben
+            return new Polygon(mpoints.ToArray());
         }
 
         public Polygon Zoomed(Point point, double factor)
@@ -112,7 +123,7 @@ namespace ixts.Ausbildung.Geometry
             {
                 mPoints.Add(new Point((Points[i].X - point.X) * factor + point.X, (Points[i].Y - point.Y) * factor + point.Y));
             }
-            return new Polygon(mPoints.ToArray());//Muss spezialform (Triangle,Quadliteral) zurückgeben
+            return new Polygon(mPoints.ToArray());
         }
 
         public Polygon Rotate(double angle)
