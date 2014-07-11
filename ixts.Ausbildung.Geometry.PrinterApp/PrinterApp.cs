@@ -81,18 +81,79 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
 
         private void btn_Erase_Click(object sender, EventArgs e)
         {
-            Graphics g = pnl_drawField.CreateGraphics();
-            SolidBrush sb = new SolidBrush(Color.White);
-            g.FillRectangle(sb,0,0,pnl_drawField.Width,pnl_drawField.Height);
+            ClearField();
+            ClearLists();
+        }
+
+        private void ClearLists()
+        {
+            
             listOfForms.Clear();
             lb_ListofForms.Items.Clear();
             trianglecounter = 0;
             quadliteralcounter = 0;
         }
 
+        private void ClearField()
+        {
+            Graphics g = pnl_drawField.CreateGraphics();
+            SolidBrush sb = new SolidBrush(Color.White);
+            g.FillRectangle(sb,0,0,pnl_drawField.Width,pnl_drawField.Height);
+        }
+
         private void btn_moveUp_Click(object sender, EventArgs e)
         {
-
+            movePolygon(0,1);
         }
+
+        private void movePolygon(double moveX,double moveY)
+        {
+            listOfForms[lb_ListofForms.SelectedIndex] = listOfForms[lb_ListofForms.SelectedIndex].Moved(moveX, moveY);
+            reDraw();
+        }
+
+        private void reDraw()
+        {
+            ClearField();
+            foreach (var form in listOfForms)
+            {
+                paintPolygon(form, pnl_drawField.Height);
+            }
+        }
+
+        private void btn_moveDown_Click(object sender, EventArgs e)
+        {
+            movePolygon(0,-1);
+        }
+
+        private void btn_moveLeft_Click(object sender, EventArgs e)
+        {
+            movePolygon(-1,0);
+        }
+
+        private void btn_moveRight_Click(object sender, EventArgs e)
+        {
+            movePolygon(1,0);
+        }
+
+        private void btn_zoomPlus_Click(object sender, EventArgs e)
+        {
+            ZoomPolygon(2);
+        }
+
+        private void btn_zoomMinus_Click(object sender, EventArgs e)
+        {
+            ZoomPolygon(0.5);
+        }
+
+        private void ZoomPolygon(double factor)
+        {
+            var middlepoint = listOfForms[lb_ListofForms.SelectedIndex].Middle();
+            listOfForms[lb_ListofForms.SelectedIndex] = listOfForms[lb_ListofForms.SelectedIndex].Zoomed(middlepoint,factor);
+            reDraw();
+        }
+
+
+
     }
 }
