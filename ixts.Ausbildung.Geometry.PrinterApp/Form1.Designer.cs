@@ -33,14 +33,13 @@
             this.btn_moveRight = new System.Windows.Forms.Button();
             this.btn_moveDown = new System.Windows.Forms.Button();
             this.btn_moveLeft = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btn_zoomMinus = new System.Windows.Forms.Button();
+            this.btn_zoomPlus = new System.Windows.Forms.Button();
             this.lb_ListofForms = new System.Windows.Forms.ListBox();
             this.btn_Erase = new System.Windows.Forms.Button();
             this.btn_Draw = new System.Windows.Forms.Button();
             this.dd_Polygons = new System.Windows.Forms.ComboBox();
             this.tb_coordinates = new System.Windows.Forms.TextBox();
-            this.lbl_control = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // pnl_drawField
@@ -91,23 +90,24 @@
             this.btn_moveLeft.UseVisualStyleBackColor = true;
             this.btn_moveLeft.Click += new System.EventHandler(this.btn_moveLeft_Click);
             // 
-            // button5
+            // btn_zoomMinus
             // 
-            this.button5.Location = new System.Drawing.Point(106, 32);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(27, 23);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "-";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btn_zoomMinus.Location = new System.Drawing.Point(106, 32);
+            this.btn_zoomMinus.Name = "btn_zoomMinus";
+            this.btn_zoomMinus.Size = new System.Drawing.Size(27, 23);
+            this.btn_zoomMinus.TabIndex = 5;
+            this.btn_zoomMinus.Text = "-";
+            this.btn_zoomMinus.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btn_zoomPlus
             // 
-            this.button6.Location = new System.Drawing.Point(62, 32);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(25, 23);
-            this.button6.TabIndex = 6;
-            this.button6.Text = "+";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btn_zoomPlus.Location = new System.Drawing.Point(62, 32);
+            this.btn_zoomPlus.Name = "btn_zoomPlus";
+            this.btn_zoomPlus.Size = new System.Drawing.Size(25, 23);
+            this.btn_zoomPlus.TabIndex = 6;
+            this.btn_zoomPlus.Text = "+";
+            this.btn_zoomPlus.UseVisualStyleBackColor = true;
+            this.btn_zoomPlus.Click += new System.EventHandler(this.btn_zoomPlus_Click);
             // 
             // lb_ListofForms
             // 
@@ -160,28 +160,18 @@
             this.tb_coordinates.Size = new System.Drawing.Size(100, 20);
             this.tb_coordinates.TabIndex = 11;
             // 
-            // lbl_control
-            // 
-            this.lbl_control.AutoSize = true;
-            this.lbl_control.Location = new System.Drawing.Point(134, 418);
-            this.lbl_control.Name = "lbl_control";
-            this.lbl_control.Size = new System.Drawing.Size(68, 13);
-            this.lbl_control.TabIndex = 12;
-            this.lbl_control.Text = "KontrollLabel";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(543, 501);
-            this.Controls.Add(this.lbl_control);
             this.Controls.Add(this.tb_coordinates);
             this.Controls.Add(this.dd_Polygons);
             this.Controls.Add(this.btn_Draw);
             this.Controls.Add(this.btn_Erase);
             this.Controls.Add(this.lb_ListofForms);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.btn_zoomPlus);
+            this.Controls.Add(this.btn_zoomMinus);
             this.Controls.Add(this.btn_moveLeft);
             this.Controls.Add(this.btn_moveDown);
             this.Controls.Add(this.btn_moveRight);
@@ -201,14 +191,13 @@
         private System.Windows.Forms.Button btn_moveRight;
         private System.Windows.Forms.Button btn_moveDown;
         private System.Windows.Forms.Button btn_moveLeft;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btn_zoomMinus;
+        private System.Windows.Forms.Button btn_zoomPlus;
         private System.Windows.Forms.ListBox lb_ListofForms;
         private System.Windows.Forms.Button btn_Erase;
         private System.Windows.Forms.Button btn_Draw;
         private System.Windows.Forms.ComboBox dd_Polygons;
         private System.Windows.Forms.TextBox tb_coordinates;
-        private System.Windows.Forms.Label lbl_control;
     }
 }
 

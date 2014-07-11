@@ -11,6 +11,8 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
         private List<Polygon> listOfForms = new List<Polygon>(); 
         private int triangleCounter;
         private int quadliteralCounter;
+        private SolidBrush sb = new SolidBrush(Color.Blue);
+        private Pen pen = new Pen(Color.Blue);
         public Form1()
         {
             InitializeComponent();
@@ -37,9 +39,6 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
 
         private void pnl_drawField_Paint(System.Drawing.Point[] drawpoints, Point[] formpoints)
         {
-            Graphics g = pnl_drawField.CreateGraphics();
-            Pen p = new Pen(Color.Black);
-            SolidBrush sb = new SolidBrush(Color.Blue);
             if (dd_Polygons.SelectedIndex == 0)
             {
                 listOfDrawForms.Add(drawpoints);
@@ -54,16 +53,16 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
                 quadliteralCounter = quadliteralCounter + 1;
                 lb_ListofForms.Items.Add("Quadliteral" + quadliteralCounter);
             }
-            paint(g,p,sb);
-            lbl_control.Text = "Painted";
+            Field_Paint();
 
         }
 
-        private void paint(Graphics g, Pen p, SolidBrush sb)
+        private void Field_Paint()
         {
+            Graphics g = pnl_drawField.CreateGraphics();
             for (int i = 0; i < listOfDrawForms.Count; i++)
             {
-                g.DrawPolygon(p, listOfDrawForms[i]);
+                g.DrawPolygon(pen, listOfDrawForms[i]);
                 g.FillPolygon(sb, listOfDrawForms[i]);
             }
         }
@@ -74,14 +73,14 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
             listOfDrawForms.Clear();
             listOfForms.Clear();
             lb_ListofForms.Items.Clear();
-            lbl_control.Text = "Erased";
+            tb_coordinates.Text = "";
         }
 
         private void clear_Field()
         {
+            SolidBrush clearBrush = new SolidBrush(Color.White);
             Graphics g = pnl_drawField.CreateGraphics();
-            SolidBrush sb = new SolidBrush(Color.White);
-            g.FillRectangle(sb, 0, 0, 250, 200);
+            g.FillRectangle(clearBrush, 0, 0, 250, 200);
         }
 
         private void btn_moveDown_Click(object sender, EventArgs e)
@@ -89,7 +88,7 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
             if (lb_ListofForms.SelectedIndex >= 0)
             {
             listOfForms[lb_ListofForms.SelectedIndex] = listOfForms[lb_ListofForms.SelectedIndex].Moved(0, 1);
-            move();
+            Polygon_Change();
             }
 
         }
@@ -99,7 +98,7 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
             if (lb_ListofForms.SelectedIndex >= 0)
             {
                 listOfForms[lb_ListofForms.SelectedIndex] = listOfForms[lb_ListofForms.SelectedIndex].Moved(0, -1);
-                move();
+                Polygon_Change();
             }
         }
 
@@ -108,7 +107,7 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
             if (lb_ListofForms.SelectedIndex >= 0)
             {
                 listOfForms[lb_ListofForms.SelectedIndex] = listOfForms[lb_ListofForms.SelectedIndex].Moved(1, 0);
-                move();
+                Polygon_Change();
             }
         }
 
@@ -117,11 +116,11 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
             if (lb_ListofForms.SelectedIndex >= 0)
             {
                 listOfForms[lb_ListofForms.SelectedIndex] = listOfForms[lb_ListofForms.SelectedIndex].Moved(-1, 0);
-                move();
+                Polygon_Change();
             }
         }
 
-        private void move()
+        private void Polygon_Change()
         {
             for (int i = 0; i < listOfForms[lb_ListofForms.SelectedIndex].Points.Length; i++)
             {
@@ -130,12 +129,19 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
                 listOfDrawForms[lb_ListofForms.SelectedIndex][i].Y =
                     Convert.ToInt32(listOfForms[lb_ListofForms.SelectedIndex].Points[i].Y);
             }
-            Graphics g = pnl_drawField.CreateGraphics();
-            SolidBrush sb = new SolidBrush(Color.Blue);
-            Pen p = new Pen(Color.Blue);
             clear_Field();
-            paint(g, p, sb);
+            Field_Paint();
         }
 
+        private void btn_zoomPlus_Click(object sender, EventArgs e)
+        {
+            if (lb_ListofForms.SelectedIndex >= 0)
+            {
+                var middlepoint = listOfForms[lb_ListofForms.SelectedIndex].Middle();
+                listOfForms[lb_ListofForms.SelectedIndex] = listOfForms[lb_ListofForms.SelectedIndex].Zoomed(
+                    middlepoint, 2);
+                Polygon_Change();
+            }
+        }
     }
 }
