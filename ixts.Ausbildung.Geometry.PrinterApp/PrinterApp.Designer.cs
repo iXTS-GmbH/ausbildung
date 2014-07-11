@@ -1,6 +1,6 @@
 ﻿namespace ixts.Ausbildung.Geometry.PrinterApp
 {
-    partial class Form1
+    partial class PrinterApp
     {
         /// <summary>
         /// Erforderliche Designervariable.
@@ -58,7 +58,7 @@
             this.btn_moveUp.TabIndex = 1;
             this.btn_moveUp.Text = "Oben";
             this.btn_moveUp.UseVisualStyleBackColor = true;
-            this.btn_moveUp.Click += new System.EventHandler(this.btn_moveUp_Click);
+            //this.btn_moveUp.Click += new System.EventHandler(this.btn_moveUp_Click);
             // 
             // btn_moveRight
             // 
@@ -68,7 +68,7 @@
             this.btn_moveRight.TabIndex = 2;
             this.btn_moveRight.Text = "Rechts";
             this.btn_moveRight.UseVisualStyleBackColor = true;
-            this.btn_moveRight.Click += new System.EventHandler(this.btn_moveRight_Click);
+            //this.btn_moveRight.Click += new System.EventHandler(this.btn_moveRight_Click);
             // 
             // btn_moveDown
             // 
@@ -78,7 +78,7 @@
             this.btn_moveDown.TabIndex = 3;
             this.btn_moveDown.Text = "Unten";
             this.btn_moveDown.UseVisualStyleBackColor = true;
-            this.btn_moveDown.Click += new System.EventHandler(this.btn_moveDown_Click);
+            //this.btn_moveDown.Click += new System.EventHandler(this.btn_moveDown_Click);
             // 
             // btn_moveLeft
             // 
@@ -88,7 +88,7 @@
             this.btn_moveLeft.TabIndex = 4;
             this.btn_moveLeft.Text = "Links";
             this.btn_moveLeft.UseVisualStyleBackColor = true;
-            this.btn_moveLeft.Click += new System.EventHandler(this.btn_moveLeft_Click);
+            //this.btn_moveLeft.Click += new System.EventHandler(this.btn_moveLeft_Click);
             // 
             // btn_zoomMinus
             // 
@@ -98,7 +98,7 @@
             this.btn_zoomMinus.TabIndex = 5;
             this.btn_zoomMinus.Text = "-";
             this.btn_zoomMinus.UseVisualStyleBackColor = true;
-            this.btn_zoomMinus.Click += new System.EventHandler(this.btn_zoomMinus_Click);
+            //this.btn_zoomMinus.Click += new System.EventHandler(this.btn_zoomMinus_Click);
             // 
             // btn_zoomPlus
             // 
@@ -108,7 +108,7 @@
             this.btn_zoomPlus.TabIndex = 6;
             this.btn_zoomPlus.Text = "+";
             this.btn_zoomPlus.UseVisualStyleBackColor = true;
-            this.btn_zoomPlus.Click += new System.EventHandler(this.btn_zoomPlus_Click);
+            //this.btn_zoomPlus.Click += new System.EventHandler(this.btn_zoomPlus_Click);
             // 
             // lb_ListofForms
             // 
@@ -128,7 +128,7 @@
             this.btn_Erase.TabIndex = 8;
             this.btn_Erase.Text = "Erase";
             this.btn_Erase.UseVisualStyleBackColor = false;
-            this.btn_Erase.Click += new System.EventHandler(this.btn_Erase_Click);
+            //this.btn_Erase.Click += new System.EventHandler(this.btn_Erase_Click);
             // 
             // btn_Draw
             // 
@@ -161,7 +161,7 @@
             this.tb_coordinates.Size = new System.Drawing.Size(100, 20);
             this.tb_coordinates.TabIndex = 11;
             // 
-            // Form1
+            // PrinterApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -178,7 +178,7 @@
             this.Controls.Add(this.btn_moveRight);
             this.Controls.Add(this.btn_moveUp);
             this.Controls.Add(this.pnl_drawField);
-            this.Name = "Form1";
+            this.Name = "PrinterApp";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
