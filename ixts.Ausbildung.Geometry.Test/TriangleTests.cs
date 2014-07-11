@@ -187,7 +187,7 @@ namespace ixts.Ausbildung.Geometry.Test
                 new object[]{false, new Triangle(new []{new Point(1,2),new Point(3,2), new Point(2,3)})}
             };
 
-        [TestCaseSource("IsoscelesTestSource")]
+        [TestCaseSource("IsoscelesTestSource")]//Gleichschenklig
         public void IsoscelesTest(Boolean expected, Triangle triangle)
         {
             var actual = triangle.Isosceles();
