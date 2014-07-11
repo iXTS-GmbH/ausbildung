@@ -77,6 +77,7 @@
             this.btn_moveDown.TabIndex = 3;
             this.btn_moveDown.Text = "Unten";
             this.btn_moveDown.UseVisualStyleBackColor = true;
+            this.btn_moveDown.Click += new System.EventHandler(this.btn_moveDown_Click);
             // 
             // btn_moveLeft
             // 
