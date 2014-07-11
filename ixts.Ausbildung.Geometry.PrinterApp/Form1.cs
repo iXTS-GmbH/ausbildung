@@ -7,12 +7,12 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
 {
     public partial class Form1 : Form
     {
-        private List<System.Drawing.Point[]> listOfDrawForms = new List<System.Drawing.Point[]>();
-        private List<Polygon> listOfForms = new List<Polygon>(); 
+        private readonly List<System.Drawing.Point[]> listOfDrawForms = new List<System.Drawing.Point[]>();
+        private readonly List<Polygon> listOfForms = new List<Polygon>(); 
         private int triangleCounter;
         private int quadliteralCounter;
-        private SolidBrush sb = new SolidBrush(Color.Blue);
-        private Pen pen = new Pen(Color.Blue);
+        private readonly SolidBrush sb = new SolidBrush(Color.Blue);
+        private readonly Pen pen = new Pen(Color.Blue);
         public Form1()
         {
             InitializeComponent();
@@ -25,12 +25,11 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
             var drawpoints = new List<System.Drawing.Point>();
             var formpoints = new List<Point>();
             var pointstrings = tb_coordinates.Text.Split(';');
-            for (int i = 0; i < pointstrings.Length; i++)
+            foreach (string pointstring in pointstrings)
             {
-                var coordinats = pointstrings[i].Split('/');
+                var coordinats = pointstring.Split('/');
                 drawpoints.Add(new System.Drawing.Point(int.Parse(coordinats[0]),200 - int.Parse(coordinats[1])));
                 formpoints.Add(new Point(double.Parse(coordinats[0]),200 - double.Parse(coordinats[1])));
-               
             }
             pnl_drawField_Paint(drawpoints.ToArray(), formpoints.ToArray());  
             }
@@ -60,10 +59,10 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
         private void Field_Paint()
         {
             Graphics g = pnl_drawField.CreateGraphics();
-            for (int i = 0; i < listOfDrawForms.Count; i++)
+            foreach (System.Drawing.Point[] points in listOfDrawForms)
             {
-                g.DrawPolygon(pen, listOfDrawForms[i]);
-                g.FillPolygon(sb, listOfDrawForms[i]);
+                g.DrawPolygon(pen, points);
+                g.FillPolygon(sb, points);
             }
         }
 
@@ -78,8 +77,8 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
 
         private void clear_Field()
         {
-            SolidBrush clearBrush = new SolidBrush(Color.White);
-            Graphics g = pnl_drawField.CreateGraphics();
+            var clearBrush = new SolidBrush(Color.White);
+            var g = pnl_drawField.CreateGraphics();
             g.FillRectangle(clearBrush, 0, 0, 250, 200);
         }
 
@@ -124,10 +123,10 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
         {
             for (int i = 0; i < listOfForms[lb_ListofForms.SelectedIndex].Points.Length; i++)
             {
-                listOfDrawForms[lb_ListofForms.SelectedIndex][i].X =
-                    Convert.ToInt32(listOfForms[lb_ListofForms.SelectedIndex].Points[i].X);
-                listOfDrawForms[lb_ListofForms.SelectedIndex][i].Y =
-                    Convert.ToInt32(listOfForms[lb_ListofForms.SelectedIndex].Points[i].Y);
+                listOfDrawForms[lb_ListofForms.SelectedIndex][i].X = Convert.ToInt32(listOfForms[lb_ListofForms.SelectedIndex].Points[i].X);
+                    
+                listOfDrawForms[lb_ListofForms.SelectedIndex][i].Y = Convert.ToInt32(listOfForms[lb_ListofForms.SelectedIndex].Points[i].Y);
+                    
             }
             clear_Field();
             Field_Paint();

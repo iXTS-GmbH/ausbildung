@@ -92,7 +92,7 @@
             // 
             // btn_zoomMinus
             // 
-            this.btn_zoomMinus.Location = new System.Drawing.Point(106, 32);
+            this.btn_zoomMinus.Location = new System.Drawing.Point(121, 32);
             this.btn_zoomMinus.Name = "btn_zoomMinus";
             this.btn_zoomMinus.Size = new System.Drawing.Size(27, 23);
             this.btn_zoomMinus.TabIndex = 5;
@@ -102,7 +102,7 @@
             // 
             // btn_zoomPlus
             // 
-            this.btn_zoomPlus.Location = new System.Drawing.Point(62, 32);
+            this.btn_zoomPlus.Location = new System.Drawing.Point(90, 32);
             this.btn_zoomPlus.Name = "btn_zoomPlus";
             this.btn_zoomPlus.Size = new System.Drawing.Size(25, 23);
             this.btn_zoomPlus.TabIndex = 6;
