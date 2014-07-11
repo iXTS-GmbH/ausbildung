@@ -7,7 +7,9 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
 {
     public partial class PrinterApp : Form
     {
-        private readonly List<Polygon> listOfForms = new List<Polygon>(); 
+        private readonly List<Polygon> listOfForms = new List<Polygon>();
+        private int trianglecounter;
+        private int quadliteralcounter;
         public PrinterApp()
         {
             InitializeComponent();
@@ -20,6 +22,21 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
             var form = CreateForm(isTriangle, tb_coordinates.Text);
             listOfForms.Add(form);
             paintPolygon(form,pnl_drawField.Height);
+            AddPolygontoList(isTriangle);
+        }
+
+        private void AddPolygontoList(Boolean isTriangle)
+        {
+            if (isTriangle)
+            {
+                trianglecounter = trianglecounter + 1;
+                lb_ListofForms.Items.Add("Triangle" + trianglecounter);
+            }
+            else
+            {
+                quadliteralcounter = quadliteralcounter + 1;
+                lb_ListofForms.Items.Add("Quadliteral" + quadliteralcounter);
+            }
         }
 
         private void paintPolygon(Polygon form, int height)
@@ -55,11 +72,27 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
                 foreach (string pointstring in pointstrings)
                 {
                     var coordinats = pointstring.Split('/');
-                    points.Add(new Point(double.Parse(coordinats[0]), double.Parse(coordinats[1])));//ungeparsete Koordinaten
+                    points.Add(new Point(double.Parse(coordinats[0]), double.Parse(coordinats[1])));
                 }
                 return points.ToArray();
             }
             return null;
+        }
+
+        private void btn_Erase_Click(object sender, EventArgs e)
+        {
+            Graphics g = pnl_drawField.CreateGraphics();
+            SolidBrush sb = new SolidBrush(Color.White);
+            g.FillRectangle(sb,0,0,pnl_drawField.Width,pnl_drawField.Height);
+            listOfForms.Clear();
+            lb_ListofForms.Items.Clear();
+            trianglecounter = 0;
+            quadliteralcounter = 0;
+        }
+
+        private void btn_moveUp_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
