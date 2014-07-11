@@ -69,6 +69,7 @@
             this.btn_moveRight.TabIndex = 2;
             this.btn_moveRight.Text = "Rechts";
             this.btn_moveRight.UseVisualStyleBackColor = true;
+            this.btn_moveRight.Click += new System.EventHandler(this.btn_moveRight_Click);
             // 
             // btn_moveDown
             // 
