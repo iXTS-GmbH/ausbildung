@@ -28,8 +28,8 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
             for (int i = 0; i < pointstrings.Length; i++)
             {
                 var coordinats = pointstrings[i].Split('/');
-                drawpoints.Add(new System.Drawing.Point(int.Parse(coordinats[0]), int.Parse(coordinats[1])));
-                formpoints.Add(new Point(double.Parse(coordinats[0]), double.Parse(coordinats[1])));
+                drawpoints.Add(new System.Drawing.Point(int.Parse(coordinats[0]),200 - int.Parse(coordinats[1])));
+                formpoints.Add(new Point(double.Parse(coordinats[0]),200 - double.Parse(coordinats[1])));
                
             }
             pnl_drawField_Paint(drawpoints.ToArray(), formpoints.ToArray());  
@@ -138,6 +138,7 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
             if (lb_ListofForms.SelectedIndex >= 0)
             {
                 var middlepoint = listOfForms[lb_ListofForms.SelectedIndex].Middle();
+                middlepoint.Y = 200 - middlepoint.Y;
                 listOfForms[lb_ListofForms.SelectedIndex] = listOfForms[lb_ListofForms.SelectedIndex].Zoomed(middlepoint, 2);
                 Polygon_Change();
             }
@@ -148,6 +149,7 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
             if (lb_ListofForms.SelectedIndex >= 0)
             {
                 var middlepoint = listOfForms[lb_ListofForms.SelectedIndex].Middle();
+                middlepoint.Y = 200 - middlepoint.Y;
                 listOfForms[lb_ListofForms.SelectedIndex] = listOfForms[lb_ListofForms.SelectedIndex].Zoomed(middlepoint, 0.5);
                 Polygon_Change();
             }
