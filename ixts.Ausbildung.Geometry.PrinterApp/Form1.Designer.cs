@@ -89,6 +89,7 @@
             this.btn_moveLeft.TabIndex = 4;
             this.btn_moveLeft.Text = "Links";
             this.btn_moveLeft.UseVisualStyleBackColor = true;
+            this.btn_moveLeft.Click += new System.EventHandler(this.btn_moveLeft_Click);
             // 
             // button5
             // 
