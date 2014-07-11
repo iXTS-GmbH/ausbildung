@@ -181,14 +181,14 @@ namespace ixts.Ausbildung.Geometry.Test
         public static readonly object[] QuadratTestSource =
             {
                 new object[]{true, new Quadrilateral(new []{new Point(1,1),new Point(1,5),new Point(5,5), new Point(5,1)})},
-                new object[]{false,new Quadrilateral(new []{new Point(1,1),new Point(1,5),new Point(5,5), new Point(5,2)}) }
+                new object[]{false,new Quadrilateral(new []{new Point(1,1),new Point(1,5),new Point(5,5), new Point(5,2)})}
             };
 
-        [TestCase]
-        public void ParallelogrammTest()
+        [TestCaseSource("QuadratTestSource")]
+        public void ParallelogrammTest(Boolean expected, Quadrilateral quad)
         {
-            //erst wenn alles andere geht
+            var actual = quad.Parallelogram();
+            Assert.AreEqual(expected, actual);
         }
-
     }
 }
