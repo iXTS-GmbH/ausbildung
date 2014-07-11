@@ -59,6 +59,7 @@
             this.btn_moveUp.TabIndex = 1;
             this.btn_moveUp.Text = "Oben";
             this.btn_moveUp.UseVisualStyleBackColor = true;
+            this.btn_moveUp.Click += new System.EventHandler(this.btn_moveUp_Click);
             // 
             // btn_moveRight
             // 
