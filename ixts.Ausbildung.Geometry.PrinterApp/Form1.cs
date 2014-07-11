@@ -89,58 +89,46 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
             if (lb_ListofForms.SelectedIndex >= 0)
             {
             listOfForms[lb_ListofForms.SelectedIndex] = listOfForms[lb_ListofForms.SelectedIndex].Moved(0, 1);
-            for (int i = 0; i < listOfForms[lb_ListofForms.SelectedIndex].Points.Length; i++)
-            {
-                listOfDrawForms[lb_ListofForms.SelectedIndex][i].X = Convert.ToInt32(listOfForms[lb_ListofForms.SelectedIndex].Points[i].X);
-                listOfDrawForms[lb_ListofForms.SelectedIndex][i].Y = Convert.ToInt32(listOfForms[lb_ListofForms.SelectedIndex].Points[i].Y);
-            }
-            Graphics g = pnl_drawField.CreateGraphics();
-            SolidBrush sb = new SolidBrush(Color.Blue);
-            Pen p = new Pen(Color.Blue);
-            clear_Field();
-            paint(g,p,sb);
+            move();
             }
 
         }
 
         private void btn_moveUp_Click(object sender, EventArgs e)
         {
-
-            listOfForms[lb_ListofForms.SelectedIndex] = listOfForms[lb_ListofForms.SelectedIndex].Moved(0, -1);
-            for (int i = 0; i < listOfForms[lb_ListofForms.SelectedIndex].Points.Length; i++)
+            if (lb_ListofForms.SelectedIndex >= 0)
             {
-                listOfDrawForms[lb_ListofForms.SelectedIndex][i].X = Convert.ToInt32(listOfForms[lb_ListofForms.SelectedIndex].Points[i].X);
-                listOfDrawForms[lb_ListofForms.SelectedIndex][i].Y = Convert.ToInt32(listOfForms[lb_ListofForms.SelectedIndex].Points[i].Y);
+                listOfForms[lb_ListofForms.SelectedIndex] = listOfForms[lb_ListofForms.SelectedIndex].Moved(0, -1);
+                move();
             }
-            Graphics g = pnl_drawField.CreateGraphics();
-            SolidBrush sb = new SolidBrush(Color.Blue);
-            Pen p = new Pen(Color.Blue);
-            clear_Field();
-            paint(g, p, sb);
         }
 
         private void btn_moveRight_Click(object sender, EventArgs e)
         {
-            listOfForms[lb_ListofForms.SelectedIndex] = listOfForms[lb_ListofForms.SelectedIndex].Moved(1,0);
-            for (int i = 0; i < listOfForms[lb_ListofForms.SelectedIndex].Points.Length; i++)
+            if (lb_ListofForms.SelectedIndex >= 0)
             {
-                listOfDrawForms[lb_ListofForms.SelectedIndex][i].X = Convert.ToInt32(listOfForms[lb_ListofForms.SelectedIndex].Points[i].X);
-                listOfDrawForms[lb_ListofForms.SelectedIndex][i].Y = Convert.ToInt32(listOfForms[lb_ListofForms.SelectedIndex].Points[i].Y);
+                listOfForms[lb_ListofForms.SelectedIndex] = listOfForms[lb_ListofForms.SelectedIndex].Moved(1, 0);
+                move();
             }
-            Graphics g = pnl_drawField.CreateGraphics();
-            SolidBrush sb = new SolidBrush(Color.Blue);
-            Pen p = new Pen(Color.Blue);
-            clear_Field();
-            paint(g, p, sb);
         }
 
         private void btn_moveLeft_Click(object sender, EventArgs e)
         {
-            listOfForms[lb_ListofForms.SelectedIndex] = listOfForms[lb_ListofForms.SelectedIndex].Moved(-1, 0);
+            if (lb_ListofForms.SelectedIndex >= 0)
+            {
+                listOfForms[lb_ListofForms.SelectedIndex] = listOfForms[lb_ListofForms.SelectedIndex].Moved(-1, 0);
+                move();
+            }
+        }
+
+        private void move()
+        {
             for (int i = 0; i < listOfForms[lb_ListofForms.SelectedIndex].Points.Length; i++)
             {
-                listOfDrawForms[lb_ListofForms.SelectedIndex][i].X = Convert.ToInt32(listOfForms[lb_ListofForms.SelectedIndex].Points[i].X);
-                listOfDrawForms[lb_ListofForms.SelectedIndex][i].Y = Convert.ToInt32(listOfForms[lb_ListofForms.SelectedIndex].Points[i].Y);
+                listOfDrawForms[lb_ListofForms.SelectedIndex][i].X =
+                    Convert.ToInt32(listOfForms[lb_ListofForms.SelectedIndex].Points[i].X);
+                listOfDrawForms[lb_ListofForms.SelectedIndex][i].Y =
+                    Convert.ToInt32(listOfForms[lb_ListofForms.SelectedIndex].Points[i].Y);
             }
             Graphics g = pnl_drawField.CreateGraphics();
             SolidBrush sb = new SolidBrush(Color.Blue);
@@ -148,7 +136,6 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
             clear_Field();
             paint(g, p, sb);
         }
-
 
     }
 }
