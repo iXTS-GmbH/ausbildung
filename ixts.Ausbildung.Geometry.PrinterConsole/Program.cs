@@ -28,7 +28,7 @@ namespace ixts.Ausbildung.Geometry.PrinterConsole
             
         }
 
-        private static void Draw(string[] args)
+        private static void Draw(string[] args)//Draw Methode
         {
             var points = new List<Point>();
             for (int i = 2; i < args.Length; i++)
@@ -46,19 +46,37 @@ namespace ixts.Ausbildung.Geometry.PrinterConsole
             }
         }
 
-        private static void Move(string[] args)
+        private static void Move(string[] args)//Move Methode
         {
-            //Methode Move
+            var moveX = 0;
+            var moveY = 0;
+            switch (args[1])
+            {
+                case "north"://faktor ist 1/0
+                    moveX = 1;
+                    break;
+                case "east"://faktor ist 0/1
+                    moveY = 1;
+                    break;
+                case "south"://faktor ist -1/0
+                    moveX = -1;
+                    break;
+                case "west"://faktor ist 0/-1
+                    moveY = -1;
+                    break;
+            }
+            listOfForms[listOfForms.Count - 1] = listOfForms[listOfForms.Count - 1].Moved(moveX, moveY);
+
         }
 
-        private static void Zoom(string[] args)
+        private static void Zoom(string[] args)//Zoom Methode 
         {
-            //Methode Zoom
+            
         }
 
-        private static void Print(string[] args)
+        private static void Print(string[] args)//Print Methode 
         {
-            //Methode Print
+            
         }
     }
 }
