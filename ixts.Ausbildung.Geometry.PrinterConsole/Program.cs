@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
-using System.Text;
 
 namespace ixts.Ausbildung.Geometry.PrinterConsole
 {
@@ -25,7 +25,6 @@ namespace ixts.Ausbildung.Geometry.PrinterConsole
                     Print(args);
                     break;
             }
-            
         }
 
         private static void Draw(string[] args)//Draw Methode
@@ -76,7 +75,54 @@ namespace ixts.Ausbildung.Geometry.PrinterConsole
 
         private static void Print(string[] args)//Print Methode 
         {
-            
+            Bitmap pic = new Bitmap(PicWidth(),PicHeight());
+            Graphics g = Graphics.FromImage(pic);
+            Pen p = new Pen(Color.Black); 
+            SolidBrush sb = new SolidBrush(Color.Black);
+            for (int i = 0; i < listOfForms.Count; i++)
+            {
+                var drawpoints = new List<System.Drawing.Point>();
+                foreach (var point in listOfForms[i].Points)
+                {
+                    drawpoints.Add(new System.Drawing.Point(Convert.ToInt32(point.X), Convert.ToInt32(point.Y)));
+                }
+                g.DrawPolygon(p,drawpoints.ToArray());
+                g.FillPolygon(sb,drawpoints.ToArray());
+            }
+            pic.Save(args[1]);
+        }
+
+        private static int PicHeight()
+        {
+            var values = new List<double>();
+            foreach (var form in listOfForms)
+            {
+                foreach (var point in form.Points)
+                {
+                    values.Add(point.Y);
+                }
+            }
+            return Range(values);
+        }
+
+        private static int PicWidth()
+        {
+            var values = new List<double>();
+            foreach (var form in listOfForms)
+            {
+                foreach (var point in form.Points)
+                {
+                    values.Add(point.X);
+                }
+            }
+        }
+
+        private static int Range(List<double> values)
+        {
+            var maxvalue = values.ToArray().Max();
+            var minvalue = values.ToArray().Min();
+            var height = maxvalue - minvalue;
+            return Convert.ToInt32(height);
         }
     }
 }

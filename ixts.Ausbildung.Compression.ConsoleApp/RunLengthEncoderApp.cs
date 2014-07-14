@@ -24,7 +24,6 @@ namespace ixts.Ausbildung.Compression.ConsoleApp
                 Console.WriteLine("Datei {0} wurde Komprimiert - Kompressionsrate: {1}%", toCompFileName, Convert.ToInt64(shrunkenprocent));
                 var newpath = Path.GetFullPath(newDataName);
                 File.WriteAllBytes(newpath,encImgBytes);
-                //Console.ReadKey();
             }
             else
             {
@@ -41,7 +40,6 @@ namespace ixts.Ausbildung.Compression.ConsoleApp
                 var decimgBytes = rld.Decode(orgimgBytes, checkRange);
                 File.WriteAllBytes(newpath,decimgBytes);
                 Console.WriteLine("Datei {0} wurde dekomprimiert", toDeCompFileName);
-                //Console.ReadKey();
             }
         }
     }
