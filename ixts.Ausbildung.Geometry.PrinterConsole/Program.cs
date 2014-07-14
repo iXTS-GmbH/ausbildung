@@ -16,7 +16,7 @@ namespace ixts.Ausbildung.Geometry.PrinterConsole
                     Draw(args); //draw Triangle 20/20 40/20 30/40
                     break;
                 case "move":
-                    Move(args);
+                    Move(args);//move north 2
                     break;
                 case "zoom":
                     Zoom(args);
@@ -52,16 +52,16 @@ namespace ixts.Ausbildung.Geometry.PrinterConsole
             switch (args[1])
             {
                 case "north"://faktor ist 1/0
-                    moveX = 1;
+                    moveX = Convert.ToInt32(args[2]);
                     break;
                 case "east"://faktor ist 0/1
-                    moveY = 1;
+                    moveY = Convert.ToInt32(args[2]);
                     break;
                 case "south"://faktor ist -1/0
-                    moveX = -1;
+                    moveX = -Convert.ToInt32(args[2]);//Faktor Negativ
                     break;
                 case "west"://faktor ist 0/-1
-                    moveY = -1;
+                    moveY = -Convert.ToInt32(args[2]);//Faktor Negativ
                     break;
             }
             listOfForms[listOfForms.Count - 1] = listOfForms[listOfForms.Count - 1].Moved(moveX, moveY);
@@ -77,7 +77,7 @@ namespace ixts.Ausbildung.Geometry.PrinterConsole
         {
             Bitmap pic = new Bitmap(PicWidth(),PicHeight());
             Graphics g = Graphics.FromImage(pic);
-            Pen p = new Pen(Color.Black); 
+            Pen p = new Pen(Color.Black);
             SolidBrush sb = new SolidBrush(Color.Black);
             for (int i = 0; i < listOfForms.Count; i++)
             {
@@ -86,8 +86,8 @@ namespace ixts.Ausbildung.Geometry.PrinterConsole
                 {
                     drawpoints.Add(new System.Drawing.Point(Convert.ToInt32(point.X), Convert.ToInt32(point.Y)));
                 }
-                g.DrawPolygon(p,drawpoints.ToArray());
-                g.FillPolygon(sb,drawpoints.ToArray());
+                g.DrawPolygon(p, drawpoints.ToArray());
+                g.FillPolygon(sb, drawpoints.ToArray());
             }
             pic.Save(args[1]);
         }
@@ -115,6 +115,7 @@ namespace ixts.Ausbildung.Geometry.PrinterConsole
                     values.Add(point.X);
                 }
             }
+            return Range(values);
         }
 
         private static int Range(List<double> values)
