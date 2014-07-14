@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.Geometry.Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.Geometry.PrinterApp", "ixts.Ausbildung.Geometry.PrinterApp\ixts.Ausbildung.Geometry.PrinterApp.csproj", "{FDD49AEC-1458-45D5-9832-F605846DDA11}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.Geometry.PrinterConsole", "ixts.Ausbildung.Geometry.PrinterConsole\ixts.Ausbildung.Geometry.PrinterConsole.csproj", "{F23CFFE3-7E72-48D3-91E4-0DB040627FF2}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = ixts.Ausbildung.vsmdi
@@ -92,6 +94,16 @@ Global
 		{FDD49AEC-1458-45D5-9832-F605846DDA11}.Release|Mixed Platforms.Build.0 = Release|x86
 		{FDD49AEC-1458-45D5-9832-F605846DDA11}.Release|x86.ActiveCfg = Release|x86
 		{FDD49AEC-1458-45D5-9832-F605846DDA11}.Release|x86.Build.0 = Release|x86
+		{F23CFFE3-7E72-48D3-91E4-0DB040627FF2}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{F23CFFE3-7E72-48D3-91E4-0DB040627FF2}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{F23CFFE3-7E72-48D3-91E4-0DB040627FF2}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{F23CFFE3-7E72-48D3-91E4-0DB040627FF2}.Debug|x86.ActiveCfg = Debug|x86
+		{F23CFFE3-7E72-48D3-91E4-0DB040627FF2}.Debug|x86.Build.0 = Debug|x86
+		{F23CFFE3-7E72-48D3-91E4-0DB040627FF2}.Release|Any CPU.ActiveCfg = Release|x86
+		{F23CFFE3-7E72-48D3-91E4-0DB040627FF2}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{F23CFFE3-7E72-48D3-91E4-0DB040627FF2}.Release|Mixed Platforms.Build.0 = Release|x86
+		{F23CFFE3-7E72-48D3-91E4-0DB040627FF2}.Release|x86.ActiveCfg = Release|x86
+		{F23CFFE3-7E72-48D3-91E4-0DB040627FF2}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
