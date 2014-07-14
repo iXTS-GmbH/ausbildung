@@ -19,10 +19,10 @@ namespace ixts.Ausbildung.Geometry.PrinterConsole
                     Move(args);//move north 2
                     break;
                 case "zoom":
-                    Zoom(args);
+                    Zoom(args);//zoom 2
                     break;
                 case "print":
-                    Print(args);
+                    Print(args);//print C:\Users\mkaestl.IXTS\Projekte\Ausbildung\ausbildung\test.png
                     break;
             }
         }

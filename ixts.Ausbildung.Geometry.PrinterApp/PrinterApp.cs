@@ -22,10 +22,10 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
             var form = CreateForm(isTriangle, tb_coordinates.Text);
             listOfForms.Add(form);
             paintPolygon(form,pnl_drawField.Height);
-            AddPolygontoList(isTriangle);
+            AddPolygontoListbox(isTriangle);
         }
 
-        private void AddPolygontoList(Boolean isTriangle)
+        private void AddPolygontoListbox(Boolean isTriangle)
         {
             if (isTriangle)
             {
