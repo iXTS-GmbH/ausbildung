@@ -66,12 +66,12 @@ namespace ixts.Ausbildung.Geometry.PrinterConsole
                     break;
             }
             listOfForms[listOfForms.Count - 1] = listOfForms[listOfForms.Count - 1].Moved(moveX, moveY);
-
         }
 
         private static void Zoom(string[] args)//Zoom Methode 
         {
-            
+            var middle = listOfForms[listOfForms.Count - 1].Middle();
+            listOfForms[listOfForms.Count - 1] = listOfForms[listOfForms.Count - 1].Zoomed(middle, double.Parse(args[1]));
         }
 
         private static void Print(string[] args)//Print Methode 
