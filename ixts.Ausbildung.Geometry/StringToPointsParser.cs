@@ -12,10 +12,16 @@ namespace ixts.Ausbildung.Geometry
 
         }
 
-        public Point[] Parse(string pointstring)
+        public static Point[] Parse(string pointstring)
         {
-
-            return null;//Hier sollen aus dem String die Points gemacht werden (Format: x/y x/y)
+                var points = new List<Point>();
+                var pointsstrings = pointstring.Split(' ');
+                foreach (string point in pointsstrings)
+                {
+                    var coordinates = point.Split('/');
+                    points.Add(new Point(double.Parse(coordinates[0]), double.Parse(coordinates[1])));
+                }
+                return points.ToArray();//Hier sollen aus dem String die Points gemacht werden (Format: x/y x/y)
         }
     }
 }

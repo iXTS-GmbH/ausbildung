@@ -11,40 +11,62 @@ namespace ixts.Ausbildung.Geometry
         private Dictionary<string, Polygon> polygons = new Dictionary<string, Polygon>();
         private int triangleCounter;
         private int quadliteralCounter;
-        //Hier soll die ganze Funktionalität hin
         public PolygonPrinter()
         {
 
         }
 
-        public void MovePolygon(string polygon, double moveX, double movey)
+        public void MovePolygon(string polygon, double moveX, double moveY)
         {
-            //Bewegt das Polygon mit dem namen gleich dem string polygon
+            polygons[polygon] = polygons[polygon].Moved(moveX, moveY);
         }
 
         public void ZoomPolygon(string polygon, double factor)
         {
-            //Zoomed das Polygon mit dem namen gleich dem string polygon
+            var middlepoint = polygons[polygon].Middle();
+            polygons[polygon] = polygons[polygon].Zoomed(middlepoint, factor);
         }
 
         public void Clear()
         {
-            //setzt den PolygonPrinter auf seinen Anfangszustand zurück
+            triangleCounter = 0;
+            quadliteralCounter = 0;
+            polygons.Clear();
         }
 
         public String Create(Point point1, Point point2, Point point3)//Triangle
         {
-            return null; //Erschafft ein Triangle
+            var newTriangle = new Triangle(new Point[] {point1, point2, point3});
+            triangleCounter = triangleCounter + 1;
+            polygons.Add("Triangle" + triangleCounter,newTriangle);
+            return "Triangle" + triangleCounter;
         }
 
         public String Create(Point point1, Point point2, Point point3, Point point4)//Quadliteral
         {
-            return null;//Erschafft ein Quadliteral
+            var newQuadliteral = new Triangle(new[] { point1, point2, point3, point4 });
+            quadliteralCounter = quadliteralCounter + 1;
+            polygons.Add("Quadliteral" + quadliteralCounter, newQuadliteral);
+            return "Quadliteral" + quadliteralCounter; 
         }
 
-        public Bitmap Print()
+        public Bitmap Print(int height, int width)
         {
-            return null;//Zeichnet alle Polygone in ein Bitmap
+            Bitmap bitmap = new Bitmap(width,height);
+            Graphics g = Graphics.FromImage(bitmap);
+            Pen p = new Pen(Color.Black);
+            SolidBrush sb = new SolidBrush(Color.Black);
+            foreach (var polygon in polygons)
+            {
+                var drawpoints = new List<System.Drawing.Point>();
+                foreach (var point in polygon.Value.Points)
+                {
+                    drawpoints.Add(new System.Drawing.Point(Convert.ToInt32(point.X),height -  Convert.ToInt32(point.Y)));
+                }
+                g.DrawPolygon(p,drawpoints.ToArray());
+                g.FillPolygon(sb,drawpoints.ToArray());
+            }
+            return bitmap;
         }
     }
 }
