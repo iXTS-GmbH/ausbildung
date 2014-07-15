@@ -44,6 +44,9 @@
     <Compile Include="Polygon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Quadrilateral.cs" />
+    <Compile Include="PolygonPrinter.cs" />
+    <Compile Include="ScriptInterpreter.cs" />
+    <Compile Include="StringToPointsParser.cs" />
     <Compile Include="Triangle.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

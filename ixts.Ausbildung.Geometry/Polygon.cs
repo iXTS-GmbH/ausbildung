@@ -56,7 +56,7 @@ namespace ixts.Ausbildung.Geometry
         {
             var xValues = new List<double>();
             var yValues = new List<double>();
-            foreach (Point point in Points)
+            foreach (var point in Points)
             {
                 xValues.Add(point.X);
                 yValues.Add(point.Y);

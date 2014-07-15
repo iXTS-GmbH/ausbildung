@@ -21,11 +21,11 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
             var isTriangle = dd_Polygons.SelectedIndex == 0;
             var form = CreateForm(isTriangle, tb_coordinates.Text);
             listOfForms.Add(form);
-            paintPolygon(form,pnl_drawField.Height);
-            AddPolygontoListbox(isTriangle);
+            PaintPolygon(form,pnl_drawField.Height);
+            AddPolygonToListbox(isTriangle);
         }
 
-        private void AddPolygontoListbox(Boolean isTriangle)
+        private void AddPolygonToListbox(Boolean isTriangle)
         {
             if (isTriangle)
             {
@@ -39,13 +39,13 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
             }
         }
 
-        private void paintPolygon(Polygon form, int height)
+        private void PaintPolygon(Polygon form, int height)
         {
             var drawpoints = new List<System.Drawing.Point>();
             foreach (var point in form.Points)
             {
                 drawpoints.Add(new System.Drawing.Point(Convert.ToInt32(point.X), Convert.ToInt32(height-point.Y)));
-            };
+            }
             Graphics g = pnl_drawField.CreateGraphics();
             Pen p = new Pen(Color.Blue);
             SolidBrush sb = new SolidBrush(Color.Blue);
@@ -55,7 +55,7 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
 
         private Polygon CreateForm(Boolean isTriangle, string coordinatesText)
         {
-            var points = stringToPoint(coordinatesText);
+            var points = StringToPoints(coordinatesText);
             if (isTriangle)
             {
                 return new Triangle(points);
@@ -63,7 +63,7 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
             return new Quadrilateral(points);
         }
 
-        private Point[] stringToPoint(string coordinatesText)
+        private Point[] StringToPoints(string coordinatesText)
         {
             if (tb_coordinates.Text.Length != 0)
             {
@@ -71,8 +71,8 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
                 var pointstrings = coordinatesText.Split(';');
                 foreach (string pointstring in pointstrings)
                 {
-                    var coordinats = pointstring.Split('/');
-                    points.Add(new Point(double.Parse(coordinats[0]), double.Parse(coordinats[1])));
+                   var coordinates = pointstring.Split('/');
+                   points.Add(new Point(double.Parse(coordinates[0]), double.Parse(coordinates[1])));
                 }
                 return points.ToArray();
             }
@@ -103,37 +103,35 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
 
         private void btn_moveUp_Click(object sender, EventArgs e)
         {
-            movePolygon(0,1);
+            listOfForms[lb_ListofForms.SelectedIndex] = listOfForms[lb_ListofForms.SelectedIndex].Moved(0, 1);
+            ReDraw();
         }
 
-        private void movePolygon(double moveX,double moveY)
-        {
-            listOfForms[lb_ListofForms.SelectedIndex] = listOfForms[lb_ListofForms.SelectedIndex].Moved(moveX, moveY);
-            reDraw();
-        }
-
-        private void reDraw()
+        private void ReDraw()
         {
             ClearField();
             foreach (var form in listOfForms)
             {
-                paintPolygon(form, pnl_drawField.Height);
+                PaintPolygon(form, pnl_drawField.Height);
             }
         }
 
         private void btn_moveDown_Click(object sender, EventArgs e)
         {
-            movePolygon(0,-1);
+            listOfForms[lb_ListofForms.SelectedIndex] = listOfForms[lb_ListofForms.SelectedIndex].Moved(0,-1);
+            ReDraw();
         }
 
         private void btn_moveLeft_Click(object sender, EventArgs e)
         {
-            movePolygon(-1,0);
+            listOfForms[lb_ListofForms.SelectedIndex] = listOfForms[lb_ListofForms.SelectedIndex].Moved(-1,0);
+            ReDraw();
         }
 
         private void btn_moveRight_Click(object sender, EventArgs e)
         {
-            movePolygon(1,0);
+            listOfForms[lb_ListofForms.SelectedIndex] = listOfForms[lb_ListofForms.SelectedIndex].Moved(1,0);
+            ReDraw();
         }
 
         private void btn_zoomPlus_Click(object sender, EventArgs e)
@@ -150,7 +148,7 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
         {
             var middlepoint = listOfForms[lb_ListofForms.SelectedIndex].Middle();
             listOfForms[lb_ListofForms.SelectedIndex] = listOfForms[lb_ListofForms.SelectedIndex].Zoomed(middlepoint,factor);
-            reDraw();
+            ReDraw();
         }
 
 

@@ -5,7 +5,8 @@ using System.Text;
 
 namespace ixts.Ausbildung.Geometry
 {
-    class Same
+    public class PolygonPrinter
     {
+        //Hier soll die ganze Funktionalität hin
     }
 }

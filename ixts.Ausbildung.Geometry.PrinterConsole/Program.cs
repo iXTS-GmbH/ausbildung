@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.IO;
 
 namespace ixts.Ausbildung.Geometry.PrinterConsole
 {
@@ -10,19 +11,25 @@ namespace ixts.Ausbildung.Geometry.PrinterConsole
         private static List<Polygon> listOfForms = new List<Polygon>(); 
         static void Main(string[] args)
         {
-            switch (args[0])
+            var test = Console.ReadLine();
+            Console.Out.Write(test);
+        }
+
+        private static void CommandInterpretation(String[] command)//Die Ganze Main ist nicht mehr als Befehlsinterpretation
+        {
+            switch (command[0])
             {
                 case "draw":
-                    Draw(args); //draw Triangle 20/20 40/20 30/40
+                    Draw(command); //draw Triangle 20/20 40/20 30/40
                     break;
                 case "move":
-                    Move(args);//move north 2
+                    Move(command);//move north 2
                     break;
                 case "zoom":
-                    Zoom(args);//zoom 2
+                    Zoom(command);//zoom 2
                     break;
                 case "print":
-                    Print(args);//print C:\Users\mkaestl.IXTS\Projekte\Ausbildung\ausbildung\test.png
+                    Print(command);//print C:\Users\mkaestl.IXTS\Projekte\Ausbildung\ausbildung\test.png
                     break;
             }
         }
@@ -33,7 +40,7 @@ namespace ixts.Ausbildung.Geometry.PrinterConsole
             for (int i = 2; i < args.Length; i++)
             {
                 var coordinates = args[i].Split('/');
-                points.Add(new Point( double.Parse(coordinates[0]), double.Parse(coordinates[1])));
+                points.Add(new Point(double.Parse(coordinates[0]), double.Parse(coordinates[1])));
             }
             if (args[1] == "Triangle")
             {
@@ -43,6 +50,7 @@ namespace ixts.Ausbildung.Geometry.PrinterConsole
             {
                 listOfForms.Add(new Quadrilateral(points.ToArray()));
             }
+            
         }
 
         private static void Move(string[] args)//Move Methode
@@ -64,7 +72,7 @@ namespace ixts.Ausbildung.Geometry.PrinterConsole
                     moveY = -Convert.ToInt32(args[2]);//Faktor Negativ
                     break;
             }
-            listOfForms[listOfForms.Count - 1] = listOfForms[listOfForms.Count - 1].Moved(moveX, moveY);
+            listOfForms[listOfForms.Count - 1] = listOfForms[listOfForms.Count - 1].Moved(moveX,moveY);
         }
 
         private static void Zoom(string[] args)//Zoom Methode 
@@ -95,6 +103,7 @@ namespace ixts.Ausbildung.Geometry.PrinterConsole
         private static int PicHeight()
         {
             var values = new List<double>();
+
             foreach (var form in listOfForms)
             {
                 foreach (var point in form.Points)
@@ -108,6 +117,7 @@ namespace ixts.Ausbildung.Geometry.PrinterConsole
         private static int PicWidth()
         {
             var values = new List<double>();
+
             foreach (var form in listOfForms)
             {
                 foreach (var point in form.Points)
