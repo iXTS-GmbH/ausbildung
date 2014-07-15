@@ -6,8 +6,8 @@ namespace ixts.Ausbildung.Geometry
 {
     public class ScriptInterpreter
     {
-        private PolygonPrinter polygonPrinter = new PolygonPrinter();
-        private List<string> listOfForms = new List<string>(); 
+        internal PolygonPrinter polygonPrinter = new PolygonPrinter();
+        internal List<string> listOfForms = new List<string>(); 
 
         public void Eval(String script)
         {
@@ -60,17 +60,17 @@ namespace ixts.Ausbildung.Geometry
             var moveY = 0;
             switch (direction)
             {
-                case "north"://vektor ist 1/0
-                    moveX = offset;
-                    break;
-                case "east"://vektor ist 0/1
+                case "north"://vektor ist 0/1
                     moveY = offset;
                     break;
-                case "south"://vektor ist -1/0
-                    moveX = -offset;//Negativ
+                case "east"://vektor ist 1/0
+                    moveX = offset;
                     break;
-                case "west"://vektor ist 0/-1
+                case "south"://vektor ist 0/-1
                     moveY = -offset;//Negativ
+                    break;
+                case "west"://vektor ist -1/0
+                    moveX = -offset;//Negativ
                     break;
             }
             polygonPrinter.MovePolygon(listOfForms[listOfForms.Count - 1],moveX,moveY);

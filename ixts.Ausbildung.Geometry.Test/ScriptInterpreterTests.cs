@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using NUnit.Framework;
 
 namespace ixts.Ausbildung.Geometry.Test
@@ -9,14 +6,57 @@ namespace ixts.Ausbildung.Geometry.Test
     [TestFixture]
     class ScriptInterpreterTests
     {
-
-        [TestCase("draw 20/20 40/20 30/40")]
-        [TestCase("move north 10")]
-        [TestCase("zoom 2")]
-        [TestCase("print C:/Users/mkaestl.IXTS/Desktop/test.png")]
-        public void EvalTest(string script)
+        private ScriptInterpreter sut;
+        [SetUp]
+        public void SetUp()
         {
-            //wie soll ich das Testen?
+            sut = new ScriptInterpreter();
         }
+
+        [TestCase("draw Triangle 20/20 40/20 30/40")]
+
+        public void EvalDrawTest(string script)
+        {
+            var expected = "Triangle1";
+            sut.Eval(script);
+            Assert.AreEqual(expected,sut.listOfForms[0]);
+        }
+
+        [TestCase("draw Triangle 20/20 40/20 30/40","move north 10")]
+        public void EvalMoveTest(string script, string script2)
+        {
+            var expected = new Dictionary<string, Polygon>();
+            expected.Add("Triangle1", new Triangle(new[] { new Point(20, 30), new Point(40, 30), new Point(30, 50) }));
+            sut.Eval(script);
+            sut.Eval(script2);
+                Assert.AreEqual(expected["Triangle1"].Points[0].X, sut.polygonPrinter.polygons["Triangle1"].Points[0].X);
+            Assert.AreEqual(expected["Triangle1"].Points[0].Y, sut.polygonPrinter.polygons["Triangle1"].Points[0].Y);
+            Assert.AreEqual(expected["Triangle1"].Points[1].X, sut.polygonPrinter.polygons["Triangle1"].Points[1].X);
+            Assert.AreEqual(expected["Triangle1"].Points[1].Y, sut.polygonPrinter.polygons["Triangle1"].Points[1].Y);
+            Assert.AreEqual(expected["Triangle1"].Points[2].X, sut.polygonPrinter.polygons["Triangle1"].Points[2].X);
+            Assert.AreEqual(expected["Triangle1"].Points[2].Y, sut.polygonPrinter.polygons["Triangle1"].Points[2].Y);
+        }
+
+        [TestCase("draw Triangle 20/20 40/20 30/40", "zoom 2")]
+        public void EvalZoomTest(string script, string script2)
+        {
+            var expected = new Dictionary<string, Polygon>();
+            expected.Add("Triangle1", new Triangle(new[] { new Point(10, 10), new Point(50, 10), new Point(30, 50) }));
+            sut.Eval(script);
+            sut.Eval(script2);
+            Assert.AreEqual(expected["Triangle1"].Points[0].X, sut.polygonPrinter.polygons["Triangle1"].Points[0].X);
+            Assert.AreEqual(expected["Triangle1"].Points[0].Y, sut.polygonPrinter.polygons["Triangle1"].Points[0].Y);
+            Assert.AreEqual(expected["Triangle1"].Points[1].X, sut.polygonPrinter.polygons["Triangle1"].Points[1].X);
+            Assert.AreEqual(expected["Triangle1"].Points[1].Y, sut.polygonPrinter.polygons["Triangle1"].Points[1].Y);
+            Assert.AreEqual(expected["Triangle1"].Points[2].X, sut.polygonPrinter.polygons["Triangle1"].Points[2].X);
+            Assert.AreEqual(expected["Triangle1"].Points[2].Y, sut.polygonPrinter.polygons["Triangle1"].Points[2].Y);
+        }
+
+        //[TestCase("print C:/Users/mkaestl.IXTS/Desktop/test.png")]
+        //public void PrintTest(string script)
+        //{
+            
+        //}
+
     }
 }

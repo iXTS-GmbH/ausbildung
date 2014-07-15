@@ -180,7 +180,7 @@
             this.Controls.Add(this.pnl_drawField);
             this.Name = "PrinterApp";
             this.Text = "Form1";
-            //this.Load += new System.EventHandler(this.PrinterApp_Load);
+            this.Load += new System.EventHandler(this.PrinterApp_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

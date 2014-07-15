@@ -14,7 +14,7 @@ namespace ixts.Ausbildung.Geometry.Test
             sut = new PolygonPrinter();
         }
         
-        [TestCase()]
+        [TestCase]
         public void TriangleCreateTest()//Geht
         {
             var expected = new Dictionary<string, Polygon>();
@@ -28,7 +28,7 @@ namespace ixts.Ausbildung.Geometry.Test
             Assert.AreEqual(expected["Triangle1"].Points[2].Y, sut.polygons[actual].Points[2].Y);
         }
 
-        [TestCase()]
+        [TestCase]
         public void QuadliteralCreateTest()
         {
             var expected = new Dictionary<string, Polygon>();
@@ -43,7 +43,7 @@ namespace ixts.Ausbildung.Geometry.Test
             Assert.AreEqual(expected["Quadliteral1"].Points[3].X, sut.polygons[actual].Points[3].X);
             Assert.AreEqual(expected["Quadliteral1"].Points[3].Y, sut.polygons[actual].Points[3].Y);
         }
-        [TestCase()]
+        [TestCase]
         public void MoveTest()
         {
             sut.Create(new Point(20, 20), new Point(40, 20), new Point(30, 40));
@@ -59,7 +59,7 @@ namespace ixts.Ausbildung.Geometry.Test
 
         }
 
-        [TestCase()]
+        [TestCase]
         public void ZoomTest()
         {
             sut.Create(new Point(20, 20), new Point(40, 20), new Point(30, 40));
@@ -76,7 +76,7 @@ namespace ixts.Ausbildung.Geometry.Test
 
 
 
-        [TestCase()]
+        [TestCase]
         public void PrintTest()
         {
             sut.Create(new Point(20, 20), new Point(40, 20), new Point(30, 40));
@@ -95,7 +95,7 @@ namespace ixts.Ausbildung.Geometry.Test
             Assert.AreEqual(expected.Width, actual.Width);
         }
 
-        [TestCase()]
+        [TestCase]
         public void ClearTest()
         {
             sut.Create(new Point(20, 20), new Point(40, 20), new Point(30, 40));
