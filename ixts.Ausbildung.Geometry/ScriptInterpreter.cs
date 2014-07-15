@@ -11,7 +11,7 @@ namespace ixts.Ausbildung.Geometry
 
         public void Eval(String script)
         {
-            var commands = script.Split(new []{"\r\n"},StringSplitOptions.None);
+            var commands = script.Split(new []{Environment.NewLine},StringSplitOptions.None);
             foreach (var command in commands)
             {
                 EvalCommand(command);
@@ -60,17 +60,17 @@ namespace ixts.Ausbildung.Geometry
             var moveY = 0;
             switch (direction)
             {
-                case "north"://faktor ist 1/0
+                case "north"://vektor ist 1/0
                     moveX = offset;
                     break;
-                case "east"://faktor ist 0/1
+                case "east"://vektor ist 0/1
                     moveY = offset;
                     break;
-                case "south"://faktor ist -1/0
-                    moveX = -offset;//Faktor Negativ
+                case "south"://vektor ist -1/0
+                    moveX = -offset;//Negativ
                     break;
-                case "west"://faktor ist 0/-1
-                    moveY = -offset;//Faktor Negativ
+                case "west"://vektor ist 0/-1
+                    moveY = -offset;//Negativ
                     break;
             }
             polygonPrinter.MovePolygon(listOfForms[listOfForms.Count - 1],moveX,moveY);

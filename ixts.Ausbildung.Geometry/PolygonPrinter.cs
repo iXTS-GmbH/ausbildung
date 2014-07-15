@@ -7,7 +7,7 @@ namespace ixts.Ausbildung.Geometry
 {
     public class PolygonPrinter
     {
-        private Dictionary<string, Polygon> polygons = new Dictionary<string, Polygon>();
+        internal Dictionary<string, Polygon> polygons = new Dictionary<string, Polygon>();
         private int triangleCounter;
         private int quadliteralCounter;
 
