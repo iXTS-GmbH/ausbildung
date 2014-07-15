@@ -79,11 +79,16 @@ namespace ixts.Ausbildung.Geometry.Test
         [TestCase]
         public void PrintTest()
         {
-            sut.Create(new Point(20, 20), new Point(40, 20), new Point(30, 40));
-            var expected = new Bitmap(45, 45);
+            sut.Create(new Point(1,1),new Point(3,1),new Point(2,2));
+            var expected = new Bitmap("C:/Users/mkaestl.IXTS/Projekte/Ausbildung/ausbildung/testTriangle.png");
             var actual = sut.Print();
-            Assert.AreEqual(expected.Height,actual.Height);
-            Assert.AreEqual(expected.Width,actual.Width);
+            for (int i = 0; i < expected.Height; i++)
+            {
+                for (int j = 0; j < expected.Width; j++)
+                {
+                    Assert.AreEqual(expected.GetPixel(j,i),actual.GetPixel(j,i));
+                }
+            }
         }
 
         [TestCase(500,500)]
