@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Drawing;
 
 namespace ixts.Ausbildung.Geometry
@@ -11,10 +10,6 @@ namespace ixts.Ausbildung.Geometry
         private Dictionary<string, Polygon> polygons = new Dictionary<string, Polygon>();
         private int triangleCounter;
         private int quadliteralCounter;
-        public PolygonPrinter()
-        {
-
-        }
 
         public void MovePolygon(string polygon, double moveX, double moveY)
         {
@@ -36,7 +31,7 @@ namespace ixts.Ausbildung.Geometry
 
         public String Create(Point point1, Point point2, Point point3)//Triangle
         {
-            var newTriangle = new Triangle(new Point[] {point1, point2, point3});
+            var newTriangle = new Triangle(new [] {point1, point2, point3});
             triangleCounter = triangleCounter + 1;
             polygons.Add("Triangle" + triangleCounter,newTriangle);
             return "Triangle" + triangleCounter;

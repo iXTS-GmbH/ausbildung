@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 
 namespace ixts.Ausbildung.Geometry
 {
@@ -11,14 +9,9 @@ namespace ixts.Ausbildung.Geometry
         private PolygonPrinter polygonPrinter = new PolygonPrinter();
         private List<string> listOfForms = new List<string>(); 
 
-        public ScriptInterpreter()
-        {
-
-        }
-
         public void Eval(String script)
         {
-            var commands = script.Split(new string[]{"\r\n"},StringSplitOptions.None);
+            var commands = script.Split(new []{"\r\n"},StringSplitOptions.None);
             foreach (var command in commands)
             {
                 EvalCommand(command);
@@ -27,7 +20,7 @@ namespace ixts.Ausbildung.Geometry
 
         private void EvalCommand(string command)
         {
-            var parameter = command.Split(' ');
+            var parameter = command.Split(' ');//um Befehlstyp bestimmen zu können
             switch (parameter[0])
             {
                 case "draw":
@@ -49,13 +42,13 @@ namespace ixts.Ausbildung.Geometry
         {
             if (parameter[1] == "Triangle")
             {
-                var pointstring = parameter[2] + " " + parameter[3] + " " + parameter[4];
+                var pointstring = parameter[2] + " " + parameter[3] + " " + parameter[4]; //um einen String zu erhalten der alle Punkte in den Parametern hat
                 var points = StringToPointsParser.Parse(pointstring);
                 listOfForms.Add(polygonPrinter.Create(points[0],points[1],points[2]));
             }
             else
             {
-                var pointstring = parameter[2] + " " + parameter[3] + " " + parameter[4] + " " + parameter[5];
+                var pointstring = parameter[2] + " " + parameter[3] + " " + parameter[4] + " " + parameter[5];//siehe anderen Komentar
                 var points = StringToPointsParser.Parse(pointstring);
                 listOfForms.Add(polygonPrinter.Create(points[0], points[1], points[2],points[3]));
             }
@@ -91,7 +84,7 @@ namespace ixts.Ausbildung.Geometry
         private void Print(string path)
         {
             Bitmap bitmap = polygonPrinter.Print();
-            bitmap.Save(path);
+            bitmap.Save(path); //Wichtig das path den Dateinamen enthält(Fehlerquelle)
         }
     }
 }
