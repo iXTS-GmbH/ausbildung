@@ -68,5 +68,50 @@ namespace ixts.Ausbildung.Geometry
             }
             return bitmap;
         }
+
+        public Bitmap Print()
+        {
+            Bitmap bitmap = new Bitmap(BitmapWidth(), BitmapHeight());
+            Graphics g = Graphics.FromImage(bitmap);
+            Pen p = new Pen(Color.Black);
+            SolidBrush sb = new SolidBrush(Color.Black);
+            foreach (var polygon in polygons)
+            {
+                var drawpoints = new List<System.Drawing.Point>();
+                foreach (var point in polygon.Value.Points)
+                {
+                    drawpoints.Add(new System.Drawing.Point(Convert.ToInt32(point.X), BitmapHeight() - Convert.ToInt32(point.Y)));
+                }
+                g.DrawPolygon(p, drawpoints.ToArray());
+                g.FillPolygon(sb, drawpoints.ToArray());
+            }
+            return bitmap;
+        }
+
+        private int BitmapHeight()
+        {
+            var values = new List<double>();
+            foreach (var polygon in polygons.Values)
+            {
+                foreach (var point in polygon.Points)
+                {
+                    values.Add(point.Y);
+                }
+            }
+            return Convert.ToInt32(values.ToArray().Max() + 5);
+        }
+
+        private int BitmapWidth()
+        {
+            var values = new List<double>();
+            foreach (var polygon in polygons.Values)
+            {
+                foreach (var point in polygon.Points)
+                {
+                    values.Add(point.X);
+                }
+            }
+            return Convert.ToInt32(values.ToArray().Max() + 5);
+        }
     }
 }
