@@ -5,8 +5,19 @@ using System.Text;
 
 namespace ixts.Ausbildung.Geometry
 {
-    class ScriptInterpreter
+    public class ScriptInterpreter
     {
-        //Hier werden die Scripts der Konsolenapp in befehle umgewandelt und an den PolygonPrinter geschickt
+        private PolygonPrinter polygonPrinter;
+        private List<string> listOfForms = new List<string>(); 
+
+        public ScriptInterpreter()
+        {
+
+        }
+
+        public void Eval(String script)
+        {
+            //Hier werden die Scripts der Konsolenapp in befehle umgewandelt und an den PolygonPrinter geschickt
+        }
     }
 }

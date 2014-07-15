@@ -7,6 +7,7 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
 {
     public partial class PrinterApp : Form
     {
+        private PolygonPrinter polygonPrinter;
         private readonly List<Polygon> listOfForms = new List<Polygon>();
         private int trianglecounter;
         private int quadliteralcounter;

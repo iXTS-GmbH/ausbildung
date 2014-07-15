@@ -5,8 +5,17 @@ using System.Text;
 
 namespace ixts.Ausbildung.Geometry
 {
-    class StringToPointsParser
+    public class StringToPointsParser
     {
-        //Hier sollen aus dem String die Points gemacht werden (Format: x/y x/y)
+        public StringToPointsParser()
+        {
+
+        }
+
+        public Point[] Parse(string pointstring)
+        {
+
+            return null;//Hier sollen aus dem String die Points gemacht werden (Format: x/y x/y)
+        }
     }
 }

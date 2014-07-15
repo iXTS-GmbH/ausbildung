@@ -8,6 +8,7 @@ namespace ixts.Ausbildung.Geometry.PrinterConsole
 {
     class Program
     {
+        private ScriptInterpreter scriptInterpreter;
         private static List<Polygon> listOfForms = new List<Polygon>(); 
         static void Main(string[] args)
         {
