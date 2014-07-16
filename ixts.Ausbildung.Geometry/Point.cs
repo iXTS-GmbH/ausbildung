@@ -59,5 +59,17 @@ namespace ixts.Ausbildung.Geometry
             var movedPoint = new Point(x + moveX, y + moveY);
             return movedPoint;
         }
+
+        override public bool Equals(object other)
+        {
+            var otherPoint = other as Point;
+
+            return otherPoint != null && Math.Abs(X - otherPoint.X) < 0.001 && Math.Abs(Y - otherPoint.Y) < 0.001;
+        }
+
+        override public string ToString()
+        {
+            return string.Format("{0}/{1}",x,y);
+        }
     }
 }

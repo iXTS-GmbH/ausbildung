@@ -20,12 +20,7 @@ namespace ixts.Ausbildung.Geometry.Test
             var expected = new Dictionary<string, Polygon>();
             expected.Add("Triangle1", new Triangle(new []{new Point(20,20),new Point(40,20),new Point(30,40)}));
             var actual = sut.Create(new Point(20, 20), new Point(40, 20), new Point(30, 40));//Ein Triangle ist erstellt
-            Assert.AreEqual(expected["Triangle1"].Points[0].X, sut.polygons[actual].Points[0].X);
-            Assert.AreEqual(expected["Triangle1"].Points[0].Y, sut.polygons[actual].Points[0].Y);
-            Assert.AreEqual(expected["Triangle1"].Points[1].X, sut.polygons[actual].Points[1].X);
-            Assert.AreEqual(expected["Triangle1"].Points[1].Y, sut.polygons[actual].Points[1].Y);
-            Assert.AreEqual(expected["Triangle1"].Points[2].X, sut.polygons[actual].Points[2].X);
-            Assert.AreEqual(expected["Triangle1"].Points[2].Y, sut.polygons[actual].Points[2].Y);
+            Assert.AreEqual(true, expected["Triangle1"].IsSame(sut.polygons[actual], 0.001));
         }
 
         [TestCase]
@@ -34,14 +29,7 @@ namespace ixts.Ausbildung.Geometry.Test
             var expected = new Dictionary<string, Polygon>();
             expected.Add("Quadliteral1", new Quadrilateral(new []{new Point(20,20),new Point(40,20),new Point(40,40),new Point(20,40)}));
             var actual = sut.Create(new Point(20, 20), new Point(40, 20), new Point(40, 40), new Point(20, 40));
-            Assert.AreEqual(expected["Quadliteral1"].Points[0].X, sut.polygons[actual].Points[0].X);
-            Assert.AreEqual(expected["Quadliteral1"].Points[0].Y, sut.polygons[actual].Points[0].Y);
-            Assert.AreEqual(expected["Quadliteral1"].Points[1].X, sut.polygons[actual].Points[1].X);
-            Assert.AreEqual(expected["Quadliteral1"].Points[1].Y, sut.polygons[actual].Points[1].Y);
-            Assert.AreEqual(expected["Quadliteral1"].Points[2].X, sut.polygons[actual].Points[2].X);
-            Assert.AreEqual(expected["Quadliteral1"].Points[2].Y, sut.polygons[actual].Points[2].Y);
-            Assert.AreEqual(expected["Quadliteral1"].Points[3].X, sut.polygons[actual].Points[3].X);
-            Assert.AreEqual(expected["Quadliteral1"].Points[3].Y, sut.polygons[actual].Points[3].Y);
+            Assert.AreEqual(true, expected["Quadliteral1"].IsSame(sut.polygons[actual], 0.001));
         }
         [TestCase]
         public void MoveTest()
@@ -50,12 +38,7 @@ namespace ixts.Ausbildung.Geometry.Test
             var expected = new Dictionary<string, Polygon>();
             expected.Add("Triangle1", new Triangle(new[] { new Point(30, 20), new Point(50, 20), new Point(40, 40) }));
             sut.MovePolygon("Triangle1",10,0);
-            Assert.AreEqual(expected["Triangle1"].Points[0].X, sut.polygons["Triangle1"].Points[0].X);
-            Assert.AreEqual(expected["Triangle1"].Points[0].Y, sut.polygons["Triangle1"].Points[0].Y);
-            Assert.AreEqual(expected["Triangle1"].Points[1].X, sut.polygons["Triangle1"].Points[1].X);
-            Assert.AreEqual(expected["Triangle1"].Points[1].Y, sut.polygons["Triangle1"].Points[1].Y);
-            Assert.AreEqual(expected["Triangle1"].Points[2].X, sut.polygons["Triangle1"].Points[2].X);
-            Assert.AreEqual(expected["Triangle1"].Points[2].Y, sut.polygons["Triangle1"].Points[2].Y);
+            Assert.AreEqual(true, expected["Triangle1"].IsSame(sut.polygons["Triangle1"], 0.001));
 
         }
 
@@ -66,12 +49,7 @@ namespace ixts.Ausbildung.Geometry.Test
             var expected = new Dictionary<string, Polygon>();
             expected.Add("Triangle1", new Triangle(new []{new Point(10,10),new Point(50,10),new Point(30,50)}));
             sut.ZoomPolygon("Triangle1",2);
-            Assert.AreEqual(expected["Triangle1"].Points[0].X, sut.polygons["Triangle1"].Points[0].X);
-            Assert.AreEqual(expected["Triangle1"].Points[0].Y, sut.polygons["Triangle1"].Points[0].Y);
-            Assert.AreEqual(expected["Triangle1"].Points[1].X, sut.polygons["Triangle1"].Points[1].X);
-            Assert.AreEqual(expected["Triangle1"].Points[1].Y, sut.polygons["Triangle1"].Points[1].Y);
-            Assert.AreEqual(expected["Triangle1"].Points[2].X, sut.polygons["Triangle1"].Points[2].X);
-            Assert.AreEqual(expected["Triangle1"].Points[2].Y, sut.polygons["Triangle1"].Points[2].Y);
+            Assert.AreEqual(true, expected["Triangle1"].IsSame(sut.polygons["Triangle1"], 0.001));
         }
 
 

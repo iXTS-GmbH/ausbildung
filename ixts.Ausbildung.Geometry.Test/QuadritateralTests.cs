@@ -30,7 +30,7 @@ namespace ixts.Ausbildung.Geometry.Test
         public void AreaTest(Quadrilateral quad, double expected)
         {
             var actual = quad.Area();
-            Assert.AreEqual(expected, actual, 0.01);
+            Assert.AreEqual(expected, actual, 0.001);
         }
 
         public static readonly object[] AreaTestSource =
@@ -43,8 +43,7 @@ namespace ixts.Ausbildung.Geometry.Test
         public void LowerLeftTest(Quadrilateral quad,Point expected)
         {
             var actual = quad.LowerLeft();
-            Assert.AreEqual(expected.X, actual.X);
-            Assert.AreEqual(expected.Y, actual.Y);
+            Assert.AreEqual(true,actual.Equals(expected));
         }
 
         public static readonly object[] LowerLeftTestSource =
@@ -56,8 +55,7 @@ namespace ixts.Ausbildung.Geometry.Test
         public void UpperRightTest(Quadrilateral quad, Point expected)
         {
             var actual = quad.UpperRight();
-            Assert.AreEqual(expected.X,actual.X);
-            Assert.AreEqual(expected.Y,actual.Y);
+            Assert.AreEqual(true,actual.Equals(expected));
         }
 
         public static readonly object[] UpperRightTestSource =
@@ -89,14 +87,10 @@ namespace ixts.Ausbildung.Geometry.Test
         public void MovedTest(double dx, double dy, Quadrilateral expected)
         {
             var actual = sut.Moved(dx, dy);
-            Assert.AreEqual(expected.Points[0].X, actual.Points[0].X);
-            Assert.AreEqual(expected.Points[0].Y, actual.Points[0].Y);
-            Assert.AreEqual(expected.Points[1].X, actual.Points[1].X);
-            Assert.AreEqual(expected.Points[1].Y, actual.Points[1].Y);
-            Assert.AreEqual(expected.Points[2].X, actual.Points[2].X);
-            Assert.AreEqual(expected.Points[2].Y, actual.Points[2].Y);
-            Assert.AreEqual(expected.Points[3].X, actual.Points[3].X);
-            Assert.AreEqual(expected.Points[3].Y, actual.Points[3].Y);
+            Assert.AreEqual(true, actual.Points[0].Equals(expected.Points[0]));
+            Assert.AreEqual(true, actual.Points[1].Equals(expected.Points[1]));
+            Assert.AreEqual(true, actual.Points[2].Equals(expected.Points[2]));
+            Assert.AreEqual(true, actual.Points[3].Equals(expected.Points[3]));
         }
 
         public static readonly object[] MovedTestSource =
@@ -115,14 +109,10 @@ namespace ixts.Ausbildung.Geometry.Test
         public void ZoomedTest(double f, Quadrilateral expected)
         {
             var actual = sut.Zoomed(f);
-            Assert.AreEqual(expected.Points[0].X, actual.Points[0].X);
-            Assert.AreEqual(expected.Points[0].Y, actual.Points[0].Y);
-            Assert.AreEqual(expected.Points[1].X, actual.Points[1].X);
-            Assert.AreEqual(expected.Points[1].Y, actual.Points[1].Y);
-            Assert.AreEqual(expected.Points[2].X, actual.Points[2].X);
-            Assert.AreEqual(expected.Points[2].Y, actual.Points[2].Y);
-            Assert.AreEqual(expected.Points[3].X, actual.Points[3].X);
-            Assert.AreEqual(expected.Points[3].Y, actual.Points[3].Y); 
+            Assert.AreEqual(true, actual.Points[0].Equals(expected.Points[0]));
+            Assert.AreEqual(true, actual.Points[1].Equals(expected.Points[1]));
+            Assert.AreEqual(true, actual.Points[2].Equals(expected.Points[2]));
+            Assert.AreEqual(true, actual.Points[3].Equals(expected.Points[3])); 
         }
 
         public static readonly object[] ZoomedTestSource =
@@ -137,14 +127,10 @@ namespace ixts.Ausbildung.Geometry.Test
         public void RotateTest(double angle)
         {
             var actual = sut.Rotate(angle);
-            Assert.AreEqual(sut.Points[0].X, actual.Points[0].X);
-            Assert.AreEqual(sut.Points[0].Y, actual.Points[0].Y);
-            Assert.AreEqual(sut.Points[1].X, actual.Points[1].X);
-            Assert.AreEqual(sut.Points[1].Y, actual.Points[1].Y);
-            Assert.AreEqual(sut.Points[2].X, actual.Points[2].X);
-            Assert.AreEqual(sut.Points[2].Y, actual.Points[2].Y);
-            Assert.AreEqual(sut.Points[3].X, actual.Points[3].X);
-            Assert.AreEqual(sut.Points[3].Y, actual.Points[3].Y);
+            Assert.AreEqual(true, sut.Points[0].Equals(actual.Points[0]));
+            Assert.AreEqual(true, sut.Points[1].Equals(actual.Points[1]));
+            Assert.AreEqual(true, sut.Points[2].Equals(actual.Points[2]));
+            Assert.AreEqual(true, sut.Points[3].Equals(actual.Points[3]));
 
         }
         [TestCase(360)]
@@ -152,14 +138,10 @@ namespace ixts.Ausbildung.Geometry.Test
         {
             var point = sut.Middle();
             var actual = sut.Rotate(point, angle);
-            Assert.AreEqual(sut.Points[0].X, actual.Points[0].X);
-            Assert.AreEqual(sut.Points[0].Y, actual.Points[0].Y);
-            Assert.AreEqual(sut.Points[1].X, actual.Points[1].X);
-            Assert.AreEqual(sut.Points[1].Y, actual.Points[1].Y);
-            Assert.AreEqual(sut.Points[2].X, actual.Points[2].X);
-            Assert.AreEqual(sut.Points[2].Y, actual.Points[2].Y);
-            Assert.AreEqual(sut.Points[3].X, actual.Points[3].X);
-            Assert.AreEqual(sut.Points[3].Y, actual.Points[3].Y);
+            Assert.AreEqual(true, sut.Points[0].Equals(actual.Points[0]));
+            Assert.AreEqual(true, sut.Points[1].Equals(actual.Points[1]));
+            Assert.AreEqual(true, sut.Points[2].Equals(actual.Points[2]));
+            Assert.AreEqual(true, sut.Points[3].Equals(actual.Points[3]));
         }
         [TestCase]
         public void MiddleTest()
@@ -167,8 +149,7 @@ namespace ixts.Ausbildung.Geometry.Test
             var quad = new Quadrilateral(new[] {new Point(1, 1), new Point(3, 1), new Point(3, 3), new Point(1,3)});
             var expected = new Point(2, 2);
             var actual = quad.Middle();
-            Assert.AreEqual(expected.X, actual.X);
-            Assert.AreEqual(expected.Y, actual.Y);
+            Assert.AreEqual(true,actual.Equals(expected));
         }
 
         [TestCaseSource("QuadratTestSource")]

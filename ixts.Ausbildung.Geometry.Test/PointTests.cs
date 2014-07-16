@@ -64,5 +64,24 @@ namespace ixts.Ausbildung.Geometry.Test
             Assert.AreEqual(expected.X,actual.X);
             Assert.AreEqual(expected.Y,actual.Y);
         }
+
+        [TestCase(true, 0, 0, 0, 0)]                        //0
+        [TestCase(true, 3, 3, 3, 3)]                        //Ganzzahl > 0
+        [TestCase(false, 3, 3, 3, 4)]                       //Ganzzahl > 0 False
+        [TestCase(true, -3, -3, -3, -3)]                    //Ganzzahl < 0
+        [TestCase(false, -3, -3, -3, -4)]                   //Ganzzahl < 0 False
+        [TestCase(true, 3.333, 3.333, 3.333, 3.333)]        //Kommazahl Im Delta > 0
+        [TestCase(false, 3.333, 3.333, 3.333, 3.334)]       //Kommazahl Im Delta > 0 False
+        [TestCase(true, -3.333, -3.333, -3.333, -3.333)]    //Kommazahl Im Delta < 0
+        [TestCase(false, -3.333, -3.333, -3.333, -3.334)]   //Kommazahl Im Delta < 0 False
+        [TestCase(true, 3.3333, 3.3333, 3.3333, 3.3334)]    //Kommazahl Auserhalb Delta > 0
+        [TestCase(true, -3.3333, -3.3333, -3.3333, -3.3334)]//Kommazahl Auserhalb Delta < 0
+        [TestCase(false, 3.333,3.333,3.338,3.338)]          //Unterschied negativ
+        public void EqualsTest(Boolean expected,double x, double y, double otherX, double otherY)
+        {
+            var point = new Point(x, y);
+            var otherpoint = new Point(x, y);
+            Assert.AreEqual(true,point.Equals(otherpoint));
+        }
     }
 }
