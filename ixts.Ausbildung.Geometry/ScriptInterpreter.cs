@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 
 namespace ixts.Ausbildung.Geometry
@@ -7,7 +6,7 @@ namespace ixts.Ausbildung.Geometry
     public class ScriptInterpreter
     {
         internal PolygonPrinter polygonPrinter = new PolygonPrinter();
-        internal List<string> listOfForms = new List<string>(); 
+        internal string lastPolygonName;
 
         public void Eval(String script)
         {
@@ -24,7 +23,7 @@ namespace ixts.Ausbildung.Geometry
             switch (parameter[0])
             {
                 case "draw":
-                    Draw(parameter);
+                    Draw(parameter[1] == "Triangle",parameter);
                     break;
                 case "move":
                     Move(parameter[1],int.Parse(parameter[2]));
@@ -38,19 +37,19 @@ namespace ixts.Ausbildung.Geometry
             }            
         }
 
-        private void Draw(string[] parameter)
+        private void Draw(Boolean isTriangle,String[] parameter)//TODO Ueberarbeitung
         {
-            if (parameter[1] == "Triangle")
+            if (isTriangle)
             {
-                var pointstring = parameter[2] + " " + parameter[3] + " " + parameter[4]; //um einen String zu erhalten der alle Punkte in den Parametern hat
+                var pointstring = string.Format("{0} {1} {2}", parameter[2], parameter[3], parameter[4]);
                 var points = StringToPointsParser.Parse(pointstring);
-                listOfForms.Add(polygonPrinter.Create(points[0],points[1],points[2]));
+                lastPolygonName = polygonPrinter.Create(points[0], points[1], points[2]);
             }
             else
             {
-                var pointstring = parameter[2] + " " + parameter[3] + " " + parameter[4] + " " + parameter[5];//siehe anderen Komentar
+                var pointstring = string.Format("{0} {1} {2} {3}", parameter[2], parameter[3], parameter[4],parameter[5]);
                 var points = StringToPointsParser.Parse(pointstring);
-                listOfForms.Add(polygonPrinter.Create(points[0], points[1], points[2],points[3]));
+                lastPolygonName = polygonPrinter.Create(points[0], points[1], points[2], points[3]);
             }
         }
 
@@ -73,12 +72,12 @@ namespace ixts.Ausbildung.Geometry
                     moveX = -offset;//Negativ
                     break;
             }
-            polygonPrinter.MovePolygon(listOfForms[listOfForms.Count - 1],moveX,moveY);
+            polygonPrinter.MovePolygon(lastPolygonName,moveX,moveY);
         }
 
         private void Zoom(double factor)
         {
-            polygonPrinter.ZoomPolygon(listOfForms[listOfForms.Count - 1],factor);
+            polygonPrinter.ZoomPolygon(lastPolygonName,factor);
         }
 
         private void Print(string path)

@@ -18,7 +18,7 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
             var isTriangle = dd_Polygons.SelectedIndex == 0;
             var formname = CreateForm(isTriangle, tb_coordinates.Text);
             AddPolygonToListbox(formname);
-            var forms = polygonPrinter.Print(pnl_drawField.Height,pnl_drawField.Width);
+            var forms = polygonPrinter.Print(pnl_drawField.Width,pnl_drawField.Height);
             Draw(forms);
 
         }
@@ -60,7 +60,7 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
 
         private void ReDraw()
         {
-            var forms = polygonPrinter.Print(pnl_drawField.Height, pnl_drawField.Width);
+            var forms = polygonPrinter.Print(pnl_drawField.Width,pnl_drawField.Height);
             Draw(forms);
         }
 

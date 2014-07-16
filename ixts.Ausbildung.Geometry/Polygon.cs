@@ -157,5 +157,21 @@ namespace ixts.Ausbildung.Geometry
             return new Point((UpperRight().X - LowerLeft().X)/2 + LowerLeft().X, (UpperRight().Y - LowerLeft().Y)/2 + LowerLeft().X );
         }
 
+        public override bool Equals(object other)
+        {
+            var otherPolygon = other as Polygon;
+            if(otherPolygon != null && Points.Length == otherPolygon.Points.Length)
+            {
+                foreach (var point in otherPolygon.Points)
+                {
+                    if (!Points.Contains(point))
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+            return false;
+        }
     }
 }

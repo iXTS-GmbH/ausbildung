@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="PointTests.cs" />
     <Compile Include="PolygonPrinterTests.cs" />
+    <Compile Include="PolygonTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuadritateralTests.cs" />
     <Compile Include="ScriptInterpreterTests.cs" />

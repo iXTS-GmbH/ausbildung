@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.Drawing;
 using NUnit.Framework;
 
@@ -13,53 +13,52 @@ namespace ixts.Ausbildung.Geometry.Test
         {
             sut = new PolygonPrinter();
         }
-        
+
         [TestCase]
-        public void TriangleCreateTest()//Geht
+        public void TriangleCreateTest()
         {
-            var expected = new Dictionary<string, Polygon>();
-            expected.Add("Triangle1", new Triangle(new []{new Point(20,20),new Point(40,20),new Point(30,40)}));
-            var actual = sut.Create(new Point(20, 20), new Point(40, 20), new Point(30, 40));//Ein Triangle ist erstellt
-            Assert.AreEqual(true, expected["Triangle1"].IsSame(sut.polygons[actual], 0.001));
+            var expected = new Triangle(new[] { new Point(20, 20), new Point(40, 20), new Point(30, 40)});
+            var actual = sut.Create(new Point(20, 20), new Point(40, 20), new Point(30, 40));
+            Assert.AreEqual(expected,sut.polygons[actual]);
         }
 
         [TestCase]
         public void QuadliteralCreateTest()
         {
-            var expected = new Dictionary<string, Polygon>();
-            expected.Add("Quadliteral1", new Quadrilateral(new []{new Point(20,20),new Point(40,20),new Point(40,40),new Point(20,40)}));
+            var expected = new Quadrilateral(new[] {new Point(20, 20), new Point(40, 20), new Point(40, 40), new Point(20, 40)});
             var actual = sut.Create(new Point(20, 20), new Point(40, 20), new Point(40, 40), new Point(20, 40));
-            Assert.AreEqual(true, expected["Quadliteral1"].IsSame(sut.polygons[actual], 0.001));
+            Assert.AreEqual(expected,sut.polygons[actual]);
         }
-        [TestCase]
-        public void MoveTest()
+
+        [TestCase("Triangle1")]
+        public void MoveTest(string formname)
         {
             sut.Create(new Point(20, 20), new Point(40, 20), new Point(30, 40));
-            var expected = new Dictionary<string, Polygon>();
-            expected.Add("Triangle1", new Triangle(new[] { new Point(30, 20), new Point(50, 20), new Point(40, 40) }));
-            sut.MovePolygon("Triangle1",10,0);
-            Assert.AreEqual(true, expected["Triangle1"].IsSame(sut.polygons["Triangle1"], 0.001));
-
+            var expected = new Triangle(new[] {new Point(30, 20), new Point(50, 20), new Point(40, 40)});
+            sut.MovePolygon(formname,10,0);
+            Assert.AreEqual(expected,sut.polygons[formname]);
         }
 
-        [TestCase]
-        public void ZoomTest()
+        [TestCase("Triangle1")]
+        public void ZoomTest(string formname)
         {
             sut.Create(new Point(20, 20), new Point(40, 20), new Point(30, 40));
-            var expected = new Dictionary<string, Polygon>();
-            expected.Add("Triangle1", new Triangle(new []{new Point(10,10),new Point(50,10),new Point(30,50)}));
-            sut.ZoomPolygon("Triangle1",2);
-            Assert.AreEqual(true, expected["Triangle1"].IsSame(sut.polygons["Triangle1"], 0.001));
+            var expected = new Triangle(new[] {new Point(10, 10), new Point(50, 10), new Point(30, 50)});
+            sut.ZoomPolygon(formname,2);
+            Assert.AreEqual(expected,sut.polygons[formname]);
         }
 
 
 
-        [TestCase]
+        [TestCase()]
         public void PrintTest()
         {
+            var path = string.Format("{0}/testTriangle.png", AppDomain.CurrentDomain.BaseDirectory);
             sut.Create(new Point(1,1),new Point(3,1),new Point(2,2));
-            var expected = new Bitmap("C:/Users/mkaestl.IXTS/Projekte/Ausbildung/ausbildung/testTriangle.png");
+
+            var expected = new Bitmap(path);
             var actual = sut.Print();
+
             for (int i = 0; i < expected.Height; i++)
             {
                 for (int j = 0; j < expected.Width; j++)
@@ -69,23 +68,21 @@ namespace ixts.Ausbildung.Geometry.Test
             }
         }
 
-        [TestCase(500,500)]
+        [TestCase(500,400)]
         public void SpezificPrintTest(int height,int width)
         {
             var expected = new Bitmap(width,height);
             var actual = sut.Print(height, width);
-            Assert.AreEqual(expected.Height,actual.Height);
-            Assert.AreEqual(expected.Width, actual.Width);
+            Assert.AreEqual(expected.Size,actual.Size);
         }
 
-        [TestCase]
-        public void ClearTest()
+        [TestCase(0)]
+        public void ClearTest(double expected)
         {
             sut.Create(new Point(20, 20), new Point(40, 20), new Point(30, 40));
             sut.Create(new Point(20, 20), new Point(40, 20), new Point(40, 40), new Point(20, 40));
-            var expected = new Dictionary<string, Polygon>();
             sut.Clear();
-            Assert.AreEqual(expected.Count,sut.polygons.Count);
+            Assert.AreEqual(expected,sut.polygons.Count);
 
         }
     }
