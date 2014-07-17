@@ -26,42 +26,29 @@ namespace ixts.Ausbildung.Geometry.Test
             Assert.AreEqual(expected,actual);
         }
 
-        [TestCaseSource("AreaTestSource")]
-        public void AreaTest(Quadrilateral quad, double expected)
+        [TestCase(4)]
+        public void AreaTest(double expected)
         {
-            var actual = quad.Area();
+            var actual = sut.Area();
             Assert.AreEqual(expected, actual, 0.001);
         }
 
-        public static readonly object[] AreaTestSource =
-            {
-                new object[]{new Quadrilateral(new []{new Point(1,1),new Point(1,1),new Point(1,1), new Point(1,1)}),0},//Area = 0
-                new object[]{new Quadrilateral(new []{new Point(1,2),new Point(3,2),new Point(3,4), new Point(1,4)}),4}//Area != 0
-            };
-
-        [TestCaseSource("LowerLeftTestSource")]
-        public void LowerLeftTest(Quadrilateral quad,Point expected)
+        [TestCase]
+        public void LowerLeftTest()
         {
-            var actual = quad.LowerLeft();
-            Assert.AreEqual(true,actual.Equals(expected));
+            var expected = new Point(1, 2);
+            var actual = sut.LowerLeft();
+            Assert.AreEqual(actual,expected);
         }
 
-        public static readonly object[] LowerLeftTestSource =
-            {
-                new object[]{new Quadrilateral(new []{new Point(1,2), new Point(3,2), new Point(3,4), new Point(1,4)}), new Point(1,2)}
-            };
-
-        [TestCaseSource("UpperRightTestSource")]
-        public void UpperRightTest(Quadrilateral quad, Point expected)
+        [TestCase]
+        public void UpperRightTest()
         {
-            var actual = quad.UpperRight();
-            Assert.AreEqual(true,actual.Equals(expected));
+            var expected = new Point(3, 4);
+            var actual = sut.UpperRight();
+            Assert.AreEqual(actual,expected);
         }
 
-        public static readonly object[] UpperRightTestSource =
-            {
-                new object[]{new Quadrilateral(new []{new Point(1,2), new Point(3,2), new Point(3,4), new Point(1,4)}), new Point(3,4)}
-            };
         [TestCaseSource("IsSameTestSource")]
         public void IsSameTest(Quadrilateral quad, double within, Boolean expected)
         {
@@ -87,10 +74,7 @@ namespace ixts.Ausbildung.Geometry.Test
         public void MovedTest(double dx, double dy, Quadrilateral expected)
         {
             var actual = sut.Moved(dx, dy);
-            Assert.AreEqual(true, actual.Points[0].Equals(expected.Points[0]));
-            Assert.AreEqual(true, actual.Points[1].Equals(expected.Points[1]));
-            Assert.AreEqual(true, actual.Points[2].Equals(expected.Points[2]));
-            Assert.AreEqual(true, actual.Points[3].Equals(expected.Points[3]));
+            Assert.AreEqual(expected, actual);
         }
 
         public static readonly object[] MovedTestSource =
@@ -109,10 +93,7 @@ namespace ixts.Ausbildung.Geometry.Test
         public void ZoomedTest(double f, Quadrilateral expected)
         {
             var actual = sut.Zoomed(f);
-            Assert.AreEqual(true, actual.Points[0].Equals(expected.Points[0]));
-            Assert.AreEqual(true, actual.Points[1].Equals(expected.Points[1]));
-            Assert.AreEqual(true, actual.Points[2].Equals(expected.Points[2]));
-            Assert.AreEqual(true, actual.Points[3].Equals(expected.Points[3])); 
+            Assert.AreEqual(expected, actual);
         }
 
         public static readonly object[] ZoomedTestSource =
@@ -127,10 +108,7 @@ namespace ixts.Ausbildung.Geometry.Test
         public void RotateTest(double angle)
         {
             var actual = sut.Rotate(angle);
-            Assert.AreEqual(true, sut.Points[0].Equals(actual.Points[0]));
-            Assert.AreEqual(true, sut.Points[1].Equals(actual.Points[1]));
-            Assert.AreEqual(true, sut.Points[2].Equals(actual.Points[2]));
-            Assert.AreEqual(true, sut.Points[3].Equals(actual.Points[3]));
+            Assert.AreEqual(sut, actual);
 
         }
         [TestCase(360)]
@@ -138,18 +116,14 @@ namespace ixts.Ausbildung.Geometry.Test
         {
             var point = sut.Middle();
             var actual = sut.Rotate(point, angle);
-            Assert.AreEqual(true, sut.Points[0].Equals(actual.Points[0]));
-            Assert.AreEqual(true, sut.Points[1].Equals(actual.Points[1]));
-            Assert.AreEqual(true, sut.Points[2].Equals(actual.Points[2]));
-            Assert.AreEqual(true, sut.Points[3].Equals(actual.Points[3]));
+            Assert.AreEqual(sut, actual);
         }
         [TestCase]
         public void MiddleTest()
         {
-            var quad = new Quadrilateral(new[] {new Point(1, 1), new Point(3, 1), new Point(3, 3), new Point(1,3)});
             var expected = new Point(2, 2);
-            var actual = quad.Middle();
-            Assert.AreEqual(true,actual.Equals(expected));
+            var actual = sut.Middle();
+            Assert.AreEqual(expected, actual);
         }
 
         [TestCaseSource("QuadratTestSource")]

@@ -7,61 +7,73 @@ namespace ixts.Ausbildung.Geometry
 {
     public class PolygonPrinter
     {
-        internal Dictionary<string, Polygon> polygons = new Dictionary<string, Polygon>();
+        private const string TRIANGLE = "Triangle";
+        private const string QUADLITERAL = "Quadliteral";
+        private const string COLORNAME = "Black";
+        internal Dictionary<string, Polygon> Polygons = new Dictionary<string, Polygon>();
         private int triangleCounter;
         private int quadliteralCounter;
 
         public void MovePolygon(string polygon, double moveX, double moveY)
         {
-            polygons[polygon] = polygons[polygon].Moved(moveX, moveY);
+            Polygons[polygon] = Polygons[polygon].Moved(moveX, moveY);
         }
 
         public void ZoomPolygon(string polygon, double factor)
         {
-            var middlepoint = polygons[polygon].Middle();
-            polygons[polygon] = polygons[polygon].Zoomed(middlepoint, factor);
+            var middlepoint = Polygons[polygon].Middle();
+            Polygons[polygon] = Polygons[polygon].Zoomed(middlepoint, factor);
         }
 
         public void Clear()
         {
             triangleCounter = 0;
             quadliteralCounter = 0;
-            polygons.Clear();
+            Polygons.Clear();
         }
 
-        public String Create(Point point1, Point point2, Point point3)//Triangle //Todo Redundanz entfernen
+        public String Create(Point point1, Point point2, Point point3)//Triangle
         {
             var newTriangle = new Triangle(new [] {point1, point2, point3});
             triangleCounter = triangleCounter + 1;
-            polygons.Add("Triangle" + triangleCounter,newTriangle);
-            return "Triangle" + triangleCounter;
+            var formname = string.Format("{0}{1}", TRIANGLE, triangleCounter);
+            Polygons.Add(formname,newTriangle);
+            return formname;
         }
 
         public String Create(Point point1, Point point2, Point point3, Point point4)//Quadliteral
         {
             var newQuadliteral = new Triangle(new[] { point1, point2, point3, point4 });
             quadliteralCounter = quadliteralCounter + 1;
-            polygons.Add("Quadliteral" + quadliteralCounter, newQuadliteral);
-            return "Quadliteral" + quadliteralCounter; 
+            var formname = string.Format("{0}{1}", QUADLITERAL, quadliteralCounter);
+            Polygons.Add(formname, newQuadliteral);
+            return formname; 
         }
 
         public Bitmap Print(int width, int height)
         {
-            Bitmap bitmap = new Bitmap(width,height);
-            Graphics g = Graphics.FromImage(bitmap);
-            Pen p = new Pen(Color.Black);
-            SolidBrush sb = new SolidBrush(Color.Black);
-            foreach (var polygon in polygons)
+            var bitmap = new Bitmap(width,height);
+            var g = Graphics.FromImage(bitmap);
+            var p = new Pen(Color.FromName(COLORNAME));
+            var sb = new SolidBrush(Color.FromName(COLORNAME));
+            foreach (var polygon in Polygons)
             {
                 var drawpoints = new List<System.Drawing.Point>();
                 foreach (var point in polygon.Value.Points)
                 {
-                    drawpoints.Add(new System.Drawing.Point(Convert.ToInt32(point.X),height -  Convert.ToInt32(point.Y)));//TODO height - in methode auslagern und sinnvoll genennen
+                    drawpoints.Add(PointToDrawingPointParser(point,height));
                 }
                 g.DrawPolygon(p,drawpoints.ToArray());
                 g.FillPolygon(sb,drawpoints.ToArray());
             }
             return bitmap;
+        }
+
+        private System.Drawing.Point PointToDrawingPointParser(Point point, int bitmapHeight)
+        {
+            var x = Convert.ToInt32(point.X);
+            var y = bitmapHeight - Convert.ToInt32(point.Y); //Um den 0/0 Punkt nach Links unten zu verschieben
+            return new System.Drawing.Point(x, y);
         }
 
         public Bitmap Print()
@@ -73,7 +85,7 @@ namespace ixts.Ausbildung.Geometry
         {
             var heightvalues = new List<double>();
             var widthvalues = new List<double>();
-            foreach (var polygon in polygons.Values)
+            foreach (var polygon in Polygons.Values)
             {
                 foreach (var point in polygon.Points)
                 {
@@ -81,7 +93,7 @@ namespace ixts.Ausbildung.Geometry
                     heightvalues.Add(point.Y);
                 }
             }
-            var size = new double[2];
+            var size = new int[2];
             size[0] = Convert.ToInt32(widthvalues.ToArray().Max() + 5);
             size[1] = Convert.ToInt32(heightvalues.ToArray().Max() + 5);
             return size;

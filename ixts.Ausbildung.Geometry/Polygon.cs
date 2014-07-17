@@ -129,12 +129,12 @@ namespace ixts.Ausbildung.Geometry
         public Polygon Rotate(double angle)
         {
             var rPoints = new List<Point>();
-            for (int i = 0; i < Points.Length; i++)
+            foreach (Point point in Points)
             {
-                var rX = Points[i].X * Math.Cos(angle*Math.PI/180) + Points[i].Y * Math.Sin(angle*Math.PI/180);            //x' = x·cosφ + y·sinφ
-                var rY = Points[i].X * (0 - Math.Sin(angle*Math.PI/180)) + Points[i].Y * Math.Cos(angle*Math.PI/180);      //y' = x·(-sinφ) + y·cosφ
-                rX = Math.Round(rX, 2);
-                rY = Math.Round(rY, 2);
+                var rX = point.X * Math.Cos(angle*Math.PI/180) + point.Y * Math.Sin(angle*Math.PI/180);            //x' = x·cosφ + y·sinφ
+                var rY = point.X * (0 - Math.Sin(angle*Math.PI/180)) + point.Y * Math.Cos(angle*Math.PI/180);      //y' = x·(-sinφ) + y·cosφ
+                rX = Math.Round(rX, 3);
+                rY = Math.Round(rY, 3);
                 rPoints.Add(new Point(rX,rY));
             }
             return new Polygon(rPoints.ToArray());

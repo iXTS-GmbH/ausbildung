@@ -12,18 +12,16 @@ namespace ixts.Ausbildung.Geometry
 
         public Boolean Quadrat()
         {
-            var check = Math.Round(Points[0].Distance(Points[1]), 3) == Math.Round(Points[1].Distance(Points[2]), 3) &&
-                        Math.Round(Points[1].Distance(Points[2]), 3) == Math.Round(Points[2].Distance(Points[3]), 3) &&
-                        Math.Round(Points[2].Distance(Points[3]), 3) == Math.Round(Points[3].Distance(Points[0]), 3);
-                        
-            return check;
+
+            return Math.Abs(Points[0].Distance(Points[1]) - Points[1].Distance(Points[2])) < 0.001 &&
+                   Math.Abs(Points[1].Distance(Points[2]) - Points[2].Distance(Points[3])) < 0.001 &&
+                   Math.Abs(Points[2].Distance(Points[3]) - Points[3].Distance(Points[0])) < 0.001;
         }
 
         public Boolean Parallelogram()
         {
-            var check = Math.Round(Points[0].Distance(Points[1]),3) == Math.Round(Points[2].Distance(Points[3]),3) &&
-                        Math.Round(Points[1].Distance(Points[2]),3) == Math.Round(Points[3].Distance(Points[0]),3);
-            return check;
+            return Math.Abs(Points[0].Distance(Points[1]) - Points[2].Distance(Points[3])) < 0.001 &&
+                   Math.Abs(Points[1].Distance(Points[2]) - Points[3].Distance(Points[0])) < 0.001;
         }
     }
 }

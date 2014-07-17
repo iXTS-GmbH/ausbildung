@@ -22,5 +22,23 @@ namespace ixts.Ausbildung.Geometry.Test
             var actual = StringToPointsParser.Parse(pointstring);
             Assert.AreEqual(expected, actual);
         }
+
+        [TestCase]
+        public void TriangleArrayParseTest()
+        {
+            var pointstrings = new[] {"20/20", "40/20", "30/40"};
+            var expected = new[] { new Point(20, 20), new Point(40, 20), new Point(30, 40)};
+            var actual = StringToPointsParser.Parse(pointstrings);
+            Assert.AreEqual(expected,actual);
+        }
+
+        [TestCase]
+        public void QuadliteralArrayParseTest()
+        {
+            var pointstrings = new[] {"20/20", "40/20", "40/40", "20/40"};
+            var expected = new[] {new Point(20, 20), new Point(40, 20), new Point(40, 40), new Point(20, 40)};
+            var actual = StringToPointsParser.Parse(pointstrings);
+            Assert.AreEqual(expected,actual);
+        }
     }
 }

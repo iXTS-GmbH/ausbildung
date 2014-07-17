@@ -19,10 +19,6 @@ namespace ixts.Ausbildung.Geometry
             {
                return x;
             }
-            set 
-            { 
-                x = value; 
-            }
         }
 
         public double Y
@@ -31,12 +27,6 @@ namespace ixts.Ausbildung.Geometry
             { 
                 return y;
             }
-            set
-            {
-                y = value;
-            }
-            
-            
         }
 
         public double Distance(Point nPoint)

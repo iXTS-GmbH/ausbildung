@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
 
 namespace ixts.Ausbildung.Geometry
 {
     public class ScriptInterpreter
     {
-        internal PolygonPrinter polygonPrinter = new PolygonPrinter();
-        internal string lastPolygonName;
+        internal PolygonPrinter PolygonPrinter = new PolygonPrinter();
+        internal string LastPolygonName;
 
         public void Eval(String script)
         {
@@ -23,7 +24,7 @@ namespace ixts.Ausbildung.Geometry
             switch (parameter[0])
             {
                 case "draw":
-                    Draw(parameter[1] == "Triangle",parameter);
+                    Draw(parameter[1] == "Triangle",parameter.Skip(2).ToArray());
                     break;
                 case "move":
                     Move(parameter[1],int.Parse(parameter[2]));
@@ -37,19 +38,16 @@ namespace ixts.Ausbildung.Geometry
             }            
         }
 
-        private void Draw(Boolean isTriangle,String[] parameter)//TODO Ueberarbeitung
+        private void Draw(Boolean isTriangle,String[] parameter)
         {
+            var points = StringToPointsParser.Parse(parameter);
             if (isTriangle)
             {
-                var pointstring = string.Format("{0} {1} {2}", parameter[2], parameter[3], parameter[4]);
-                var points = StringToPointsParser.Parse(pointstring);
-                lastPolygonName = polygonPrinter.Create(points[0], points[1], points[2]);
+                LastPolygonName = PolygonPrinter.Create(points[0], points[1], points[2]);
             }
             else
             {
-                var pointstring = string.Format("{0} {1} {2} {3}", parameter[2], parameter[3], parameter[4],parameter[5]);
-                var points = StringToPointsParser.Parse(pointstring);
-                lastPolygonName = polygonPrinter.Create(points[0], points[1], points[2], points[3]);
+                LastPolygonName = PolygonPrinter.Create(points[0], points[1], points[2], points[3]);
             }
         }
 
@@ -72,17 +70,17 @@ namespace ixts.Ausbildung.Geometry
                     moveX = -offset;//Negativ
                     break;
             }
-            polygonPrinter.MovePolygon(lastPolygonName,moveX,moveY);
+            PolygonPrinter.MovePolygon(LastPolygonName,moveX,moveY);
         }
 
         private void Zoom(double factor)
         {
-            polygonPrinter.ZoomPolygon(lastPolygonName,factor);
+            PolygonPrinter.ZoomPolygon(LastPolygonName,factor);
         }
 
         private void Print(string path)
         {
-            Bitmap bitmap = polygonPrinter.Print();
+            Bitmap bitmap = PolygonPrinter.Print();
             bitmap.Save(path); //Wichtig das path den Dateinamen enthält(Fehlerquelle)
         }
     }
