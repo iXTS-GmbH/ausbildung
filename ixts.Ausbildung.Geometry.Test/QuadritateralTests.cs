@@ -22,7 +22,7 @@ namespace ixts.Ausbildung.Geometry.Test
         [TestCase]
         public void PerimeterTest()
         {
-            var expected = 8;
+            const int expected = 8;
             var actual = sut.Perimeter();
             Assert.AreEqual(expected,actual);
         }
@@ -30,7 +30,7 @@ namespace ixts.Ausbildung.Geometry.Test
         [TestCase]
         public void AreaTest()
         {
-            var expected = 4;
+            const int expected = 4;
             var actual = sut.Area();
             Assert.AreEqual(expected, actual, 0.001);
         }
@@ -106,18 +106,18 @@ namespace ixts.Ausbildung.Geometry.Test
                 new object[]{1,new Quadrilateral(new []{new Point(1,2),new Point(3,2),new Point(3,4),new Point(1,4)})},//f = 1
                 new object[]{2,new Quadrilateral(new []{new Point(2,4),new Point(6,4),new Point(6,8),new Point(2,8)})}//f > 1
             };
-        [TestCase()]
+        [TestCase]
         public void RotateTest()
         {
-            var angle = 360;
+            const int angle = 360;
             var actual = sut.Rotate(angle);
             Assert.AreEqual(sut, actual);
 
         }
-        [TestCase()]
+        [TestCase]
         public void PointRotareTest()
         {
-            var angle = 360;
+            const int angle = 360;
             var point = sut.Middle();
             var actual = sut.Rotate(point, angle);
             Assert.AreEqual(sut, actual);

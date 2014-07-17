@@ -32,17 +32,17 @@ namespace ixts.Ausbildung.Geometry.Test
         [TestCase]
         public void MoveTest()
         {
-            var formname = "Triangle1";
+            const string formname = "Triangle1";
             sut.Create(new Point(20, 20), new Point(40, 20), new Point(30, 40));
             var expected = new Triangle(new[] {new Point(30, 20), new Point(50, 20), new Point(40, 40)});
             sut.MovePolygon(formname,10,0);
             Assert.AreEqual(expected,sut.Polygons[formname]);
         }
 
-        [TestCase()]
+        [TestCase]
         public void ZoomTest()
         {
-            var formname = "Triangle1"
+            const string formname = "Triangle1";
             sut.Create(new Point(20, 20), new Point(40, 20), new Point(30, 40));
             var expected = new Triangle(new[] {new Point(10, 10), new Point(50, 10), new Point(30, 50)});
             sut.ZoomPolygon(formname,2);
@@ -68,11 +68,11 @@ namespace ixts.Ausbildung.Geometry.Test
             }
         }
 
-        [TestCase()]
+        [TestCase]
         public void SpezificPrintTest()
         {
-            var height = 500;
-            var width = 400;
+            const int height = 500;
+            const int width = 400;
             var expected = new Bitmap(width,height);
             var actual = sut.Print(width, height);
             Assert.AreEqual(expected.Size,actual.Size);
@@ -81,7 +81,7 @@ namespace ixts.Ausbildung.Geometry.Test
         [TestCase]
         public void ClearTest()
         {
-            var expected = 0;
+            const int expected = 0;
             sut.Create(new Point(20, 20), new Point(40, 20), new Point(30, 40));
             sut.Create(new Point(20, 20), new Point(40, 20), new Point(40, 40), new Point(20, 40));
             sut.Clear();

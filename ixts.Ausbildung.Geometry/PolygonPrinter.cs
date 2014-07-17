@@ -50,7 +50,7 @@ namespace ixts.Ausbildung.Geometry
             return formname; 
         }
 
-        public Bitmap Print(int width, int height)
+        public Bitmap Print(int width, int height) //TODO so anpassen das beim auftreten von negativen Koordinaten alle Polygons um den wert verschoben werden der noetig ist damit alles angezeigt wird
         {
             var bitmap = new Bitmap(width,height);
             var g = Graphics.FromImage(bitmap);
@@ -73,6 +73,7 @@ namespace ixts.Ausbildung.Geometry
         {
             var x = Convert.ToInt32(point.X);
             var y = bitmapHeight - Convert.ToInt32(point.Y); //Um den 0/0 Punkt nach Links unten zu verschieben
+            //Hier muss ich wenn es niedriger als null wird alle Polygons um diesen Wert bewegen und Print neu starten
             return new System.Drawing.Point(x, y);
         }
 

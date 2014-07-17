@@ -9,16 +9,16 @@ namespace ixts.Ausbildung.Geometry.Test
         [TestCase]
         public void XTest()
         {
-            var expected = 4;
-            var x = 4;
+            const int expected = 4;
+            const int x = 4;
             var actual = new Point(x, 0.0);
             Assert.AreEqual(expected, actual.X);
         }
         [TestCase]
         public void YTest()
         {
-            var expected = 4;
-            var y = 4;
+            const int expected = 4;
+            const int y = 4;
             var actual = new Point(0.0, y);
             Assert.AreEqual(expected, actual.Y);
         }

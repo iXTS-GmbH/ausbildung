@@ -20,7 +20,7 @@ namespace ixts.Ausbildung.Geometry.Test
         [TestCase] 
         public void PerimeterTest()
         {
-            var expected = 4.8284271247461898;//2 + sqrt(2) + sqrt(2)
+            const double expected = 4.8284271247461898; //2 + sqrt(2) + sqrt(2)
             var actual = sut.Perimeter();
             Assert.AreEqual(expected,actual);
         }
@@ -28,7 +28,7 @@ namespace ixts.Ausbildung.Geometry.Test
         [TestCase]
         public void AreaTest()
         {
-            var expected = 1;
+            const int expected = 1;
             var actual = sut.Area();
             Assert.AreEqual(expected, actual, 0.001);
         }
@@ -123,14 +123,14 @@ namespace ixts.Ausbildung.Geometry.Test
         [TestCase]
         public void RotateTest()
         {
-            var angle = 360;
+            const int angle = 360;
             var actual = sut.Rotate(angle);
             Assert.AreEqual(sut, actual);
         }
         [TestCase]
         public void PointRotateTest()
         {
-            var angle = 360;
+            const int angle = 360;
             var point = sut.Middle();
             var actual = sut.Rotate(point, angle);
             Assert.AreEqual(sut, actual);
