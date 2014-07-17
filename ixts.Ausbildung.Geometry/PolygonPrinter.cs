@@ -43,7 +43,7 @@ namespace ixts.Ausbildung.Geometry
 
         public String Create(Point point1, Point point2, Point point3, Point point4)//Quadliteral
         {
-            var newQuadliteral = new Triangle(new[] { point1, point2, point3, point4 });
+            var newQuadliteral = new Quadrilateral(new[] { point1, point2, point3, point4 });
             quadliteralCounter = quadliteralCounter + 1;
             var formname = string.Format("{0}{1}", QUADLITERAL, quadliteralCounter);
             Polygons.Add(formname, newQuadliteral);

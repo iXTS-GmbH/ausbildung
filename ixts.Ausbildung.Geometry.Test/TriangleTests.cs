@@ -17,16 +17,18 @@ namespace ixts.Ausbildung.Geometry.Test
             sut = new Triangle(new []{a, b, c});
         }
 
-        [TestCase(4.8284271247461898)] //2 + sqrt(2) + sqrt(2)
-        public void PerimeterTest(double expected)
+        [TestCase] 
+        public void PerimeterTest()
         {
+            var expected = 4.8284271247461898;//2 + sqrt(2) + sqrt(2)
             var actual = sut.Perimeter();
             Assert.AreEqual(expected,actual);
         }
 
-        [TestCase(1)]
-        public void AreaTest(double expected)
+        [TestCase]
+        public void AreaTest()
         {
+            var expected = 1;
             var actual = sut.Area();
             Assert.AreEqual(expected, actual, 0.001);
         }
@@ -118,15 +120,17 @@ namespace ixts.Ausbildung.Geometry.Test
                 new object[]{new Point(1,1),-0.5,new Triangle(new []{new Point(1,0.5),new Point(0,0.5),new Point(0.5,0)})},     //-1 < f < 0 
                 new object[]{new Point(1,1),-1, new Triangle(new []{new Point(1,0),new Point(-1,0),new Point(0,-1)})}           //f = -1     
             };
-        [TestCase(360)]
-        public void RotateTest(double angle)
+        [TestCase]
+        public void RotateTest()
         {
+            var angle = 360;
             var actual = sut.Rotate(angle);
             Assert.AreEqual(sut, actual);
         }
-        [TestCase(360)]
-        public void PointRotateTest(double angle)
+        [TestCase]
+        public void PointRotateTest()
         {
+            var angle = 360;
             var point = sut.Middle();
             var actual = sut.Rotate(point, angle);
             Assert.AreEqual(sut, actual);
@@ -149,7 +153,7 @@ namespace ixts.Ausbildung.Geometry.Test
 
         public static readonly object[] EquilateralTestSource =
             {
-                new object[]{true, new Triangle(new []{new Point(1,1),new Point(5,1), new Point(3,4.464)})},//Suche Gleichseitiges Dreieck
+                new object[]{true, new Triangle(new []{new Point(1,1),new Point(5,1), new Point(3,4.464)})},
                 new object[]{false, new Triangle(new []{new Point(1,2),new Point(3,2), new Point(2,3)})}
             };
 
@@ -162,7 +166,7 @@ namespace ixts.Ausbildung.Geometry.Test
 
         public static readonly object[] IsoscelesTestSource =
             {
-                new object[]{false, new Triangle(new []{new Point(1,1),new Point(5,1), new Point(4,5)})},//Suche Gleichseitiges Dreieck
+                new object[]{false, new Triangle(new []{new Point(1,1),new Point(5,1), new Point(4,5)})},
                 new object[]{true, new Triangle(new []{new Point(1,2),new Point(3,2), new Point(2,3)})}
             };
     }

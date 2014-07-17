@@ -6,15 +6,19 @@ namespace ixts.Ausbildung.Geometry.Test
     [TestFixture]
     public class PointTests
     {
-        [TestCase(4,4)]
-        public void XTest(double expected, double x)
+        [TestCase]
+        public void XTest()
         {
+            var expected = 4;
+            var x = 4;
             var actual = new Point(x, 0.0);
             Assert.AreEqual(expected, actual.X);
         }
-        [TestCase(4,4)]
-        public void YTest(double expected, double y)
+        [TestCase]
+        public void YTest()
         {
+            var expected = 4;
+            var y = 4;
             var actual = new Point(0.0, y);
             Assert.AreEqual(expected, actual.Y);
         }

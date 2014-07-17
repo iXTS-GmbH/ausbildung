@@ -9,7 +9,8 @@ namespace ixts.Ausbildung.Geometry.Test
         [TestCaseSource("EqualsTestSource")]
         public void EqualsTest(Boolean expected, Polygon polygon, Polygon otherPolygon)
         {
-            Assert.AreEqual(expected,polygon.Equals(otherPolygon));
+            var actual = polygon.Equals(otherPolygon);
+            Assert.AreEqual(expected,actual);
         }
 
         public static readonly object[] EqualsTestSource =

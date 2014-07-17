@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using NUnit.Framework;
 
 namespace ixts.Ausbildung.Geometry.Test
@@ -30,18 +29,20 @@ namespace ixts.Ausbildung.Geometry.Test
             Assert.AreEqual(expected,sut.Polygons[actual]);
         }
 
-        [TestCase("Triangle1")]
-        public void MoveTest(string formname)
+        [TestCase]
+        public void MoveTest()
         {
+            var formname = "Triangle1";
             sut.Create(new Point(20, 20), new Point(40, 20), new Point(30, 40));
             var expected = new Triangle(new[] {new Point(30, 20), new Point(50, 20), new Point(40, 40)});
             sut.MovePolygon(formname,10,0);
             Assert.AreEqual(expected,sut.Polygons[formname]);
         }
 
-        [TestCase("Triangle1")]
-        public void ZoomTest(string formname)
+        [TestCase()]
+        public void ZoomTest()
         {
+            var formname = "Triangle1"
             sut.Create(new Point(20, 20), new Point(40, 20), new Point(30, 40));
             var expected = new Triangle(new[] {new Point(10, 10), new Point(50, 10), new Point(30, 50)});
             sut.ZoomPolygon(formname,2);
@@ -67,17 +68,20 @@ namespace ixts.Ausbildung.Geometry.Test
             }
         }
 
-        [TestCase(500,400)]
-        public void SpezificPrintTest(int height,int width)
+        [TestCase()]
+        public void SpezificPrintTest()
         {
+            var height = 500;
+            var width = 400;
             var expected = new Bitmap(width,height);
             var actual = sut.Print(width, height);
             Assert.AreEqual(expected.Size,actual.Size);
         }
 
-        [TestCase(0)]
-        public void ClearTest(double expected)
+        [TestCase]
+        public void ClearTest()
         {
+            var expected = 0;
             sut.Create(new Point(20, 20), new Point(40, 20), new Point(30, 40));
             sut.Create(new Point(20, 20), new Point(40, 20), new Point(40, 40), new Point(20, 40));
             sut.Clear();

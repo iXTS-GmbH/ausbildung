@@ -54,45 +54,40 @@ namespace ixts.Ausbildung.Geometry
 
         public Point LowerLeft()
         {
-            var xValues = new List<double>();
-            var yValues = new List<double>();
-            foreach (var point in Points)
-            {
-                xValues.Add(point.X);
-                yValues.Add(point.Y);
-            }
-            return new Point(xValues.ToArray().Min(), yValues.ToArray().Min());
+            var values = GetCoordinateValues();
+            return new Point(values[0].ToArray().Min(), values[1].ToArray().Min());
         }
 
         public Point UpperRight()
         {
-            var xValues = new List<double>();
-            var yValues = new List<double>();
+
+            var values = GetCoordinateValues();
+            return new Point(values[0].ToArray().Max(), values[1].ToArray().Max());
+        }
+
+        private List<double>[] GetCoordinateValues()
+        {
+            var values = new List<double>[2];
+            values[0] = new List<double>();
+            values[1] = new List<double>();
             foreach (Point point in Points)
             {
-                xValues.Add(point.X);
-                yValues.Add(point.Y);
+                values[0].Add(point.X);
+                values[1].Add(point.Y);
             }
-            return new Point(xValues.ToArray().Max(), yValues.ToArray().Max());
+            return values;
         }
 
         public Boolean IsSame(Polygon polygon, double within)
         {
-
-            Boolean isSamecheck = true;
             for (var i = 0; i < Points.Length; i++)
             {
-                if (isSamecheck)
+                if (!(Points[i].X + within >= polygon.Points[i].X && Points[i].X - within <= polygon.Points[i].X) || !(Points[i].Y + within >= polygon.Points[i].Y && Points[i].Y - within <= polygon.Points[i].Y))
                 {
-                    isSamecheck = Points[i].X + within >= polygon.Points[i].X && Points[i].X - within <= polygon.Points[i].X;
+                    return false;
                 }
-                if (isSamecheck)
-                {
-                    isSamecheck = Points[i].Y + within >= polygon.Points[i].Y && Points[i].Y - within <= polygon.Points[i].Y;
-                }
-
             }
-            return isSamecheck;
+            return true;
         }
 
         public Polygon Moved(double moveX, double moveY)
@@ -107,23 +102,23 @@ namespace ixts.Ausbildung.Geometry
 
         public Polygon Zoomed(double factor)
         {
-            var mpoints = new List<Point>();
+            var zoomedpoints = new List<Point>();
             for (int i = 0; i < Points.Length; i++)
             {
-                mpoints.Add(new Point(Points[i].X*factor, Points[i].Y*factor));
+                zoomedpoints.Add(new Point(Points[i].X*factor, Points[i].Y*factor));
             }
-            return new Polygon(mpoints.ToArray());
+            return new Polygon(zoomedpoints.ToArray());
         }
 
         public Polygon Zoomed(Point point, double factor)
         {
 
-            var mPoints = new List<Point>();
+            var zoomedPoints = new List<Point>();
             for (int i = 0; i < Points.Length; i++)
             {
-                mPoints.Add(new Point((Points[i].X - point.X) * factor + point.X, (Points[i].Y - point.Y) * factor + point.Y));
+                zoomedPoints.Add(new Point((Points[i].X - point.X) * factor + point.X, (Points[i].Y - point.Y) * factor + point.Y));
             }
-            return new Polygon(mPoints.ToArray());
+            return new Polygon(zoomedPoints.ToArray());
         }
 
         public Polygon Rotate(double angle)
@@ -131,10 +126,8 @@ namespace ixts.Ausbildung.Geometry
             var rPoints = new List<Point>();
             foreach (Point point in Points)
             {
-                var rX = point.X * Math.Cos(angle*Math.PI/180) + point.Y * Math.Sin(angle*Math.PI/180);            //x' = x·cosφ + y·sinφ
-                var rY = point.X * (0 - Math.Sin(angle*Math.PI/180)) + point.Y * Math.Cos(angle*Math.PI/180);      //y' = x·(-sinφ) + y·cosφ
-                rX = Math.Round(rX, 3);
-                rY = Math.Round(rY, 3);
+                var rX = Math.Round(point.X * Math.Cos(angle*Math.PI/180) + point.Y * Math.Sin(angle*Math.PI/180),3);            //x' = x·cosφ + y·sinφ
+                var rY = Math.Round(point.X * (0 - Math.Sin(angle*Math.PI/180)) + point.Y * Math.Cos(angle*Math.PI/180),3);      //y' = x·(-sinφ) + y·cosφ
                 rPoints.Add(new Point(rX,rY));
             }
             return new Polygon(rPoints.ToArray());
@@ -142,19 +135,19 @@ namespace ixts.Ausbildung.Geometry
 
         public Polygon Rotate(Point point, double angle)
         {
-            var mpoints = new List<Point>();
+            var rotatedPoints = new List<Point>();
             for (int i = 0; i < Points.Length; i++)
             {
-               mpoints.Add(Points[i].Moved(-point.X, -point.Y));
+               rotatedPoints.Add(Points[i].Moved(-point.X, -point.Y));
             }
-            var movedPolygon = new Polygon(mpoints.ToArray()).Rotate(angle);
+            var movedPolygon = new Polygon(rotatedPoints.ToArray()).Rotate(angle);
             var rotatedPolygon = movedPolygon.Moved(point.X, point.Y);
             return rotatedPolygon;
         }
 
         public Point Middle()
         {
-            return new Point((UpperRight().X - LowerLeft().X)/2 + LowerLeft().X, (UpperRight().Y - LowerLeft().Y)/2 + LowerLeft().X );
+            return new Point((UpperRight().X - LowerLeft().X)/2 + LowerLeft().X, (UpperRight().Y - LowerLeft().Y)/2 + LowerLeft().X);
         }
 
         public override bool Equals(object other)

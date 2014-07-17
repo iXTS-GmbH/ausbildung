@@ -24,7 +24,7 @@ namespace ixts.Ausbildung.Geometry
             switch (parameter[0])
             {
                 case "draw":
-                    Draw(parameter[1] == "Triangle",parameter.Skip(2).ToArray());
+                    Draw(parameter.Skip(2).ToArray());
                     break;
                 case "move":
                     Move(parameter[1],int.Parse(parameter[2]));
@@ -38,10 +38,10 @@ namespace ixts.Ausbildung.Geometry
             }            
         }
 
-        private void Draw(Boolean isTriangle,String[] parameter)
+        private void Draw(String[] parameter)
         {
             var points = StringToPointsParser.Parse(parameter);
-            if (isTriangle)
+            if (parameter.Length == 3)
             {
                 LastPolygonName = PolygonPrinter.Create(points[0], points[1], points[2]);
             }
