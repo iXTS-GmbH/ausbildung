@@ -14,12 +14,25 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
         
         private void btn_Draw_Click(object sender, EventArgs e)
         {
-
-            var isTriangle = dd_Polygons.SelectedIndex == 0;
-            var formname = CreateForm(isTriangle, tb_coordinates.Text);
-            AddPolygonToListbox(formname);
-            var forms = polygonPrinter.Print(pnl_drawField.Width,pnl_drawField.Height);
-            Draw(forms);
+            if (tb_coordinates.Text == "")
+            {
+                MessageBox.Show(@"Es wurden keine Eckpunkte eingegeben", @"Fehlermeldung");
+            }
+            else
+            {
+                if (dd_Polygons.SelectedIndex == -1)
+                {
+                    MessageBox.Show(@"Es wurde keine Form Ausgewählt",@"Fehlermeldung");
+                }
+                else
+                {
+                    var isTriangle = dd_Polygons.SelectedIndex == 0;
+                    var formname = CreateForm(isTriangle, tb_coordinates.Text);
+                    AddPolygonToListbox(formname);
+                    var forms = polygonPrinter.Print(pnl_drawField.Width,pnl_drawField.Height);
+                    Draw(forms);
+                }
+            }
 
         }
 
