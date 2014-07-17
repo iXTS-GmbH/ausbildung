@@ -17,12 +17,15 @@ namespace ixts.Ausbildung.Geometry
         public void MovePolygon(string polygon, double moveX, double moveY)
         {
             Polygons[polygon] = Polygons[polygon].Moved(moveX, moveY);
+            Polygons[polygon].Points = NegativCoordinatesCheck(Polygons[polygon].Points);
         }
 
         public void ZoomPolygon(string polygon, double factor)
         {
             var middlepoint = Polygons[polygon].Middle();
             Polygons[polygon] = Polygons[polygon].Zoomed(middlepoint, factor);
+            Polygons[polygon].Points = NegativCoordinatesCheck(Polygons[polygon].Points);
+
         }
 
         public void Clear()
@@ -34,7 +37,8 @@ namespace ixts.Ausbildung.Geometry
 
         public String Create(Point point1, Point point2, Point point3)//Triangle
         {
-            var newTriangle = new Triangle(new [] {point1, point2, point3});
+            var points = NegativCoordinatesCheck(new[] {point1,point2,point3});
+            var newTriangle = new Triangle(points);
             triangleCounter = triangleCounter + 1;
             var formname = string.Format("{0}{1}", TRIANGLE, triangleCounter);
             Polygons.Add(formname,newTriangle);
@@ -43,14 +47,45 @@ namespace ixts.Ausbildung.Geometry
 
         public String Create(Point point1, Point point2, Point point3, Point point4)//Quadliteral
         {
-            var newQuadliteral = new Quadrilateral(new[] { point1, point2, point3, point4 });
+            var points = NegativCoordinatesCheck(new[] {point1,point2,point3,point4});
+            var newQuadliteral = new Quadliteral(points);
             quadliteralCounter = quadliteralCounter + 1;
             var formname = string.Format("{0}{1}", QUADLITERAL, quadliteralCounter);
             Polygons.Add(formname, newQuadliteral);
             return formname; 
         }
 
-        public Bitmap Print(int width, int height) //TODO so anpassen das beim auftreten von negativen Koordinaten alle Polygons um den wert verschoben werden der noetig ist damit alles angezeigt wird
+        private Point[] NegativCoordinatesCheck(Point[] points)//TODO So abändern das alle Polygon nach dem Maß - verschoben werden
+        {
+            foreach (var point in points)
+            {
+                if (point.X<0)
+                {
+                    for (int i = 0; i < points.Length; i++)
+                    {
+                        points[i] = points[i].Moved(Math.Abs(point.X), 0);
+                    }
+                    //foreach (var polygon in Polygons)//Nicht Funktional InvalidOperationExeption
+                    //{
+                    //    MovePolygon(polygon.Key,Math.Abs(point.X), 0);
+                    //}
+                }
+                if (point.Y<0)
+                {
+                    for (int i = 0; i < points.Length; i++)
+                    {
+                        points[i] = points[i].Moved(0, Math.Abs(point.Y));
+                    }
+                    //foreach (var polygon in Polygons)
+                    //{
+                    //    MovePolygon(polygon.Key,0,Math.Abs(point.Y));
+                    //}
+                }
+            }
+            return points;
+        }
+
+        public Bitmap Print(int width, int height)
         {
             var bitmap = new Bitmap(width,height);
             var g = Graphics.FromImage(bitmap);
@@ -73,7 +108,6 @@ namespace ixts.Ausbildung.Geometry
         {
             var x = Convert.ToInt32(point.X);
             var y = bitmapHeight - Convert.ToInt32(point.Y); //Um den 0/0 Punkt nach Links unten zu verschieben
-            //Hier muss ich wenn es niedriger als null wird alle Polygons um diesen Wert bewegen und Print neu starten
             return new System.Drawing.Point(x, y);
         }
 

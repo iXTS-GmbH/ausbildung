@@ -2,10 +2,10 @@
 
 namespace ixts.Ausbildung.Geometry
 {
-    public class Quadrilateral:Polygon
+    public class Quadliteral:Polygon
     {
 
-        public Quadrilateral(Point[] points):base(points)
+        public Quadliteral(Point[] points):base(points)
         {
 
         }
