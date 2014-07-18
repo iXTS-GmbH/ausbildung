@@ -7,8 +7,15 @@ namespace ixts.Ausbildung.Geometry.PrinterConsole
         private static ScriptInterpreter scriptInterpreter = new ScriptInterpreter();
         static void Main()
         {
+            try
+            {
             var script = Console.In.ReadToEnd();
             scriptInterpreter.Eval(script);
+            }
+            catch (Exception e)
+            {
+               Console.WriteLine(e.Message);  
+            }
         }
     }
 }

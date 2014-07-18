@@ -14,25 +14,25 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
         
         private void btn_Draw_Click(object sender, EventArgs e)
         {
-            if (tb_coordinates.Text == "")
+            try
             {
-                MessageBox.Show(@"Es wurden keine Eckpunkte eingegeben", @"Fehlermeldung");
-            }
-            else
-            {
+                ValidateFormat.CheckPointStringFormat(tb_coordinates.Text);
                 if (dd_Polygons.SelectedIndex == -1)
                 {
-                    MessageBox.Show(@"Es wurde keine Form Ausgewählt",@"Fehlermeldung");
+                    throw new NoFormExeption("Keine Form Ausgewählt!");
                 }
-                else
-                {
-                    var isTriangle = dd_Polygons.SelectedIndex == 0;
-                    var formname = CreateForm(isTriangle, tb_coordinates.Text);
+                    var type = dd_Polygons.SelectedItem.ToString();
+                    var formname = CreateForm(type, tb_coordinates.Text);//Diese Zeile macht probleme                
                     AddPolygonToListbox(formname);
                     var forms = polygonPrinter.Print(pnl_drawField.Width,pnl_drawField.Height);
                     Draw(forms);
-                }
+
             }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message,@"Exception");
+            }
+
 
         }
 
@@ -46,14 +46,15 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
             pnl_drawField.BackgroundImage = forms;
         }
 
-        private String CreateForm(Boolean isTriangle, string coordinatesText)
+        private String CreateForm(string type, string coordinatesText)
         {
             var points = StringToPointsParser.Parse(coordinatesText);
-            if (isTriangle)
-            {
-                return polygonPrinter.Create(points[0],points[1],points[2]);
-            }
-            return polygonPrinter.Create(points[0], points[1], points[2], points[3]);
+            ValidateFormat.CheckPointCount(points, type);
+                if (type == "Triangle")
+                {
+                    return polygonPrinter.Create(points[0],points[1],points[2]);
+                }
+                return polygonPrinter.Create(points[0], points[1], points[2], points[3]);
         }
 
         private void btn_Erase_Click(object sender, EventArgs e)
@@ -79,38 +80,69 @@ namespace ixts.Ausbildung.Geometry.PrinterApp
 
         private void btn_moveUp_Click(object sender, EventArgs e)
         {
-            polygonPrinter.MovePolygon((string) lb_ListofForms.Items[lb_ListofForms.SelectedIndex],0,1);
-            ReDraw();
+            MovePolygon(0,1);
         }
 
         private void btn_moveDown_Click(object sender, EventArgs e)
         {
-            polygonPrinter.MovePolygon((string)lb_ListofForms.Items[lb_ListofForms.SelectedIndex], 0, -1);
-            ReDraw();
+            MovePolygon(0,-1);
         }
 
         private void btn_moveLeft_Click(object sender, EventArgs e)
         {
-            polygonPrinter.MovePolygon((string)lb_ListofForms.Items[lb_ListofForms.SelectedIndex], -1, 0);
-            ReDraw();
+            MovePolygon(-1,0);
         }
 
         private void btn_moveRight_Click(object sender, EventArgs e)
         {
-            polygonPrinter.MovePolygon((string)lb_ListofForms.Items[lb_ListofForms.SelectedIndex], 1, 0);
-            ReDraw();
+            MovePolygon(1,0);
+        }
+
+        private void MovePolygon(double moveX ,double moveY )
+        {
+            try
+            {
+                if (lb_ListofForms.SelectedIndex == -1)
+                {
+                    throw new NoFormExeption("Keine zu bewegende Form ausgewählt!");
+                }
+                polygonPrinter.MovePolygon((string)lb_ListofForms.Items[lb_ListofForms.SelectedIndex], moveX, moveY);
+                ReDraw();
+            }
+            catch (Exception exception)
+            {
+                
+                MessageBox.Show(exception.Message,@"Exception");
+            }
+
+
         }
 
         private void btn_zoomPlus_Click(object sender, EventArgs e)
         {
-            polygonPrinter.ZoomPolygon((string)lb_ListofForms.Items[lb_ListofForms.SelectedIndex],2);
-            ReDraw();
+            ZoomPolygon(2);
         }
 
         private void btn_zoomMinus_Click(object sender, EventArgs e)
         {
-            polygonPrinter.ZoomPolygon((string)lb_ListofForms.Items[lb_ListofForms.SelectedIndex], 0.5);
-            ReDraw();
+            ZoomPolygon(0.5);
+        }
+
+        private void ZoomPolygon(double factor)
+        {
+            try
+            {
+                if (lb_ListofForms.SelectedIndex == -1)
+                {
+                    throw new NoFormExeption("Keine zu zoomende Form ausgewählt!");
+                }
+                polygonPrinter.ZoomPolygon((string)lb_ListofForms.Items[lb_ListofForms.SelectedIndex], factor);
+                ReDraw(); 
+                }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
     }
 }

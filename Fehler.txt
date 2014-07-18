@@ -1,1 +1,0 @@
--Wenn Triangle/Quadliteral im Draw Type steht aber nicht die richtige anzahl punkte mitgegeben wird

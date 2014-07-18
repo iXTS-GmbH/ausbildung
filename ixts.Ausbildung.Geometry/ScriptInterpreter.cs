@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 
 namespace ixts.Ausbildung.Geometry
@@ -8,13 +9,21 @@ namespace ixts.Ausbildung.Geometry
     {
         internal PolygonPrinter PolygonPrinter = new PolygonPrinter();
         internal string LastPolygonName;
+        private Boolean error;
 
         public void Eval(String script)
         {
             var commands = script.Split(new []{Environment.NewLine},StringSplitOptions.None);
             foreach (var command in commands)
             {
+                if (!error)
+                {
                 EvalCommand(command);
+                }
+                else
+                {
+                    break;
+                }
             }
         }
 
@@ -24,31 +33,55 @@ namespace ixts.Ausbildung.Geometry
             switch (parameter[0])
             {
                 case "draw":
-                    Draw(parameter.Skip(2).ToArray());
+                    ValidateFormat.CheckPointStringFormat(parameter.Skip(2).ToArray());
+                    Draw(parameter.Skip(2).ToArray(), parameter[1]);
                     break;
                 case "move":
-                    Move(parameter[1],int.Parse(parameter[2]));
-                    break;
+                    if (LastPolygonName == null)
+                    {
+                        throw new NoFormExeption("Keine verschiebbare Form vorhanden!");
+                    }
+                    if(ValidateFormat.LetterCheck(parameter[2]))
+                    {
+                        Move(parameter[1],int.Parse(parameter[2]));
+                        break;
+                    }
+                    throw new FalseArgumentExeption(string.Format("{0} ist kein gültiger Verschiebungsparameter",parameter[2]));
                 case "zoom":
+                    if (LastPolygonName == null)
+                    {
+                        throw new NoFormExeption("Keine zoombare Form vorhanden!");
+                    }
+                    if (ValidateFormat.LetterCheck(parameter[1]))
+                    {
                     Zoom(double.Parse(parameter[1]));
                     break;
+                    }
+                    throw new FalseArgumentExeption(string.Format("{0} ist kein gültiger Zoomparameter",parameter[1]));
                 case "print":
+                    if (LastPolygonName == null)
+                    {
+                        throw new NoFormExeption("Keine zeichenbare Form vorhanden");
+                    }
                     Print(parameter[1]);
                     break;
-            }            
+                default:
+                    throw new NoCommandExeption("Der Befehl {0} ist nicht definiert (Definierte Befehle: draw,move,zoom,print)", parameter[0]);          
+            }
+           
         }
 
-        private void Draw(String[] parameter)
+        private void Draw(String[] parameter, string type)
         {
             var points = StringToPointsParser.Parse(parameter);
-            if (parameter.Length == 3)
-            {
-                LastPolygonName = PolygonPrinter.Create(points[0], points[1], points[2]);
-            }
-            else
-            {
-                LastPolygonName = PolygonPrinter.Create(points[0], points[1], points[2], points[3]);
-            }
+                if (parameter.Length == 3)
+                {
+                    LastPolygonName = PolygonPrinter.Create(points[0], points[1], points[2]);
+                }
+                else
+                {
+                    LastPolygonName = PolygonPrinter.Create(points[0], points[1], points[2], points[3]);
+                }
         }
 
         private void Move(string direction, int offset)
@@ -69,6 +102,8 @@ namespace ixts.Ausbildung.Geometry
                 case "west"://vektor ist -1/0
                     moveX = -offset;//Negativ
                     break;
+                default:
+                    throw new NoCommandExeption("{0} ist keine gültige Richtungsangabe (gültige Angaben: north,east,south,west)",direction);
             }
             PolygonPrinter.MovePolygon(LastPolygonName,moveX,moveY);
         }
@@ -78,8 +113,13 @@ namespace ixts.Ausbildung.Geometry
             PolygonPrinter.ZoomPolygon(LastPolygonName,factor);
         }
 
-        private void Print(string path)
+        private void Print(string path)//TODO Abfangen wenn ungültiger Pfad als Parameter mitgegeben wird
         {
+            if (!Directory.Exists(path))
+            {
+                throw new NotExistingDirectoryException(string.Format("Verzeichnis {0} existiert nicht",path ));
+            }
+            
             Bitmap bitmap = PolygonPrinter.Print();
             bitmap.Save(path); //Wichtig das path den Dateinamen enthält(Fehlerquelle)
         }

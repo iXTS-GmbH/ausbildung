@@ -67,7 +67,7 @@ namespace ixts.Ausbildung.Geometry
                     }
                     //foreach (var polygon in Polygons)//Nicht Funktional InvalidOperationExeption
                     //{
-                    //    MovePolygon(polygon.Key,Math.Abs(point.X), 0);
+                    //    MovePolygon(polygon.Key, Math.Abs(point.X), 0);
                     //}
                 }
                 if (point.Y<0)
@@ -133,6 +133,5 @@ namespace ixts.Ausbildung.Geometry
             size[1] = Convert.ToInt32(heightvalues.ToArray().Max() + 5);
             return size;
         }
-
     }
 }

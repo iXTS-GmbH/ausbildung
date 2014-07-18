@@ -16,8 +16,13 @@ namespace ixts.Ausbildung.Geometry
             var points = new List<Point>();
             foreach (string point in pointstrings)
             {
+                if (point == "") { 
+                }
+                else
+                {
                 var coordinates = point.Split('/');
                 points.Add(new Point(double.Parse(coordinates[0]), double.Parse(coordinates[1])));
+                }
             }
             return points.ToArray();
         }

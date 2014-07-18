@@ -156,10 +156,10 @@
             // 
             // tb_coordinates
             // 
-            this.tb_coordinates.Location = new System.Drawing.Point(400, 120);
+            this.tb_coordinates.Location = new System.Drawing.Point(396, 105);
             this.tb_coordinates.Name = "tb_coordinates";
             this.tb_coordinates.Size = new System.Drawing.Size(100, 20);
-            this.tb_coordinates.TabIndex = 11;
+            this.tb_coordinates.TabIndex = 13;
             // 
             // PrinterApp
             // 

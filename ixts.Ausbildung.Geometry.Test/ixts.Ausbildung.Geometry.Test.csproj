@@ -58,6 +58,7 @@
     <Compile Include="ScriptInterpreterTests.cs" />
     <Compile Include="StringToPointsParserTests.cs" />
     <Compile Include="TriangleTests.cs" />
+    <Compile Include="ValidateTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ixts.Ausbildung.Geometry\ixts.Ausbildung.Geometry.csproj">
