@@ -1,17 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace ixts.Ausbildung.Roman
 {
     public class Roman
     {
         internal readonly String rNumber;
-
+        internal readonly int nNumber;
+        //Zweiter Konstruktor der Numerischen Wert annimmt
+        //Nur Positive
+        //toLiteral macht aus numerischen Zahlen römische
+        // 4 Methoden für +,-,x,/
         public Roman(String romaNumber)
         {
             rNumber = romaNumber;
+            nNumber = Numeral();
+        }
+
+        public Roman(int numericNumber)
+        {
+            nNumber = numericNumber;
         }
 
         public override String ToString()

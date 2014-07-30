@@ -17,6 +17,13 @@ namespace ixts.Ausbildung.Roman.Test
             Assert.AreEqual(expected,r.rNumber);
         }
 
+        [TestCase(4, 4)]
+        public void NumRomaTest(int expected, int numericNumber)
+        {
+            var r = new Roman(numericNumber);
+            Assert.AreEqual(expected, r.nNumber);
+        }
+
 
         [TestCase(0,"")]//Keine Römische Zahl ist null
         [TestCase(4,"IV")]//Klein vor Groß wird subtrahiert
@@ -38,6 +45,5 @@ namespace ixts.Ausbildung.Roman.Test
             var actual = r.ToString();
             Assert.AreEqual(expected,actual);
         }
-
     }
 }
