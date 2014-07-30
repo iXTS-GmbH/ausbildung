@@ -9,21 +9,13 @@ namespace ixts.Ausbildung.Geometry
     {
         internal PolygonPrinter PolygonPrinter = new PolygonPrinter();
         internal string LastPolygonName;
-        private Boolean error;
 
         public void Eval(String script)
         {
             var commands = script.Split(new []{Environment.NewLine},StringSplitOptions.None);
             foreach (var command in commands)
             {
-                if (!error)
-                {
                 EvalCommand(command);
-                }
-                else
-                {
-                    break;
-                }
             }
         }
 
@@ -66,7 +58,7 @@ namespace ixts.Ausbildung.Geometry
                     Print(parameter[1]);
                     break;
                 default:
-                    throw new NoCommandExeption("Der Befehl {0} ist nicht definiert (Definierte Befehle: draw,move,zoom,print)", parameter[0]);          
+                    throw new NoCommandExeption(string.Format("Der Befehl {0} ist nicht definiert (Definierte Befehle: draw,move,zoom,print)", parameter[0]));          
             }
            
         }
@@ -103,7 +95,7 @@ namespace ixts.Ausbildung.Geometry
                     moveX = -offset;//Negativ
                     break;
                 default:
-                    throw new NoCommandExeption("{0} ist keine gültige Richtungsangabe (gültige Angaben: north,east,south,west)",direction);
+                    throw new NoCommandExeption(String.Format("{0} ist keine gültige Richtungsangabe (gültige Angaben: north,east,south,west)",direction));
             }
             PolygonPrinter.MovePolygon(LastPolygonName,moveX,moveY);
         }

@@ -10,18 +10,19 @@ namespace ixts.Ausbildung.Roman.Test
     public class RomanTests
     {
 
-        [TestCase()]
+        [TestCase("IV","IV")]
         public void RomaTest(String expected, String romaNumber)
         {
-            Roman r = new Roman(romaNumber);
-            Assert.AreEqual(expected,r);
+            var r = new Roman(romaNumber);
+            Assert.AreEqual(expected,r.rNumber);
         }
 
-        [TestCase()]
-        public void NumeralTest()
-        {
 
-        }
+        //[TestCase()]
+        //public void NumeralTest()
+        //{
+
+        //}
 
     }
 }

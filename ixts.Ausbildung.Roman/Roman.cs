@@ -7,29 +7,17 @@ namespace ixts.Ausbildung.Roman
 {
     public class Roman
     {
-        //Konstruktor der Römische Zahl als String annimmt
-        //toString                                                     //toString liefert aus numerischen zahlen römische
-        //Getter numeral liefert numerischen wert einer Römischen Zahl //numeral liefert aus römischen zahlen numerische
-        //Nur Positive Zahlen
-        private string rNumber;
+        public readonly String rNumber;
 
         public Roman(String romaNumber)
         {
             rNumber = romaNumber;
         }
 
-        public int numeral()
-        {
-            //Gibt numerischen wert von rNumber zurück
-            return 0;
-        }
-
         public override String ToString()
         {
-
-            return "";
+            return rNumber;
         }
-
     }
 }
 
