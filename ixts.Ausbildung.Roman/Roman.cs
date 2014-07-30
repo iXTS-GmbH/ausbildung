@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ixts.Ausbildung.Roman
 {
@@ -89,6 +90,71 @@ namespace ixts.Ausbildung.Roman
 
         public String ToLiteral()
         {
+            List<char> parsedNumber = new List<char>();
+            int toParseNumber = nNumber;
+            while (toParseNumber > 0)
+            {
+                if (toParseNumber == 4) //IV
+                {
+                    toParseNumber = toParseNumber - 4;
+                    parsedNumber.Add('I');
+                    parsedNumber.Add('V');
+                }
+                else
+                {
+                    if (toParseNumber >= 1 && toParseNumber < 5)//I == 1
+                    {
+                        toParseNumber = toParseNumber - 1;
+                        parsedNumber.Add('I');
+                    }
+                }
+                if (toParseNumber == 9)//IX == 9
+                {
+                }
+                else
+                {
+                    if (toParseNumber >= 5 && toParseNumber < 10)//V == 5
+                    {
+                    }
+                }
+                if (toParseNumber >= 40 && toParseNumber < 50)//XL == 40
+                {
+                }
+                else
+                {
+                    if (toParseNumber >= 10 && toParseNumber < 50)//X == 10
+                    {
+                    }  
+                }
+                if (toParseNumber >= 90 && toParseNumber < 100)// XC == 90
+                {
+                }
+                else
+                {
+                    if (toParseNumber >= 50 && toParseNumber < 100) //L == 50
+                    {
+                    }
+                }
+                if (toParseNumber >= 400 && toParseNumber < 500) // CD == 400
+                {
+                }
+                else
+                {
+                    if (toParseNumber >= 100 && toParseNumber < 500) //C == 100
+                    {
+                    } 
+                }
+                if (toParseNumber >= 900 && toParseNumber < 1000) //CM == 900
+                {
+                }
+                if (toParseNumber >= 500 && toParseNumber < 1000) //D == 500
+                {
+                }
+                if (toParseNumber < 1000)//M == 100
+                {
+                }
+            }
+
 
             return "";
         }
