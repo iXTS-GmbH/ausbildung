@@ -30,6 +30,10 @@ namespace ixts.Ausbildung.Roman
 
             for ( var i = 0;i < rNumber.Length;i++)
             {
+                if (RomaNumberValue(rNumber[i]) == 0)
+                {
+                    return 0;
+                }
                 if (i == 0 || lastvalue > RomaNumberValue(rNumber[i]))//Addieren
                 {
                     parsedNumber = parsedNumber + RomaNumberValue(rNumber[i]);

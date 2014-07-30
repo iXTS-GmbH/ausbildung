@@ -12,16 +12,16 @@
 <col />
 </colgroup>
 <tbody>
-<tr><th>Generated on:</th><td>30.07.2014 - 12:54:13</td></tr>
+<tr><th>Generated on:</th><td>30.07.2014 - 13:33:44</td></tr>
 <tr><th>Parser:</th><td>OpenCoverParser</td></tr>
 <tr><th>Assemblies:</th><td>2</td></tr>
 <tr><th>Classes:</th><td>2</td></tr>
 <tr><th>Files:</th><td>2</td></tr>
-<tr><th>Coverage:</th><td>72.7%</td></tr>
-<tr><th>Covered lines:</th><td>8</td></tr>
+<tr><th>Coverage:</th><td>94.1%</td></tr>
+<tr><th>Covered lines:</th><td>48</td></tr>
 <tr><th>Uncovered lines:</th><td>3</td></tr>
-<tr><th>Coverable lines:</th><td>11</td></tr>
-<tr><th>Total lines:</th><td>75</td></tr>
+<tr><th>Coverable lines:</th><td>51</td></tr>
+<tr><th>Total lines:</th><td>120</td></tr>
 </tbody>
 </table>
 <h1>Assemblies</h1>
@@ -49,10 +49,10 @@ document.write('<div id="showcustomizebox" class="customizebox"><input href="#" 
 </colgroup>
 <thead><tr><th><a href="#" data-bind="attr: { class: sortby() === 'name' ? 'sortactive' + '_' + sortorder() : 'sortinactive_asc' }, click: function(data, event) { changeSorting(data, event, 'name') }">Name</a></th><th class="right"><a href="#" data-bind="attr: { class: sortby() === 'covered' ? 'sortactive' + '_' + sortorder() : 'sortinactive_asc' }, click: function(data, event) { changeSorting(data, event, 'covered') }">Covered</a></th><th class="right"><a href="#" data-bind="attr: { class: sortby() === 'uncovered' ? 'sortactive' + '_' + sortorder() : 'sortinactive_asc' }, click: function(data, event) { changeSorting(data, event, 'uncovered') }">Uncovered</a></th><th class="right"><a href="#" data-bind="attr: { class: sortby() === 'coverable' ? 'sortactive' + '_' + sortorder() : 'sortinactive_asc' }, click: function(data, event) { changeSorting(data, event, 'coverable') }">Coverable</a></th><th class="center" colspan="2"><a href="#" data-bind="attr: { class: sortby() === 'coverage' ? 'sortactive' + '_' + sortorder() : 'sortinactive_asc' }, click: function(data, event) { changeSorting(data, event, 'coverage') }">Coverage</a></th></tr></thead>
 <tbody data-bind="template: { name: 'assembly-template', foreach: assemblies }">
-<tr><th>ixts.Ausbildung.Roman</th><th class="right">4</th><th class="right">3</th><th class="right">7</th><th title="LineCoverage" class="right">57.1%</th><th><table class="coverage"><tr><td class="green" style="width: 57px;">&nbsp;</td><td class="red" style="width: 43px;">&nbsp;</td></tr></table></th></tr>
-<tr><td><a href="ixts.Ausbildung.Roman_Roman.htm">ixts.Ausbildung.Roman.Roman</a></td><td class="right">4</td><td class="right">3</td><td class="right">7</td><td title="LineCoverage" class="right">57.1%</td><td><table class="coverage"><tr><td class="green" style="width: 57px;">&nbsp;</td><td class="red" style="width: 43px;">&nbsp;</td></tr></table></td></tr>
-<tr><th>ixts.Ausbildung.Roman.Test</th><th class="right">4</th><th class="right">0</th><th class="right">4</th><th title="LineCoverage" class="right">100%</th><th><table class="coverage"><tr><td class="green" style="width: 100px;">&nbsp;</td></tr></table></th></tr>
-<tr><td><a href="ixts.Ausbildung.Roman.Test_RomanTests.htm">ixts.Ausbildung.Roman.Test.RomanTests</a></td><td class="right">4</td><td class="right">0</td><td class="right">4</td><td title="LineCoverage" class="right">100%</td><td><table class="coverage"><tr><td class="green" style="width: 100px;">&nbsp;</td></tr></table></td></tr>
+<tr><th>ixts.Ausbildung.Roman</th><th class="right">39</th><th class="right">3</th><th class="right">42</th><th title="LineCoverage" class="right">92.8%</th><th><table class="coverage"><tr><td class="green" style="width: 93px;">&nbsp;</td><td class="red" style="width: 7px;">&nbsp;</td></tr></table></th></tr>
+<tr><td><a href="ixts.Ausbildung.Roman_Roman.htm">ixts.Ausbildung.Roman.Roman</a></td><td class="right">39</td><td class="right">3</td><td class="right">42</td><td title="LineCoverage" class="right">92.8%</td><td><table class="coverage"><tr><td class="green" style="width: 93px;">&nbsp;</td><td class="red" style="width: 7px;">&nbsp;</td></tr></table></td></tr>
+<tr><th>ixts.Ausbildung.Roman.Test</th><th class="right">9</th><th class="right">0</th><th class="right">9</th><th title="LineCoverage" class="right">100%</th><th><table class="coverage"><tr><td class="green" style="width: 100px;">&nbsp;</td></tr></table></th></tr>
+<tr><td><a href="ixts.Ausbildung.Roman.Test_RomanTests.htm">ixts.Ausbildung.Roman.Test.RomanTests</a></td><td class="right">9</td><td class="right">0</td><td class="right">9</td><td title="LineCoverage" class="right">100%</td><td><table class="coverage"><tr><td class="green" style="width: 100px;">&nbsp;</td></tr></table></td></tr>
 </tbody>
 </table>
 <script type="text/javascript">
@@ -61,16 +61,16 @@ var assemblies = [
   {
     "name" : 'ixts.Ausbildung.Roman',
     "classes" : [
-    { "name" : 'ixts.Ausbildung.Roman.Roman', "reportPath" : 'ixts.Ausbildung.Roman_Roman.htm', "coveredLines" : 4, "uncoveredLines" : 3, "coverableLines" : 7, "coverageType" : 'LineCoverage', "methodCoverage" : '-' },
+    { "name" : 'ixts.Ausbildung.Roman.Roman', "reportPath" : 'ixts.Ausbildung.Roman_Roman.htm', "coveredLines" : 39, "uncoveredLines" : 3, "coverableLines" : 42, "coverageType" : 'LineCoverage', "methodCoverage" : '-' },
   ]},
   {
     "name" : 'ixts.Ausbildung.Roman.Test',
     "classes" : [
-    { "name" : 'ixts.Ausbildung.Roman.Test.RomanTests', "reportPath" : 'ixts.Ausbildung.Roman.Test_RomanTests.htm', "coveredLines" : 4, "uncoveredLines" : 0, "coverableLines" : 4, "coverageType" : 'LineCoverage', "methodCoverage" : '-' },
+    { "name" : 'ixts.Ausbildung.Roman.Test.RomanTests', "reportPath" : 'ixts.Ausbildung.Roman.Test_RomanTests.htm', "coveredLines" : 9, "uncoveredLines" : 0, "coverableLines" : 9, "coverageType" : 'LineCoverage', "methodCoverage" : '-' },
   ]},
 ];
 /* ]]> */
 </script>
-<div class="footer">Generated by: ReportGenerator 1.9.1.0<br />30.07.2014 - 12:54:13<br /><a href="http://www.palmmedia.de">www.palmmedia.de</a></div></div>
+<div class="footer">Generated by: ReportGenerator 1.9.1.0<br />30.07.2014 - 13:33:44<br /><a href="http://www.palmmedia.de">www.palmmedia.de</a></div></div>
 <script type="text/javascript" src="combined.js"></script>
 </body></html>

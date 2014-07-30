@@ -21,10 +21,21 @@ namespace ixts.Ausbildung.Roman.Test
         [TestCase(0,"")]//Keine Römische Zahl ist null
         [TestCase(4,"IV")]//Klein vor Groß wird subtrahiert
         [TestCase(6,"VI")]//Groß vor Klein wird addiert
+        [TestCase(1660, "MDCLX")]
+        [TestCase(0,"Z")]//Unbekannte Zeichen geben 0 zurück
+        [TestCase(0,"IZV")]//Zeichenfolgen mit einem unbekanntem Buchstaben geben 0 zurück
         public void NumeralTest(int expected, String romaNumber)
         {
             var r = new Roman(romaNumber);
             var actual = r.Numeral();
+            Assert.AreEqual(expected,actual);
+        }
+
+        [TestCase("IV","IV")]
+        public void ToStringTest(String expected, String romaNumber)
+        {
+            var r = new Roman(romaNumber);
+            var actual = r.ToString();
             Assert.AreEqual(expected,actual);
         }
 
