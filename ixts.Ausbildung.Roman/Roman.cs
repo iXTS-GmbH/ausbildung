@@ -21,21 +21,59 @@ namespace ixts.Ausbildung.Roman
 
         public int Numeral()
         {
+            if (rNumber == "")
+            {
+                return 0;
+            }
+            int parsedNumber = 0;
+            int lastvalue = 0;
 
-            return 0;
+            for ( var i = 0;i < rNumber.Length;i++)
+            {
+                if (i == 0 || lastvalue > RomaNumberValue(rNumber[i]))//Addieren
+                {
+                    parsedNumber = parsedNumber + RomaNumberValue(rNumber[i]);
+                    lastvalue = RomaNumberValue(rNumber[i]);
+
+                }
+                else//Subtrahieren
+                {
+                    parsedNumber = parsedNumber - lastvalue;
+                    parsedNumber = parsedNumber + RomaNumberValue(rNumber[i]) - lastvalue;
+                    lastvalue = RomaNumberValue(rNumber[i]);
+                }
+            }
+
+            return parsedNumber;
+        }
+
+        private int RomaNumberValue(char romaNumber)
+        {
+            switch (romaNumber)
+            {
+                case 'I':
+                    return 1;
+                case 'V':
+                    return 5;
+                case 'X':
+                    return 10;
+                case 'L':
+                    return 50;
+                case 'C':
+                    return 100;
+                case 'D':
+                    return 500;
+                case 'M':
+                    return 1000;
+                default:
+                    return 0;
+
+            }
+
         }
 
     }
 }
-
-//Römische Zahlen(Werte):
-//I = 1
-//V = 5
-//X = 10
-//L = 50
-//C = 100
-//D = 500
-//M = 1000
 
 //Umrechnungsregeln:
 
