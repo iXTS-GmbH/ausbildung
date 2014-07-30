@@ -5,6 +5,13 @@ namespace ixts.Ausbildung.Roman
 {
     public class Roman
     {
+        private const int I = 1;
+        private const int V = 5;
+        private const int X = 10;
+        private const int L = 50;
+        private const int C = 100;
+        private const int D = 500;
+        private const int M = 1000;
         internal readonly String rNumber;
         internal readonly int nNumber;
         //toLiteral macht aus numerischen Zahlen römische
@@ -17,7 +24,7 @@ namespace ixts.Ausbildung.Roman
 
         public Roman(int numericNumber)
         {
-            if (numericNumber > 0)
+            if (numericNumber >= 0)
             {
                 nNumber = numericNumber;
             }
@@ -70,19 +77,19 @@ namespace ixts.Ausbildung.Roman
             switch (romaNumber)
             {
                 case 'I':
-                    return 1;
+                    return I;
                 case 'V':
-                    return 5;
+                    return V;
                 case 'X':
-                    return 10;
+                    return X;
                 case 'L':
-                    return 50;
+                    return L;
                 case 'C':
-                    return 100;
+                    return C;
                 case 'D':
-                    return 500;
+                    return D;
                 case 'M':
-                    return 1000;
+                    return M;
                 default:
                     return 0;
             }
@@ -96,7 +103,7 @@ namespace ixts.Ausbildung.Roman
             {
                 if (toParseNumber == 4) //IV
                 {
-                    toParseNumber = toParseNumber - 4;
+                    toParseNumber -= (V - I);
                     parsedNumber.Add('I');
                     parsedNumber.Add('V');
                 }
@@ -104,59 +111,90 @@ namespace ixts.Ausbildung.Roman
                 {
                     if (toParseNumber >= 1 && toParseNumber < 5)//I == 1
                     {
-                        toParseNumber = toParseNumber - 1;
+                        toParseNumber -= I;
                         parsedNumber.Add('I');
                     }
                 }
                 if (toParseNumber == 9)//IX == 9
                 {
+                    toParseNumber -= (X-I);
+                    parsedNumber.Add('I');
+                    parsedNumber.Add('X');
                 }
                 else
                 {
                     if (toParseNumber >= 5 && toParseNumber < 10)//V == 5
                     {
+                        toParseNumber -= V;
+                        parsedNumber.Add('V');
                     }
                 }
                 if (toParseNumber >= 40 && toParseNumber < 50)//XL == 40
                 {
+                    toParseNumber -= (L - X);
+                    parsedNumber.Add('X');
+                    parsedNumber.Add('L');
                 }
                 else
                 {
                     if (toParseNumber >= 10 && toParseNumber < 50)//X == 10
                     {
+                        toParseNumber -= X;
+                        parsedNumber.Add('X');
                     }  
                 }
                 if (toParseNumber >= 90 && toParseNumber < 100)// XC == 90
                 {
+                    toParseNumber -= (C - X);
+                    parsedNumber.Add('X');
+                    parsedNumber.Add('C');
                 }
                 else
                 {
                     if (toParseNumber >= 50 && toParseNumber < 100) //L == 50
                     {
+                        toParseNumber -= L;
+                        parsedNumber.Add('L');
                     }
                 }
                 if (toParseNumber >= 400 && toParseNumber < 500) // CD == 400
                 {
+                    toParseNumber -= (D - C);
+                    parsedNumber.Add('C');
+                    parsedNumber.Add('D');
                 }
                 else
                 {
                     if (toParseNumber >= 100 && toParseNumber < 500) //C == 100
                     {
+                        toParseNumber -= C;
+                        parsedNumber.Add('C');
                     } 
                 }
                 if (toParseNumber >= 900 && toParseNumber < 1000) //CM == 900
                 {
+                    toParseNumber -= (M - C);
+                    parsedNumber.Add('C');
+                    parsedNumber.Add('M');
                 }
-                if (toParseNumber >= 500 && toParseNumber < 1000) //D == 500
+                else
                 {
+                    if (toParseNumber >= 500 && toParseNumber < 1000) //D == 500
+                    {
+                        toParseNumber -= D;
+                        parsedNumber.Add('D');
+                    }
                 }
+
                 if (toParseNumber < 1000)//M == 100
                 {
+                    toParseNumber -= M;
+                    parsedNumber.Add('M');
                 }
             }
 
 
-            return "";
+            return parsedNumber.ToString();
         }
 
     }
