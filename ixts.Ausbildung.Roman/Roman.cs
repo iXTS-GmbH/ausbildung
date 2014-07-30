@@ -7,7 +7,7 @@ namespace ixts.Ausbildung.Roman
 {
     public class Roman
     {
-        public readonly String rNumber;
+        internal readonly String rNumber;
 
         public Roman(String romaNumber)
         {
@@ -18,6 +18,13 @@ namespace ixts.Ausbildung.Roman
         {
             return rNumber;
         }
+
+        public int Numeral()
+        {
+
+            return 0;
+        }
+
     }
 }
 
