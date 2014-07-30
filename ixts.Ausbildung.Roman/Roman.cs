@@ -6,8 +6,6 @@ namespace ixts.Ausbildung.Roman
     {
         internal readonly String rNumber;
         internal readonly int nNumber;
-        //Zweiter Konstruktor der Numerischen Wert annimmt
-        //Nur Positive
         //toLiteral macht aus numerischen Zahlen römische
         // 4 Methoden für +,-,x,/
         public Roman(String romaNumber)
@@ -18,7 +16,15 @@ namespace ixts.Ausbildung.Roman
 
         public Roman(int numericNumber)
         {
-            nNumber = numericNumber;
+            if (numericNumber > 0)
+            {
+                nNumber = numericNumber;
+            }
+            else
+            {
+                throw new ArgumentException("Parameter darf nicht negativ sein");
+            }
+            
         }
 
         public override String ToString()
@@ -78,9 +84,13 @@ namespace ixts.Ausbildung.Roman
                     return 1000;
                 default:
                     return 0;
-
             }
+        }
 
+        public String ToLiteral()
+        {
+
+            return "";
         }
 
     }

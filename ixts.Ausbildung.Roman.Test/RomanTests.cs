@@ -45,5 +45,14 @@ namespace ixts.Ausbildung.Roman.Test
             var actual = r.ToString();
             Assert.AreEqual(expected,actual);
         }
+        [TestCase("", 0)]
+        [TestCase("IV", 4)]
+        [TestCase("VI", 6)]
+        public void ToLiteralTest(String expected, int numericNumber)
+        {
+            var r = new Roman(numericNumber);
+            var actual = r.ToLiteral();
+            Assert.AreEqual(expected,actual);
+        }
     }
 }
