@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using NUnit.Framework;
 
 namespace ixts.Ausbildung.Roman.Test
@@ -58,22 +55,6 @@ namespace ixts.Ausbildung.Roman.Test
         {
             var r = new Roman(romaNumber);
             var actual = r.ToString();
-            Assert.AreEqual(expected,actual);
-        }
-
-        [TestCase("IV", 4)]
-        [TestCase("VI", 6)]
-        [TestCase("III", 3)]
-        [TestCase("MDCLX", 1660)]
-        [TestCase("IX", 9)]
-        [TestCase("XL", 40)]
-        [TestCase("XC", 90)]
-        [TestCase("CD", 400)]
-        [TestCase("CM", 900)]
-        public void ToLiteralTest(String expected, int numericNumber)
-        {
-            var r = new Roman(numericNumber);
-            var actual = r.ToLiteral();
             Assert.AreEqual(expected,actual);
         }
 
@@ -136,6 +117,7 @@ namespace ixts.Ausbildung.Roman.Test
 
         [ExpectedException]
         [TestCase("X", 5)]
+        [TestCase("L",51)]
         public void ExceptionDivideTest(String romaNumber, int numericNumber)
         {
             var r = new Roman(numericNumber);

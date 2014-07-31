@@ -34,7 +34,7 @@ namespace ixts.Ausbildung.Roman
             if (numericNumber > 0)
             {
                 nNumber = numericNumber;
-                rNumber = ToLiteral();
+                rNumber = ToLiteral(nNumber);
             }
             else
             {
@@ -95,12 +95,7 @@ namespace ixts.Ausbildung.Roman
             }
         }
 
-        public String ToLiteral()
-        {
-            return ToLiteral(nNumber);
-        }
-
-        public String ToLiteral(int numericNumber)
+        private static String ToLiteral(int numericNumber)
         {
             var toParseNumber = numericNumber;
             var parsedNumber = new StringBuilder();
@@ -155,17 +150,17 @@ namespace ixts.Ausbildung.Roman
 
         public String Divide(Roman toDivide)
         {
-            var toDivideNumeric = toDivide.Numeral();
+            double toDivideNumeric = toDivide.Numeral();
             var divide = nNumber/toDivideNumeric;
             if (divide < 1)
             {
                 throw new ArgumentException("Der Quotient der zu Dividierenden Zahlen darf nicht kleiner als 1 sein");
             }
-            if (divide != (int)divide)
+            if (divide - (int)divide > 0)
             {
                 throw new ArgumentException("Der Quotient der zu Dividierenden Zahlen muss Ganzzahlig sein");
             }
-            return ToLiteral(divide);
+            return ToLiteral((int)divide);
         }
     }
 }
