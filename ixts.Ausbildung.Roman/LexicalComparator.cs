@@ -6,10 +6,9 @@ namespace ixts.Ausbildung.Roman
     {
 
 
-        public int Compare(Roman roman, Roman toCompareRomane)
+        public int Compare(Roman roman, Roman toCompareRoman)//Problem
         {
-            
-            
+            return System.String.Compare(roman.ToString(), toCompareRoman.ToString(), System.StringComparison.Ordinal);
         }
     }
 }

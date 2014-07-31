@@ -178,5 +178,16 @@ namespace ixts.Ausbildung.Roman.Test
             Assert.AreEqual("X", list[6].ToString());
         }
 
+        [TestCase()]
+        public void ELexicalComparatorTest()
+        {
+            var list = new List<Roman> {new Roman("MMMDI"), new Roman("MMDI"),new Roman("MMMDDI"), new Roman("MDI")};
+            list.Sort(Roman.LexicalComparator);
+            Assert.AreEqual("MDI", list[0].ToString());
+            Assert.AreEqual("MMDI", list[1].ToString());
+            Assert.AreEqual("MMMDDI", list[2].ToString());
+            Assert.AreEqual("MMMDI", list[3].ToString());
+        }
+
     }
 }
