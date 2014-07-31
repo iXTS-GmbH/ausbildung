@@ -127,14 +127,20 @@ namespace ixts.Ausbildung.Roman
             var sum = toAddNumeric + nNumber;
             if (sum > 3999)
             {
-                throw new ArgumentException("Summe der zu Addierenden Zahlen darf 3999 nicht überschreiten");
+                throw new ArgumentException("Die Summe der zu Addierenden Zahlen darf 3999 nicht überschreiten");
             }
             return ToLiteral(sum);
         }
 
         public String Subtract(Roman toSubtract)
         {
-            return "";
+            var toSubtractNumeric = toSubtract.Numeral();
+            var dif = nNumber - toSubtractNumeric;
+            if (dif <= 0)
+            {
+                throw new ArgumentException("Die Differenz der zu Subtrahierenden Zahlen darf nicht 0 oder negativ sein");
+            }
+            return ToLiteral(dif);
         }
     }
 }

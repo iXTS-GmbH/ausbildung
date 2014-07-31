@@ -103,6 +103,7 @@ namespace ixts.Ausbildung.Roman.Test
 
         [ExpectedException]
         [TestCase("X", 5)]
+        [TestCase("V",5)]
         public void ExceptionSubtractTest(String romaNumber, int numericNumber)
         {
             var r = new Roman(numericNumber);
