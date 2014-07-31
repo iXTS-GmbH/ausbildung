@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 
 namespace ixts.Ausbildung.Roman
@@ -156,7 +155,17 @@ namespace ixts.Ausbildung.Roman
 
         public String Divide(Roman toDivide)
         {
-            return "";
+            var toDivideNumeric = toDivide.Numeral();
+            var divide = nNumber/toDivideNumeric;
+            if (divide < 1)
+            {
+                throw new ArgumentException("Der Quotient der zu Dividierenden Zahlen darf nicht kleiner als 1 sein");
+            }
+            if (divide != (int)divide)
+            {
+                throw new ArgumentException("Der Quotient der zu Dividierenden Zahlen muss Ganzzahlig sein");
+            }
+            return ToLiteral(divide);
         }
     }
 }
