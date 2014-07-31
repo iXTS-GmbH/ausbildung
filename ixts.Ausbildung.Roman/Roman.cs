@@ -165,8 +165,12 @@ namespace ixts.Ausbildung.Roman
 
         public override Boolean Equals(object other)
         {
-
-            return false;
+            var otherRoman = other as Roman;
+            if (otherRoman == null)
+            {
+                throw new ArgumentException("Übergebener Wert ist Null");
+            }
+            return nNumber == otherRoman.Numeral();
         }
     }
 }
