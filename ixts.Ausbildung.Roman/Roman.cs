@@ -124,7 +124,7 @@ namespace ixts.Ausbildung.Roman
         public String Add(Roman toAdd)
         {
             var toAddNumeric = toAdd.Numeral();
-            var sum = toAddNumeric + nNumber;
+            var sum = nNumber + toAddNumeric;
             if (sum > 3999)
             {
                 throw new ArgumentException("Die Summe der zu Addierenden Zahlen darf 3999 nicht überschreiten");
@@ -145,7 +145,13 @@ namespace ixts.Ausbildung.Roman
 
         public String Multiply(Roman toMultiply)
         {
-            return "";
+            var toMultiplyNumeric = toMultiply.Numeral();
+            var multi = nNumber*toMultiplyNumeric;
+            if (multi > 3999)
+            {
+                throw new ArgumentException("Das Produkt der zu Multiplizierenden Zahlen darf 3999 nicht überschreiten");
+            }
+            return ToLiteral(multi);
         }
     }
 }
