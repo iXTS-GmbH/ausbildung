@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LengthComparator.cs" />
+    <Compile Include="LexicalComparator.cs" />
     <Compile Include="Roman.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

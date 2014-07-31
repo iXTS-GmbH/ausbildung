@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 
 namespace ixts.Ausbildung.Roman.Test
@@ -134,14 +135,48 @@ namespace ixts.Ausbildung.Roman.Test
             Assert.AreEqual(expected, actual);
         }
 
-        [TestCase("XVI",00166100)] //HashCode Zwischendrin
+        [ExpectedException]
+        [TestCase]
+        public void ExceptionEqualsTest()
+        {
+            var r = new Roman("X");
+            r.Equals(null);
+        }
+
+        [TestCase("XVI",166100)] //HashCode Zwischendrin //Genaugenommen 00166100 aber 0 vorne fällt weg
         [TestCase("MMMCMXCIX", 39999993)] //Höchster HashCode
-        [TestCase("I", 00011000)] //Niedrigster HashCode
+        [TestCase("I", 11000)] //Niedrigster HashCode //Genaugenommen 00011000 aber 0 vorne fällt weg
         public void GetHashCodeTest(String romaNumber, int expected)
         {
             var r = new Roman(romaNumber);
             var actual = r.GetHashCode();
             Assert.AreEqual(expected,actual);
         }
+
+        [TestCase()]
+        public void LengthComparatorTest()
+        {
+            var list = new List<Roman> {new Roman("II"), new Roman("I"), new Roman("VIII"), new Roman("III")};
+            list.Sort(Roman.LengthComparator);
+            Assert.AreEqual("I",list[0].ToString());
+            Assert.AreEqual("II",list[1].ToString());
+            Assert.AreEqual("III",list[2].ToString());
+            Assert.AreEqual("VIII",list[3].ToString());
+        }
+
+        [TestCase()]
+        public void LexicalComparatorTest()
+        {
+            var list = new List<Roman> {new Roman("I"), new Roman("V"), new Roman("X"), new Roman("L"), new Roman("C"), new Roman("D"), new Roman("M")};
+            list.Sort(Roman.LexicalComparator);
+            Assert.AreEqual("C", list[0].ToString());
+            Assert.AreEqual("D", list[1].ToString());
+            Assert.AreEqual("I", list[2].ToString());
+            Assert.AreEqual("L", list[3].ToString());
+            Assert.AreEqual("M", list[4].ToString());
+            Assert.AreEqual("V", list[5].ToString());
+            Assert.AreEqual("X", list[6].ToString());
+        }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace ixts.Ausbildung.Roman
@@ -14,6 +15,8 @@ namespace ixts.Ausbildung.Roman
         private const int M = 1000;
         private readonly String rNumber;
         private readonly int nNumber;
+        public static IComparer<Roman> LengthComparator = new LengthComparator();//sortiert Collection nach Länge der Romastrings
+        public static IComparer<Roman> LexicalComparator = new LexicalComparator();//sortiert Collection nach Alphabet der Romastrings
 
         public Roman(String romaNumber)
         {
@@ -176,9 +179,19 @@ namespace ixts.Ausbildung.Roman
         public override int GetHashCode() //von 0001.1000 - 3999.9993
         {
             var numberString = nNumber.ToString();
+            var reverseNumberString = ReverseString(numberString);
+            if (reverseNumberString.Length < 4)
+            {
+                for (int i = 1; i < 4; i++)
+                {
+                    if (reverseNumberString.Length == i)
+                    {
+                        reverseNumberString = string.Format("{0}0", reverseNumberString);
+                    }
+                }
+            }
 
-
-            return 0;
+            return Convert.ToInt32(string.Format("{0}{1}",numberString,reverseNumberString));
         }
 
         private String ReverseString(String s)
