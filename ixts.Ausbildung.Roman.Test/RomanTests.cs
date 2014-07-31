@@ -9,8 +9,12 @@ namespace ixts.Ausbildung.Roman.Test
     [TestFixture]
     public class RomanTests
     {
-
-
+        [ExpectedException("System.ArgumentException")]
+        [TestCase]
+        public void OutOfRangeTest()
+        {
+            var r = new Roman(4000);
+        }
 
         [ExpectedException("System.ArgumentException")]
         [TestCase]
@@ -73,12 +77,21 @@ namespace ixts.Ausbildung.Roman.Test
             Assert.AreEqual(expected,actual);
         }
 
-        [TestCase()]
+        [TestCase("V",5,"X")]
         public void AddTest(String romaNumber, int numericNumber, String expected)
         {
             var r = new Roman(numericNumber);
             var actual = r.Add(new Roman(romaNumber));
             Assert.AreEqual(expected,actual);
         }
+
+        [ExpectedException("System.ArgumentException")]
+        [TestCase("MMM", 1000)]
+        public void ExceptionAddTest(String romaNumber, int numericNumber)
+        {
+            var r = new Roman(numericNumber);
+            r.Add(new Roman(romaNumber));
+        }
+
     }
 }

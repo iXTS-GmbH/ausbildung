@@ -15,8 +15,7 @@ namespace ixts.Ausbildung.Roman
         private const int M = 1000;
         private readonly String rNumber;
         private readonly int nNumber;
-        //toLiteral macht aus numerischen Zahlen römische
-        // 4 Methoden für +,-,x,/
+
         public Roman(String romaNumber)
         {
             if (romaNumber.Length == 0)
@@ -31,7 +30,7 @@ namespace ixts.Ausbildung.Roman
         {
             if (numericNumber > 3999)
             {
-                throw new ArgumentException("Parameter darf nicht größer als 3999 sein");
+                throw new ArgumentException("Wert darf nicht größer als 3999 sein");
             }
             if (numericNumber > 0)
             {
@@ -57,7 +56,7 @@ namespace ixts.Ausbildung.Roman
 
             for ( var i = 0;i < rNumber.Length;i++)
             {
-                if (i == 0 || lastvalue > RomaNumberValue(rNumber[i]))//Addieren
+                if (i == 0 || lastvalue >= RomaNumberValue(rNumber[i]))//Addieren
                 {
                     parsedNumber += RomaNumberValue(rNumber[i]);
                     lastvalue += RomaNumberValue(rNumber[i]);
@@ -99,7 +98,12 @@ namespace ixts.Ausbildung.Roman
 
         public String ToLiteral()
         {
-            var toParseNumber = nNumber;
+            return ToLiteral(nNumber);
+        }
+
+        public String ToLiteral(int numericNumber)
+        {
+            var toParseNumber = numericNumber;
             var parsedNumber = new StringBuilder();
             int[] romaValues = { 1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000 };
             string[] romanCharakter = { "I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M" };
@@ -114,12 +118,20 @@ namespace ixts.Ausbildung.Roman
                     }
             }
             return parsedNumber.ToString();
+            
         }
 
         public String Add(Roman toAdd)
         {
-
-            return "";
+            var toAddNumeric = toAdd.Numeral();
+            var sum = toAddNumeric + nNumber;
+            if (sum > 3999)
+            {
+                throw new ArgumentException("Summe der zu Addierenden Zahlen darf 3999 nicht überschreiten");
+            }
+            return ToLiteral(sum);
         }
+
+
     }
 }

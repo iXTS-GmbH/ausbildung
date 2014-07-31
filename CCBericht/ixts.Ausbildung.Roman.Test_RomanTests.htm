@@ -15,11 +15,11 @@
 <tr><th>Class:</th><td>ixts.Ausbildung.Roman.Test.RomanTests</td></tr>
 <tr><th>Assembly:</th><td>ixts.Ausbildung.Roman.Test</td></tr>
 <tr><th>File(s):</th><td><a href="#CUsersmkaestlIXTSProjekteAusbildungausbildungixtsAusbildungRomanTestRomanTestscs">C:\Users\mkaestl.IXTS\Projekte\Ausbildung\ausbildung\ixts.Ausbildung.Roman.Test\RomanTests.cs</a></td></tr>
-<tr><th>Coverage:</th><td>84%</td></tr>
-<tr><th>Covered lines:</th><td>21</td></tr>
+<tr><th>Coverage:</th><td>86.6%</td></tr>
+<tr><th>Covered lines:</th><td>26</td></tr>
 <tr><th>Uncovered lines:</th><td>4</td></tr>
-<tr><th>Coverable lines:</th><td>25</td></tr>
-<tr><th>Total lines:</th><td>71</td></tr>
+<tr><th>Coverable lines:</th><td>30</td></tr>
+<tr><th>Total lines:</th><td>84</td></tr>
 </tbody>
 </table>
 <h1>Metrics</h1>
@@ -32,6 +32,7 @@
 <tr><td title="System.Void ixts.Ausbildung.Roman.Test.RomanTests::NumeralTest(System.Int32,System.String)">NumeralTest(...)</td><td>1</td><td>100</td><td>100</td></tr>
 <tr><td title="System.Void ixts.Ausbildung.Roman.Test.RomanTests::ToStringTest(System.String,System.String)">ToStringTest(...)</td><td>1</td><td>100</td><td>100</td></tr>
 <tr><td title="System.Void ixts.Ausbildung.Roman.Test.RomanTests::ToLiteralTest(System.String,System.Int32)">ToLiteralTest(...)</td><td>1</td><td>100</td><td>100</td></tr>
+<tr><td title="System.Void ixts.Ausbildung.Roman.Test.RomanTests::AddTest(System.String,System.Int32,System.String)">AddTest(...)</td><td>1</td><td>100</td><td>100</td></tr>
 </tbody>
 </table>
 <h1>File(s)</h1>
@@ -102,16 +103,29 @@
 <tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>61</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[TestCase(&quot;VI&quot;,&nbsp;6)]</code></td></tr>
 <tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>62</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[TestCase(&quot;III&quot;,&nbsp;3)]</code></td></tr>
 <tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>63</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[TestCase(&quot;MDCLX&quot;,&nbsp;1660)]</code></td></tr>
-<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>64</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;ToLiteralTest(String&nbsp;expected,&nbsp;int&nbsp;numericNumber)</code></td></tr>
-<tr data-coverage="{'AllTestMethods': {'VC': '4', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">4</td><td class="rightmargin right"><code>65</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</code></td></tr>
-<tr data-coverage="{'AllTestMethods': {'VC': '4', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">4</td><td class="rightmargin right"><code>66</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;r&nbsp;=&nbsp;new&nbsp;Roman(numericNumber);</code></td></tr>
-<tr data-coverage="{'AllTestMethods': {'VC': '4', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">4</td><td class="rightmargin right"><code>67</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;actual&nbsp;=&nbsp;r.ToLiteral();</code></td></tr>
-<tr data-coverage="{'AllTestMethods': {'VC': '4', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">4</td><td class="rightmargin right"><code>68</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assert.AreEqual(expected,actual);</code></td></tr>
-<tr data-coverage="{'AllTestMethods': {'VC': '4', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">4</td><td class="rightmargin right"><code>69</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></td></tr>
-<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>70</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;}</code></td></tr>
-<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>71</code></td><td class="lightgray"><code>}</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>64</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[TestCase(&quot;IX&quot;,&nbsp;9)]</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>65</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[TestCase(&quot;XL&quot;,&nbsp;40)]</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>66</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[TestCase(&quot;XC&quot;,&nbsp;90)]</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>67</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[TestCase(&quot;CD&quot;,&nbsp;400)]</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>68</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[TestCase(&quot;CM&quot;,&nbsp;900)]</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>69</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;ToLiteralTest(String&nbsp;expected,&nbsp;int&nbsp;numericNumber)</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '9', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">9</td><td class="rightmargin right"><code>70</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '9', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">9</td><td class="rightmargin right"><code>71</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;r&nbsp;=&nbsp;new&nbsp;Roman(numericNumber);</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '9', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">9</td><td class="rightmargin right"><code>72</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;actual&nbsp;=&nbsp;r.ToLiteral();</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '9', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">9</td><td class="rightmargin right"><code>73</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assert.AreEqual(expected,actual);</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '9', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">9</td><td class="rightmargin right"><code>74</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>75</code></td><td class="lightgray"><code></code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>76</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[TestCase(&quot;V&quot;,5,&quot;X&quot;)]</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>77</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;AddTest(String&nbsp;romaNumber,&nbsp;int&nbsp;numericNumber,&nbsp;String&nbsp;expected)</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '1', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">1</td><td class="rightmargin right"><code>78</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '1', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">1</td><td class="rightmargin right"><code>79</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;r&nbsp;=&nbsp;new&nbsp;Roman(numericNumber);</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '1', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">1</td><td class="rightmargin right"><code>80</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;actual&nbsp;=&nbsp;r.Add(new&nbsp;Roman(romaNumber));</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '1', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">1</td><td class="rightmargin right"><code>81</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assert.AreEqual(expected,actual);</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '1', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">1</td><td class="rightmargin right"><code>82</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>83</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;}</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>84</code></td><td class="lightgray"><code>}</code></td></tr>
 </tbody>
 </table>
-<div class="footer">Generated by: ReportGenerator 1.9.1.0<br />31.07.2014 - 09:38:30<br /><a href="http://www.palmmedia.de">www.palmmedia.de</a></div></div>
+<div class="footer">Generated by: ReportGenerator 1.9.1.0<br />31.07.2014 - 10:47:34<br /><a href="http://www.palmmedia.de">www.palmmedia.de</a></div></div>
 <script type="text/javascript" src="combined.js"></script>
 </body></html>
