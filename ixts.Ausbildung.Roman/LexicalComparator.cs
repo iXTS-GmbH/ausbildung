@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace ixts.Ausbildung.Roman
 {
@@ -9,10 +6,10 @@ namespace ixts.Ausbildung.Roman
     {
 
 
-        public int Compare(Roman a, Roman b)
+        public int Compare(Roman roman, Roman toCompareRomane)
         {
-
-            return 0;
+            
+            
         }
     }
 }

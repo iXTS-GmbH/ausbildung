@@ -9,9 +9,12 @@ namespace ixts.Ausbildung.Roman
     {
 
 
-        public int Compare(Roman a, Roman b)
+        public int Compare(Roman roman, Roman toCompareRoman)
         {
-
+            if (roman.ToString().Length.CompareTo(toCompareRoman.ToString().Length) != 0)
+            {
+                return roman.ToString().Length.CompareTo(toCompareRoman.ToString().Length);
+            }
             return 0;
         }
     }
