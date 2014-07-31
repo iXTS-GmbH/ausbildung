@@ -142,5 +142,10 @@ namespace ixts.Ausbildung.Roman
             }
             return ToLiteral(dif);
         }
+
+        public String Multiply(Roman toMultiply)
+        {
+            return "";
+        }
     }
 }

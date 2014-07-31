@@ -9,21 +9,21 @@ namespace ixts.Ausbildung.Roman.Test
     [TestFixture]
     public class RomanTests
     {
-        [ExpectedException("System.ArgumentException")]
+        [ExpectedException]
         [TestCase]
         public void OutOfRangeTest()
         {
             var r = new Roman(4000);
         }
 
-        [ExpectedException("System.ArgumentException")]
+        [ExpectedException]
         [TestCase]
         public void NullStringTest()
         {
             var r = new Roman("");
         }
 
-        [ExpectedException("System.ArgumentException")]
+        [ExpectedException]
         [TestCase(0)]
         [TestCase(-1)]
         public void NullNegativNumberTest(int numericNumber)
@@ -31,7 +31,7 @@ namespace ixts.Ausbildung.Roman.Test
             var r = new Roman(numericNumber);
         }
 
-        [ExpectedException("System.ArgumentException")]
+        [ExpectedException]
         [TestCase("")]//Leerer String löst Exception aus
         [TestCase("Z")]//Unbekannte Zeichen lösen exception aus
         [TestCase("IZV")]//Zeichenfolgen mit einem unbekanntem Buchstaben lösen exeption aus
@@ -85,7 +85,7 @@ namespace ixts.Ausbildung.Roman.Test
             Assert.AreEqual(expected,actual);
         }
 
-        [ExpectedException("System.ArgumentException")]
+        [ExpectedException]
         [TestCase("MMM", 1000)]
         public void ExceptionAddTest(String romaNumber, int numericNumber)
         {
@@ -108,6 +108,22 @@ namespace ixts.Ausbildung.Roman.Test
         {
             var r = new Roman(numericNumber);
             r.Subtract(new Roman(romaNumber));
+        }
+
+        [TestCase("V", 10, "L")]
+        public void MultiplyTest(String romaNumber, int numericNumber, String expected)
+        {
+            var r = new Roman(numericNumber);
+            var actual = r.Multiply(new Roman(romaNumber));
+            Assert.AreEqual(expected,actual);
+        }
+
+        [ExpectedException]
+        [TestCase("V", 1000)]
+        public void ExceptionMultiplyTest(String romaNumber, int numericNumber)
+        {
+            var r = new Roman(numericNumber);
+            r.Multiply(new Roman(romaNumber));
         }
     }
 }
