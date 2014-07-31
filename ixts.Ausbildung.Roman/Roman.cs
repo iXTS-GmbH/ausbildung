@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace ixts.Ausbildung.Roman
 {
@@ -12,25 +13,29 @@ namespace ixts.Ausbildung.Roman
         private const int C = 100;
         private const int D = 500;
         private const int M = 1000;
-        internal readonly String rNumber;
-        internal readonly int nNumber;
+        private readonly String rNumber;
+        private readonly int nNumber;
         //toLiteral macht aus numerischen Zahlen römische
         // 4 Methoden für +,-,x,/
         public Roman(String romaNumber)
         {
+            if (romaNumber.Length == 0)
+            {
+                throw new ArgumentException("Leerer String ist nicht zulässig");
+            }
             rNumber = romaNumber;
             nNumber = Numeral();
         }
 
         public Roman(int numericNumber)
         {
-            if (numericNumber >= 0)
+            if (numericNumber > 0)
             {
                 nNumber = numericNumber;
             }
             else
             {
-                throw new ArgumentException("Parameter darf nicht negativ sein");
+                throw new ArgumentException("Parameter darf nicht 0 oder negativ sein");
             }
             
         }
@@ -42,10 +47,6 @@ namespace ixts.Ausbildung.Roman
 
         public int Numeral()
         {
-            if (rNumber == "")
-            {
-                throw new ArgumentException("Übergebener String ist leer");
-            }
             int parsedNumber = 0;
             int lastvalue = 0;
 
@@ -93,110 +94,23 @@ namespace ixts.Ausbildung.Roman
 
         public String ToLiteral()
         {
-            List<char> parsedNumber = new List<char>();
-            int toParseNumber = nNumber;
+            var toParseNumber = nNumber;
+            var parsedNumber = new StringBuilder();
+            int[] romaValues = { 1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000 };
+            string[] romanCharakter = { "I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M" };
             while (toParseNumber > 0)
             {
-                if (toParseNumber == 4) //IV
-                {
-                    toParseNumber -= (V - I);
-                    parsedNumber.Add('I');
-                    parsedNumber.Add('V');
-                }
-                else
-                {
-                    if (toParseNumber >= 1 && toParseNumber < 5)//I == 1
+                for (int i = romaValues.Length - 1; i >= 0; i--)
+                    if (toParseNumber >= romaValues[i])
                     {
-                        toParseNumber -= I;
-                        parsedNumber.Add('I');
+                        toParseNumber -= romaValues[i];
+                        parsedNumber.Append(romanCharakter[i]);
+                        break;
                     }
-                }
-                if (toParseNumber == 9)//IX == 9
-                {
-                    toParseNumber -= (X-I);
-                    parsedNumber.Add('I');
-                    parsedNumber.Add('X');
-                }
-                else
-                {
-                    if (toParseNumber >= 5 && toParseNumber < 10)//V == 5
-                    {
-                        toParseNumber -= V;
-                        parsedNumber.Add('V');
-                    }
-                }
-                if (toParseNumber >= 40 && toParseNumber < 50)//XL == 40
-                {
-                    toParseNumber -= (L - X);
-                    parsedNumber.Add('X');
-                    parsedNumber.Add('L');
-                }
-                else
-                {
-                    if (toParseNumber >= 10 && toParseNumber < 50)//X == 10
-                    {
-                        toParseNumber -= X;
-                        parsedNumber.Add('X');
-                    }  
-                }
-                if (toParseNumber >= 90 && toParseNumber < 100)// XC == 90
-                {
-                    toParseNumber -= (C - X);
-                    parsedNumber.Add('X');
-                    parsedNumber.Add('C');
-                }
-                else
-                {
-                    if (toParseNumber >= 50 && toParseNumber < 100) //L == 50
-                    {
-                        toParseNumber -= L;
-                        parsedNumber.Add('L');
-                    }
-                }
-                if (toParseNumber >= 400 && toParseNumber < 500) // CD == 400
-                {
-                    toParseNumber -= (D - C);
-                    parsedNumber.Add('C');
-                    parsedNumber.Add('D');
-                }
-                else
-                {
-                    if (toParseNumber >= 100 && toParseNumber < 500) //C == 100
-                    {
-                        toParseNumber -= C;
-                        parsedNumber.Add('C');
-                    } 
-                }
-                if (toParseNumber >= 900 && toParseNumber < 1000) //CM == 900
-                {
-                    toParseNumber -= (M - C);
-                    parsedNumber.Add('C');
-                    parsedNumber.Add('M');
-                }
-                else
-                {
-                    if (toParseNumber >= 500 && toParseNumber < 1000) //D == 500
-                    {
-                        toParseNumber -= D;
-                        parsedNumber.Add('D');
-                    }
-                }
-
-                if (toParseNumber < 1000)//M == 100
-                {
-                    toParseNumber -= M;
-                    parsedNumber.Add('M');
-                }
             }
-
-
             return parsedNumber.ToString();
         }
 
+
     }
 }
-
-//Umrechnungsregeln:
-
-//1. Steht ein niedrigerer Wert vor einem Höheren wird Subtrahiert zb. IV = 1 5, 1<5, 5-1 = 4, IV = 4
-//2. Andersherum wird Addiert zb. VI = 5 1, 5>1, 5+1 = 6, VI = 6

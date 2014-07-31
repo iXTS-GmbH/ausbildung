@@ -10,18 +10,21 @@ namespace ixts.Ausbildung.Roman.Test
     public class RomanTests
     {
 
-        [TestCase("IV","IV")]
-        public void RomaTest(String expected, String romaNumber)
+
+
+        [ExpectedException("System.ArgumentException")]
+        [TestCase]
+        public void NullStringTest()
         {
-            var r = new Roman(romaNumber);
-            Assert.AreEqual(expected,r.rNumber);
+            var r = new Roman("");
         }
 
-        [TestCase(4, 4)]
-        public void NumRomaTest(int expected, int numericNumber)
+        [ExpectedException("System.ArgumentException")]
+        [TestCase(0)]
+        [TestCase(-1)]
+        public void NullNegativNumberTest(int numericNumber)
         {
             var r = new Roman(numericNumber);
-            Assert.AreEqual(expected, r.nNumber);
         }
 
         [ExpectedException("System.ArgumentException")]
@@ -53,9 +56,16 @@ namespace ixts.Ausbildung.Roman.Test
             var actual = r.ToString();
             Assert.AreEqual(expected,actual);
         }
-        [TestCase("", 0)]
+
         [TestCase("IV", 4)]
         [TestCase("VI", 6)]
+        [TestCase("III", 3)]
+        [TestCase("MDCLX", 1660)]
+        [TestCase("IX", 9)]
+        [TestCase("XL", 40)]
+        [TestCase("XC", 90)]
+        [TestCase("CD", 400)]
+        [TestCase("CM", 900)]
         public void ToLiteralTest(String expected, int numericNumber)
         {
             var r = new Roman(numericNumber);
