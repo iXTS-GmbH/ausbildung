@@ -172,5 +172,10 @@ namespace ixts.Ausbildung.Roman
             }
             return nNumber == otherRoman.Numeral();
         }
+
+        public override int GetHashCode() //von 0001.1000 - 3999.9993
+        {
+            return 0;
+        }
     }
 }

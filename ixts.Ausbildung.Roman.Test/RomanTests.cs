@@ -132,5 +132,15 @@ namespace ixts.Ausbildung.Roman.Test
             var actual = r.Equals(new Roman(numericNumber));
             Assert.AreEqual(expected, actual);
         }
+
+        [TestCase("XVI",00166100)] //HashCode Zwischendrin
+        [TestCase("MMMCMXCIX", 39999993)] //Höchster HashCode
+        [TestCase("I", 00011000)] //Niedrigster HashCode
+        public void GetHashCodeTest(String romaNumber, int expected)
+        {
+            var r = new Roman(romaNumber);
+            var actual = r.GetHashCode();
+            Assert.AreEqual(expected,actual);
+        }
     }
 }
