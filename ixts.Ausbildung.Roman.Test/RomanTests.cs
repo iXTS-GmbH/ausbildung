@@ -41,6 +41,7 @@ namespace ixts.Ausbildung.Roman.Test
         [TestCase(4,"IV")]//Klein vor Groß wird subtrahiert
         [TestCase(6,"VI")]//Groß vor Klein wird addiert
         [TestCase(1660, "MDCLX")]
+        [TestCase(3999, "MMMCMXCIX")]
         public void NumeralTest(int expected, String romaNumber)
         {
             var r = new Roman(romaNumber);

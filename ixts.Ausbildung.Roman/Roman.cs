@@ -58,7 +58,7 @@ namespace ixts.Ausbildung.Roman
                 if (i == 0 || lastvalue >= RomaNumberValue(rNumber[i]))//Addieren
                 {
                     parsedNumber += RomaNumberValue(rNumber[i]);
-                    lastvalue += RomaNumberValue(rNumber[i]);
+                    lastvalue = RomaNumberValue(rNumber[i]);
 
                 }
                 else//Subtrahieren
@@ -175,7 +175,17 @@ namespace ixts.Ausbildung.Roman
 
         public override int GetHashCode() //von 0001.1000 - 3999.9993
         {
+            var numberString = nNumber.ToString();
+
+
             return 0;
+        }
+
+        private String ReverseString(String s)
+        {
+            char[] chars = s.ToCharArray();
+			Array.Reverse(chars);
+			return new string(chars);
         }
     }
 }
