@@ -123,5 +123,14 @@ namespace ixts.Ausbildung.Roman.Test
             var r = new Roman(numericNumber);
             r.Divide(new Roman(romaNumber));
         }
+
+        [TestCase(false,"V",10)]
+        [TestCase(true,"X",10)]
+        public void EqualsTest(Boolean expected, String romaNumber, int numericNumber)
+        {
+            var r = new Roman(romaNumber);
+            var actual = r.Equals(new Roman(numericNumber));
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

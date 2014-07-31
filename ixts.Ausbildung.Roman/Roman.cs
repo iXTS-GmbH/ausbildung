@@ -162,5 +162,11 @@ namespace ixts.Ausbildung.Roman
             }
             return ToLiteral((int)divide);
         }
+
+        public override Boolean Equals(object other)
+        {
+
+            return false;
+        }
     }
 }
