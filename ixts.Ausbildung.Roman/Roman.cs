@@ -153,5 +153,10 @@ namespace ixts.Ausbildung.Roman
             }
             return ToLiteral(multi);
         }
+
+        public String Divide(Roman toDivide)
+        {
+            return "";
+        }
     }
 }

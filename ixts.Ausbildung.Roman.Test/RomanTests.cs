@@ -125,5 +125,21 @@ namespace ixts.Ausbildung.Roman.Test
             var r = new Roman(numericNumber);
             r.Multiply(new Roman(romaNumber));
         }
+
+        [TestCase("V", 50, "X")]
+        public void DivideTest(String romaNumber, int numericNumber, String expected)
+        {
+            var r = new Roman(numericNumber);
+            var actual = r.Divide(new Roman(romaNumber));
+            Assert.AreEqual(expected,actual);
+        }
+
+        [ExpectedException]
+        [TestCase("X", 5)]
+        public void ExceptionDivideTest(String romaNumber, int numericNumber)
+        {
+            var r = new Roman(numericNumber);
+            r.Divide(new Roman(romaNumber));
+        }
     }
 }
