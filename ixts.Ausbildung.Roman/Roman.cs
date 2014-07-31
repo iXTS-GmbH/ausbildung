@@ -132,6 +132,9 @@ namespace ixts.Ausbildung.Roman
             return ToLiteral(sum);
         }
 
-
+        public String Subtract(Roman toSubtract)
+        {
+            return "";
+        }
     }
 }

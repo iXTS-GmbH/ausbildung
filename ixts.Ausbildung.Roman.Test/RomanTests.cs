@@ -93,5 +93,20 @@ namespace ixts.Ausbildung.Roman.Test
             r.Add(new Roman(romaNumber));
         }
 
+        [TestCase("V", 10, "V")]
+        public void SubtractTest(String romaNumber, int numericNumber, String expected)
+        {
+            var r = new Roman(numericNumber);
+            var actual = r.Subtract(new Roman(romaNumber));
+            Assert.AreEqual(expected,actual);
+        }
+
+        [ExpectedException]
+        [TestCase("X", 5)]
+        public void ExceptionSubtractTest(String romaNumber, int numericNumber)
+        {
+            var r = new Roman(numericNumber);
+            r.Subtract(new Roman(romaNumber));
+        }
     }
 }
