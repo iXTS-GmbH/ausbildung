@@ -29,9 +29,14 @@ namespace ixts.Ausbildung.Roman
 
         public Roman(int numericNumber)
         {
+            if (numericNumber > 3999)
+            {
+                throw new ArgumentException("Parameter darf nicht größer als 3999 sein");
+            }
             if (numericNumber > 0)
             {
                 nNumber = numericNumber;
+                rNumber = ToLiteral();
             }
             else
             {
@@ -111,6 +116,10 @@ namespace ixts.Ausbildung.Roman
             return parsedNumber.ToString();
         }
 
+        public String Add(Roman toAdd)
+        {
 
+            return "";
+        }
     }
 }

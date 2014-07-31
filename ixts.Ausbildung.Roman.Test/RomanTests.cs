@@ -72,5 +72,13 @@ namespace ixts.Ausbildung.Roman.Test
             var actual = r.ToLiteral();
             Assert.AreEqual(expected,actual);
         }
+
+        [TestCase()]
+        public void AddTest(String romaNumber, int numericNumber, String expected)
+        {
+            var r = new Roman(numericNumber);
+            var actual = r.Add(new Roman(romaNumber));
+            Assert.AreEqual(expected,actual);
+        }
     }
 }
