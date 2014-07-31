@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CoverageSession xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Summary numSequencePoints="57" visitedSequencePoints="57" numBranchPoints="19" visitedBranchPoints="19" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="5" minCyclomaticComplexity="1" />
+  <Modules>
+    <Module skippedDueTo="Filter" hash="5E-B7-0A-AD-00-B1-1D-4E-7B-99-1D-47-A7-F0-A4-4C-11-A4-8E-12">
+      <FullName>C:\Windows\assembly\GAC_64\mscorlib\2.0.0.0__b77a5c561934e089\mscorlib.dll</FullName>
+      <ModuleName>mscorlib</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="Filter" hash="F9-04-A8-31-CD-FB-23-72-95-63-5D-14-9A-A0-66-8E-7F-44-93-7A">
+      <FullName>C:\Windows\assembly\GAC_64\mscorlib\2.0.0.0__b77a5c561934e089\sorttbls.nlp</FullName>
+      <ModuleName>mscorlib</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="Filter" hash="6E-30-2E-50-36-FB-60-2C-8E-50-C0-83-54-8B-CC-EA-A8-91-B6-CC">
+      <FullName>C:\Windows\assembly\GAC_64\mscorlib\2.0.0.0__b77a5c561934e089\sortkey.nlp</FullName>
+      <ModuleName>mscorlib</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="Filter" hash="DD-3E-FB-E5-DE-F2-20-7E-0B-A5-75-79-F3-3A-EB-E1-45-C7-65-86">
+      <FullName>C:\Windows\assembly\GAC_MSIL\mscorlib.resources\2.0.0.0_de_b77a5c561934e089\mscorlib.resources.dll</FullName>
+      <ModuleName>mscorlib.resources</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="MissingPdb" hash="F9-CA-B6-79-63-CB-31-8A-0D-DC-C3-D0-43-F8-28-C3-F0-95-F9-E7">
+      <FullName>C:\Program Files (x86)\NUnit 2.6.3\bin\nunit-console.exe</FullName>
+      <ModuleName>nunit-console</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="MissingPdb" hash="2A-C4-E5-DE-F3-EE-AD-84-E1-65-84-CC-15-90-76-96-E7-01-44-4E">
+      <FullName>C:\Program Files (x86)\NUnit 2.6.3\bin\lib\nunit-console-runner.dll</FullName>
+      <ModuleName>nunit-console-runner</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="MissingPdb" hash="33-E1-CA-24-52-5A-B7-C7-C4-AF-91-2C-A9-4A-C0-37-67-0D-5B-FE">
+      <FullName>C:\Program Files (x86)\NUnit 2.6.3\bin\lib\nunit.core.dll</FullName>
+      <ModuleName>nunit.core</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="MissingPdb" hash="74-74-F6-87-59-E1-5F-4F-5F-5E-6E-82-50-E8-E2-46-D4-86-15-76">
+      <FullName>C:\Program Files (x86)\NUnit 2.6.3\bin\lib\nunit.util.dll</FullName>
+      <ModuleName>nunit.util</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="MissingPdb" hash="D3-A4-4D-85-55-F7-CE-EF-A5-90-AA-EF-58-E0-9F-B6-CC-27-99-53">
+      <FullName>C:\Program Files (x86)\NUnit 2.6.3\bin\lib\nunit.core.interfaces.dll</FullName>
+      <ModuleName>nunit.core.interfaces</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="Filter" hash="2C-99-EE-29-D5-25-03-C4-0E-40-26-9B-F7-DF-C2-68-6E-74-74-31">
+      <FullName>C:\Windows\assembly\GAC_MSIL\System.Configuration\2.0.0.0__b03f5f7f11d50a3a\System.Configuration.dll</FullName>
+      <ModuleName>System.Configuration</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="Filter" hash="D3-99-70-9D-4C-FD-70-CC-82-00-AA-75-7A-54-8C-25-AC-54-B1-BF">
+      <FullName>C:\Windows\assembly\GAC_MSIL\System\2.0.0.0__b77a5c561934e089\System.dll</FullName>
+      <ModuleName>System</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="Filter" hash="C4-AD-0A-97-FF-1D-61-5F-88-89-A6-25-BD-02-5E-E5-F5-1D-6F-20">
+      <FullName>C:\Windows\assembly\GAC_MSIL\System.Xml\2.0.0.0__b77a5c561934e089\System.Xml.dll</FullName>
+      <ModuleName>System.Xml</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="Filter" hash="6D-AB-A6-3D-D1-4A-D1-F2-BE-B2-DF-34-58-20-84-66-6B-4D-8A-A5">
+      <FullName>C:\Windows\assembly\GAC_MSIL\System.Runtime.Remoting\2.0.0.0__b77a5c561934e089\System.Runtime.Remoting.dll</FullName>
+      <ModuleName>System.Runtime.Remoting</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="Filter" hash="0D-96-F6-4F-F5-BE-F1-5E-07-DD-20-C4-04-E5-80-8B-81-52-C7-5F">
+      <FullName>C:\Windows\Microsoft.Net\assembly\GAC_64\mscorlib\v4.0_4.0.0.0__b77a5c561934e089\mscorlib.dll</FullName>
+      <ModuleName>mscorlib</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="MissingPdb" hash="87-52-C5-B2-2F-D3-F5-4F-58-BF-89-4A-88-59-6D-CE-F4-7F-6A-3B">
+      <FullName>C:\Program Files (x86)\NUnit 2.6.3\bin\nunit-agent.exe</FullName>
+      <ModuleName>nunit-agent</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="MissingPdb" hash="33-E1-CA-24-52-5A-B7-C7-C4-AF-91-2C-A9-4A-C0-37-67-0D-5B-FE">
+      <FullName>C:\Program Files (x86)\NUnit 2.6.3\bin\lib\nunit.core.dll</FullName>
+      <ModuleName>nunit.core</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="MissingPdb" hash="74-74-F6-87-59-E1-5F-4F-5F-5E-6E-82-50-E8-E2-46-D4-86-15-76">
+      <FullName>C:\Program Files (x86)\NUnit 2.6.3\bin\lib\nunit.util.dll</FullName>
+      <ModuleName>nunit.util</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="MissingPdb" hash="D3-A4-4D-85-55-F7-CE-EF-A5-90-AA-EF-58-E0-9F-B6-CC-27-99-53">
+      <FullName>C:\Program Files (x86)\NUnit 2.6.3\bin\lib\nunit.core.interfaces.dll</FullName>
+      <ModuleName>nunit.core.interfaces</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="Filter" hash="8F-46-4B-BE-28-40-30-A2-E6-52-58-36-C3-F3-E3-75-03-AF-F4-FC">
+      <FullName>C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System\v4.0_4.0.0.0__b77a5c561934e089\System.dll</FullName>
+      <ModuleName>System</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="Filter" hash="65-BE-6B-9B-9C-55-6A-4D-DB-BD-03-60-FD-69-20-48-31-78-A9-5B">
+      <FullName>C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Runtime.Remoting\v4.0_4.0.0.0__b77a5c561934e089\System.Runtime.Remoting.dll</FullName>
+      <ModuleName>System.Runtime.Remoting</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="Filter" hash="8F-6E-E8-4F-40-6A-75-31-1B-08-C2-22-D5-EA-FE-23-3B-7B-82-15">
+      <FullName>C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Configuration\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Configuration.dll</FullName>
+      <ModuleName>System.Configuration</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="Filter" hash="2E-28-A3-E7-4F-05-75-91-3B-B4-A6-B7-58-E7-27-B0-EF-F7-52-11">
+      <FullName>C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Xml\v4.0_4.0.0.0__b77a5c561934e089\System.Xml.dll</FullName>
+      <ModuleName>System.Xml</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="Filter" hash="AF-AB-A2-93-73-F5-F3-F0-44-45-C5-36-75-33-EB-92-11-C0-08-7A">
+      <FullName>C:\Windows\Microsoft.Net\assembly\GAC_64\System.Web\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Web.dll</FullName>
+      <ModuleName>System.Web</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="Filter" hash="7B-D4-98-B0-50-03-AE-42-25-8D-39-B3-3D-2B-77-F1-BB-8E-63-2E">
+      <FullName>C:\Windows\assembly\GAC_64\System.Web\2.0.0.0__b03f5f7f11d50a3a\System.Web.dll</FullName>
+      <ModuleName>System.Web</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="MissingPdb" hash="33-E1-CA-24-52-5A-B7-C7-C4-AF-91-2C-A9-4A-C0-37-67-0D-5B-FE">
+      <FullName>C:\Program Files (x86)\NUnit 2.6.3\bin\lib\nunit.core.dll</FullName>
+      <ModuleName>nunit.core</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="Filter" hash="8F-46-4B-BE-28-40-30-A2-E6-52-58-36-C3-F3-E3-75-03-AF-F4-FC">
+      <FullName>C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System\v4.0_4.0.0.0__b77a5c561934e089\System.dll</FullName>
+      <ModuleName>System</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="Filter" hash="2E-28-A3-E7-4F-05-75-91-3B-B4-A6-B7-58-E7-27-B0-EF-F7-52-11">
+      <FullName>C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Xml\v4.0_4.0.0.0__b77a5c561934e089\System.Xml.dll</FullName>
+      <ModuleName>System.Xml</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="MissingPdb" hash="B6-96-0F-77-90-5D-5D-2F-9A-F2-9F-C4-E5-75-AD-9C-ED-57-F3-17">
+      <FullName>C:\Program Files (x86)\NUnit 2.6.3\bin\pnunit.framework.dll</FullName>
+      <ModuleName>pnunit.framework</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="MissingPdb" hash="BF-1D-D7-35-9F-DE-AD-6C-C5-85-0E-59-71-C4-80-76-13-06-73-54">
+      <FullName>C:\Program Files (x86)\NUnit 2.6.3\bin\pnunit-agent.exe</FullName>
+      <ModuleName>pnunit-agent</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="MissingPdb" hash="D3-A4-4D-85-55-F7-CE-EF-A5-90-AA-EF-58-E0-9F-B6-CC-27-99-53">
+      <FullName>C:\Program Files (x86)\NUnit 2.6.3\bin\lib\nunit.core.interfaces.dll</FullName>
+      <ModuleName>nunit.core.interfaces</ModuleName>
+      <Classes />
+    </Module>
+    <Module hash="86-B0-72-E8-AE-C4-99-88-82-69-10-6C-48-80-95-83-F7-4B-ED-37">
+      <Summary numSequencePoints="15" visitedSequencePoints="15" numBranchPoints="4" visitedBranchPoints="4" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+      <FullName>C:\Users\mkaestl.IXTS\Projekte\Ausbildung\ausbildung\ixts.Ausbildung.Compression.Test\bin\Debug\ixts.Ausbildung.Compression.Test.dll</FullName>
+      <ModuleName>ixts.Ausbildung.Compression.Test</ModuleName>
+      <Files>
+        <File uid="1" fullPath="C:\Users\mkaestl.IXTS\Projekte\Ausbildung\ausbildung\ixts.Ausbildung.Compression.Test\TestClass.cs" />
+      </Files>
+      <Classes>
+        <Class>
+          <Summary numSequencePoints="0" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" />
+          <FullName>&lt;Module&gt;</FullName>
+          <Methods />
+        </Class>
+        <Class>
+          <Summary numSequencePoints="15" visitedSequencePoints="15" numBranchPoints="4" visitedBranchPoints="4" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+          <FullName>ixts.Ausbildung.Compression.Test.TestClass</FullName>
+          <Methods>
+            <Method visited="true" cyclomaticComplexity="1" sequenceCoverage="100" branchCoverage="100" isConstructor="false" isStatic="false" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="3" visitedSequencePoints="3" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663297</MetadataToken>
+              <Name>System.Void ixts.Ausbildung.Compression.Test.TestClass::SetUp()</Name>
+              <FileRef uid="1" />
+              <SequencePoints>
+                <SequencePoint vc="18" uspid="1" ordinal="0" offset="0" sl="15" sc="9" el="15" ec="10" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="18" uspid="2" ordinal="1" offset="1" sl="16" sc="13" el="16" ec="42" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="18" uspid="3" ordinal="2" offset="12" sl="17" sc="9" el="17" ec="10" bec="0" bev="0" fileid="1" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="18" uspid="1" ordinal="0" offset="0" sl="15" sc="9" el="15" ec="10" bec="0" bev="0" fileid="1" />
+            </Method>
+            <Method visited="true" cyclomaticComplexity="1" sequenceCoverage="100" branchCoverage="100" isConstructor="false" isStatic="false" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="4" visitedSequencePoints="4" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663298</MetadataToken>
+              <Name>System.Void ixts.Ausbildung.Compression.Test.TestClass::CanGetCompString(System.String,System.String)</Name>
+              <FileRef uid="1" />
+              <SequencePoints>
+                <SequencePoint vc="7" uspid="4" ordinal="0" offset="0" sl="27" sc="9" el="27" ec="10" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="7" uspid="5" ordinal="1" offset="1" sl="28" sc="13" el="28" ec="45" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="7" uspid="6" ordinal="2" offset="14" sl="29" sc="13" el="29" ec="47" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="7" uspid="7" ordinal="3" offset="22" sl="30" sc="9" el="30" ec="10" bec="0" bev="0" fileid="1" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="7" uspid="4" ordinal="0" offset="0" sl="27" sc="9" el="27" ec="10" bec="0" bev="0" fileid="1" />
+            </Method>
+            <Method visited="true" cyclomaticComplexity="1" sequenceCoverage="100" branchCoverage="100" isConstructor="false" isStatic="false" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="4" visitedSequencePoints="4" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663299</MetadataToken>
+              <Name>System.Void ixts.Ausbildung.Compression.Test.TestClass::GetNextGroup(System.String,System.String)</Name>
+              <FileRef uid="1" />
+              <SequencePoints>
+                <SequencePoint vc="7" uspid="8" ordinal="0" offset="0" sl="40" sc="9" el="40" ec="10" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="7" uspid="9" ordinal="1" offset="1" sl="41" sc="13" el="41" ec="51" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="7" uspid="10" ordinal="2" offset="14" sl="42" sc="13" el="42" ec="47" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="7" uspid="11" ordinal="3" offset="22" sl="43" sc="9" el="43" ec="10" bec="0" bev="0" fileid="1" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="7" uspid="8" ordinal="0" offset="0" sl="40" sc="9" el="40" ec="10" bec="0" bev="0" fileid="1" />
+            </Method>
+            <Method visited="true" cyclomaticComplexity="1" sequenceCoverage="100" branchCoverage="100" isConstructor="false" isStatic="false" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="4" visitedSequencePoints="4" numBranchPoints="1" visitedBranchPoints="1" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663300</MetadataToken>
+              <Name>System.Void ixts.Ausbildung.Compression.Test.TestClass::CompressGroup(System.String,System.String)</Name>
+              <FileRef uid="1" />
+              <SequencePoints>
+                <SequencePoint vc="4" uspid="12" ordinal="0" offset="0" sl="50" sc="9" el="50" ec="10" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="4" uspid="13" ordinal="1" offset="1" sl="51" sc="13" el="51" ec="52" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="4" uspid="14" ordinal="2" offset="14" sl="52" sc="13" el="52" ec="47" bec="0" bev="0" fileid="1" />
+                <SequencePoint vc="4" uspid="15" ordinal="3" offset="22" sl="53" sc="9" el="53" ec="10" bec="0" bev="0" fileid="1" />
+              </SequencePoints>
+              <BranchPoints />
+              <MethodPoint xsi:type="SequencePoint" vc="4" uspid="12" ordinal="0" offset="0" sl="50" sc="9" el="50" ec="10" bec="0" bev="0" fileid="1" />
+            </Method>
+            <Method visited="true" cyclomaticComplexity="1" sequenceCoverage="0" branchCoverage="0" isConstructor="true" isStatic="false" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="0" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663301</MetadataToken>
+              <Name>System.Void ixts.Ausbildung.Compression.Test.TestClass::.ctor()</Name>
+              <SequencePoints />
+              <BranchPoints />
+              <MethodPoint vc="1" uspid="16" ordinal="0" offset="0" />
+            </Method>
+          </Methods>
+        </Class>
+      </Classes>
+    </Module>
+    <Module skippedDueTo="MissingPdb" hash="42-83-FE-A6-9F-01-8E-2C-E8-41-E9-25-3E-1E-0D-99-81-76-6B-C9">
+      <FullName>C:\Users\mkaestl.IXTS\Projekte\Ausbildung\ausbildung\ixts.Ausbildung.Compression.Test\bin\Debug\nunit.framework.dll</FullName>
+      <ModuleName>nunit.framework</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="MissingPdb" hash="2A-C4-E5-DE-F3-EE-AD-84-E1-65-84-CC-15-90-76-96-E7-01-44-4E">
+      <FullName>C:\Program Files (x86)\NUnit 2.6.3\bin\lib\nunit-console-runner.dll</FullName>
+      <ModuleName>nunit-console-runner</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="Filter" hash="65-BE-6B-9B-9C-55-6A-4D-DB-BD-03-60-FD-69-20-48-31-78-A9-5B">
+      <FullName>C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Runtime.Remoting\v4.0_4.0.0.0__b77a5c561934e089\System.Runtime.Remoting.dll</FullName>
+      <ModuleName>System.Runtime.Remoting</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="Filter" hash="8F-6E-E8-4F-40-6A-75-31-1B-08-C2-22-D5-EA-FE-23-3B-7B-82-15">
+      <FullName>C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Configuration\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Configuration.dll</FullName>
+      <ModuleName>System.Configuration</ModuleName>
+      <Classes />
+    </Module>
+    <Module hash="33-50-FD-98-6E-DD-9E-72-C0-CC-24-69-7C-DA-FF-E0-46-84-CB-D0">
+      <Summary numSequencePoints="42" visitedSequencePoints="42" numBranchPoints="15" visitedBranchPoints="15" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="5" minCyclomaticComplexity="1" />
+      <FullName>C:\Users\mkaestl.IXTS\Projekte\Ausbildung\ausbildung\ixts.Ausbildung.Compression.Test\bin\Debug\ixts.Ausbildung.Compression.dll</FullName>
+      <ModuleName>ixts.Ausbildung.Compression</ModuleName>
+      <Files>
+        <File uid="3" fullPath="C:\Users\mkaestl.IXTS\Projekte\Ausbildung\ausbildung\ixts.Ausbildung.Compression\CompString.cs" />
+      </Files>
+      <Classes>
+        <Class>
+          <Summary numSequencePoints="0" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" />
+          <FullName>&lt;Module&gt;</FullName>
+          <Methods />
+        </Class>
+        <Class>
+          <Summary numSequencePoints="42" visitedSequencePoints="42" numBranchPoints="15" visitedBranchPoints="15" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="5" minCyclomaticComplexity="1" />
+          <FullName>ixts.Ausbildung.Compression.RunLengthEncoder</FullName>
+          <Methods>
+            <Method visited="true" cyclomaticComplexity="2" sequenceCoverage="100" branchCoverage="100" isConstructor="false" isStatic="false" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="8" visitedSequencePoints="8" numBranchPoints="3" visitedBranchPoints="3" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="2" minCyclomaticComplexity="2" />
+              <MetadataToken>100663297</MetadataToken>
+              <Name>System.String ixts.Ausbildung.Compression.RunLengthEncoder::Encode(System.String)</Name>
+              <FileRef uid="3" />
+              <SequencePoints>
+                <SequencePoint vc="7" uspid="17" ordinal="0" offset="0" sl="15" sc="9" el="15" ec="10" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="7" uspid="18" ordinal="1" offset="1" sl="16" sc="13" el="16" ec="48" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="46" uspid="19" ordinal="2" offset="9" sl="18" sc="13" el="18" ec="14" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="46" uspid="20" ordinal="3" offset="10" sl="19" sc="17" el="19" ec="52" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="46" uspid="21" ordinal="4" offset="24" sl="20" sc="13" el="20" ec="14" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="53" uspid="22" ordinal="5" offset="25" sl="17" sc="13" el="17" ec="38" bec="2" bev="2" fileid="3" />
+                <SequencePoint vc="7" uspid="23" ordinal="6" offset="43" sl="21" sc="13" el="21" ec="40" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="7" uspid="24" ordinal="7" offset="52" sl="22" sc="9" el="22" ec="10" bec="0" bev="0" fileid="3" />
+              </SequencePoints>
+              <BranchPoints>
+                <BranchPoint vc="7" uspid="25" ordinal="0" offset="41" path="0" offsetchain="" offsetend="43" />
+                <BranchPoint vc="46" uspid="26" ordinal="1" offset="41" path="1" offsetchain="" offsetend="9" />
+              </BranchPoints>
+              <MethodPoint xsi:type="SequencePoint" vc="7" uspid="17" ordinal="0" offset="0" sl="15" sc="9" el="15" ec="10" bec="0" bev="0" fileid="3" />
+            </Method>
+            <Method visited="true" cyclomaticComplexity="5" sequenceCoverage="100" branchCoverage="100" isConstructor="false" isStatic="false" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="23" visitedSequencePoints="23" numBranchPoints="9" visitedBranchPoints="9" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="5" minCyclomaticComplexity="5" />
+              <MetadataToken>100663298</MetadataToken>
+              <Name>System.String ixts.Ausbildung.Compression.RunLengthEncoder::GetNextGroup(System.String)</Name>
+              <FileRef uid="3" />
+              <SequencePoints>
+                <SequencePoint vc="53" uspid="27" ordinal="0" offset="0" sl="25" sc="9" el="25" ec="10" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="53" uspid="28" ordinal="1" offset="1" sl="26" sc="13" el="26" ec="45" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="53" uspid="29" ordinal="2" offset="7" sl="27" sc="18" el="27" ec="32" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="199" uspid="30" ordinal="3" offset="19" sl="28" sc="13" el="28" ec="14" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="199" uspid="31" ordinal="4" offset="20" sl="29" sc="17" el="29" ec="53" bec="4" bev="4" fileid="3" />
+                <SequencePoint vc="159" uspid="32" ordinal="5" offset="49" sl="30" sc="17" el="30" ec="18" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="159" uspid="33" ordinal="6" offset="50" sl="31" sc="21" el="31" ec="57" bec="2" bev="2" fileid="3" />
+                <SequencePoint vc="6" uspid="34" ordinal="7" offset="67" sl="32" sc="21" el="32" ec="22" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="6" uspid="35" ordinal="8" offset="68" sl="33" sc="25" el="33" ec="35" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="6" uspid="36" ordinal="9" offset="75" sl="34" sc="25" el="34" ec="64" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="153" uspid="37" ordinal="10" offset="90" sl="36" sc="21" el="36" ec="42" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="153" uspid="38" ordinal="11" offset="103" sl="37" sc="21" el="37" ec="42" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="153" uspid="39" ordinal="12" offset="117" sl="38" sc="17" el="38" ec="18" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="40" uspid="40" ordinal="13" offset="120" sl="40" sc="17" el="40" ec="18" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="40" uspid="41" ordinal="14" offset="121" sl="41" sc="21" el="41" ec="42" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="40" uspid="42" ordinal="15" offset="134" sl="42" sc="21" el="42" ec="31" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="40" uspid="43" ordinal="16" offset="141" sl="43" sc="21" el="43" ec="60" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="153" uspid="44" ordinal="17" offset="156" sl="46" sc="13" el="46" ec="14" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="153" uspid="45" ordinal="18" offset="157" sl="27" sc="49" el="27" ec="52" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="206" uspid="46" ordinal="19" offset="161" sl="27" sc="33" el="27" ec="47" bec="2" bev="2" fileid="3" />
+                <SequencePoint vc="7" uspid="47" ordinal="20" offset="177" sl="47" sc="13" el="47" ec="32" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="7" uspid="48" ordinal="21" offset="189" sl="48" sc="13" el="48" ec="52" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="53" uspid="49" ordinal="22" offset="204" sl="49" sc="9" el="49" ec="10" bec="0" bev="0" fileid="3" />
+              </SequencePoints>
+              <BranchPoints>
+                <BranchPoint vc="54" uspid="50" ordinal="0" offset="33" path="0" offsetchain="" offsetend="35" />
+                <BranchPoint vc="145" uspid="51" ordinal="1" offset="33" path="1" offsetchain="" offsetend="44" />
+                <BranchPoint vc="159" uspid="52" ordinal="2" offset="47" path="0" offsetchain="" offsetend="49" />
+                <BranchPoint vc="40" uspid="53" ordinal="3" offset="47" path="1" offsetchain="" offsetend="120" />
+                <BranchPoint vc="6" uspid="54" ordinal="4" offset="65" path="0" offsetchain="" offsetend="67" />
+                <BranchPoint vc="153" uspid="55" ordinal="5" offset="65" path="1" offsetchain="" offsetend="90" />
+                <BranchPoint vc="7" uspid="56" ordinal="6" offset="172" path="0" offsetchain="" offsetend="177" />
+                <BranchPoint vc="199" uspid="57" ordinal="7" offset="172" path="1" offsetchain="" offsetend="19" />
+              </BranchPoints>
+              <MethodPoint xsi:type="SequencePoint" vc="53" uspid="27" ordinal="0" offset="0" sl="25" sc="9" el="25" ec="10" bec="0" bev="0" fileid="3" />
+            </Method>
+            <Method visited="true" cyclomaticComplexity="2" sequenceCoverage="100" branchCoverage="100" isConstructor="false" isStatic="false" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="11" visitedSequencePoints="11" numBranchPoints="3" visitedBranchPoints="3" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="2" minCyclomaticComplexity="2" />
+              <MetadataToken>100663299</MetadataToken>
+              <Name>System.String ixts.Ausbildung.Compression.RunLengthEncoder::CompressGroup(System.String)</Name>
+              <FileRef uid="3" />
+              <SequencePoints>
+                <SequencePoint vc="57" uspid="58" ordinal="0" offset="0" sl="52" sc="9" el="52" ec="10" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="57" uspid="59" ordinal="1" offset="1" sl="53" sc="13" el="53" ec="51" bec="2" bev="2" fileid="3" />
+                <SequencePoint vc="35" uspid="60" ordinal="2" offset="17" sl="54" sc="13" el="54" ec="14" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="35" uspid="61" ordinal="3" offset="18" sl="55" sc="17" el="55" ec="30" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="22" uspid="62" ordinal="4" offset="22" sl="58" sc="13" el="58" ec="14" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="22" uspid="63" ordinal="5" offset="23" sl="59" sc="17" el="59" ec="59" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="22" uspid="64" ordinal="6" offset="29" sl="60" sc="17" el="60" ec="48" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="22" uspid="65" ordinal="7" offset="41" sl="61" sc="17" el="61" ec="54" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="22" uspid="66" ordinal="8" offset="54" sl="62" sc="17" el="62" ec="50" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="22" uspid="67" ordinal="9" offset="68" sl="63" sc="17" el="63" ec="51" bec="0" bev="0" fileid="3" />
+                <SequencePoint vc="57" uspid="68" ordinal="10" offset="77" sl="65" sc="9" el="65" ec="10" bec="0" bev="0" fileid="3" />
+              </SequencePoints>
+              <BranchPoints>
+                <BranchPoint vc="35" uspid="69" ordinal="0" offset="15" path="0" offsetchain="" offsetend="17" />
+                <BranchPoint vc="22" uspid="70" ordinal="1" offset="15" path="1" offsetchain="" offsetend="22" />
+              </BranchPoints>
+              <MethodPoint xsi:type="SequencePoint" vc="57" uspid="58" ordinal="0" offset="0" sl="52" sc="9" el="52" ec="10" bec="0" bev="0" fileid="3" />
+            </Method>
+            <Method visited="true" cyclomaticComplexity="1" sequenceCoverage="0" branchCoverage="0" isConstructor="true" isStatic="false" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="0" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" />
+              <MetadataToken>100663300</MetadataToken>
+              <Name>System.Void ixts.Ausbildung.Compression.RunLengthEncoder::.ctor()</Name>
+              <SequencePoints />
+              <BranchPoints />
+              <MethodPoint vc="18" uspid="71" ordinal="0" offset="0" />
+            </Method>
+          </Methods>
+        </Class>
+      </Classes>
+    </Module>
+  </Modules>
+</CoverageSession>

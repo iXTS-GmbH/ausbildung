@@ -24,18 +24,26 @@ namespace ixts.Ausbildung.Roman.Test
             Assert.AreEqual(expected, r.nNumber);
         }
 
+        [ExpectedException("System.ArgumentException")]
+        [TestCase("")]//Leerer String löst Exception aus
+        [TestCase("Z")]//Unbekannte Zeichen lösen exception aus
+        [TestCase("IZV")]//Zeichenfolgen mit einem unbekanntem Buchstaben lösen exeption aus
+        public void ExceptionNumeralTest(String romaNumber)
+        {
+            var r = new Roman(romaNumber);
+            r.Numeral();
+        }
 
-        [TestCase(0,"")]//Keine Römische Zahl ist null
         [TestCase(4,"IV")]//Klein vor Groß wird subtrahiert
         [TestCase(6,"VI")]//Groß vor Klein wird addiert
         [TestCase(1660, "MDCLX")]
-        [TestCase(0,"Z")]//Unbekannte Zeichen geben 0 zurück
-        [TestCase(0,"IZV")]//Zeichenfolgen mit einem unbekanntem Buchstaben geben 0 zurück
         public void NumeralTest(int expected, String romaNumber)
         {
             var r = new Roman(romaNumber);
             var actual = r.Numeral();
             Assert.AreEqual(expected,actual);
+            
+            
         }
 
         [TestCase("IV","IV")]

@@ -44,21 +44,17 @@ namespace ixts.Ausbildung.Roman
         {
             if (rNumber == "")
             {
-                return 0;
+                throw new ArgumentException("Übergebener String ist leer");
             }
             int parsedNumber = 0;
             int lastvalue = 0;
 
             for ( var i = 0;i < rNumber.Length;i++)
             {
-                if (RomaNumberValue(rNumber[i]) == 0)
-                {
-                    return 0;
-                }
                 if (i == 0 || lastvalue > RomaNumberValue(rNumber[i]))//Addieren
                 {
-                    parsedNumber = parsedNumber + RomaNumberValue(rNumber[i]);
-                    lastvalue = RomaNumberValue(rNumber[i]);
+                    parsedNumber += RomaNumberValue(rNumber[i]);
+                    lastvalue += RomaNumberValue(rNumber[i]);
 
                 }
                 else//Subtrahieren
@@ -91,7 +87,7 @@ namespace ixts.Ausbildung.Roman
                 case 'M':
                     return M;
                 default:
-                    return 0;
+                    throw new ArgumentException(string.Format("{0} ist kein gültiges Zeichen für eine Römische Zahl",romaNumber));
             }
         }
 
