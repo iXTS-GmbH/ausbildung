@@ -119,43 +119,39 @@ namespace ixts.Ausbildung.Roman
             
         }
 
-        public String Add(Roman toAdd) //TODO statt wert neuen Roman mit Wert zurückgeben
+        public Roman Add(Roman roman) //TODO statt wert neuen Roman mit Wert zurückgeben
         {
-            var toAddNumeric = toAdd.Numeral();
-            var sum = nNumber + toAddNumeric;
+            var sum = nNumber + roman.Numeral();
             if (sum > 3999)
             {
                 throw new ArgumentException("Die Summe der zu Addierenden Zahlen darf 3999 nicht überschreiten");
             }
-            return ToLiteral(sum);
+            return new Roman(sum);
         }
 
-        public String Subtract(Roman toSubtract)
+        public Roman Subtract(Roman roman)
         {
-            var toSubtractNumeric = toSubtract.Numeral();
-            var dif = nNumber - toSubtractNumeric;
+            var dif = nNumber - roman.Numeral();
             if (dif <= 0)
             {
                 throw new ArgumentException("Die Differenz der zu Subtrahierenden Zahlen darf nicht 0 oder negativ sein");
             }
-            return ToLiteral(dif);
+            return new Roman(dif);
         }
 
-        public String Multiply(Roman toMultiply)
+        public Roman Multiply(Roman roman)
         {
-            var toMultiplyNumeric = toMultiply.Numeral();
-            var multi = nNumber*toMultiplyNumeric;
+            var multi = nNumber*roman.Numeral();
             if (multi > 3999)
             {
                 throw new ArgumentException("Das Produkt der zu Multiplizierenden Zahlen darf 3999 nicht überschreiten");
             }
-            return ToLiteral(multi);
+            return new Roman(multi);
         }
 
-        public String Divide(Roman toDivide)
+        public Roman Divide(Roman roman)
         {
-            double toDivideNumeric = toDivide.Numeral();
-            var divide = nNumber/toDivideNumeric;
+            var divide = nNumber/(double)roman.Numeral();
             if (divide < 1)
             {
                 throw new ArgumentException("Der Quotient der zu Dividierenden Zahlen darf nicht kleiner als 1 sein");
@@ -164,7 +160,7 @@ namespace ixts.Ausbildung.Roman
             {
                 throw new ArgumentException("Der Quotient der zu Dividierenden Zahlen muss Ganzzahlig sein");
             }
-            return ToLiteral((int)divide);
+            return new Roman((int)divide);
         }
 
         public override Boolean Equals(object other)
