@@ -27,7 +27,6 @@ namespace ixts.Ausbildung.Compression
                 while (currentPosition < bytes.Length)
                 {
                     var nextgroup = GetNextGroup(bytes, checkRange);
-                    var breakPoint = 0;
                     for (int i = 0; i < nextgroup.Count; i++)
                     {
                         buffer.Add(nextgroup[i]);

@@ -9,6 +9,8 @@ namespace ixts.Ausbildung.Roman
         private static readonly Dictionary<String, int> Romans = new Dictionary<String, int> { { "M", 1000 }, { "CM", 900 }, { "D", 500 }, { "CD", 400 }, { "C", 100 }, { "XC", 90 }, { "L", 50 }, { "XL", 40 }, { "X", 10 }, { "IX", 9 }, { "V", 5 }, { "IV", 4 }, { "I", 1 } };
         private readonly String rNumber;
         private readonly int nNumber;
+        private char lastchar;
+
         public static IComparer<Roman> LengthComparator = new LengthComparator();
         public static IComparer<Roman> LexicalComparator = new LexicalComparator();
 
@@ -49,7 +51,23 @@ namespace ixts.Ausbildung.Roman
 
         private Boolean ValidateRomaNumber(String romaNumber)
         {
-
+            int charcount = 0;
+            for (int i = 0; i < romaNumber.Length; i++)
+            { 
+                if ( i == 0|| lastchar == romaNumber[i])
+                {
+                    charcount += 1;
+                    if (charcount == 4)
+                    {
+                        return false;
+                    }
+                }
+                else
+                { 
+                    charcount = 1;
+                }
+                lastchar = romaNumber[i];
+            }
             return true;
         }
 
