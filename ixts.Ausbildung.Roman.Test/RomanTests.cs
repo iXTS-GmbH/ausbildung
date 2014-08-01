@@ -129,6 +129,7 @@ namespace ixts.Ausbildung.Roman.Test
 
         [TestCase(false,"V",10)]
         [TestCase(true,"X",10)]
+        [TestCase(false,"X",null)]
         public void EqualsTest(Boolean expected, String romaNumber, int numericNumber)
         {
             var r = new Roman(romaNumber);
@@ -136,17 +137,9 @@ namespace ixts.Ausbildung.Roman.Test
             Assert.AreEqual(expected, actual);
         }
 
-        [ExpectedException]
-        [TestCase]
-        public void ExceptionEqualsTest()//Wenn null übergeben wird ist false keine exception
-        {
-            var r = new Roman("X");
-            r.Equals(null);
-        }
-
-        [TestCase("XVI",166100)] //HashCode Zwischendrin //Genaugenommen 00166100 aber 0 vorne fällt weg
-        [TestCase("MMMCMXCIX", 39999993)] //Höchster HashCode
-        [TestCase("I", 11000)] //Niedrigster HashCode //Genaugenommen 00011000 aber 0 vorne fällt weg
+        [TestCase("XVI",16)] 
+        [TestCase("MMMCMXCIX", 3999)] 
+        [TestCase("I", 1)] 
         public void GetHashCodeTest(String romaNumber, int expected)
         {
             var r = new Roman(romaNumber);
