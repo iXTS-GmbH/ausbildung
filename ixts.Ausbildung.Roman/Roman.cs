@@ -19,7 +19,7 @@ namespace ixts.Ausbildung.Roman
                 throw new ArgumentException("Leerer String ist nicht zulässig");
             }
             rNumber = romaNumber;
-            nNumber = Numeral();
+            nNumber = GetNumericNumber();
         }
 
         public Roman(int numericNumber)
@@ -45,7 +45,7 @@ namespace ixts.Ausbildung.Roman
             return rNumber;
         }
 
-        public int Numeral()
+        public int GetNumericNumber()
         {
             int parsedNumber = 0;
             int lastvalue = 0;
@@ -101,7 +101,7 @@ namespace ixts.Ausbildung.Roman
 
         public Roman Add(Roman roman)
         {
-            var sum = nNumber + roman.Numeral();
+            var sum = nNumber + roman.GetNumericNumber();
             if (sum > 3999)
             {
                 throw new ArgumentException("Die Summe der zu Addierenden Zahlen darf 3999 nicht überschreiten");
@@ -111,7 +111,7 @@ namespace ixts.Ausbildung.Roman
 
         public Roman Subtract(Roman roman)
         {
-            var dif = nNumber - roman.Numeral();
+            var dif = nNumber - roman.GetNumericNumber();
             if (dif <= 0)
             {
                 throw new ArgumentException("Die Differenz der zu Subtrahierenden Zahlen darf nicht 0 oder negativ sein");
@@ -121,7 +121,7 @@ namespace ixts.Ausbildung.Roman
 
         public Roman Multiply(Roman roman)
         {
-            var multi = nNumber*roman.Numeral();
+            var multi = nNumber*roman.GetNumericNumber();
             if (multi > 3999)
             {
                 throw new ArgumentException("Das Produkt der zu Multiplizierenden Zahlen darf 3999 nicht überschreiten");
@@ -131,7 +131,7 @@ namespace ixts.Ausbildung.Roman
 
         public Roman Divide(Roman roman)
         {
-            var divide = nNumber/(double)roman.Numeral();
+            var divide = nNumber/(double)roman.GetNumericNumber();
             if (divide < 1)
             {
                 throw new ArgumentException("Der Quotient der zu Dividierenden Zahlen darf nicht kleiner als 1 sein");
@@ -150,7 +150,7 @@ namespace ixts.Ausbildung.Roman
             {
                 return false;
             }
-            return nNumber == otherRoman.Numeral();
+            return nNumber == otherRoman.GetNumericNumber();
         }
 
         public override int GetHashCode()
