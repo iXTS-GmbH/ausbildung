@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace ixts.Ausbildung.Roman
 {
@@ -9,13 +6,9 @@ namespace ixts.Ausbildung.Roman
     {
 
 
-        public int Compare(Roman roman, Roman toCompareRoman)//TODO überarbeiten
+        public int Compare(Roman roman, Roman toCompareRoman)
         {
-            if (roman.ToString().Length.CompareTo(toCompareRoman.ToString().Length) != 0)
-            {
-                return roman.ToString().Length.CompareTo(toCompareRoman.ToString().Length);
-            }
-            return 0;
+            return roman.ToString().Length.CompareTo(toCompareRoman.ToString().Length);
         }
     }
 }

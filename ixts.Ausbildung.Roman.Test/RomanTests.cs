@@ -151,7 +151,7 @@ namespace ixts.Ausbildung.Roman.Test
         public void LengthComparatorTest()
         {
             var expected = new List<Roman> {new Roman("I"),new Roman("II"), new Roman("III"), new Roman("VIII")};
-            var list = new List<Roman> {new Roman("II"), new Roman("I"), new Roman("VIII"), new Roman("III")};//TODO Ganze listen vergleichen
+            var list = new List<Roman> {new Roman("II"), new Roman("I"), new Roman("VIII"), new Roman("III")};
             list.Sort(Roman.LengthComparator);
             Assert.AreEqual(expected,list);
         }
