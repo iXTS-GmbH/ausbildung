@@ -6,7 +6,7 @@ namespace ixts.Ausbildung.Roman
 {
     public class Roman
     {
-        private static readonly Dictionary<String, int> Romans = new Dictionary<String, int>{{"I",1},{"IV",4},{"V",5},{"IX",9},{"X",10},{"XL",40},{"L",50},{"XC",90},{"C",100},{"CD",400},{"D",500},{"CM",900},{"M",1000}};
+        private static readonly Dictionary<String, int> Romans = new Dictionary<String, int> { { "M", 1000 }, { "CM", 900 }, { "D", 500 }, { "CD", 400 }, { "C", 100 }, { "XC", 90 }, { "L", 50 }, { "XL", 40 }, { "X", 10 }, { "IX", 9 }, { "V", 5 }, { "IV", 4 }, { "I", 1 } };
         private readonly String rNumber;
         private readonly int nNumber;
         public static IComparer<Roman> LengthComparator = new LengthComparator();
@@ -18,8 +18,16 @@ namespace ixts.Ausbildung.Roman
             {
                 throw new ArgumentException("Leerer String ist nicht zulässig");
             }
-            rNumber = romaNumber;
-            nNumber = GetNumericNumber();
+            if (ValidateRomaNumber(romaNumber))
+            {
+                rNumber = romaNumber;
+                nNumber = GetNumericNumber();
+            }
+            else
+            {
+                throw new ArgumentException(string.Format("{0} ist keine gültige römische Zahl",romaNumber));
+            }
+
         }
 
         public Roman(int numericNumber)
@@ -37,7 +45,12 @@ namespace ixts.Ausbildung.Roman
             {
                 throw new ArgumentException("Parameter darf nicht 0 oder negativ sein");
             }
-            
+        }
+
+        private Boolean ValidateRomaNumber(String romaNumber)
+        {
+
+            return true;
         }
 
         public int GetNumericNumber()
@@ -178,5 +191,7 @@ namespace ixts.Ausbildung.Roman
         {
             return rNumber;
         }
+
+
     }
 }

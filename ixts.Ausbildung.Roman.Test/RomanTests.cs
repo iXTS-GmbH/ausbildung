@@ -24,6 +24,14 @@ namespace ixts.Ausbildung.Roman.Test
         }
 
         [ExpectedException]
+        [TestCase]
+        public void InvalidStringTest()
+        {
+            var r = new Roman("XXXX");
+            r.GetNumericNumber();
+        }
+
+        [ExpectedException]
         [TestCase(0)]
         [TestCase(-1)]
         public void NullNegativNumberTest(int numericNumber)
@@ -55,11 +63,15 @@ namespace ixts.Ausbildung.Roman.Test
             
             
         }
-
-        [TestCase("IV","IV")]
-        public void ToStringTest(String expected, String romaNumber)
+        [TestCase("I", 1)]
+        [TestCase("IV", 4)]
+        [TestCase("V", 5)]
+        [TestCase("IX", 9)]
+        [TestCase("MCCCXXXVII", 1337)]
+        [TestCase("MMMCMXCIX", 3999)]
+        public void ToStringTest(String expected, int numericNumber)
         {
-            var r = new Roman(romaNumber);
+            var r = new Roman(numericNumber);
             var actual = r.ToString();
             Assert.AreEqual(expected,actual);
         }
