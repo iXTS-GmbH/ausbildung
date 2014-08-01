@@ -98,12 +98,13 @@ namespace ixts.Ausbildung.Roman
             }
         }
 
-        private static String ToLiteral(int numericNumber)
+        private static String ToLiteral(int numericNumber)//TODO Dictionary 
         {
             var toParseNumber = numericNumber;
             var parsedNumber = new StringBuilder();
             int[] romaValues = { 1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000 };
             string[] romanCharakter = { "I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M" };
+
             while (toParseNumber > 0)
             {
                 for (int i = romaValues.Length - 1; i >= 0; i--)
@@ -118,7 +119,7 @@ namespace ixts.Ausbildung.Roman
             
         }
 
-        public String Add(Roman toAdd)
+        public String Add(Roman toAdd) //TODO statt wert neuen Roman mit Wert zurückgeben
         {
             var toAddNumeric = toAdd.Numeral();
             var sum = nNumber + toAddNumeric;
@@ -171,34 +172,14 @@ namespace ixts.Ausbildung.Roman
             var otherRoman = other as Roman;
             if (otherRoman == null)
             {
-                throw new ArgumentException("Übergebener Wert ist Null");
+                return false;
             }
             return nNumber == otherRoman.Numeral();
         }
 
-        public override int GetHashCode() //von 0001.1000 - 3999.9993
+        public override int GetHashCode()
         {
-            var numberString = nNumber.ToString();
-            var reverseNumberString = ReverseString(numberString);
-            if (reverseNumberString.Length < 4)
-            {
-                for (int i = 1; i < 4; i++)
-                {
-                    if (reverseNumberString.Length == i)
-                    {
-                        reverseNumberString = string.Format("{0}0", reverseNumberString);
-                    }
-                }
-            }
-
-            return Convert.ToInt32(string.Format("{0}{1}",numberString,reverseNumberString));
-        }
-
-        private String ReverseString(String s)
-        {
-            char[] chars = s.ToCharArray();
-			Array.Reverse(chars);
-			return new string(chars);
+            return nNumber;
         }
     }
 }

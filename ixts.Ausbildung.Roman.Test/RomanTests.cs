@@ -41,6 +41,7 @@ namespace ixts.Ausbildung.Roman.Test
 
         [TestCase(4,"IV")]//Klein vor Groß wird subtrahiert
         [TestCase(6,"VI")]//Groß vor Klein wird addiert
+        [TestCase(99,"XCIX")]
         [TestCase(1660, "MDCLX")]
         [TestCase(3999, "MMMCMXCIX")]
         public void NumeralTest(int expected, String romaNumber)
@@ -137,7 +138,7 @@ namespace ixts.Ausbildung.Roman.Test
 
         [ExpectedException]
         [TestCase]
-        public void ExceptionEqualsTest()
+        public void ExceptionEqualsTest()//Wenn null übergeben wird ist false keine exception
         {
             var r = new Roman("X");
             r.Equals(null);
@@ -156,7 +157,7 @@ namespace ixts.Ausbildung.Roman.Test
         [TestCase()]
         public void LengthComparatorTest()
         {
-            var list = new List<Roman> {new Roman("II"), new Roman("I"), new Roman("VIII"), new Roman("III")};
+            var list = new List<Roman> {new Roman("II"), new Roman("I"), new Roman("VIII"), new Roman("III")};//Ganze listen vergleichen
             list.Sort(Roman.LengthComparator);
             Assert.AreEqual("I",list[0].ToString());
             Assert.AreEqual("II",list[1].ToString());

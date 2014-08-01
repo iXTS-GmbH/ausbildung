@@ -9,7 +9,7 @@ namespace ixts.Ausbildung.Roman
     {
 
 
-        public int Compare(Roman roman, Roman toCompareRoman)
+        public int Compare(Roman roman, Roman toCompareRoman)//TODO überarbeiten
         {
             if (roman.ToString().Length.CompareTo(toCompareRoman.ToString().Length) != 0)
             {
