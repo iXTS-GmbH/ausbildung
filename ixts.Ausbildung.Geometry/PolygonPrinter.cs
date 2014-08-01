@@ -55,7 +55,7 @@ namespace ixts.Ausbildung.Geometry
             return formname; 
         }
 
-        private Point[] NegativCoordinatesCheck(Point[] points)//TODO So abändern das alle Polygon nach dem Maß - verschoben werden
+        private Point[] NegativCoordinatesCheck(Point[] points)
         {
             foreach (var point in points)
             {

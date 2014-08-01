@@ -105,7 +105,7 @@ namespace ixts.Ausbildung.Geometry
             PolygonPrinter.ZoomPolygon(LastPolygonName,factor);
         }
 
-        private void Print(string path)//TODO Abfangen wenn ungültiger Pfad als Parameter mitgegeben wird
+        private void Print(string path)
         {
             if (!Directory.Exists(path))
             {

@@ -147,41 +147,29 @@ namespace ixts.Ausbildung.Roman.Test
             Assert.AreEqual(expected,actual);
         }
 
-        [TestCase()]
+        [TestCase]
         public void LengthComparatorTest()
         {
-            var list = new List<Roman> {new Roman("II"), new Roman("I"), new Roman("VIII"), new Roman("III")};//Ganze listen vergleichen
+            var expected = new List<Roman> {new Roman("I"),new Roman("II"), new Roman("III"), new Roman("VIII")};
+            var list = new List<Roman> {new Roman("II"), new Roman("I"), new Roman("VIII"), new Roman("III")};//TODO Ganze listen vergleichen
             list.Sort(Roman.LengthComparator);
-            Assert.AreEqual("I",list[0].ToString());
-            Assert.AreEqual("II",list[1].ToString());
-            Assert.AreEqual("III",list[2].ToString());
-            Assert.AreEqual("VIII",list[3].ToString());
+            Assert.AreEqual(expected,list);
         }
 
-        [TestCase()]
-        public void LexicalComparatorTest()
+        [TestCaseSource("LexicalComparatorTestSource")]
+        public void LexicalComparatorTest(List<Roman> expected, List<Roman> list  )
         {
-            var list = new List<Roman> {new Roman("I"), new Roman("V"), new Roman("X"), new Roman("L"), new Roman("C"), new Roman("D"), new Roman("M")};
             list.Sort(Roman.LexicalComparator);
-            Assert.AreEqual("C", list[0].ToString());
-            Assert.AreEqual("D", list[1].ToString());
-            Assert.AreEqual("I", list[2].ToString());
-            Assert.AreEqual("L", list[3].ToString());
-            Assert.AreEqual("M", list[4].ToString());
-            Assert.AreEqual("V", list[5].ToString());
-            Assert.AreEqual("X", list[6].ToString());
+            Assert.AreEqual(expected,list);
         }
 
-        [TestCase()]
-        public void ELexicalComparatorTest()
-        {
-            var list = new List<Roman> {new Roman("MMMDI"), new Roman("MMDI"),new Roman("MMMDDI"), new Roman("MDI")};
-            list.Sort(Roman.LexicalComparator);
-            Assert.AreEqual("MDI", list[0].ToString());
-            Assert.AreEqual("MMDI", list[1].ToString());
-            Assert.AreEqual("MMMDDI", list[2].ToString());
-            Assert.AreEqual("MMMDI", list[3].ToString());
-        }
+        public static readonly object[] LexicalComparatorTestSource =
+            {
+                new object[]{new List<Roman>{new Roman("C"), new Roman("D"), new Roman("I"), new Roman("L"), new Roman("M"), new Roman("V"), new Roman("X")},
+                             new List<Roman>{new Roman("I"), new Roman("V"), new Roman("X"), new Roman("L"), new Roman("C"), new Roman("D"), new Roman("M")}},
+                new object[]{new List<Roman>{new Roman("MDI"), new Roman("MMDI"),new Roman("MMMDDI"), new Roman("MMMDI")}, 
+                             new List<Roman>{new Roman("MMMDI"), new Roman("MMDI"),new Roman("MMMDDI"), new Roman("MDI")}}
 
+            };
     }
 }
