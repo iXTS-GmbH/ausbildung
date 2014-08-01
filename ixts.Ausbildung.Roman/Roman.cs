@@ -9,8 +9,8 @@ namespace ixts.Ausbildung.Roman
         private static readonly Dictionary<String, int> Romans = new Dictionary<String, int>{{"I",1},{"IV",4},{"V",5},{"IX",9},{"X",10},{"XL",40},{"L",50},{"XC",90},{"C",100},{"CD",400},{"D",500},{"CM",900},{"M",1000}};
         private readonly String rNumber;
         private readonly int nNumber;
-        public static IComparer<Roman> LengthComparator = new LengthComparator();//sortiert Collection nach Länge der Romastrings
-        public static IComparer<Roman> LexicalComparator = new LexicalComparator();//sortiert Collection nach Alphabet der Romastrings
+        public static IComparer<Roman> LengthComparator = new LengthComparator();
+        public static IComparer<Roman> LexicalComparator = new LexicalComparator();
 
         public Roman(String romaNumber)
         {
@@ -38,11 +38,6 @@ namespace ixts.Ausbildung.Roman
                 throw new ArgumentException("Parameter darf nicht 0 oder negativ sein");
             }
             
-        }
-
-        public override String ToString()
-        {
-            return rNumber;
         }
 
         public int GetNumericNumber()
@@ -101,7 +96,12 @@ namespace ixts.Ausbildung.Roman
 
         public Roman Add(Roman roman)
         {
-            var sum = nNumber + roman.GetNumericNumber();
+            return this + roman;
+        }
+
+        public static Roman operator+(Roman roman, Roman otherRoman)
+        {
+            var sum = roman.GetNumericNumber() + otherRoman.GetNumericNumber();
             if (sum > 3999)
             {
                 throw new ArgumentException("Die Summe der zu Addierenden Zahlen darf 3999 nicht überschreiten");
@@ -111,7 +111,12 @@ namespace ixts.Ausbildung.Roman
 
         public Roman Subtract(Roman roman)
         {
-            var dif = nNumber - roman.GetNumericNumber();
+            return this - roman;
+        }
+
+        public static Roman operator -(Roman roman, Roman otherRoman)
+        {
+            var dif = roman.GetNumericNumber() - otherRoman.GetNumericNumber();
             if (dif <= 0)
             {
                 throw new ArgumentException("Die Differenz der zu Subtrahierenden Zahlen darf nicht 0 oder negativ sein");
@@ -121,7 +126,12 @@ namespace ixts.Ausbildung.Roman
 
         public Roman Multiply(Roman roman)
         {
-            var multi = nNumber*roman.GetNumericNumber();
+            return this*roman;
+        }
+
+        public static Roman operator *(Roman roman, Roman otherRoman)
+        {
+            var multi = roman.GetNumericNumber() * otherRoman.GetNumericNumber();
             if (multi > 3999)
             {
                 throw new ArgumentException("Das Produkt der zu Multiplizierenden Zahlen darf 3999 nicht überschreiten");
@@ -131,7 +141,13 @@ namespace ixts.Ausbildung.Roman
 
         public Roman Divide(Roman roman)
         {
-            var divide = nNumber/(double)roman.GetNumericNumber();
+            
+            return this/roman;
+        }
+
+        public static Roman operator /(Roman roman, Roman otherRoman)
+        {
+            var divide = roman.GetNumericNumber() / (double)otherRoman.GetNumericNumber();
             if (divide < 1)
             {
                 throw new ArgumentException("Der Quotient der zu Dividierenden Zahlen darf nicht kleiner als 1 sein");
@@ -156,6 +172,11 @@ namespace ixts.Ausbildung.Roman
         public override int GetHashCode()
         {
             return nNumber;
+        }
+
+        public override String ToString()
+        {
+            return rNumber;
         }
     }
 }
