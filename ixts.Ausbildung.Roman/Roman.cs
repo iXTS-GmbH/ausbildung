@@ -6,13 +6,7 @@ namespace ixts.Ausbildung.Roman
 {
     public class Roman
     {
-        private const int I = 1;
-        private const int V = 5;
-        private const int X = 10;
-        private const int L = 50;
-        private const int C = 100;
-        private const int D = 500;
-        private const int M = 1000;
+        private static readonly Dictionary<String, int> Romans = new Dictionary<String, int>{{"I",1},{"IV",4},{"V",5},{"IX",9},{"X",10},{"XL",40},{"L",50},{"XC",90},{"C",100},{"CD",400},{"D",500},{"CM",900},{"M",1000}};
         private readonly String rNumber;
         private readonly int nNumber;
         public static IComparer<Roman> LengthComparator = new LengthComparator();//sortiert Collection nach Länge der Romastrings
@@ -77,49 +71,35 @@ namespace ixts.Ausbildung.Roman
 
         private int RomaNumberValue(char romaNumber)
         {
-            switch (romaNumber)
+            if (Romans.ContainsKey(Convert.ToString(romaNumber)))
             {
-                case 'I':
-                    return I;
-                case 'V':
-                    return V;
-                case 'X':
-                    return X;
-                case 'L':
-                    return L;
-                case 'C':
-                    return C;
-                case 'D':
-                    return D;
-                case 'M':
-                    return M;
-                default:
-                    throw new ArgumentException(string.Format("{0} ist kein gültiges Zeichen für eine Römische Zahl",romaNumber));
+                return Romans[Convert.ToString(romaNumber)];
             }
+            throw new ArgumentException(string.Format("{0} ist kein gültiges Zeichen für eine Römische Zahl", romaNumber));
         }
 
-        private static String ToLiteral(int numericNumber)//TODO Dictionary 
+        private static String ToLiteral(int numericNumber)
         {
-            var toParseNumber = numericNumber;
+            var remain = numericNumber;
             var parsedNumber = new StringBuilder();
-            int[] romaValues = { 1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000 };
-            string[] romanCharakter = { "I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M" };
 
-            while (toParseNumber > 0)
+            while (remain > 0)
             {
-                for (int i = romaValues.Length - 1; i >= 0; i--)
-                    if (toParseNumber >= romaValues[i])
+                foreach (KeyValuePair<string, int> roman in Romans)
+                {
+                    if (remain >= roman.Value)
                     {
-                        toParseNumber -= romaValues[i];
-                        parsedNumber.Append(romanCharakter[i]);
+                        remain -= roman.Value;
+                        parsedNumber.Append(roman.Key);
                         break;
                     }
+                }
             }
             return parsedNumber.ToString();
             
         }
 
-        public Roman Add(Roman roman) //TODO statt wert neuen Roman mit Wert zurückgeben
+        public Roman Add(Roman roman)
         {
             var sum = nNumber + roman.Numeral();
             if (sum > 3999)
