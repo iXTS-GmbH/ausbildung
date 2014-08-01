@@ -12,6 +12,7 @@ namespace ixts.Ausbildung.Roman.Test
         public void OutOfRangeTest()
         {
             var r = new Roman(4000);
+            r.Numeral();
         }
 
         [ExpectedException]
@@ -19,6 +20,7 @@ namespace ixts.Ausbildung.Roman.Test
         public void NullStringTest()
         {
             var r = new Roman("");
+            r.Numeral();
         }
 
         [ExpectedException]
@@ -27,6 +29,7 @@ namespace ixts.Ausbildung.Roman.Test
         public void NullNegativNumberTest(int numericNumber)
         {
             var r = new Roman(numericNumber);
+            r.Numeral();
         }
 
         [ExpectedException]
@@ -62,8 +65,9 @@ namespace ixts.Ausbildung.Roman.Test
         }
 
         [TestCase("V",5,"X")]
-        public void AddTest(String romaNumber, int numericNumber, String expected)
+        public void AddTest(String romaNumber, int numericNumber, String expectedNumber)
         {
+            var expected = new Roman(expectedNumber);
             var r = new Roman(numericNumber);
             var actual = r.Add(new Roman(romaNumber));
             Assert.AreEqual(expected,actual);
@@ -78,8 +82,9 @@ namespace ixts.Ausbildung.Roman.Test
         }
 
         [TestCase("V", 10, "V")]
-        public void SubtractTest(String romaNumber, int numericNumber, String expected)
+        public void SubtractTest(String romaNumber, int numericNumber, String expectedNumber)
         {
+            var expected = new Roman(expectedNumber);
             var r = new Roman(numericNumber);
             var actual = r.Subtract(new Roman(romaNumber));
             Assert.AreEqual(expected,actual);
@@ -95,8 +100,9 @@ namespace ixts.Ausbildung.Roman.Test
         }
 
         [TestCase("V", 10, "L")]
-        public void MultiplyTest(String romaNumber, int numericNumber, String expected)
+        public void MultiplyTest(String romaNumber, int numericNumber, String expectedNumber)
         {
+            var expected = new Roman(expectedNumber);
             var r = new Roman(numericNumber);
             var actual = r.Multiply(new Roman(romaNumber));
             Assert.AreEqual(expected,actual);
@@ -111,8 +117,9 @@ namespace ixts.Ausbildung.Roman.Test
         }
 
         [TestCase("V", 50, "X")]
-        public void DivideTest(String romaNumber, int numericNumber, String expected)
+        public void DivideTest(String romaNumber, int numericNumber, String expectedNumber)
         {
+            var expected = new Roman(expectedNumber);
             var r = new Roman(numericNumber);
             var actual = r.Divide(new Roman(romaNumber));
             Assert.AreEqual(expected,actual);
