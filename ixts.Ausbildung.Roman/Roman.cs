@@ -9,8 +9,7 @@ namespace ixts.Ausbildung.Roman
         private static readonly Dictionary<String, int> Romans = new Dictionary<String, int> { { "M", 1000 }, { "CM", 900 }, { "D", 500 }, { "CD", 400 }, { "C", 100 }, { "XC", 90 }, { "L", 50 }, { "XL", 40 }, { "X", 10 }, { "IX", 9 }, { "V", 5 }, { "IV", 4 }, { "I", 1 } };
         private readonly String rNumber;
         private readonly int nNumber;
-        private char lastchar;
-
+        private char marker;
         public static IComparer<Roman> LengthComparator = new LengthComparator();
         public static IComparer<Roman> LexicalComparator = new LexicalComparator();
 
@@ -29,7 +28,6 @@ namespace ixts.Ausbildung.Roman
             {
                 throw new ArgumentException(string.Format("{0} ist keine gültige römische Zahl",romaNumber));
             }
-
         }
 
         public Roman(int numericNumber)
@@ -54,7 +52,7 @@ namespace ixts.Ausbildung.Roman
             int charcount = 0;
             for (int i = 0; i < romaNumber.Length; i++)
             { 
-                if ( i == 0|| lastchar == romaNumber[i])
+                if ( i == 0|| marker == romaNumber[i])
                 {
                     charcount += 1;
                     if (charcount == 4)
@@ -66,33 +64,33 @@ namespace ixts.Ausbildung.Roman
                 { 
                     charcount = 1;
                 }
-                lastchar = romaNumber[i];
+                marker = romaNumber[i];
             }
             return true;
         }
 
         public int GetNumericNumber()
         {
-            int parsedNumber = 0;
+            int numericNumber = 0;
             int lastvalue = 0;
 
             for ( var i = 0;i < rNumber.Length;i++)
             {
-                if (i == 0 || lastvalue >= RomaNumberValue(rNumber[i]))//Addieren
-                {
-                    parsedNumber += RomaNumberValue(rNumber[i]);
+                if (i == 0 || lastvalue >= RomaNumberValue(rNumber[i]))
+                {//Addieren
+                    numericNumber += RomaNumberValue(rNumber[i]);
                     lastvalue = RomaNumberValue(rNumber[i]);
 
                 }
-                else//Subtrahieren
-                {
-                    parsedNumber = parsedNumber - lastvalue;
-                    parsedNumber = parsedNumber + RomaNumberValue(rNumber[i]) - lastvalue;
+                else
+                {//Subtrahieren
+                    numericNumber -= lastvalue;
+                    numericNumber += (RomaNumberValue(rNumber[i]) - lastvalue);
                     lastvalue = RomaNumberValue(rNumber[i]);
                 }
             }
 
-            return parsedNumber;
+            return numericNumber;
         }
 
         private int RomaNumberValue(char romaNumber)
@@ -122,7 +120,6 @@ namespace ixts.Ausbildung.Roman
                 }
             }
             return parsedNumber.ToString();
-            
         }
 
         public Roman Add(Roman roman)

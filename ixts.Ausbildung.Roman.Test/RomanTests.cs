@@ -24,10 +24,13 @@ namespace ixts.Ausbildung.Roman.Test
         }
 
         [ExpectedException]
-        [TestCase]
-        public void InvalidStringTest()
+        [TestCase("XXXX")]//Viererkette Alleine
+        [TestCase("MMMXXXVVVVIII")]//Viererkette in Zahl 
+        [TestCase("XXXXXXXXXX")]//Größerere Kette alleine
+        [TestCase("MMMCCCCCCCCXXXVVVIII")]//Größerere Kette in Zahl
+        public void InvalidStringTest(String invalidRomaNumber)
         {
-            var r = new Roman("XXXX");
+            var r = new Roman(invalidRomaNumber);
             r.GetNumericNumber();
         }
 
