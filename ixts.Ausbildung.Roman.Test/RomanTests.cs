@@ -12,7 +12,7 @@ namespace ixts.Ausbildung.Roman.Test
         public void OutOfRangeTest()
         {
             var r = new Roman(4000);
-            r.GetNumericNumber();
+            r.GetValue();
         }
 
         [ExpectedException]
@@ -20,7 +20,7 @@ namespace ixts.Ausbildung.Roman.Test
         public void NullStringTest()
         {
             var r = new Roman("");
-            r.GetNumericNumber();
+            r.GetValue();
         }
 
         [ExpectedException]
@@ -31,7 +31,7 @@ namespace ixts.Ausbildung.Roman.Test
         public void InvalidStringTest(String invalidRomaNumber)
         {
             var r = new Roman(invalidRomaNumber);
-            r.GetNumericNumber();
+            r.GetValue();
         }
 
         [ExpectedException]
@@ -40,7 +40,7 @@ namespace ixts.Ausbildung.Roman.Test
         public void NullNegativNumberTest(int numericNumber)
         {
             var r = new Roman(numericNumber);
-            r.GetNumericNumber();
+            r.GetValue();
         }
 
         [ExpectedException]
@@ -50,7 +50,7 @@ namespace ixts.Ausbildung.Roman.Test
         public void ExceptionNumeralTest(String romaNumber)
         {
             var r = new Roman(romaNumber);
-            r.GetNumericNumber();
+            r.GetValue();
         }
 
         [TestCase(4,"IV")]//Klein vor Groß wird subtrahiert
@@ -58,10 +58,10 @@ namespace ixts.Ausbildung.Roman.Test
         [TestCase(99,"XCIX")]
         [TestCase(1660, "MDCLX")]
         [TestCase(3999, "MMMCMXCIX")]
-        public void NumeralTest(int expected, String romaNumber)
+        public void GetValueTest(int expected, String romaNumber)
         {
             var r = new Roman(romaNumber);
-            var actual = r.GetNumericNumber();
+            var actual = r.GetValue();
             Assert.AreEqual(expected,actual);
             
             

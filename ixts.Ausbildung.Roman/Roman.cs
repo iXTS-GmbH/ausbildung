@@ -6,40 +6,40 @@ namespace ixts.Ausbildung.Roman
 {
     public class Roman
     {
-        private static readonly Dictionary<String, int> Romans = new Dictionary<String, int> { { "M", 1000 }, { "CM", 900 }, { "D", 500 }, { "CD", 400 }, { "C", 100 }, { "XC", 90 }, { "L", 50 }, { "XL", 40 }, { "X", 10 }, { "IX", 9 }, { "V", 5 }, { "IV", 4 }, { "I", 1 } };
-        private readonly String rNumber;
-        private readonly int nNumber;
+        private static readonly Dictionary<String, int> Romans = new Dictionary<String, int> { { "M", 1000 }, { "CM", 900 }, { "D", 500 }, { "CD", 400 }, { "C", 100 }, { "XC", 90 }, { "L", 50 }, { "XL", 40 }, { "X", 10 }, { "IX", 9 }, { "V", 5 }, { "IV", 4 }, { "I", 1 }};
+        private readonly String romaNumber;
+        private readonly int numericNumber;
         private char marker;
         public static IComparer<Roman> LengthComparator = new LengthComparator();
         public static IComparer<Roman> LexicalComparator = new LexicalComparator();
 
-        public Roman(String romaNumber)
+        public Roman(String rNumber)
         {
-            if (romaNumber.Length == 0)
+            if (rNumber.Length == 0)
             {
                 throw new ArgumentException("Leerer String ist nicht zulässig");
             }
-            if (ValidateRomaNumber(romaNumber))
+            if (ValidateRomaNumber(rNumber))
             {
-                rNumber = romaNumber;
-                nNumber = GetNumericNumber();
+                romaNumber = rNumber;
+                numericNumber = GetValue();
             }
             else
             {
-                throw new ArgumentException(string.Format("{0} ist keine gültige römische Zahl",romaNumber));
+                throw new ArgumentException(string.Format("{0} ist keine gültige römische Zahl",rNumber));
             }
         }
 
-        public Roman(int numericNumber)
+        public Roman(int nNumber)
         {
-            if (numericNumber > 3999)
+            if (nNumber > 3999)
             {
                 throw new ArgumentException("Wert darf nicht größer als 3999 sein");
             }
-            if (numericNumber > 0)
+            if (nNumber > 0)
             {
-                nNumber = numericNumber;
-                rNumber = ToLiteral(nNumber);
+                numericNumber = nNumber;
+                romaNumber = ToLiteral(nNumber);
             }
             else
             {
@@ -47,12 +47,12 @@ namespace ixts.Ausbildung.Roman
             }
         }
 
-        private Boolean ValidateRomaNumber(String romaNumber)
+        private Boolean ValidateRomaNumber(String rNumber)
         {
             int charcount = 0;
-            for (int i = 0; i < romaNumber.Length; i++)
+            for (int i = 0; i < rNumber.Length; i++)
             { 
-                if ( i == 0|| marker == romaNumber[i])
+                if ( i == 0|| marker == rNumber[i])
                 {
                     charcount += 1;
                     if (charcount == 4)
@@ -64,50 +64,49 @@ namespace ixts.Ausbildung.Roman
                 { 
                     charcount = 1;
                 }
-                marker = romaNumber[i];
+                marker = rNumber[i];
             }
             return true;
         }
 
-        public int GetNumericNumber()
+        public int GetValue()
         {
-            int numericNumber = 0;
+            int nNumber = 0;
             int lastvalue = 0;
 
-            for ( var i = 0;i < rNumber.Length;i++)
+            for ( var i = 0;i < romaNumber.Length;i++)
             {
-                if (i == 0 || lastvalue >= RomaNumberValue(rNumber[i]))
+                if (i == 0 || lastvalue >= RomaNumberValue(romaNumber[i]))
                 {//Addieren
-                    numericNumber += RomaNumberValue(rNumber[i]);
-                    lastvalue = RomaNumberValue(rNumber[i]);
+                    nNumber += RomaNumberValue(romaNumber[i]);
+                    lastvalue = RomaNumberValue(romaNumber[i]);
 
                 }
                 else
                 {//Subtrahieren
-                    numericNumber -= lastvalue;
-                    numericNumber += (RomaNumberValue(rNumber[i]) - lastvalue);
-                    lastvalue = RomaNumberValue(rNumber[i]);
+                    nNumber -= lastvalue;
+                    nNumber += (RomaNumberValue(romaNumber[i]) - lastvalue);
+                    lastvalue = RomaNumberValue(romaNumber[i]);
                 }
             }
 
-            return numericNumber;
+            return nNumber;
         }
 
-        private int RomaNumberValue(char romaNumber)
+        private int RomaNumberValue(char rNumber)
         {
-            if (Romans.ContainsKey(Convert.ToString(romaNumber)))
+            if (Romans.ContainsKey(Convert.ToString(rNumber)))
             {
-                return Romans[Convert.ToString(romaNumber)];
+                return Romans[Convert.ToString(rNumber)];
             }
-            throw new ArgumentException(string.Format("{0} ist kein gültiges Zeichen für eine Römische Zahl", romaNumber));
+            throw new ArgumentException(string.Format("{0} ist kein gültiges Zeichen für eine Römische Zahl", rNumber));
         }
 
-        private static String ToLiteral(int numericNumber)
+        private static String ToLiteral(int nNumber)
         {
-            var remain = numericNumber;
+            var remain = nNumber;
             var parsedNumber = new StringBuilder();
-
-            while (remain > 0)
+            while (remain > 0) 
             {
                 foreach (KeyValuePair<string, int> roman in Romans)
                 {
@@ -129,7 +128,7 @@ namespace ixts.Ausbildung.Roman
 
         public static Roman operator+(Roman roman, Roman otherRoman)
         {
-            var sum = roman.GetNumericNumber() + otherRoman.GetNumericNumber();
+            var sum = roman.GetValue() + otherRoman.GetValue();
             if (sum > 3999)
             {
                 throw new ArgumentException("Die Summe der zu Addierenden Zahlen darf 3999 nicht überschreiten");
@@ -144,7 +143,7 @@ namespace ixts.Ausbildung.Roman
 
         public static Roman operator -(Roman roman, Roman otherRoman)
         {
-            var dif = roman.GetNumericNumber() - otherRoman.GetNumericNumber();
+            var dif = roman.GetValue() - otherRoman.GetValue();
             if (dif <= 0)
             {
                 throw new ArgumentException("Die Differenz der zu Subtrahierenden Zahlen darf nicht 0 oder negativ sein");
@@ -159,7 +158,7 @@ namespace ixts.Ausbildung.Roman
 
         public static Roman operator *(Roman roman, Roman otherRoman)
         {
-            var multi = roman.GetNumericNumber() * otherRoman.GetNumericNumber();
+            var multi = roman.GetValue() * otherRoman.GetValue();
             if (multi > 3999)
             {
                 throw new ArgumentException("Das Produkt der zu Multiplizierenden Zahlen darf 3999 nicht überschreiten");
@@ -175,7 +174,7 @@ namespace ixts.Ausbildung.Roman
 
         public static Roman operator /(Roman roman, Roman otherRoman)
         {
-            var divide = roman.GetNumericNumber() / (double)otherRoman.GetNumericNumber();
+            var divide = roman.GetValue() / (double)otherRoman.GetValue();
             if (divide < 1)
             {
                 throw new ArgumentException("Der Quotient der zu Dividierenden Zahlen darf nicht kleiner als 1 sein");
@@ -194,17 +193,17 @@ namespace ixts.Ausbildung.Roman
             {
                 return false;
             }
-            return nNumber == otherRoman.GetNumericNumber();
+            return numericNumber == otherRoman.GetValue();
         }
 
         public override int GetHashCode()
         {
-            return nNumber;
+            return numericNumber;
         }
 
         public override String ToString()
         {
-            return rNumber;
+            return romaNumber;
         }
 
 
