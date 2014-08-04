@@ -6,184 +6,171 @@ namespace ixts.Ausbildung.Roman
 {
     public class Roman
     {
-        private static readonly Dictionary<String, int> Romans = new Dictionary<String, int> { { "M", 1000 }, { "CM", 900 }, { "D", 500 }, { "CD", 400 }, { "C", 100 }, { "XC", 90 }, { "L", 50 }, { "XL", 40 }, { "X", 10 }, { "IX", 9 }, { "V", 5 }, { "IV", 4 }, { "I", 1 }};
-        private readonly String romaNumber;
-        private readonly int numericNumber;
-        private char marker;
+        private static readonly Dictionary<String, int> RomanToNumericMap = new Dictionary<String, int>
+            {
+                { "M", 1000 },
+                { "CM", 900 }, 
+                { "D",  500 }, 
+                { "CD", 400 }, 
+                { "C",  100 }, 
+                { "XC",  90 }, 
+                { "L",   50 }, 
+                { "XL",  40 }, 
+                { "X",   10 }, 
+                { "IX",   9 }, 
+                { "V",    5 }, 
+                { "IV",   4 }, 
+                { "I",    1 }
+            };
+        private readonly int romanNumber;
+        private const int MAX_EQUAL_CHARAKTER_I_A_ROW = 3;
         public static IComparer<Roman> LengthComparator = new LengthComparator();
         public static IComparer<Roman> LexicalComparator = new LexicalComparator();
 
-        public Roman(String rNumber)
+        public Roman(String literal)
         {
-            if (rNumber.Length == 0)
+            if (literal.Length == 0)
             {
                 throw new ArgumentException("Leerer String ist nicht zulässig");
             }
-            if (ValidateRomaNumber(rNumber))
+            if (!ValidateRomanNumber(literal))
             {
-                romaNumber = rNumber;
-                numericNumber = GetValue();
+                throw new ArgumentException(string.Format("{0} ist keine gültige römische Zahl", literal));
             }
-            else
+            if (!ValidateRomanNumber(ToNumeral(literal)))
             {
-                throw new ArgumentException(string.Format("{0} ist keine gültige römische Zahl",rNumber));
+                throw new ArgumentException("Zahl besitzt ungültigen Wert, Wert darf nicht größer als 3999 sein");
             }
+            romanNumber = ToNumeral(literal);
         }
 
-        public Roman(int nNumber)
+        public Roman(int number)
         {
-            if (nNumber > 3999)
+            if (!ValidateRomanNumber(number))
             {
-                throw new ArgumentException("Wert darf nicht größer als 3999 sein");
+                throw new ArgumentException(string.Format("{0} ist kein gültiger Wert. Wert muss zwischen 1 und 3999 liegen", number));   
             }
-            if (nNumber > 0)
-            {
-                numericNumber = nNumber;
-                romaNumber = ToLiteral(nNumber);
-            }
-            else
-            {
-                throw new ArgumentException("Parameter darf nicht 0 oder negativ sein");
-            }
+            romanNumber = number;
         }
 
-        private Boolean ValidateRomaNumber(String rNumber)
+        private Boolean ValidateRomanNumber(String literal)
         {
-            int charcount = 0;
-            for (int i = 0; i < rNumber.Length; i++)
-            { 
-                if ( i == 0|| marker == rNumber[i])
+            var equalCharacterInARow = 1;
+            var marker = literal[0];
+            for (var i = 1; i < literal.Length; i++)
+            {
+                if (marker == literal[i])
                 {
-                    charcount += 1;
-                    if (charcount == 4)
+                    equalCharacterInARow += 1;
+
+                    if (equalCharacterInARow > MAX_EQUAL_CHARAKTER_I_A_ROW)
                     {
                         return false;
                     }
                 }
                 else
                 { 
-                    charcount = 1;
+                    equalCharacterInARow = 1;
                 }
-                marker = rNumber[i];
+
+                marker = literal[i];
             }
             return true;
         }
 
-        public int GetValue()
+        private Boolean ValidateRomanNumber(int number)
         {
-            int nNumber = 0;
-            int lastvalue = 0;
+            return number < 4000 && number > 0;
+        }
 
-            for ( var i = 0;i < romaNumber.Length;i++)
+        public int ToNumeral()
+        {
+            return ToNumeral(ToLiteral(romanNumber));
+        }
+
+        public int ToNumeral(String literal)
+        {
+            var number = 0;
+            var lastvalue = 0;
+            for ( var i = 0;i < literal.Length;i++)
             {
-                if (i == 0 || lastvalue >= RomaNumberValue(romaNumber[i]))
+                var letterValue = ParseCharToNumber(literal[i]);
+                if (i == 0 || lastvalue >= letterValue)
                 {//Addieren
-                    nNumber += RomaNumberValue(romaNumber[i]);
-                    lastvalue = RomaNumberValue(romaNumber[i]);
-
+                    number += letterValue;
                 }
                 else
                 {//Subtrahieren
-                    nNumber -= lastvalue;
-                    nNumber += (RomaNumberValue(romaNumber[i]) - lastvalue);
-                    lastvalue = RomaNumberValue(romaNumber[i]);
+                    number -= lastvalue;
+                    number += (letterValue - lastvalue);
+                    
                 }
+                lastvalue = letterValue;
             }
 
-            return nNumber;
+            return number;
         }
 
-        private int RomaNumberValue(char rNumber)
+        private static int ParseCharToNumber(char letter)
         {
-            if (Romans.ContainsKey(Convert.ToString(rNumber)))
+            if (RomanToNumericMap.ContainsKey(Convert.ToString(letter)))
             {
-                return Romans[Convert.ToString(rNumber)];
+                return RomanToNumericMap[Convert.ToString(letter)];
             }
-            throw new ArgumentException(string.Format("{0} ist kein gültiges Zeichen für eine Römische Zahl", rNumber));
+            throw new ArgumentException(string.Format("{0} ist kein gültiges Zeichen für eine Römische Zahl", letter));
         }
 
-        private static String ToLiteral(int nNumber)
+        private static String ToLiteral(int number)
         {
-            var remain = nNumber;
-            var parsedNumber = new StringBuilder();
-            while (remain > 0) 
+            var remainder = number;
+            var literal = new StringBuilder();
+
+            foreach (var roman in RomanToNumericMap)
             {
-                foreach (KeyValuePair<string, int> roman in Romans)
+                while (remainder >= roman.Value)
                 {
-                    if (remain >= roman.Value)
-                    {
-                        remain -= roman.Value;
-                        parsedNumber.Append(roman.Key);
-                        break;
-                    }
+                    remainder -= roman.Value;
+                    literal.Append(roman.Key);
                 }
             }
-            return parsedNumber.ToString();
-        }
 
-        public Roman Add(Roman roman)
-        {
-            return this + roman;
+            return literal.ToString();
         }
 
         public static Roman operator+(Roman roman, Roman otherRoman)
         {
-            var sum = roman.GetValue() + otherRoman.GetValue();
-            if (sum > 3999)
-            {
-                throw new ArgumentException("Die Summe der zu Addierenden Zahlen darf 3999 nicht überschreiten");
-            }
-            return new Roman(sum);
-        }
+            var sum = roman.ToNumeral() + otherRoman.ToNumeral();
 
-        public Roman Subtract(Roman roman)
-        {
-            return this - roman;
+            return new Roman(sum);
         }
 
         public static Roman operator -(Roman roman, Roman otherRoman)
         {
-            var dif = roman.GetValue() - otherRoman.GetValue();
-            if (dif <= 0)
-            {
-                throw new ArgumentException("Die Differenz der zu Subtrahierenden Zahlen darf nicht 0 oder negativ sein");
-            }
-            return new Roman(dif);
-        }
+            var dif = roman.ToNumeral() - otherRoman.ToNumeral();
 
-        public Roman Multiply(Roman roman)
-        {
-            return this*roman;
+            return new Roman(dif);
         }
 
         public static Roman operator *(Roman roman, Roman otherRoman)
         {
-            var multi = roman.GetValue() * otherRoman.GetValue();
-            if (multi > 3999)
-            {
-                throw new ArgumentException("Das Produkt der zu Multiplizierenden Zahlen darf 3999 nicht überschreiten");
-            }
-            return new Roman(multi);
-        }
+            var multi = roman.ToNumeral() * otherRoman.ToNumeral();
 
-        public Roman Divide(Roman roman)
-        {
-            
-            return this/roman;
+            return new Roman(multi);
         }
 
         public static Roman operator /(Roman roman, Roman otherRoman)
         {
-            var divide = roman.GetValue() / (double)otherRoman.GetValue();
-            if (divide < 1)
+            var divide = roman.ToNumeral() / (double)otherRoman.ToNumeral();
+            if (ValidateDivide(divide))
             {
-                throw new ArgumentException("Der Quotient der zu Dividierenden Zahlen darf nicht kleiner als 1 sein");
+                return new Roman((int)divide);
             }
-            if (divide - (int)divide > 0)
-            {
-                throw new ArgumentException("Der Quotient der zu Dividierenden Zahlen muss Ganzzahlig sein");
-            }
-            return new Roman((int)divide);
+            throw new ArgumentException("Der Quotient der zu Dividierenden Zahlen muss Ganzzahlig sein ");
+        }
+
+        private static Boolean ValidateDivide(double divide)
+        {
+            return !(divide - (int) divide > 0);
         }
 
         public override Boolean Equals(object other)
@@ -193,17 +180,17 @@ namespace ixts.Ausbildung.Roman
             {
                 return false;
             }
-            return numericNumber == otherRoman.GetValue();
+            return GetHashCode() == otherRoman.GetHashCode();
         }
 
         public override int GetHashCode()
         {
-            return numericNumber;
+            return romanNumber;
         }
 
         public override String ToString()
         {
-            return romaNumber;
+            return ToLiteral(romanNumber);
         }
 
 

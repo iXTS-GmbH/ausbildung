@@ -9,18 +9,23 @@ namespace ixts.Ausbildung.Roman.Test
     {
         [ExpectedException]
         [TestCase]
-        public void OutOfRangeTest()
+        public void NumericOutOfRangeTest()
         {
-            var r = new Roman(4000);
-            r.GetValue();
+           var r = new Roman(4000);
+        }
+
+        [ExpectedException]
+        [TestCase]
+        public void RomanOutOfRangeTest()
+        {
+          var r =  new Roman("MMMDD");
         }
 
         [ExpectedException]
         [TestCase]
         public void NullStringTest()
         {
-            var r = new Roman("");
-            r.GetValue();
+            new Roman("").ToNumeral();
         }
 
         [ExpectedException]
@@ -30,8 +35,7 @@ namespace ixts.Ausbildung.Roman.Test
         [TestCase("MMMCCCCCCCCXXXVVVIII")]//Größerere Kette in Zahl
         public void InvalidStringTest(String invalidRomaNumber)
         {
-            var r = new Roman(invalidRomaNumber);
-            r.GetValue();
+            new Roman(invalidRomaNumber).ToNumeral();
         }
 
         [ExpectedException]
@@ -39,8 +43,7 @@ namespace ixts.Ausbildung.Roman.Test
         [TestCase(-1)]
         public void NullNegativNumberTest(int numericNumber)
         {
-            var r = new Roman(numericNumber);
-            r.GetValue();
+            new Roman(numericNumber).ToNumeral();
         }
 
         [ExpectedException]
@@ -49,8 +52,7 @@ namespace ixts.Ausbildung.Roman.Test
         [TestCase("IZV")]//Zeichenfolgen mit einem unbekanntem Buchstaben lösen exeption aus
         public void ExceptionNumeralTest(String romaNumber)
         {
-            var r = new Roman(romaNumber);
-            r.GetValue();
+            new Roman(romaNumber).ToNumeral();
         }
 
         [TestCase(4,"IV")]//Klein vor Groß wird subtrahiert
@@ -60,22 +62,19 @@ namespace ixts.Ausbildung.Roman.Test
         [TestCase(3999, "MMMCMXCIX")]
         public void GetValueTest(int expected, String romaNumber)
         {
-            var r = new Roman(romaNumber);
-            var actual = r.GetValue();
+            var actual = new Roman(romaNumber).ToNumeral();
             Assert.AreEqual(expected,actual);
-            
-            
         }
         [TestCase("I", 1)]
         [TestCase("IV", 4)]
         [TestCase("V", 5)]
         [TestCase("IX", 9)]
+        [TestCase("XL", 40)]
         [TestCase("MCCCXXXVII", 1337)]
         [TestCase("MMMCMXCIX", 3999)]
         public void ToStringTest(String expected, int numericNumber)
         {
-            var r = new Roman(numericNumber);
-            var actual = r.ToString();
+            var actual = new Roman(numericNumber).ToString();
             Assert.AreEqual(expected,actual);
         }
 
@@ -83,8 +82,7 @@ namespace ixts.Ausbildung.Roman.Test
         public void AddTest(String romaNumber, int numericNumber, String expectedNumber)
         {
             var expected = new Roman(expectedNumber);
-            var r = new Roman(numericNumber);
-            var actual = r.Add(new Roman(romaNumber));
+            var actual = new Roman(numericNumber) + new Roman(romaNumber);
             Assert.AreEqual(expected,actual);
         }
 
@@ -92,17 +90,15 @@ namespace ixts.Ausbildung.Roman.Test
         [TestCase("MMM", 1000)]
         public void ExceptionAddTest(String romaNumber, int numericNumber)
         {
-            var r = new Roman(numericNumber);
-            r.Add(new Roman(romaNumber));
+            var r = new Roman(numericNumber) + new Roman(romaNumber);
         }
 
         [TestCase("V", 10, "V")]
         public void SubtractTest(String romaNumber, int numericNumber, String expectedNumber)
         {
             var expected = new Roman(expectedNumber);
-            var r = new Roman(numericNumber);
-            var actual = r.Subtract(new Roman(romaNumber));
-            Assert.AreEqual(expected,actual);
+            var actual = new Roman(numericNumber) - new Roman(romaNumber);
+            Assert.AreEqual(expected, actual);
         }
 
         [ExpectedException]
@@ -110,16 +106,14 @@ namespace ixts.Ausbildung.Roman.Test
         [TestCase("V",5)]
         public void ExceptionSubtractTest(String romaNumber, int numericNumber)
         {
-            var r = new Roman(numericNumber);
-            r.Subtract(new Roman(romaNumber));
+          var r = new Roman(numericNumber) - new Roman(romaNumber);
         }
 
         [TestCase("V", 10, "L")]
         public void MultiplyTest(String romaNumber, int numericNumber, String expectedNumber)
         {
             var expected = new Roman(expectedNumber);
-            var r = new Roman(numericNumber);
-            var actual = r.Multiply(new Roman(romaNumber));
+            var actual = new Roman(numericNumber)*new Roman(romaNumber);
             Assert.AreEqual(expected,actual);
         }
 
@@ -127,16 +121,14 @@ namespace ixts.Ausbildung.Roman.Test
         [TestCase("V", 1000)]
         public void ExceptionMultiplyTest(String romaNumber, int numericNumber)
         {
-            var r = new Roman(numericNumber);
-            r.Multiply(new Roman(romaNumber));
+            var r = new Roman(numericNumber)*new Roman(romaNumber);
         }
 
         [TestCase("V", 50, "X")]
         public void DivideTest(String romaNumber, int numericNumber, String expectedNumber)
         {
             var expected = new Roman(expectedNumber);
-            var r = new Roman(numericNumber);
-            var actual = r.Divide(new Roman(romaNumber));
+            var actual = new Roman(numericNumber)/new Roman(romaNumber);
             Assert.AreEqual(expected,actual);
         }
 
@@ -145,27 +137,30 @@ namespace ixts.Ausbildung.Roman.Test
         [TestCase("L",51)]
         public void ExceptionDivideTest(String romaNumber, int numericNumber)
         {
-            var r = new Roman(numericNumber);
-            r.Divide(new Roman(romaNumber));
+           var r = new Roman(numericNumber)/new Roman(romaNumber);
         }
 
         [TestCase(false,"V",10)]
         [TestCase(true,"X",10)]
-        [TestCase(false,"X",null)]
         public void EqualsTest(Boolean expected, String romaNumber, int numericNumber)
         {
-            var r = new Roman(romaNumber);
-            var actual = r.Equals(new Roman(numericNumber));
-            Assert.AreEqual(expected, actual);
+            var actual = new Roman(romaNumber).Equals(new Roman(numericNumber));
+            Assert.AreEqual(expected,actual);
         }
+        [TestCase]
+        public void EqualsNullTest()
+        {
+            var actual = new Roman("X").Equals(null);
+            Assert.AreEqual(false, actual);
+        }
+
 
         [TestCase("XVI",16)] 
         [TestCase("MMMCMXCIX", 3999)] 
         [TestCase("I", 1)] 
         public void GetHashCodeTest(String romaNumber, int expected)
         {
-            var r = new Roman(romaNumber);
-            var actual = r.GetHashCode();
+            var actual = new Roman(romaNumber).GetHashCode();
             Assert.AreEqual(expected,actual);
         }
 
@@ -173,24 +168,24 @@ namespace ixts.Ausbildung.Roman.Test
         public void LengthComparatorTest()
         {
             var expected = new List<Roman> {new Roman("I"),new Roman("II"), new Roman("III"), new Roman("VIII")};
-            var list = new List<Roman> {new Roman("II"), new Roman("I"), new Roman("VIII"), new Roman("III")};
-            list.Sort(Roman.LengthComparator);
-            Assert.AreEqual(expected,list);
+            var actual = new List<Roman> {new Roman("II"), new Roman("I"), new Roman("VIII"), new Roman("III")};
+            actual.Sort(Roman.LengthComparator);
+            Assert.AreEqual(expected,actual);
         }
 
         [TestCaseSource("LexicalComparatorTestSource")]
-        public void LexicalComparatorTest(List<Roman> expected, List<Roman> list  )
+        public void LexicalComparatorTest(List<Roman> expected, List<Roman> actual  )
         {
-            list.Sort(Roman.LexicalComparator);
-            Assert.AreEqual(expected,list);
+            actual.Sort(Roman.LexicalComparator);
+            Assert.AreEqual(expected,actual);
         }
 
         public static readonly object[] LexicalComparatorTestSource =
             {
                 new object[]{new List<Roman>{new Roman("C"), new Roman("D"), new Roman("I"), new Roman("L"), new Roman("M"), new Roman("V"), new Roman("X")},
                              new List<Roman>{new Roman("I"), new Roman("V"), new Roman("X"), new Roman("L"), new Roman("C"), new Roman("D"), new Roman("M")}},
-                new object[]{new List<Roman>{new Roman("MDI"), new Roman("MMDI"),new Roman("MMMDDI"), new Roman("MMMDI")}, 
-                             new List<Roman>{new Roman("MMMDI"), new Roman("MMDI"),new Roman("MMMDDI"), new Roman("MDI")}}
+                new object[]{new List<Roman>{new Roman("CCCLI"), new Roman("CCLI"), new Roman("CLI")}, 
+                             new List<Roman>{new Roman("CCCLI"), new Roman("CCLI"), new Roman("CLI")}}
 
             };
     }
