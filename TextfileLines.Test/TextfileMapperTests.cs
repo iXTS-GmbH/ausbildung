@@ -8,21 +8,19 @@ namespace TextFileLines.Test
     public class TextFileMapperTests
     {
         [TestCaseSource("TextFileMapperTestSource")]
-        public void TextFileMapperTest(ITextFileMapper textFileMapper, String inputPath, List<String> expected )
+        public void TextFileMapperTest(ITextFileMapper textFileMapper, String inputFileName, List<String> expected )
         {
             var testStream = new TestStreamFactory();
 
-            textFileMapper.Map(inputPath,"outputPath", testStream);
+            textFileMapper.Map(inputFileName,"outputFileName", testStream);
 
-            var actual = testStream.Make("WriteTest", "outputpath");
+            var actual = testStream.Make("WriteTest", "outputFileName");
 
             foreach (var line in expected)
             {
                 Assert.AreEqual(line, actual.ReadLine());
             }
         }
-
-        //TODO Test für möglichkeit schreiben das outputFilename null ist und trotzdem .writeLine aufgerufen wird
 
         public static readonly object[] TextFileMapperTestSource =
             {
@@ -48,5 +46,13 @@ namespace TextFileLines.Test
                         "Diese auch"
                 }}
             };
+
+        [ExpectedException]
+        [TestCase]
+        public void NoOutputFileTest()
+        {
+            var textFileMapper = new NoOutputFileTest();
+            textFileMapper.Map("Test",null);
+        }
     }
 }
