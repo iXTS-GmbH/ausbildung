@@ -10,8 +10,8 @@ namespace TextfileLines.Test
         [TestCaseSource("TextFileMapperTestSource")]
         public void TextFileMapperTest(ITextFileMapper s, String inputPath, List<String> expected )
         {
-            var tSF = new TestStreamFactory();
-            s.Map(inputPath,"outputPath", tSF);
+            var tSt = new TestStreamFactory();
+            s.Map(inputPath,"outputPath", tSt);
             var actual = new TestStreamFactory().Make("WriteTest", "outputpath");
             foreach (var line in expected)
             {

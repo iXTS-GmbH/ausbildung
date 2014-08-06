@@ -5,23 +5,30 @@ namespace TextfileLines
     public abstract class TextfileMapper:ITextFileMapper
     {
 
-        public void Map(String inputPath, String outputPath, IStreamFactory sTF = null)
+        public void Map(String inputPath, String outputPath, IStreamFactory str = null)
         {
-            sTF = sTF ?? new StreamFactory();
-            var file = sTF.Make(inputPath, outputPath);
+            str = str ?? new StreamFactory();
+            var file = str.Make(inputPath, outputPath);
+            var tfL = new TextfileLines(inputPath, str);
 
-            for (var line = file.ReadLine(); line != null; line = file.ReadLine())
+            foreach (var line in tfL)
             {
                 var transline = Transform(line);
 
                 if (transline != null)
                 {
                     file.WriteLine(transline);
-                }  
+                }
             }
+
             file.Close();
         }
 
         public abstract String Transform(String line);
     }
 }
+
+//Was ich bis jetzt kann:
+//Eine Datei anhand ihres Pfades einlesen und zum durchiterieren anbieten
+//Woran ich gerade arbeite bis zum ende des Tages zu können:
+//Eine Datei mit einer implementierung einer abstrakten klasse abzuändern und in zieldatei zu speichern

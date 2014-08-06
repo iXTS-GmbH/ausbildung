@@ -40,9 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces.cs" />
+    <Compile Include="IStream.cs" />
+    <Compile Include="IStreamFactory.cs" />
     <Compile Include="StreamFactory.cs" />
     <Compile Include="StreamImpl.cs" />
+    <Compile Include="ITextFileMapper.cs" />
     <Compile Include="TestStream.cs" />
     <Compile Include="TestStreamFactory.cs" />
     <Compile Include="TextfileLines.cs" />

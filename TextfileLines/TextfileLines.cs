@@ -6,7 +6,7 @@ namespace TextfileLines
 {
     public class TextfileLines:IEnumerable<String>
     {
-        private readonly List<String> LineList = new List<String>();
+        private readonly List<String> lineList = new List<String>();
 
 
         public TextfileLines(String filename, IStreamFactory str = null)
@@ -17,13 +17,13 @@ namespace TextfileLines
 
             for (var line = file.ReadLine(); line != null; line = file.ReadLine())
             {
-                LineList.Add(line);
+                lineList.Add(line);
             }
         }
 
         public IEnumerator<String> GetEnumerator()
         {
-            return LineList.GetEnumerator();
+            return lineList.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
