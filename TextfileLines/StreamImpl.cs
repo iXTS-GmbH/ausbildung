@@ -42,7 +42,7 @@ namespace TextFileLines
         public void Close()
         {
             reader.Close();
-            writer.Close();
+            writer.Close();//Wichtig ohne Close werden die geschriebenen Zeilen nicht in der Datei gespeichert
         }
     }
 }

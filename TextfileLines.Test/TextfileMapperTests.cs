@@ -24,12 +24,12 @@ namespace TextFileLines.Test
 
         public static readonly object[] TextFileMapperTestSource =
             {
-                new object[]{new TransformTestToUpper(),"Test",
+                new object[]{new TransformTestToUpper(),"ToUpperTest",
                     new List<String> {
                         "DAS IST EIN TEST.",
                         "WENN DIESER TEST ERFOLGREICH IST,",
                         "KANN MAN DIESE ZEILEN",
-                        "IN EINER LIST<STRING> LESEN." 
+                        "IN CAPS LESEN." 
                 }},
 
                 new object[]{new TransformTestDeleteEmptyLines(),"EmptyLineTest", 
@@ -37,6 +37,7 @@ namespace TextFileLines.Test
                         "Das ist ein Test,",
                         "welcher abdeckt ob",
                         "leere Zeilen",
+                        //Hier ist im Ursprungsfile die Leerzeile
                         "richtig interpretiert werden."
                 }},
 

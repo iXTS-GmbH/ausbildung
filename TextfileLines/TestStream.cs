@@ -23,6 +23,18 @@ namespace TextFileLines
                         "kann man diese Zeilen",
                         "in einer List<String> lesen."  
                     };
+
+                    break;
+
+                case "ToUpperTest":
+                    readFile = new List<string>
+                    {
+                        "Das ist ein Test.",
+                        "Wenn dieser Test erfolgreich ist,",
+                        "kann man diese Zeilen",
+                        "in Caps lesen."
+                    };
+
                     break;
 
                 case "EmptyLineTest":
@@ -34,7 +46,9 @@ namespace TextFileLines
                         "leere Zeilen",
                         "richtig interpretiert werden."
                     };
+
                     break;
+
                 case "SameLineTest":
                     readFile = new List<String>
                     {
@@ -45,6 +59,7 @@ namespace TextFileLines
                         "Diese auch",
                         "Diese auch"
                     };
+
                     break;
 
                 case "WriteTest":
