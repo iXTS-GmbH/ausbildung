@@ -8,7 +8,7 @@ namespace TextfileLines
         private static List<String> testfile = new List<string>();
         private static List<String> writefile = new List<string>(); 
 
-        public TestStream(String inputPath, String outputPath)
+        public TestStream(String inputPath, String outputPath = null)
         {
             switch (inputPath)
             {

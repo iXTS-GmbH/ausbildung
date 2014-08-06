@@ -8,7 +8,7 @@ namespace TextfileLines
         private StreamReader reader;
         private StreamWriter writer;
 
-        public StreamImpl(String inputPath, String outputPath)
+        public StreamImpl(String inputPath, String outputPath = null)
         {
             reader = new StreamReader(inputPath);
             writer = new StreamWriter(outputPath);

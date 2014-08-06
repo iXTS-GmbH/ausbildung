@@ -10,7 +10,7 @@ namespace TextfileLines.Test
         [TestCaseSource("TextfileLinesTestSource")]
         public void TextfileLinesTest(List<String> expected, String path)
         {
-            var r = new TextfileLines(path,new TestStreamReaderFactory());
+            var r = new TextfileLines(path,new TestStreamFactory());
             var count = 0;
 
             foreach (var line in r)

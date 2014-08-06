@@ -27,7 +27,7 @@ namespace TextfileLines.Test
                         "WENN DIESER TEST ERFOLGREICH IST,",
                         "KANN MAN DIESE ZEILEN",
                         "IN EINER LIST<STRING> LESEN." 
-                }},//Ersetzt alle kleinen durch Großbuchstaben
+                }},
 
                 new object[]{new TransformTestDeleteEmptyLines(),"NullTest", 
                     new List<String>{
@@ -35,13 +35,13 @@ namespace TextfileLines.Test
                         "welcher abdeckt ob",
                         "leere Zeilen",
                         "richtig interpretiert werden."
-                    }},//Alle leerzeilen werden entfernt
+                    }},
 
                 new object[]{new TransformTestSameLines(), "SameLineTest",
                     new List<String>{
                         "Diese Zeile kommt mehrfach hintereinander",
                         "Diese auch"
-                }},//mehrere gleiche zeilen zu einem zusammenfassen
+                }}
             };
     }
 

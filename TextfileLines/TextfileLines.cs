@@ -9,9 +9,9 @@ namespace TextfileLines
         private readonly List<String> LineList = new List<String>();
 
 
-        public TextfileLines(String filename, IStreamReaderFactory str = null)
+        public TextfileLines(String filename, IStreamFactory str = null)
         {
-            str = str ?? new StreamReaderFactory();
+            str = str ?? new StreamFactory();
 
             var file = str.Make(filename);
 
@@ -31,14 +31,4 @@ namespace TextfileLines
             return GetEnumerator();
         }
     }
-
-    public interface IStreamReaderFactory
-    {
-        IStreamReader Make(string path);
-    }
-
-    public interface IStreamReader
-    {
-        string ReadLine();
-    }  
 }

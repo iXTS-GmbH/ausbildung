@@ -13,6 +13,7 @@ namespace TextfileLines
             for (var line = file.ReadLine(); line != null; line = file.ReadLine())
             {
                 var transline = Transform(line);
+
                 if (transline != null)
                 {
                     file.WriteLine(transline);
@@ -23,23 +24,4 @@ namespace TextfileLines
 
         public abstract String Transform(String line);
     }
-
-
-    public interface ITextFileMapper
-    {
-        void Map(String inputPath, String outputPath, IStreamFactory sTF = null);
-        String Transform(String line);
-    }
-
-    public interface IStreamFactory
-    {
-        IStream Make(String inputPath, String outputPath);
-    }
-
-    public interface IStream
-    {
-        string ReadLine();
-        void WriteLine(String line);
-        void Close();
-    }  
 }
