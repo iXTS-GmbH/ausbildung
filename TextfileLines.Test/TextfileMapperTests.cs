@@ -52,7 +52,8 @@ namespace TextFileLines.Test
         public void NoOutputFileTest()
         {
             var textFileMapper = new NoOutputFileTest();
-            textFileMapper.Map("Test",null);
+            var testStream = new TestStreamFactory();
+            textFileMapper.Map("Test",null,testStream);
         }
     }
 }
