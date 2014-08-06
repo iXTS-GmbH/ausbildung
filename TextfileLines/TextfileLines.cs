@@ -32,7 +32,6 @@ namespace TextfileLines
         }
     }
 
-
     public interface IStreamReaderFactory
     {
         IStreamReader Make(string path);

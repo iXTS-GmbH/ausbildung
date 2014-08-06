@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="TextfileLinesTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TextfileMapperTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TextfileLines\ixts.Ausbildung.TextfileLines.csproj">

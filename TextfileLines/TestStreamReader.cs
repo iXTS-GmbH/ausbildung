@@ -5,13 +5,13 @@ namespace TextfileLines
 {
     public class TestStreamReader : IStreamReader
     {
-        private List<String> Testfile = new List<string>();
+        private List<String> testfile = new List<string>();
 
         public TestStreamReader(String path)
         {
             if (path == "NullTest")
             {
-                Testfile = new List<string>
+                testfile = new List<string>
                     {
                         "Das ist ein Test,",
                         "welcher abdeckt ob",
@@ -22,7 +22,7 @@ namespace TextfileLines
             }
             if (path == "Test")
             {
-                Testfile = new List<string>
+                testfile = new List<string>
                     {
                         "Das ist ein Test.",
                         "Wenn dieser Test erfolgreich ist,",
@@ -36,10 +36,10 @@ namespace TextfileLines
 
             public string ReadLine()
             {
-                if (count < Testfile.Count - 1)
+                if (count < testfile.Count - 1)
                 {
                     count += 1;
-                    return Testfile[count];
+                    return testfile[count];
                 }
                 return null;
             }

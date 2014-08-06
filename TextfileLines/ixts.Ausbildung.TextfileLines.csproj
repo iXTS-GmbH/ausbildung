@@ -40,12 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="StreamFactory.cs" />
+    <Compile Include="StreamImpl.cs" />
     <Compile Include="StreamReaderFactory.cs" />
     <Compile Include="StreamReaderImpl.cs" />
+    <Compile Include="TestStream.cs" />
+    <Compile Include="TestStreamFactory.cs" />
     <Compile Include="TestStreamReader.cs" />
     <Compile Include="TestStreamReaderFactory.cs" />
     <Compile Include="TextfileLines.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TextfileMapper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
