@@ -1,17 +1,24 @@
 ﻿using System;
 using System.IO;
 
-namespace TextfileLines
+namespace TextFileLines
 {
     public class StreamImpl:IStream
     {
-        private StreamReader reader;
-        private StreamWriter writer;
+        private readonly StreamReader reader;
+        private readonly StreamWriter writer;
+        private readonly String fileName;
 
-        public StreamImpl(String inputPath, String outputPath = null)
+        public StreamImpl(String inputFileName, String outputFileName = null)
         {
-            reader = new StreamReader(inputPath);
-            writer = new StreamWriter(outputPath);
+            reader = new StreamReader(inputFileName);
+            fileName = outputFileName;
+
+            if (outputFileName != null)
+            {
+                writer = new StreamWriter(outputFileName);
+            }
+
         }
 
         public string ReadLine()
@@ -21,7 +28,14 @@ namespace TextfileLines
 
         public void WriteLine(String line)
         {
-            writer.WriteLine(line);
+            if (fileName != null)
+            {
+                writer.WriteLine(line);
+            }
+            else
+            {
+                throw new ArgumentException("Kein OutPutFile angegeben");
+            }
         }
 
 

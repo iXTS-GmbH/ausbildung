@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace TextfileLines
+namespace TextFileLines
 {
     public interface IStreamFactory
     {
-        IStream Make(String inputPath, String outputPath = null);
+        IStream Make(String inputFileName, String outputFileName = null);
     }
 }

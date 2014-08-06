@@ -25,7 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.Roman", "ix
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.Roman.Test", "ixts.Ausbildung.Roman.Test\ixts.Ausbildung.Roman.Test.csproj", "{4883121E-97CF-4A60-A0E3-E3EB49CD6183}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.TextfileLines", "TextfileLines\ixts.Ausbildung.TextfileLines.csproj", "{28F00420-9D40-4771-8AE9-4FEB09439B21}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.TextFileLines", "TextfileLines\ixts.Ausbildung.TextFileLines.csproj", "{28F00420-9D40-4771-8AE9-4FEB09439B21}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.TextfileLines.Test", "TextfileLines.Test\ixts.Ausbildung.TextfileLines.Test.csproj", "{12CAA216-6D9F-4DAB-A73A-FA0E3D33E551}"
 EndProject

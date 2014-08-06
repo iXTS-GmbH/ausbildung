@@ -64,9 +64,9 @@ namespace ixts.Ausbildung.Compression
         {
             if (group.Count == 2 + checkRange)
             {
-                var count = Convert.ToInt16(group[1]);
+                var counter = Convert.ToInt16(group[1]);
                 var buffer = new List<Byte> ();
-                for (int i = 0; i < count; i++)
+                for (int i = 0; i < counter; i++)
                 {
                     for (int j = 0; j < checkRange; j++)
                     {

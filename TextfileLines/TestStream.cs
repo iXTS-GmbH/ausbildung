@@ -1,19 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TextfileLines
+namespace TextFileLines
 {
     public class TestStream:IStream
     {
-        private static List<String> testfile = new List<string>();
-        private static List<String> writefile = new List<string>(); 
+        private static List<String> readFile = new List<String>();
+        private static List<String> writeFile = new List<String>();
+        private readonly String fileName;
 
-        public TestStream(String inputPath, String outputPath = null)
+        public TestStream(String inputFileName, String outputFileName = null)
         {
-            switch (inputPath)
+            fileName = outputFileName;
+
+            switch (inputFileName)
             {
                 case "Test":
-                    testfile = new List<string>
+                    readFile = new List<String>
                     {
                         "Das ist ein Test.",
                         "Wenn dieser Test erfolgreich ist,",
@@ -22,8 +25,8 @@ namespace TextfileLines
                     };
                     break;
 
-                case "NullTest":
-                    testfile = new List<string>
+                case "EmptyLineTest":
+                    readFile = new List<String>
                     {
                         "Das ist ein Test,",
                         "welcher abdeckt ob",
@@ -33,7 +36,7 @@ namespace TextfileLines
                     };
                     break;
                 case "SameLineTest":
-                    testfile = new List<string>
+                    readFile = new List<String>
                     {
                         "Diese Zeile kommt mehrfach hintereinander",
                         "Diese Zeile kommt mehrfach hintereinander",
@@ -45,33 +48,41 @@ namespace TextfileLines
                     break;
 
                 case "WriteTest":
-                    testfile = writefile;
-                    writefile = new List<string>();
+                    readFile = writeFile;
+                    writeFile = new List<String>();
                     break;
             }
 
         }
 
-        private int count = -1;
+        private int counter = -1;
 
-        public string ReadLine()
+        public String ReadLine()
         {
-            if (count < testfile.Count - 1)
+            if (counter < readFile.Count - 1)
             {
-                count += 1;
-                return testfile[count];
+                counter += 1;
+                return readFile[counter];
             }
             return null;
         }
 
-        public void WriteLine(string line)
+        public void WriteLine(String line)
         {
-            writefile.Add(line);
+            if (fileName != null)
+            {
+                writeFile.Add(line);
+            }
+            else
+            {
+                throw new ArgumentException("Kein OutputFile angegeben");
+            }
         }
 
 
         public void Close()
         {
+            //Ist in der Prod dazu da die Streams wieder zu schließen hat im Test aber keine Verwendung
         }
     }
 }

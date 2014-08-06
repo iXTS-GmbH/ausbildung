@@ -1,13 +1,13 @@
 ﻿using System;
 
-namespace TextfileLines
+namespace TextFileLines
 {
     public class StreamFactory:IStreamFactory
     {
 
-        public IStream Make(String inputpath, String outputpath)
+        public IStream Make(String inputFileName, String outputFileName)
         {
-            return new StreamImpl(inputpath, outputpath);
+            return new StreamImpl(inputFileName, outputFileName);
         }
     }
 }

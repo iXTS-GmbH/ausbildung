@@ -2,22 +2,27 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 
-namespace TextfileLines.Test
+namespace TextFileLines.Test
 {
     [TestFixture]
-    class TextfileMapperTests
+    public class TextFileMapperTests
     {
         [TestCaseSource("TextFileMapperTestSource")]
-        public void TextFileMapperTest(ITextFileMapper s, String inputPath, List<String> expected )
+        public void TextFileMapperTest(ITextFileMapper textFileMapper, String inputPath, List<String> expected )
         {
-            var tSt = new TestStreamFactory();
-            s.Map(inputPath,"outputPath", tSt);
-            var actual = new TestStreamFactory().Make("WriteTest", "outputpath");
+            var testStream = new TestStreamFactory();
+
+            textFileMapper.Map(inputPath,"outputPath", testStream);
+
+            var actual = testStream.Make("WriteTest", "outputpath");
+
             foreach (var line in expected)
             {
                 Assert.AreEqual(line, actual.ReadLine());
             }
         }
+
+        //TODO Test für möglichkeit schreiben das outputFilename null ist und trotzdem .writeLine aufgerufen wird
 
         public static readonly object[] TextFileMapperTestSource =
             {
@@ -29,13 +34,13 @@ namespace TextfileLines.Test
                         "IN EINER LIST<STRING> LESEN." 
                 }},
 
-                new object[]{new TransformTestDeleteEmptyLines(),"NullTest", 
+                new object[]{new TransformTestDeleteEmptyLines(),"EmptyLineTest", 
                     new List<String>{
                         "Das ist ein Test,",
                         "welcher abdeckt ob",
                         "leere Zeilen",
                         "richtig interpretiert werden."
-                    }},
+                }},
 
                 new object[]{new TransformTestSameLines(), "SameLineTest",
                     new List<String>{
@@ -44,40 +49,4 @@ namespace TextfileLines.Test
                 }}
             };
     }
-
-    public class TransformTestToUpper : TextfileMapper
-    {
-
-        public override string Transform(string line)
-        {
-            return line.ToUpper();
-        }
-    }
-
-    public class TransformTestDeleteEmptyLines : TextfileMapper
-    {
-        public override string Transform(string line)
-        {
-            if (String.IsNullOrEmpty(line))
-            {
-                return null;
-            }
-            return line;
-        }
-    }
-
-    public class TransformTestSameLines : TextfileMapper
-    {
-        private String lastLine;
-        public override string Transform(string line)
-        {
-            if (line.Equals(lastLine))
-            {
-                return null;
-            }
-            lastLine = line;
-            return line;
-        }
-    }
-
 }

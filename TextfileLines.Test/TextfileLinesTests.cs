@@ -2,29 +2,41 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 
-namespace TextfileLines.Test
+namespace TextFileLines.Test
 {
     [TestFixture]
-    public class TextfileLinesTests
+    public class TextFileLinesTests
     {
-        [TestCaseSource("TextfileLinesTestSource")]
+        [TestCaseSource("TextFileLinesTestSource")]
         public void TextfileLinesTest(List<String> expected, String path)
         {
-            var r = new TextfileLines(path,new TestStreamFactory());
-            var count = 0;
+            var textFileLines = new TextFileLines(path,new TestStreamFactory());
+            var counter = 0;
 
-            foreach (var line in r)
+            foreach (var line in textFileLines)
             {
-                Assert.AreEqual(expected[count],line);
-                count += 1;
+                Assert.AreEqual(expected[counter],line);
+                counter += 1;
             }
         }
 
-
-        public static readonly object[] TextfileLinesTestSource =
+        public static readonly object[] TextFileLinesTestSource =
             {
-                new object[]{new List<String> {"Das ist ein Test.","Wenn dieser Test erfolgreich ist,","kann man diese Zeilen","in einer List<String> lesen."}, "Test"},
-                new object[]{new List<String> {"Das ist ein Test,","welcher abdeckt ob","","leere Zeilen","richtig interpretiert werden."}, "NullTest"}
+                new object[]{
+                        new List<String>{
+                            "Das ist ein Test.",
+                            "Wenn dieser Test erfolgreich ist,",
+                            "kann man diese Zeilen",
+                            "in einer List<String> lesen."
+                        },"Test"},
+                new object[]{
+                        new List<String> {
+                            "Das ist ein Test,",
+                            "welcher abdeckt ob",
+                            "",
+                            "leere Zeilen",
+                            "richtig interpretiert werden."
+                        },"EmptyLineTest"}
             };
     }
 }

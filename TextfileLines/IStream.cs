@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TextfileLines
+namespace TextFileLines
 {
     public interface IStream
     {

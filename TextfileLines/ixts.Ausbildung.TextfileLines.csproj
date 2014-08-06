@@ -8,7 +8,7 @@
     <ProjectGuid>{28F00420-9D40-4771-8AE9-4FEB09439B21}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TextfileLines</RootNamespace>
+    <RootNamespace>TextFileLines</RootNamespace>
     <AssemblyName>TextfileLines</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -47,9 +47,9 @@
     <Compile Include="ITextFileMapper.cs" />
     <Compile Include="TestStream.cs" />
     <Compile Include="TestStreamFactory.cs" />
-    <Compile Include="TextfileLines.cs" />
+    <Compile Include="TextFileLines.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TextfileMapper.cs" />
+    <Compile Include="TextFileMapper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

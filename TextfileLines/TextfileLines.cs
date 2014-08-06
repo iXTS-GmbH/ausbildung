@@ -2,15 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace TextfileLines
+namespace TextFileLines
 {
-    public class TextfileLines:IEnumerable<String>
+    public class TextFileLines:IEnumerable<String>
     {
         private readonly List<String> lineList = new List<String>();
 
-
-        public TextfileLines(String filename, IStreamFactory str = null)
-        {
+        public TextFileLines(String filename, IStreamFactory str = null)
+        {   //?? heißt NullSammeloperator wenn der Wert nicht null ist wird der linke Wert zurückgegeben wenn er null ist der rechte Wert
             str = str ?? new StreamFactory();
 
             var file = str.Make(filename);

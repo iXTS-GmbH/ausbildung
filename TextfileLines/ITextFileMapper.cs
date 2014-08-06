@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace TextfileLines
+namespace TextFileLines
 {
     public interface ITextFileMapper
     {
-        void Map(String inputPath, String outputPath, IStreamFactory sTF = null);
+        void Map(String inputFileName, String outputFileName, IStreamFactory streamFactory = null);
         String Transform(String line);
     }
 }
