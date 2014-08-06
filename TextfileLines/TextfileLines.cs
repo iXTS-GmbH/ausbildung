@@ -1,28 +1,29 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 
 namespace TextfileLines
 {
     public class TextfileLines:IEnumerable<String>
     {
+        private readonly List<String> LineList = new List<String>();
 
-        private readonly List<String> lineList = new List<String>();
 
-        public TextfileLines(String filename)
+        public TextfileLines(String filename, IStreamReaderFactory str = null)
         {
-            var file = new StreamReader(filename);
+            str = str ?? new StreamReaderFactory();
+
+            var file = str.Make(filename);
+
             for (var line = file.ReadLine(); line != null; line = file.ReadLine())
             {
-                lineList.Add(line);
+                LineList.Add(line);
             }
-            file.Close();
         }
 
         public IEnumerator<String> GetEnumerator()
         {
-            return lineList.GetEnumerator();
+            return LineList.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -30,4 +31,15 @@ namespace TextfileLines
             return GetEnumerator();
         }
     }
+
+
+    public interface IStreamReaderFactory
+    {
+        IStreamReader Make(string path);
+    }
+
+    public interface IStreamReader
+    {
+        string ReadLine();
+    }  
 }

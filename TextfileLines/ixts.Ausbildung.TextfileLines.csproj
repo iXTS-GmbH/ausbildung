@@ -40,6 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="StreamReaderFactory.cs" />
+    <Compile Include="StreamReaderImpl.cs" />
+    <Compile Include="TestStreamReader.cs" />
+    <Compile Include="TestStreamReaderFactory.cs" />
     <Compile Include="TextfileLines.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
