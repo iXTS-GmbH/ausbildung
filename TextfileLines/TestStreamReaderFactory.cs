@@ -7,7 +7,7 @@ namespace TextfileLines
 
         public IStreamReader Make(String path)
         {
-            return new TestStreamReader();
+            return new TestStreamReader(path);
         }
 
     }

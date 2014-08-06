@@ -7,11 +7,10 @@ namespace TextfileLines.Test
     [TestFixture]
     public class TextfileLinesTests
     {
-        [TestCase]
-        public void TextfileLinesTest()
+        [TestCaseSource("TextfileLinesTestSource")]
+        public void TextfileLinesTest(List<String> expected, String path)
         {
-            var expected = new List<String> {"Das ist ein Test.","Wenn dieser Test erfolgreich ist,","kann man diese Zeilen","in einer List<String> lesen."};
-            var r = new TextfileLines("Test.txt",new TestStreamReaderFactory());
+            var r = new TextfileLines(path,new TestStreamReaderFactory());
             var count = 0;
 
             foreach (var line in r)
@@ -21,5 +20,11 @@ namespace TextfileLines.Test
             }
         }
 
+
+        public static readonly object[] TextfileLinesTestSource =
+            {
+                new object[]{new List<String> {"Das ist ein Test.","Wenn dieser Test erfolgreich ist,","kann man diese Zeilen","in einer List<String> lesen."}, "Test"},
+                new object[]{new List<String> {"Das ist ein Test,","welcher abdeckt ob","","leere Zeilen","richtig interpretiert werden."}, "NullTest"}
+            };
     }
 }
