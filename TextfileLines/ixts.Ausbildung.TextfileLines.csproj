@@ -42,15 +42,23 @@
   <ItemGroup>
     <Compile Include="DeleteEmptyLines.cs" />
     <Compile Include="DeleteSameLines.cs" />
+    <Compile Include="FileStreamFactory.cs" />
+    <Compile Include="FileStreamImpl.cs" />
+    <Compile Include="IFileStream.cs" />
+    <Compile Include="IFileStreamFactory.cs" />
     <Compile Include="IStream.cs" />
     <Compile Include="IStreamFactory.cs" />
+    <Compile Include="SplitTextFile.cs" />
     <Compile Include="StreamFactory.cs" />
     <Compile Include="StreamImpl.cs" />
+    <Compile Include="TestFileStream.cs" />
+    <Compile Include="TestFileStreamFactory.cs" />
     <Compile Include="TestStream.cs" />
     <Compile Include="TestStreamFactory.cs" />
     <Compile Include="TextFileLines.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TextFileMapper.cs" />
+    <Compile Include="TextFileSplitter.cs" />
     <Compile Include="ToUpperLine.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

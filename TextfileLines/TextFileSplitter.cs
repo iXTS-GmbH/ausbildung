@@ -5,7 +5,14 @@ using System.Text;
 
 namespace TextFileLines
 {
-    class TextFileSplitter
+    public abstract class TextFileSplitter
     {
+        public void Split(String inputFile, IFileStreamFactory str = null)
+        {
+
+        }
+
+        protected abstract Boolean SplitAt(String line);
+
     }
 }
