@@ -6,7 +6,7 @@ namespace TextFileLines.Test
 {
     [TestFixture]
     public class TextFileMapperTests
-    {//TODO Patrick fragen wie soll ich sowas testen
+    {
         [TestCaseSource("TextFileMapperTestSource")]
         public void TextFileMapperTest(TextFileMapper textFileMapper, String inputFileName, List<String> expected )
         {
@@ -37,7 +37,7 @@ namespace TextFileLines.Test
                         "Das ist ein Test,",
                         "welcher abdeckt ob",
                         "leere Zeilen",
-                        //Hier ist im Ursprungsfile die Leerzeile
+                        
                         "richtig interpretiert werden."
                 }},
 
