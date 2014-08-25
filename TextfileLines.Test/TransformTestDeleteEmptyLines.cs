@@ -4,7 +4,7 @@ namespace TextFileLines.Test
 {
     public class TransformTestDeleteEmptyLines : TextFileMapper
     {
-        public override String Transform(String line)
+        protected override String Transform(String line)
         {
             return String.IsNullOrEmpty(line) ? null : line;
             //Bedeutung *

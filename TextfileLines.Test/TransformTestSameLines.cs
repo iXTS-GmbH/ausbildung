@@ -6,7 +6,7 @@ namespace TextFileLines.Test
     {
         private String lastLine;
 
-        public override String Transform(String line)
+        protected override String Transform(String line)
         {
             if (line.Equals(lastLine))
             {

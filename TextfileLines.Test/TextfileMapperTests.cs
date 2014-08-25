@@ -6,9 +6,9 @@ namespace TextFileLines.Test
 {
     [TestFixture]
     public class TextFileMapperTests
-    {
+    {//TODO Patrick fragen wie soll ich sowas testen
         [TestCaseSource("TextFileMapperTestSource")]
-        public void TextFileMapperTest(ITextFileMapper textFileMapper, String inputFileName, List<String> expected )
+        public void TextFileMapperTest(TextFileMapper textFileMapper, String inputFileName, List<String> expected )
         {
             var testStream = new TestStreamFactory();
 

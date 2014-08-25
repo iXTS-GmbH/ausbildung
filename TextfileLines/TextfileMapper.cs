@@ -2,7 +2,7 @@
 
 namespace TextFileLines
 {
-    public abstract class TextFileMapper:ITextFileMapper
+    public abstract class TextFileMapper
     {
 
         public void Map(String inputFileName, String outputFileName, IStreamFactory str = null)
@@ -25,6 +25,6 @@ namespace TextFileLines
             file.Close();
         }
 
-        public abstract String Transform(String line);
+        protected abstract String Transform(String line);
     }
 }

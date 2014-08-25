@@ -4,7 +4,7 @@ namespace TextFileLines.Test
 {
     class NoOutputFileTest: TextFileMapper
     {
-        public override string Transform(String line)
+        protected override string Transform(String line)
         {
             return line;
         }
