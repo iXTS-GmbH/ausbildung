@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.IO;
 
 namespace TextFileLines
 {
     public class FileStreamImpl:IFileStream
     {
+        private readonly String inputFileName;
         public FileStreamImpl(string inputFile)
         {
-
+            inputFileName = inputFile;
         }
 
         public string[][] GetOutput()
@@ -20,12 +19,12 @@ namespace TextFileLines
 
         public string[] ReadLines()
         {
-            throw new NotImplementedException();
+           return File.ReadAllLines(inputFileName);
         }
 
-        public void WriteLines(string[] lines)
+        public void WriteLines(String fileName,String[] lines)
         {
-            throw new NotImplementedException();
+            File.WriteAllLines(fileName,lines);
         }
     }
 }

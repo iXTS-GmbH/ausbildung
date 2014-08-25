@@ -28,7 +28,7 @@ namespace TextFileLines
 
         public string[] ReadLines()
         {
-            return new []
+            return new[]
                 {
                     "Das ist ein Testfile",
                     "break",
@@ -39,10 +39,9 @@ namespace TextFileLines
                 };
         }
 
-        public void WriteLines(string[] lines)
+        public void WriteLines(string fileName, string[] lines)
         {
             outputFiles.Add(lines);
-
         }
     }
 }

@@ -9,6 +9,6 @@ namespace TextFileLines
     {
         String[][] GetOutput();
         String[] ReadLines();
-        void WriteLines(String[] lines);
+        void WriteLines(String fileName,String[] lines);
     }
 }

@@ -10,9 +10,10 @@ namespace TextFileLines.Test
         [TestCaseSource("TextFileSplitterTestSource")]
         public void TextFileSplitterTest(TextFileSplitter textFileSplitter, String input, String[][] expected)
         {
-            var teststream = new TestFileStreamFactory();
-            textFileSplitter.Split(input,teststream); 
-            var actual = teststream.Make(input);
+            var testStream = new TestFileStreamFactory();
+            var lineStream = new TestStreamFactory();
+            textFileSplitter.Split(input,testStream, lineStream); 
+            var actual = testStream.Make(input);
             var output = actual.GetOutput();
 
             Assert.AreEqual(expected.Length,output.Length);
