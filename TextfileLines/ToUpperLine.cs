@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace TextFileLines.Test
+namespace TextFileLines
 {
-    public class TransformTestToUpper : TextFileMapper
+    public class ToUpperLine : TextFileMapper
     {
         protected override String Transform(String line)
         {

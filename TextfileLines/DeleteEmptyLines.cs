@@ -1,14 +1,13 @@
 ﻿using System;
-
-namespace TextFileLines.Test
+namespace TextFileLines
 {
-    public class TransformTestDeleteEmptyLines : TextFileMapper
+    public class DeleteEmptyLines : TextFileMapper
     {
         protected override String Transform(String line)
         {
             return String.IsNullOrEmpty(line) ? null : line;
             //Bedeutung *
-            //Quelle Aufgabenstellung Beispiel
+            //Quelle: Aufgabenstellung Beispiel
         }
     }
 }

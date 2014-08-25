@@ -48,8 +48,6 @@
     <Compile Include="TextFileLinesTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TextFileMapperTests.cs" />
-    <Compile Include="TransformTestDeleteEmptyLines.cs" />
-    <Compile Include="TransformTestSameLines.cs" />
     <Compile Include="TransformTestToUpper.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -24,7 +24,7 @@ namespace TextFileLines.Test
 
         public static readonly object[] TextFileMapperTestSource =
             {
-                new object[]{new TransformTestToUpper(),"ToUpperTest",
+                new object[]{new ToUpperLine(),"ToUpperTest",
                     new List<String> {
                         "DAS IST EIN TEST.",
                         "WENN DIESER TEST ERFOLGREICH IST,",
@@ -32,7 +32,7 @@ namespace TextFileLines.Test
                         "IN CAPS LESEN." 
                 }},
 
-                new object[]{new TransformTestDeleteEmptyLines(),"EmptyLineTest", 
+                new object[]{new DeleteEmptyLines(),"EmptyLineTest", 
                     new List<String>{
                         "Das ist ein Test,",
                         "welcher abdeckt ob",
@@ -41,7 +41,7 @@ namespace TextFileLines.Test
                         "richtig interpretiert werden."
                 }},
 
-                new object[]{new TransformTestSameLines(), "SameLineTest",
+                new object[]{new DeleteSameLines(), "SameLineTest",
                     new List<String>{
                         "Diese Zeile kommt mehrfach hintereinander",
                         "Diese auch"

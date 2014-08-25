@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace TextFileLines.Test
+namespace TextFileLines
 {
-    public class TransformTestSameLines : TextFileMapper
+    public class DeleteSameLines : TextFileMapper
     {
         private String lastLine;
 
