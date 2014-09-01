@@ -28,15 +28,7 @@ namespace TextFileLines.Test
                             "Wenn dieser Test erfolgreich ist,",
                             "kann man diese Zeilen",
                             "in einer List<String> lesen."
-                        },"Test"},
-                new object[]{
-                        new List<String> {
-                            "Das ist ein Test,",
-                            "welcher abdeckt ob",
-                            "",
-                            "leere Zeilen",
-                            "richtig interpretiert werden."
-                        },"EmptyLineTest"}
+                        },"LinesTest"}
             };
     }
 }

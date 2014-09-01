@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace TextFileLines.Test
+namespace TextFileLines
 {
-    class NoOutputFileTest: TextFileMapper
+    public class NoOutputFile : TextFileMapper
     {
         protected override string Transform(String line)
         {

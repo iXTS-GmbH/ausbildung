@@ -7,15 +7,16 @@ namespace TextFileLines
     {
         private static List<String> readFile = new List<String>();
         private static List<String> writeFile = new List<String>();
-        private readonly String fileName;
+        private readonly String outputFile;
+        private int readFileLineCounter = -1;
 
         public TestStream(String inputFileName, String outputFileName = null)
         {
-            fileName = outputFileName;
+            outputFile = outputFileName;
 
             switch (inputFileName)
             {
-                case "Test":
+                case "LinesTest":
                     readFile = new List<String>
                     {
                         "Das ist ein Test.",
@@ -26,38 +27,13 @@ namespace TextFileLines
 
                     break;
 
-                case "ToUpperTest":
+                case "MapperTest":
                     readFile = new List<string>
                     {
                         "Das ist ein Test.",
                         "Wenn dieser Test erfolgreich ist,",
                         "kann man diese Zeilen",
                         "in Caps lesen."
-                    };
-
-                    break;
-
-                case "EmptyLineTest":
-                    readFile = new List<String>
-                    {
-                        "Das ist ein Test,",
-                        "welcher abdeckt ob",
-                        "",
-                        "leere Zeilen",
-                        "richtig interpretiert werden."
-                    };
-
-                    break;
-
-                case "SameLineTest":
-                    readFile = new List<String>
-                    {
-                        "Diese Zeile kommt mehrfach hintereinander",
-                        "Diese Zeile kommt mehrfach hintereinander",
-                        "Diese Zeile kommt mehrfach hintereinander",
-                        "Diese auch",
-                        "Diese auch",
-                        "Diese auch"
                     };
 
                     break;
@@ -70,21 +46,19 @@ namespace TextFileLines
 
         }
 
-        private int counter = -1;
-
         public String ReadLine()
         {
-            if (counter < readFile.Count - 1)
+            if (readFileLineCounter < readFile.Count - 1)
             {
-                counter += 1;
-                return readFile[counter];
+                readFileLineCounter += 1;
+                return readFile[readFileLineCounter];
             }
             return null;
         }
 
         public void WriteLine(String line)
         {
-            if (fileName != null)
+            if (outputFile != null)
             {
                 writeFile.Add(line);
             }
@@ -97,7 +71,7 @@ namespace TextFileLines
 
         public void Close()
         {
-            //Ist in der Prod dazu da die Streams wieder zu schließen hat im Test aber keine Verwendung
+            //Ist in der Prod dazu da die Streams wieder zu schließen hat im Teststream aber keine Verwendung
         }
     }
 }

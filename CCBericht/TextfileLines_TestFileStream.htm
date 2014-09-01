@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>TextFileLines.TestFileStream - Coverage Report</title>
+<link rel="stylesheet" type="text/css" href="report.css" />
+</head><body><div class="container">
+<h1>Summary</h1>
+<table class="overview">
+<colgroup>
+<col width="135" />
+<col />
+</colgroup>
+<tbody>
+<tr><th>Class:</th><td>TextFileLines.TestFileStream</td></tr>
+<tr><th>Assembly:</th><td>TextfileLines</td></tr>
+<tr><th>File(s):</th><td><a href="#CUsersmkaestlIXTSProjekteAusbildungausbildungTextfileLinesTestFileStreamcs">C:\Users\mkaestl.IXTS\Projekte\Ausbildung\ausbildung\TextfileLines\TestFileStream.cs</a></td></tr>
+<tr><th>Coverage:</th><td>100%</td></tr>
+<tr><th>Covered lines:</th><td>25</td></tr>
+<tr><th>Uncovered lines:</th><td>0</td></tr>
+<tr><th>Coverable lines:</th><td>25</td></tr>
+<tr><th>Total lines:</th><td>52</td></tr>
+</tbody>
+</table>
+<h1>Metrics</h1>
+<table class="overview">
+<thead><tr><th>Method</th><th>Cyclomatic Complexity</th><th>Sequence Coverage</th><th>Branch Coverage</th></tr></thead>
+<tbody>
+<tr><td title="System.Void TextFileLines.TestFileStream::.ctor(System.String)">.ctor(...)</td><td>1</td><td>100</td><td>100</td></tr>
+<tr><td title="System.String[][] TextFileLines.TestFileStream::GetOutput()">GetOutput()</td><td>1</td><td>100</td><td>100</td></tr>
+<tr><td title="System.String[] TextFileLines.TestFileStream::ReadLines()">ReadLines()</td><td>3</td><td>100</td><td>100</td></tr>
+<tr><td title="System.Void TextFileLines.TestFileStream::WriteLines(System.String,System.String[])">WriteLines(...)</td><td>1</td><td>100</td><td>100</td></tr>
+<tr><td title="System.Void TextFileLines.TestFileStream::.cctor()">.cctor()</td><td>1</td><td>100</td><td>100</td></tr>
+</tbody>
+</table>
+<h1>File(s)</h1>
+<h2 id="CUsersmkaestlIXTSProjekteAusbildungausbildungTextfileLinesTestFileStreamcs">C:\Users\mkaestl.IXTS\Projekte\Ausbildung\ausbildung\TextfileLines\TestFileStream.cs</h2>
+<table class="lineAnalysis">
+<thead><tr><th></th><th>#</th><th>Line</th><th>Coverage</th></tr></thead>
+<tbody>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>1</code></td><td class="lightgray"><code>using&nbsp;System;</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>2</code></td><td class="lightgray"><code>using&nbsp;System.Collections.Generic;</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>3</code></td><td class="lightgray"><code></code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>4</code></td><td class="lightgray"><code>namespace&nbsp;TextFileLines</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>5</code></td><td class="lightgray"><code>{</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>6</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;class&nbsp;TestFileStream:IFileStream</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>7</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;{</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '1', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">1</td><td class="rightmargin right"><code>8</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;List&lt;String[]&gt;&nbsp;outputFiles&nbsp;=&nbsp;new&nbsp;List&lt;string[]&gt;();</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>9</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;readonly&nbsp;String&nbsp;inputFile;</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>10</code></td><td class="lightgray"><code></code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '4', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">4</td><td class="rightmargin right"><code>11</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;TestFileStream(String&nbsp;input)</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '4', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">4</td><td class="rightmargin right"><code>12</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '4', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">4</td><td class="rightmargin right"><code>13</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inputFile&nbsp;=&nbsp;input;</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '4', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">4</td><td class="rightmargin right"><code>14</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>15</code></td><td class="lightgray"><code></code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>16</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;String[][]&nbsp;GetOutput()</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '2', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">2</td><td class="rightmargin right"><code>17</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '2', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">2</td><td class="rightmargin right"><code>18</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;output&nbsp;=&nbsp;outputFiles;</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '2', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">2</td><td class="rightmargin right"><code>19</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;outputFiles&nbsp;=&nbsp;new&nbsp;List&lt;String[]&gt;();</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '2', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">2</td><td class="rightmargin right"><code>20</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;output.ToArray();</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '2', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">2</td><td class="rightmargin right"><code>21</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>22</code></td><td class="lightgray"><code></code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>23</code></td><td class="lightgray"><code></code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>24</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;string[]&nbsp;ReadLines()</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '523', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">523</td><td class="rightmargin right"><code>25</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '523', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">523</td><td class="rightmargin right"><code>26</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(inputFile&nbsp;==&nbsp;&quot;input&quot;)</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '17', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">17</td><td class="rightmargin right"><code>27</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '17', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">17</td><td class="rightmargin right"><code>28</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new[]</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>29</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>30</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;Das&nbsp;ist&nbsp;ein&nbsp;Testfile&quot;,</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>31</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;break&quot;,</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>32</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;Das&nbsp;ist&nbsp;ein&nbsp;zweites&nbsp;Testfile&quot;,</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>33</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;break&quot;,</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>34</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;Das&nbsp;ist&nbsp;ein&nbsp;mehrzeiliges&quot;,</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>35</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;drittes&nbsp;Testfile&quot;</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>36</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>37</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '506', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">506</td><td class="rightmargin right"><code>38</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;bigFile&nbsp;=&nbsp;new&nbsp;List&lt;String&gt;();</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '103224', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">103224</td><td class="rightmargin right"><code>39</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(var&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;101;&nbsp;i++)</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '51106', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">51106</td><td class="rightmargin right"><code>40</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '51106', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">51106</td><td class="rightmargin right"><code>41</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bigFile.Add(&quot;Das&nbsp;ist&nbsp;ein&nbsp;gro&#223;es&nbsp;TestFile&quot;);</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '51106', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">51106</td><td class="rightmargin right"><code>42</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bigFile.Add(&quot;break&quot;);</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '51106', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">51106</td><td class="rightmargin right"><code>43</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '506', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">506</td><td class="rightmargin right"><code>44</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;bigFile.ToArray();</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '523', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">523</td><td class="rightmargin right"><code>45</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>46</code></td><td class="lightgray"><code></code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>47</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;WriteLines(string&nbsp;fileName,&nbsp;string[]&nbsp;lines)</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '104', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">104</td><td class="rightmargin right"><code>48</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '104', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">104</td><td class="rightmargin right"><code>49</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;outputFiles.Add(lines);</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '104', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">104</td><td class="rightmargin right"><code>50</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>51</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;}</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>52</code></td><td class="lightgray"><code>}</code></td></tr>
+</tbody>
+</table>
+<div class="footer">Generated by: ReportGenerator 1.9.1.0<br />01.09.2014 - 10:43:59<br /><a href="http://www.palmmedia.de">www.palmmedia.de</a></div></div>
+<script type="text/javascript" src="combined.js"></script>
+</body></html>

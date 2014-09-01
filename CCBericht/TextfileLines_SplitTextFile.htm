@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>TextFileLines.TestStreamFactory - Coverage Report</title>
+<title>TextFileLines.SplitTextFile - Coverage Report</title>
 <link rel="stylesheet" type="text/css" href="report.css" />
 </head><body><div class="container">
 <h1>Summary</h1>
@@ -12,9 +12,9 @@
 <col />
 </colgroup>
 <tbody>
-<tr><th>Class:</th><td>TextFileLines.TestStreamFactory</td></tr>
+<tr><th>Class:</th><td>TextFileLines.SplitTextFile</td></tr>
 <tr><th>Assembly:</th><td>TextfileLines</td></tr>
-<tr><th>File(s):</th><td><a href="#CUsersmkaestlIXTSProjekteAusbildungausbildungTextfileLinesTestStreamFactorycs">C:\Users\mkaestl.IXTS\Projekte\Ausbildung\ausbildung\TextfileLines\TestStreamFactory.cs</a></td></tr>
+<tr><th>File(s):</th><td><a href="#CUsersmkaestlIXTSProjekteAusbildungausbildungTextfileLinesSplitTextFilecs">C:\Users\mkaestl.IXTS\Projekte\Ausbildung\ausbildung\TextfileLines\SplitTextFile.cs</a></td></tr>
 <tr><th>Coverage:</th><td>100%</td></tr>
 <tr><th>Covered lines:</th><td>3</td></tr>
 <tr><th>Uncovered lines:</th><td>0</td></tr>
@@ -26,11 +26,11 @@
 <table class="overview">
 <thead><tr><th>Method</th><th>Cyclomatic Complexity</th><th>Sequence Coverage</th><th>Branch Coverage</th></tr></thead>
 <tbody>
-<tr><td title="TextFileLines.IStream TextFileLines.TestStreamFactory::Make(System.String,System.String)">Make(...)</td><td>1</td><td>100</td><td>100</td></tr>
+<tr><td title="System.Boolean TextFileLines.SplitTextFile::SplitAt(System.String)">SplitAt(...)</td><td>1</td><td>100</td><td>100</td></tr>
 </tbody>
 </table>
 <h1>File(s)</h1>
-<h2 id="CUsersmkaestlIXTSProjekteAusbildungausbildungTextfileLinesTestStreamFactorycs">C:\Users\mkaestl.IXTS\Projekte\Ausbildung\ausbildung\TextfileLines\TestStreamFactory.cs</h2>
+<h2 id="CUsersmkaestlIXTSProjekteAusbildungausbildungTextfileLinesSplitTextFilecs">C:\Users\mkaestl.IXTS\Projekte\Ausbildung\ausbildung\TextfileLines\SplitTextFile.cs</h2>
 <table class="lineAnalysis">
 <thead><tr><th></th><th>#</th><th>Line</th><th>Coverage</th></tr></thead>
 <tbody>
@@ -38,12 +38,12 @@
 <tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>2</code></td><td class="lightgray"><code></code></td></tr>
 <tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>3</code></td><td class="lightgray"><code>namespace&nbsp;TextFileLines</code></td></tr>
 <tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>4</code></td><td class="lightgray"><code>{</code></td></tr>
-<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>5</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;class&nbsp;TestStreamFactory:IStreamFactory</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>5</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;class&nbsp;SplitTextFile:TextFileSplitter</code></td></tr>
 <tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>6</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;{</code></td></tr>
-<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>7</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;IStream&nbsp;Make(String&nbsp;inputFileName,&nbsp;String&nbsp;outputFileName)</code></td></tr>
-<tr data-coverage="{'AllTestMethods': {'VC': '6', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">6</td><td class="rightmargin right"><code>8</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</code></td></tr>
-<tr data-coverage="{'AllTestMethods': {'VC': '6', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">6</td><td class="rightmargin right"><code>9</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;TestStream(inputFileName,&nbsp;outputFileName);</code></td></tr>
-<tr data-coverage="{'AllTestMethods': {'VC': '6', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">6</td><td class="rightmargin right"><code>10</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>7</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;override&nbsp;Boolean&nbsp;SplitAt(string&nbsp;line)</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '208', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">208</td><td class="rightmargin right"><code>8</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '208', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">208</td><td class="rightmargin right"><code>9</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;line.StartsWith(&quot;break&quot;);</code></td></tr>
+<tr data-coverage="{'AllTestMethods': {'VC': '208', 'LVS': 'green'}}"><td class="green">&nbsp;</td><td class="leftmargin rightmargin right">208</td><td class="rightmargin right"><code>10</code></td><td class="lightgreen"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></td></tr>
 <tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>11</code></td><td class="lightgray"><code>&nbsp;&nbsp;&nbsp;&nbsp;}</code></td></tr>
 <tr data-coverage="{'AllTestMethods': {'VC': '', 'LVS': 'gray'}}"><td class="gray">&nbsp;</td><td class="leftmargin rightmargin right"></td><td class="rightmargin right"><code>12</code></td><td class="lightgray"><code>}</code></td></tr>
 </tbody>

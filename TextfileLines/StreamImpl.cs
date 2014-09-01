@@ -7,12 +7,12 @@ namespace TextFileLines
     {
         private readonly StreamReader reader;
         private readonly StreamWriter writer;
-        private readonly String fileName;
+        private readonly String outputFile;
 
         public StreamImpl(String inputFileName, String outputFileName = null)
         {
             reader = new StreamReader(inputFileName);
-            fileName = outputFileName;
+            outputFile = outputFileName;
 
             if (outputFileName != null)
             {
@@ -28,7 +28,7 @@ namespace TextFileLines
 
         public void WriteLine(String line)
         {
-            if (fileName != null)
+            if (outputFile != null)
             {
                 writer.WriteLine(line);
             }

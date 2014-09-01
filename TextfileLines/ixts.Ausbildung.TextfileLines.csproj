@@ -40,14 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DeleteEmptyLines.cs" />
-    <Compile Include="DeleteSameLines.cs" />
     <Compile Include="FileStreamFactory.cs" />
     <Compile Include="FileStreamImpl.cs" />
     <Compile Include="IFileStream.cs" />
     <Compile Include="IFileStreamFactory.cs" />
     <Compile Include="IStream.cs" />
     <Compile Include="IStreamFactory.cs" />
+    <Compile Include="NoOutputFile.cs" />
     <Compile Include="SplitTextFile.cs" />
     <Compile Include="StreamFactory.cs" />
     <Compile Include="StreamImpl.cs" />
