@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.TextFileLin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.TextfileLines.Test", "TextfileLines.Test\ixts.Ausbildung.TextfileLines.Test.csproj", "{12CAA216-6D9F-4DAB-A73A-FA0E3D33E551}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.TextFileLines.ConsoleApp", "ixts.Ausbildung.TextFileLines.ConsoleApp\ixts.Ausbildung.TextFileLines.ConsoleApp.csproj", "{04C2F75F-216B-4DD3-BEB8-F650335DC548}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = ixts.Ausbildung.vsmdi
@@ -152,6 +154,16 @@ Global
 		{12CAA216-6D9F-4DAB-A73A-FA0E3D33E551}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{12CAA216-6D9F-4DAB-A73A-FA0E3D33E551}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{12CAA216-6D9F-4DAB-A73A-FA0E3D33E551}.Release|x86.ActiveCfg = Release|Any CPU
+		{04C2F75F-216B-4DD3-BEB8-F650335DC548}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{04C2F75F-216B-4DD3-BEB8-F650335DC548}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{04C2F75F-216B-4DD3-BEB8-F650335DC548}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{04C2F75F-216B-4DD3-BEB8-F650335DC548}.Debug|x86.ActiveCfg = Debug|x86
+		{04C2F75F-216B-4DD3-BEB8-F650335DC548}.Debug|x86.Build.0 = Debug|x86
+		{04C2F75F-216B-4DD3-BEB8-F650335DC548}.Release|Any CPU.ActiveCfg = Release|x86
+		{04C2F75F-216B-4DD3-BEB8-F650335DC548}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{04C2F75F-216B-4DD3-BEB8-F650335DC548}.Release|Mixed Platforms.Build.0 = Release|x86
+		{04C2F75F-216B-4DD3-BEB8-F650335DC548}.Release|x86.ActiveCfg = Release|x86
+		{04C2F75F-216B-4DD3-BEB8-F650335DC548}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace TextFileLines.Test
 {
     [TestFixture]
-    public class TextFileLinesTests
+    public class TextFileLinesTests//TODO Source in Test hochziehen
     {
         [TestCaseSource("TextFileLinesTestSource")]
         public void TextfileLinesTest(List<String> expected, String path)
