@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Erweiterungsmöglichkeiten.cs" />
     <Compile Include="RemoveEmptyLinesMapper.cs" />
     <Compile Include="RemoveDuplicateLinesMapper.cs" />
     <Compile Include="IStream.cs" />
