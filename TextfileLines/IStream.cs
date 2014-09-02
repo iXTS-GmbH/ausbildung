@@ -4,8 +4,10 @@ namespace TextFileLines
 {
     public interface IStream
     {
-        string ReadLine();
+        String ReadLine();
+        String[][] GetOutput();
         void WriteLine(String line);
+        void WriteLines(String targetPath, String[] lines);
         void Close();
     }
 }

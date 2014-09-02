@@ -26,6 +26,11 @@ namespace TextFileLines
             return reader.ReadLine();
         }
 
+        public string[][] GetOutput()
+        {
+            return null;
+        }
+
         public void WriteLine(String line)
         {
             if (outputFile != null)
@@ -36,6 +41,11 @@ namespace TextFileLines
             {
                 throw new ArgumentException("Kein OutPutFile angegeben");
             }
+        }
+
+        public void WriteLines(string targetPath, string[] lines)
+        {
+            File.WriteAllLines(targetPath, lines);
         }
 
 

@@ -20,7 +20,7 @@ namespace TextFileLines.Test
                     new []{"Das ist ein mehrzeiliges","drittes split Testfile"} 
                 };
 
-            var testStream = new TestFileStreamFactory();
+            var testStream = new TestStreamFactory();
 
             textFileSplitter.Split("splitterTest",testStream); 
 
@@ -50,7 +50,7 @@ namespace TextFileLines.Test
                 expected.Add(new [] { "Das ist ein großes TestFile", "break" });
             }
 
-            var teststream = new TestFileStreamFactory();
+            var teststream = new TestStreamFactory();
 
             textFileSplitter.Split(input, teststream);
 

@@ -7,6 +7,7 @@ namespace TextFileLines
     {
         private static List<String> readFile = new List<String>();
         private static List<String> writeFile = new List<String>();
+        private static List<String[]> outputFiles = new List<string[]>();
         private readonly String outputFile;
         private int readFileLineCounter = -1;
 
@@ -55,6 +56,30 @@ namespace TextFileLines
                         "Diese nicht"
                     };
                     break;
+
+                case "splitterTest":
+                    readFile = new List<string>
+                    {
+                        "Das ist ein Testfile",
+                        "split",
+                        "Das ist ein zweites Testfile",
+                        "split",
+                        "Das ist ein mehrzeiliges",
+                        "drittes split Testfile"
+                    };
+                    break;
+
+                case "BigFile":
+                    readFile = new List<string>();
+
+                    for (int i = 0; i < 101; i++)
+                    {
+                        readFile.Add("Das ist ein großes TestFile");
+                        readFile.Add("break");
+                    }
+
+                    break;
+
                 case "WriteTest":
                     readFile = writeFile;
                     writeFile = new List<String>();
@@ -73,6 +98,13 @@ namespace TextFileLines
             return null;
         }
 
+        public string[][] GetOutput()
+        {
+            var output = outputFiles;
+            outputFiles = new List<String[]>();
+            return output.ToArray();
+        }
+
         public void WriteLine(String line)
         {
             if (outputFile != null)
@@ -83,6 +115,11 @@ namespace TextFileLines
             {
                 throw new ArgumentException("Kein OutputFile angegeben");
             }
+        }
+
+        public void WriteLines(string targetPath, string[] lines)
+        {
+            outputFiles.Add(lines);
         }
 
 

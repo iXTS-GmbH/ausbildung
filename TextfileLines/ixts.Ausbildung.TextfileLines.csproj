@@ -42,18 +42,12 @@
   <ItemGroup>
     <Compile Include="RemoveEmptyLinesMapper.cs" />
     <Compile Include="RemoveDuplicateLinesMapper.cs" />
-    <Compile Include="FileStreamFactory.cs" />
-    <Compile Include="FileStreamImpl.cs" />
-    <Compile Include="IFileStream.cs" />
-    <Compile Include="IFileStreamFactory.cs" />
     <Compile Include="IStream.cs" />
     <Compile Include="IStreamFactory.cs" />
     <Compile Include="NoOutputFile.cs" />
     <Compile Include="TextSplitter.cs" />
     <Compile Include="StreamFactory.cs" />
     <Compile Include="StreamImpl.cs" />
-    <Compile Include="TestFileStream.cs" />
-    <Compile Include="TestFileStreamFactory.cs" />
     <Compile Include="TestStream.cs" />
     <Compile Include="TestStreamFactory.cs" />
     <Compile Include="TextFileLines.cs" />

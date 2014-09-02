@@ -8,17 +8,15 @@ namespace TextFileLines
         private const int FIRSTTHREECHARACTERNUMBER = 100;
         private const int FIRSTTWOCHARACTERNUMBER = 10;
 
-        public void Split(String sourceFile, IFileStreamFactory str = null)
+        public void Split(String sourceFile, IStreamFactory str = null)
         {
             //Erklärung siehe TextFileLines
-            str = str ?? new FileStreamFactory();
-
+            str = str ?? new StreamFactory();
             var file = str.Make(sourceFile);
-
             var nextFileName = string.Format("{0}.000", sourceFile);
             var nextFile = new List<String>();
             var counter = 0;
-            var allLines = file.ReadLines();
+            var allLines = new TextFileLines(sourceFile, str);
 
             foreach (var line in allLines)
             {
