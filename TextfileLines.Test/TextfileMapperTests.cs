@@ -10,15 +10,6 @@ namespace TextFileLines.Test
         [TestCaseSource("MapperTestsSource")]
         public void MapperTests(TextFileMapper textFileMapper, List<String> expected, String input)
         {
-            //var textFileMapper = new ToUpperLineMapper();
-            //var expected = new List<String>
-            //    {
-            //        "DAS IST EIN TEST.",
-            //        "WENN DIESER TEST ERFOLGREICH IST,",
-            //        "KANN MAN DIESE ZEILEN",
-            //        "IN CAPS LESEN."
-            //    };"MapperTest"
-
             var testStream = new TestStreamFactory();
 
             textFileMapper.Map(input,"outputFileName", testStream);

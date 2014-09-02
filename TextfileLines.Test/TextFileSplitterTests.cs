@@ -11,11 +11,13 @@ namespace TextFileLines.Test
         public void TextFileSplitterTest()
         {
             var textFileSplitter = new TextSplitter();
+            textFileSplitter.SetSplitPoint("split");
+
             var expected = new []
                 {
-                    new []{"Das ist ein Testfile","break"}, 
-                    new []{"Das ist ein zweites Testfile","break"},
-                    new []{"Das ist ein mehrzeiliges","drittes Testfile"} 
+                    new []{"Das ist ein Testfile","split"}, 
+                    new []{"Das ist ein zweites Testfile","split"},
+                    new []{"Das ist ein mehrzeiliges","drittes split Testfile"} 
                 };
 
             var testStream = new TestFileStreamFactory();

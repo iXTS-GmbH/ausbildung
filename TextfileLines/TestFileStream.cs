@@ -28,11 +28,11 @@ namespace TextFileLines
                 return new[]
                 {
                     "Das ist ein Testfile",
-                    "break",
+                    "split",
                     "Das ist ein zweites Testfile",
-                    "break",
+                    "split",
                     "Das ist ein mehrzeiliges",
-                    "drittes Testfile"
+                    "drittes split Testfile"
                 };
             }
             var bigFile = new List<String>();
