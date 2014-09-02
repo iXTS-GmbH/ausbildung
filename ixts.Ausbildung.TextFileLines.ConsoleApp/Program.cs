@@ -75,7 +75,7 @@ namespace ixts.Ausbildung.TextFileLines.ConsoleApp
 
         private static void RemoveDuplicateLines(String sourcePath, String targetPath)
         {
-            var fileMapper = new RemoveDublicateLinesMapper();
+            var fileMapper = new RemoveDuplicateLinesMapper();
             fileMapper.Map(sourcePath,targetPath);
         }
 

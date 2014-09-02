@@ -2,7 +2,7 @@
 
 namespace TextFileLines
 {
-    public class RemoveDublicateLinesMapper:TextFileMapper
+    public class RemoveDuplicateLinesMapper:TextFileMapper
     {
         private String lastLine = "";
 

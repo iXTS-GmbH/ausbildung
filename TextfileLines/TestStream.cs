@@ -27,7 +27,7 @@ namespace TextFileLines
 
                     break;
 
-                case "MapperTest":
+                case "ToUpperLineMapperTest":
                     readFile = new List<string>
                     {
                         "Das ist ein Test.",
@@ -35,9 +35,26 @@ namespace TextFileLines
                         "kann man diese Zeilen",
                         "in Caps lesen."
                     };
-
                     break;
-
+                case "RemoveEmptyLinesMapperTest":
+                    readFile = new List<string>
+                    {
+                         "Dies ist ein Test",
+                         "um zu schauen ob Leerzeilen",
+                         "",
+                         "korrekt entfernt werden"
+                    };
+                    break;
+                case "RemoveDuplicateLinesMapperTest":
+                    readFile = new List<string>
+                    {
+                        "Diese Zeile kommt doppelt",
+                        "Diese Zeile kommt doppelt",
+                        "Diese auch",
+                        "Diese auch",
+                        "Diese nicht"
+                    };
+                    break;
                 case "WriteTest":
                     readFile = writeFile;
                     writeFile = new List<String>();

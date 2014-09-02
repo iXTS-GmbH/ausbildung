@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="RemoveEmptyLinesMapper.cs" />
-    <Compile Include="RemoveDublicateLinesMapper.cs" />
+    <Compile Include="RemoveDuplicateLinesMapper.cs" />
     <Compile Include="FileStreamFactory.cs" />
     <Compile Include="FileStreamImpl.cs" />
     <Compile Include="IFileStream.cs" />
