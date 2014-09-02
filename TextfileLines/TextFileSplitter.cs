@@ -5,8 +5,12 @@ namespace TextFileLines
 {
     public abstract class TextFileSplitter
     {
+        private const int FIRSTTHREECHARACTERNUMBER = 100;
+        private const int FIRSTTWOCHARACTERNUMBER = 10;
+        private const int MAXVALIDCOUNTERVALUE = 999;
+
         public void Split(String sourceFile, IFileStreamFactory str = null)
-        {//TODO Splitter so umschreiben das er TextFileLines benutzt
+        {
             //Erklärung siehe TextFileLines
             str = str ?? new FileStreamFactory();
 
@@ -17,32 +21,33 @@ namespace TextFileLines
             var counter = 0;
             var allLines = file.ReadLines();
 
-            for (var i = 0; i < allLines.Length; i++)
+            foreach (var line in allLines)
             {
-
-                var line = allLines[i];
                 nextFile.Add(line);
 
-                if (SplitAt(line) || i == allLines.Length - 1)
+                if (SplitAt(line) || line == allLines[allLines.Length - 1])
                 {
-                    file.WriteLines(nextFileName,nextFile.ToArray());
+                    file.WriteLines(nextFileName, nextFile.ToArray());
                     counter += 1;
                     var fileEnd = GetFileEnd(counter);
 
-                    nextFileName = string.Format("{0}.{1}",sourceFile,fileEnd);
-                    nextFile = new List<string>(); 
+                    nextFileName = string.Format("{0}.{1}", sourceFile, fileEnd);
+                    nextFile = new List<string>();
                 }
             }
-
         }
 
         private String GetFileEnd(int counter)
         {
-            if (counter >= 100)
+            if (counter > MAXVALIDCOUNTERVALUE)
+            {
+                throw new Exception("Datei zu lange, Vorgang wurde bei 1000ster neuer Datei gestopt");
+            }
+            if (counter >= FIRSTTHREECHARACTERNUMBER)
             {
                 return counter.ToString();
             }
-            if (counter < 100 && counter >= 10)
+            if (counter < FIRSTTHREECHARACTERNUMBER && counter >= FIRSTTWOCHARACTERNUMBER)
             {
                 return string.Format("0{0}", counter);
             }
