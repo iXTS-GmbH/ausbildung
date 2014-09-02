@@ -23,10 +23,11 @@ namespace TextFileLines
 
         public string[] ReadLines()
         {
-            switch (sourceFile)
+
+            if (sourceFile == "splitterTest")
             {
-                case "splitterTest":
-                    return new[]
+
+                return new[]
                     {
                         "Das ist ein Testfile",
                         "split",
@@ -35,26 +36,16 @@ namespace TextFileLines
                         "Das ist ein mehrzeiliges",
                         "drittes split Testfile"
                     };
-                case "BigFile":
-                    var bigFile = new List<String>();
-
-                    for (var i = 0; i < 101; i++)
-                    {
-                        bigFile.Add("Das ist ein großes TestFile");
-                        bigFile.Add("break");
-                    }
-
-                    return bigFile.ToArray();
             }
-            var toBigFile = new List<String>();
+            var bigFile = new List<String>();
 
-            for (int i = 0; i < 1001; i++)
+            for (var i = 0; i < 101; i++)
             {
-                toBigFile.Add("Dieses TestFile ist zu groß");
-                toBigFile.Add("break");
+                bigFile.Add("Das ist ein großes TestFile");
+                bigFile.Add("break");
             }
 
-            return toBigFile.ToArray();
+            return bigFile.ToArray(); 
         }
 
         public void WriteLines(string fileName, string[] lines)

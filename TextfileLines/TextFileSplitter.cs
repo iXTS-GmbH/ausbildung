@@ -7,7 +7,6 @@ namespace TextFileLines
     {
         private const int FIRSTTHREECHARACTERNUMBER = 100;
         private const int FIRSTTWOCHARACTERNUMBER = 10;
-        private const int MAXVALIDCOUNTERVALUE = 999;
 
         public void Split(String sourceFile, IFileStreamFactory str = null)
         {
@@ -25,7 +24,7 @@ namespace TextFileLines
             {
                 nextFile.Add(line);
 
-                if (SplitAt(line) || line == allLines[allLines.Length - 1])
+                if (SplitAt(line))
                 {
                     file.WriteLines(nextFileName, nextFile.ToArray());
                     counter += 1;
@@ -35,14 +34,15 @@ namespace TextFileLines
                     nextFile = new List<string>();
                 }
             }
+            if (nextFile.Count > 0)
+            {
+                file.WriteLines(nextFileName,nextFile.ToArray());
+            }
+            
         }
 
         private String GetFileEnd(int counter)
         {
-            if (counter > MAXVALIDCOUNTERVALUE)
-            {
-                throw new Exception("Datei zu lange, Vorgang wurde bei 1000ster neuer Datei gestopt");
-            }
             if (counter >= FIRSTTHREECHARACTERNUMBER)
             {
                 return counter.ToString();
