@@ -91,17 +91,27 @@ namespace ixts.Ausbildung.TextFileLines.ConsoleApp
 
         private static void Help()
         {
+            var descriptionPart = " und speichert das Ergebnis in targetPath";
+
             Console.WriteLine("");
             Console.WriteLine("-TOUPPERCASE sourcePath targetPath");
+            Console.WriteLine("Ändert Text in UPPERCASE{0}",descriptionPart);
             ShowPathDescription();
+
             Console.WriteLine("-REMOVEEMPTYLINES sourcePath targetPath");
+            Console.WriteLine("Entfernt leere Zeilen aus Text{0}",descriptionPart);//Erklärung was RemoveEmptyLines macht
             ShowPathDescription();
+
             Console.WriteLine("-REMOVEDUPLICATELINES sourcePath targetPath");
+            Console.WriteLine("Entfernt sich hintereinander wiederholende Zeilen{0}",descriptionPart);//Erklärung was RemoveDuplicateLines macht
             ShowPathDescription();
+
             Console.WriteLine("-SPLIT sourcePath splitPoint(optional)");
+            Console.WriteLine("Spaltet Text an mit splitPoint definierten Punkten und Speichert Ergebnis nummeriert im selben Verzeichnis");//Erklärung was Split macht
             ShowPathDescription(false);
             Console.WriteLine("splitPoint(optional): Ein Zeichen oder eine Zeichenkette an der die Datei gesplalten wird, wenn sie am Zeilenanfang steht");
             Console.WriteLine("Standart: break");
+
             Console.WriteLine("-HELP,?:");
             Console.WriteLine("Ruft die Hilfe auf");
         }
