@@ -4,23 +4,19 @@ namespace TextFileLines
 {
     public class TextSplitter:TextFileSplitter
     {
-        private static String splitPoint = "break";
+        private static String splitPoint = "BREAK";
         protected override Boolean SplitAt(string line)
         {
-            return line.StartsWith(splitPoint);
+            var upperCaseLine = line.ToUpper();
+            return upperCaseLine.StartsWith(splitPoint);
         }
 
         public void SetSplitPoint(String newSplitPoint)
         {
             if (!String.IsNullOrEmpty(newSplitPoint))
             {
-                splitPoint = newSplitPoint;
+                splitPoint = newSplitPoint.ToUpper();
             }
-        }
-
-        public String GetSplitPoint()
-        {
-            return splitPoint;
         }
     }
 

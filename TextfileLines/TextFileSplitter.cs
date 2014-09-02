@@ -6,7 +6,7 @@ namespace TextFileLines
     public abstract class TextFileSplitter
     {
         public void Split(String sourceFile, IFileStreamFactory str = null)
-        {
+        {//TODO Splitter so umschreiben das er TextFileLines benutzt
             //Erklärung siehe TextFileLines
             str = str ?? new FileStreamFactory();
 
