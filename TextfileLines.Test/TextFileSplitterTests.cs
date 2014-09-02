@@ -67,5 +67,18 @@ namespace TextFileLines.Test
                 }
             }
         }
+
+        [ExpectedException]
+        [TestCase]
+        public void ToBigTextFileSplitterTest()
+        {
+            var textFileSplitter = new TextSplitter();
+
+            var input = "ToBigFile";
+
+            var teststream = new TestFileStreamFactory();
+
+            textFileSplitter.Split(input,teststream);
+        }
     }
 }
