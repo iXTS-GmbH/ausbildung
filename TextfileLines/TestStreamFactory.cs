@@ -4,9 +4,9 @@ namespace TextFileLines
 {
     public class TestStreamFactory:IStreamFactory
     {
-        public IStream Make(String inputFileName, String outputFileName)
+        public IStream Make(String sourcePath, String targetPath)
         {
-            return new TestStream(inputFileName, outputFileName);
+            return new TestStream(sourcePath, targetPath);
         }
     }
 }

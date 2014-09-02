@@ -10,7 +10,7 @@ namespace TextFileLines.Test
         [TestCase]
         public void TextFileSplitterTest()
         {
-            var textFileSplitter = new SplitTextFile();
+            var textFileSplitter = new TextSplitter();
             var expected = new []
                 {
                     new []{"Das ist ein Testfile","break"}, 
@@ -39,7 +39,7 @@ namespace TextFileLines.Test
         [TestCase]
         public void BigTextFileSplitterTest()
         {
-            var textFileSplitter = new SplitTextFile();
+            var textFileSplitter = new TextSplitter();
             var input = "BigFile";
             var expected = new List<String[]>();
 

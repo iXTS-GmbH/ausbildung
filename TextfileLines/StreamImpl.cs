@@ -9,14 +9,14 @@ namespace TextFileLines
         private readonly StreamWriter writer;
         private readonly String outputFile;
 
-        public StreamImpl(String inputFileName, String outputFileName = null)
+        public StreamImpl(String sourcePath, String targetPath = null)
         {
-            reader = new StreamReader(inputFileName);
-            outputFile = outputFileName;
+            reader = new StreamReader(sourcePath);
+            outputFile = targetPath;
 
-            if (outputFileName != null)
+            if (targetPath != null)
             {
-                writer = new StreamWriter(outputFileName);
+                writer = new StreamWriter(targetPath);
             }
 
         }

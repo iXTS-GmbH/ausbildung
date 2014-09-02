@@ -5,31 +5,31 @@ namespace TextFileLines
 {
     public abstract class TextFileSplitter
     {
-        public void Split(String inputFile, IFileStreamFactory str = null)
+        public void Split(String sourceFile, IFileStreamFactory str = null)
         {
             //Erklärung siehe TextFileLines
             str = str ?? new FileStreamFactory();
 
-            var file = str.Make(inputFile);
+            var file = str.Make(sourceFile);
 
-            var nextFileName = string.Format("{0}.000", inputFile);
+            var nextFileName = string.Format("{0}.000", sourceFile);
             var nextFile = new List<String>();
-
             var counter = 0;
+            var allLines = file.ReadLines();
 
-            for (var i = 0; i < file.ReadLines().Length; i++)
+            for (var i = 0; i < allLines.Length; i++)
             {
-                var line = file.ReadLines()[i];
+
+                var line = allLines[i];
                 nextFile.Add(line);
 
-                if (SplitAt(line) || i == file.ReadLines().Length - 1)
+                if (SplitAt(line) || i == allLines.Length - 1)
                 {
                     file.WriteLines(nextFileName,nextFile.ToArray());
-
                     counter += 1;
                     var fileEnd = GetFileEnd(counter);
 
-                    nextFileName = string.Format("{0}.{1}",inputFile,fileEnd);
+                    nextFileName = string.Format("{0}.{1}",sourceFile,fileEnd);
                     nextFile = new List<string>(); 
                 }
             }

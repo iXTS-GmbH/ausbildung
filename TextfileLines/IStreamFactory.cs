@@ -4,6 +4,6 @@ namespace TextFileLines
 {
     public interface IStreamFactory
     {
-        IStream Make(String inputFileName, String outputFileName = null);
+        IStream Make(String sourcePath, String targetPath = null);
     }
 }

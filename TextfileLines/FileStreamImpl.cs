@@ -5,10 +5,10 @@ namespace TextFileLines
 {
     public class FileStreamImpl:IFileStream
     {
-        private readonly String inputFileName;
-        public FileStreamImpl(string inputFile)
+        private readonly String sourcePath;
+        public FileStreamImpl(string sourceFile)
         {
-            inputFileName = inputFile;
+            sourcePath = sourceFile;
         }
 
         public string[][] GetOutput()
@@ -19,7 +19,7 @@ namespace TextFileLines
 
         public string[] ReadLines()
         {
-           return File.ReadAllLines(inputFileName);
+           return File.ReadAllLines(sourcePath);
         }
 
         public void WriteLines(String fileName,String[] lines)

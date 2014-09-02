@@ -10,7 +10,7 @@ namespace TextFileLines.Test
         [TestCase]
         public void TextFileMapperTest()
         {
-            var textFileMapper = new ToUpperLine();
+            var textFileMapper = new ToUpperLineMapper();
             var expected = new List<String>
                 {
                     "DAS IST EIN TEST.",

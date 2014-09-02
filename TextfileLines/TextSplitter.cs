@@ -2,7 +2,7 @@
 
 namespace TextFileLines
 {
-    public class SplitTextFile:TextFileSplitter
+    public class TextSplitter:TextFileSplitter
     {
         private static String splitPoint = "break";
         protected override Boolean SplitAt(string line)

@@ -6,11 +6,11 @@ namespace TextFileLines
     public class TestFileStream:IFileStream
     {
         private static List<String[]> outputFiles = new List<string[]>();
-        private readonly String inputFile;
+        private readonly String sourceFile;
 
         public TestFileStream(String input)
         {
-            inputFile = input;
+            sourceFile = input;
         }
 
         public String[][] GetOutput()
@@ -23,7 +23,7 @@ namespace TextFileLines
 
         public string[] ReadLines()
         {
-            if (inputFile == "splitterTest")
+            if (sourceFile == "splitterTest")
             {
                 return new[]
                 {

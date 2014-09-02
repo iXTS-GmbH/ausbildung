@@ -2,7 +2,7 @@
 
 namespace TextFileLines
 {
-    public class ToUpperLine : TextFileMapper
+    public class ToUpperLineMapper : TextFileMapper
     {
         protected override String Transform(String line)
         {

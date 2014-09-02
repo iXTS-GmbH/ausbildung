@@ -10,11 +10,11 @@ namespace TextFileLines
         private readonly String outputFile;
         private int readFileLineCounter = -1;
 
-        public TestStream(String inputFileName, String outputFileName = null)
+        public TestStream(String sourcePath, String targetPath = null)
         {
-            outputFile = outputFileName;
+            outputFile = targetPath;
 
-            switch (inputFileName)
+            switch (sourcePath)
             {
                 case "LinesTest":
                     readFile = new List<String>
