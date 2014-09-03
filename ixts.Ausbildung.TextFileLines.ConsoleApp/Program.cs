@@ -99,15 +99,15 @@ namespace ixts.Ausbildung.TextFileLines.ConsoleApp
             ShowPathDescription();
 
             Console.WriteLine("-REMOVEEMPTYLINES sourcePath targetPath");
-            Console.WriteLine("Entfernt leere Zeilen aus Text{0}",descriptionPart);//Erklärung was RemoveEmptyLines macht
+            Console.WriteLine("Entfernt leere Zeilen aus Text{0}",descriptionPart);
             ShowPathDescription();
 
             Console.WriteLine("-REMOVEDUPLICATELINES sourcePath targetPath");
-            Console.WriteLine("Entfernt sich hintereinander wiederholende Zeilen{0}",descriptionPart);//Erklärung was RemoveDuplicateLines macht
+            Console.WriteLine("Entfernt sich hintereinander wiederholende Zeilen{0}",descriptionPart);
             ShowPathDescription();
 
             Console.WriteLine("-SPLIT sourcePath splitPoint(optional)");
-            Console.WriteLine("Spaltet Text an mit splitPoint definierten Punkten und Speichert Ergebnis nummeriert im selben Verzeichnis");//Erklärung was Split macht
+            Console.WriteLine("Spaltet Text an mit splitPoint definierten Punkten und Speichert Ergebnis nummeriert im selben Verzeichnis");
             ShowPathDescription(false);
             Console.WriteLine("splitPoint(optional): Ein Zeichen oder eine Zeichenkette an der die Datei gesplalten wird, wenn sie am Zeilenanfang steht");
             Console.WriteLine("Standart: break");

@@ -24,9 +24,29 @@ namespace TextFileLines.Test
 
         private static readonly object[] MapperTestsSource =
             {
-                new object[]{new ToUpperLineMapper(),new List<String>{"DAS IST EIN TEST.","WENN DIESER TEST ERFOLGREICH IST,","KANN MAN DIESE ZEILEN","IN CAPS LESEN."},"ToUpperLineMapperTest"},
-                new object[]{new RemoveEmptyLinesMapper(),new List<String>{"Dies ist ein Test", "um zu schauen ob Leerzeilen","korrekt entfernt werden"},"RemoveEmptyLinesMapperTest"},
-                new object[]{new RemoveDuplicateLinesMapper(), new List<String>{"Diese Zeile kommt doppelt","Diese auch","Diese nicht"},"RemoveDuplicateLinesMapperTest"}
+                new object[]{new ToUpperLineMapper(),new List<String>
+                    {
+                        "DAS IST EIN TEST.",
+                        "WENN DIESER TEST ERFOLGREICH IST,",
+                        "KANN MAN DIESE ZEILEN","IN CAPS LESEN."
+                    },
+                    "ToUpperLineMapperTest"},
+
+                new object[]{new RemoveEmptyLinesMapper(),new List<String>
+                    {
+                        "Dies ist ein Test",
+                        "um zu schauen ob Leerzeilen",
+                        "korrekt entfernt werden"
+                    },
+                    "RemoveEmptyLinesMapperTest"},
+
+                new object[]{new RemoveDuplicateLinesMapper(), new List<String>
+                    {
+                        "Diese Zeile kommt doppelt",
+                        "Diese auch",
+                        "Diese nicht"
+                    },
+                    "RemoveDuplicateLinesMapperTest"}
             };
 
 

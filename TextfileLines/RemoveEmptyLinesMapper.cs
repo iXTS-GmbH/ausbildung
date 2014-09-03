@@ -6,11 +6,14 @@ namespace TextFileLines
     {
         protected override String Transform(String line)
         {
-            if (String.IsNullOrEmpty(line))
-            {
-                return null;
-            }
-            return line;
+            return !String.IsNullOrEmpty(line) ? line : null;
+            //Bedeutung *
         }
     }
 }
+//*
+//if (!String.IsNullOrEmpty(line))
+//    {
+//        return line;
+//    }
+//return null;

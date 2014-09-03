@@ -27,15 +27,7 @@ namespace TextFileLines.Test
             var actual = testStream.Make("splitterTest");
             var output = actual.GetOutput();
 
-            Assert.AreEqual(expected.Length,output.Length);
-
-            for (var i = 0; i < output.Length; i++)
-            {
-                for (var j = 0; j < output[i].Length; j++)
-                {
-                   Assert.AreEqual(expected[i][j],output[i][j]); 
-                }
-            }
+            Assert.AreEqual(expected,output);
         }
 
         [TestCase]
@@ -57,15 +49,7 @@ namespace TextFileLines.Test
             var actual = teststream.Make(input);
             var output = actual.GetOutput();
 
-            Assert.AreEqual(expected.Count, output.Length);
-
-            for (var i = 0; i < output.Length; i++)
-            {
-                for (var j = 0; j < output[i].Length; j++)
-                {
-                    Assert.AreEqual(expected[i][j], output[i][j]);
-                }
-            }
+            Assert.AreEqual(expected.ToArray(),output);
         }
     }
 }
