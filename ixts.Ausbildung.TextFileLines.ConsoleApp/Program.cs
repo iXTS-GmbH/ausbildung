@@ -18,7 +18,13 @@ namespace ixts.Ausbildung.TextFileLines.ConsoleApp
             {
                 case "TOUPPERCASE":
 
-                    ToUppercase(args[1], args[2]);
+                    ToUpperCase(args[1], args[2]);
+
+                    break;
+
+                case "TOLOWERCASE":
+
+                    ToLowerCase(args[1], args[2]);
 
                     break;
 
@@ -61,9 +67,15 @@ namespace ixts.Ausbildung.TextFileLines.ConsoleApp
             }
         }
 
-        private static void ToUppercase(String sourcePath, String targetPath)
+        private static void ToUpperCase(String sourcePath, String targetPath)
         {
             var fileMapper = new ToUpperLineMapper();
+            fileMapper.Map(sourcePath,targetPath);
+        }
+
+        private static void ToLowerCase(String sourcePath, String targetPath)
+        {
+            var fileMapper = new ToLowerLineMapper();
             fileMapper.Map(sourcePath,targetPath);
         }
 
@@ -96,6 +108,10 @@ namespace ixts.Ausbildung.TextFileLines.ConsoleApp
             Console.WriteLine("");
             Console.WriteLine("-TOUPPERCASE sourcePath targetPath");
             Console.WriteLine("Ändert Text in UPPERCASE{0}",descriptionPart);
+            ShowPathDescription();
+
+            Console.WriteLine("-TOLOWERCASE sourcePath targetpath");
+            Console.WriteLine("Ändert Text in lowercase{0}",descriptionPart);
             ShowPathDescription();
 
             Console.WriteLine("-REMOVEEMPTYLINES sourcePath targetPath");

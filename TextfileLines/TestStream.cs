@@ -37,6 +37,18 @@ namespace TextFileLines
                         "in Caps lesen."
                     };
                     break;
+
+                case "ToLowerLineMapperTest":
+                    readFile = new List<string>
+                        {
+                            "Das ist ein Test.",
+                            "Wenn dieser Test erfolgreich ist,",
+                            "kann man diese Zeilen",
+                            "in Kleinschreibung lesen"
+                        };
+                    
+                    break;
+
                 case "RemoveEmptyLinesMapperTest":
                     readFile = new List<string>
                     {
@@ -46,6 +58,7 @@ namespace TextFileLines
                          "korrekt entfernt werden"
                     };
                     break;
+
                 case "RemoveDuplicateLinesMapperTest":
                     readFile = new List<string>
                     {

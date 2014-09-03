@@ -28,9 +28,18 @@ namespace TextFileLines.Test
                     {
                         "DAS IST EIN TEST.",
                         "WENN DIESER TEST ERFOLGREICH IST,",
-                        "KANN MAN DIESE ZEILEN","IN CAPS LESEN."
+                        "KANN MAN DIESE ZEILEN",
+                        "IN CAPS LESEN."
                     },
                     "ToUpperLineMapperTest"},
+                new object[]{new ToLowerLineMapper(),new List<String>
+                    {
+                        "das ist ein test.",
+                        "wenn dieser test erfolgreich ist,",
+                        "kann man diese zeilen",
+                        "in kleinschreibung lesen"
+                    },
+                    "ToLowerLineMapperTest"}, 
 
                 new object[]{new RemoveEmptyLinesMapper(),new List<String>
                     {
