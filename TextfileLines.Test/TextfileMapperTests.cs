@@ -55,7 +55,14 @@ namespace TextFileLines.Test
                         "Diese auch",
                         "Diese nicht"
                     },
-                    "RemoveDuplicateLinesMapperTest"}
+                    "RemoveDuplicateLinesMapperTest"},
+                new object[]{new ToNumberLinesMapper(), new List<String>
+                    {
+                        "1 Das ist die erste Zeile.",
+                        "2 Das ist die zweite Zeile.",
+                        "3 Das ist die dritte Zeile."
+                    },
+                    "ToNumberLinesMapperTest"}
             };
 
 

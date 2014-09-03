@@ -93,6 +93,15 @@ namespace TextFileLines
 
                     break;
 
+                case "ToNumberLinesMapperTest":
+                    readFile = new List<string>
+                        {
+                            "Das ist die erste Zeile.",
+                            "Das ist die zweite Zeile.",
+                            "Das ist die dritte Zeile."
+                        };
+                    break;
+
                 case "WriteTest":
                     readFile = writeFile;
                     writeFile = new List<String>();

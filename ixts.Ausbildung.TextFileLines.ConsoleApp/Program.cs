@@ -5,7 +5,7 @@ namespace ixts.Ausbildung.TextFileLines.ConsoleApp
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] args)//TODO Befehl für ToNumberLinesMapper hinzufügen
         {
             if (args.Length == 0)
             {
