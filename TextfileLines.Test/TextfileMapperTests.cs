@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using NUnit.Framework;
 
 namespace TextFileLines.Test
@@ -47,7 +48,7 @@ namespace TextFileLines.Test
                         "um zu schauen ob Leerzeilen",
                         "korrekt entfernt werden"
                     },
-                    "RemoveEmptyLinesMapperTest"},
+                    "RemoveEmptyLinesMapperTest"}, 
 
                 new object[]{new RemoveDuplicateLinesMapper(), new List<String>
                     {
@@ -64,6 +65,32 @@ namespace TextFileLines.Test
                     },
                     "ToNumberLinesMapperTest"}
             };
+
+        [TestCase("RemoveLinesStartsWithMapperTest")]
+        public void RemoveLinesStartsWithTest(String input)
+        {
+            var textFileMapper = new RemoveLinesStartsWithMapper();
+
+            var expected = new List<String>
+                {
+                        "Dies ist ein Test,",
+                        "bei welchem einige",
+                        "Zeilen gelöscht werden"
+                };
+
+            var testStream = new TestStreamFactory();
+
+            textFileMapper.SetRemovePoint("delete");
+
+            textFileMapper.Map(input, "outputFileName", testStream);
+
+            var actual = testStream.Make("WriteTest", "outputFileName");
+
+            foreach (var line in expected)
+            {
+                Assert.AreEqual(line, actual.ReadLine());
+            }
+        }
 
 
         [ExpectedException]

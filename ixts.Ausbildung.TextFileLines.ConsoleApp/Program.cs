@@ -34,6 +34,12 @@ namespace ixts.Ausbildung.TextFileLines.ConsoleApp
 
                     break;
 
+                case "REMOVELINESSTARTSWITH":
+
+                    RemoveLinesStartsWith(args[1], args[2], args[3]);
+
+                    break;
+
                 case "REMOVEEMPTYLINES":
 
                     RemoveEmptyLines(args[1],args[2]);
@@ -71,6 +77,13 @@ namespace ixts.Ausbildung.TextFileLines.ConsoleApp
                 default:
                     throw new Exception("Kein Gültiger Befehl! Eine Liste aller gültigen Befehle kann mit help oder ? aufgerufen werden");
             }
+        }
+
+        private static void RemoveLinesStartsWith(String sourcePath, String targetPath, String removePoint)
+        {
+            var fileMapper = new RemoveLinesStartsWithMapper();
+            fileMapper.SetRemovePoint(removePoint);
+            fileMapper.Map(sourcePath,targetPath);
         }
 
         private static void ToUpperCase(String sourcePath, String targetPath)
@@ -129,6 +142,11 @@ namespace ixts.Ausbildung.TextFileLines.ConsoleApp
             Console.WriteLine("-TONUMBERLINES sourcePath targetpath");
             Console.WriteLine("Nummeriert alle Zeilen{0}",descriptionPart);
             ShowPathDescription();
+
+            Console.WriteLine("-REMOVELINESSTARTSWITH");
+            Console.WriteLine("Entfernt Zeilen welche mit removePoint anfangen{0}",descriptionPart);
+            ShowPathDescription();
+            Console.WriteLine("removePoint: Eine Zeile wird entfernt wenn sie mit diesem Zeichen oder dieser Zeichenkette beginnt");
 
             Console.WriteLine("-REMOVEEMPTYLINES sourcePath targetPath");
             Console.WriteLine("Entfernt leere Zeilen aus Text{0}",descriptionPart);

@@ -46,6 +46,7 @@
     <Compile Include="IStream.cs" />
     <Compile Include="IStreamFactory.cs" />
     <Compile Include="NoOutputFile.cs" />
+    <Compile Include="RemoveLinesStartsWithMapper.cs" />
     <Compile Include="TextSplitter.cs" />
     <Compile Include="StreamFactory.cs" />
     <Compile Include="StreamImpl.cs" />

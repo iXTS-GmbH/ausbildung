@@ -49,6 +49,18 @@ namespace TextFileLines
                     
                     break;
 
+                case "RemoveLinesStartsWithMapperTest":
+                    readFile = new List<string>
+                        {
+                        "Dies ist ein Test,",
+                        "delete",
+                        "bei welchem einige",
+                        "delete",
+                        "Zeilen gelöscht werden"
+                        };
+                    
+                    break;
+
                 case "RemoveEmptyLinesMapperTest":
                     readFile = new List<string>
                     {
