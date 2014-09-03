@@ -9,7 +9,7 @@ namespace ixts.Ausbildung.TextFileLines.ConsoleApp
         {
             if (args.Length == 0)
             {
-                throw new Exception("Bitte geben sie einen Befehl ein, eine Liste der möglichen Befehle und deren Parameter können mit help oder ? eingesehen werden");
+                throw new Exception("Bitte geben sie einen Befehl ein, eine Liste gültiger Befehle und deren Parameter können mit help oder ? eingesehen werden");
             }
 
             args[0] = args[0].ToUpper();

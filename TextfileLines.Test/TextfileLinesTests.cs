@@ -7,8 +7,8 @@ namespace TextFileLines.Test
     [TestFixture]
     public class TextFileLinesTests
     {
-        [TestCase]
-        public void TextfileLinesTest()
+        [TestCase("LinesTest")]
+        public void TextfileLinesTest(String path)
         {
             var expected = new List<String>
                 {
@@ -17,8 +17,6 @@ namespace TextFileLines.Test
                     "kann man diese Zeilen",
                     "in einer List<String> lesen."
                 };
-
-            var path = "LinesTest";
 
             var textFileLines = new TextFileLines(path,new TestStreamFactory());
             var counter = 0;

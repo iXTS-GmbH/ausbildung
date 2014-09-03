@@ -28,7 +28,7 @@ namespace TextFileLines
 
         public string[][] GetOutput()
         {
-            return null;
+            return null;//Ist im Testzweig dazu da die gesplitteten Files zu bekommen hat hier aber keine Verwendung
         }
 
         public void WriteLine(String line)

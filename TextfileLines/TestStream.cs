@@ -125,7 +125,7 @@ namespace TextFileLines
 
         public void Close()
         {
-            //Ist in der Prod dazu da die Streams wieder zu schließen hat im Teststream aber keine Verwendung
+            //Ist im Produktivzweig dazu da die Streams wieder zu schließen hat im Teststream aber keine Verwendung
         }
     }
 }

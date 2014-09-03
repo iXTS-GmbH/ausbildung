@@ -15,11 +15,11 @@ namespace TextFileLines
 
             foreach (var line in tfL)
             {
-                var transLine = Transform(line);
+                var transformedLine = Transform(line);
 
-                if (transLine != null)
+                if (transformedLine != null)
                 {
-                    file.WriteLine(transLine);
+                    file.WriteLine(transformedLine);
                 }
             }
 

@@ -7,11 +7,11 @@ namespace TextFileLines.Test
     [TestFixture]
     public class TextFileSplitterTests
     {
-        [TestCase]
-        public void TextFileSplitterTest()
+        [TestCase("splitterTest","split")]
+        public void TextFileSplitterTest(String input,String splitPoint)
         {
             var textFileSplitter = new TextSplitter();
-            textFileSplitter.SetSplitPoint("split");
+            textFileSplitter.SetSplitPoint(splitPoint);
 
             var expected = new []
                 {
@@ -22,19 +22,18 @@ namespace TextFileLines.Test
 
             var testStream = new TestStreamFactory();
 
-            textFileSplitter.Split("splitterTest",testStream); 
+            textFileSplitter.Split(input,testStream); 
 
-            var actual = testStream.Make("splitterTest");
+            var actual = testStream.Make(input);
             var output = actual.GetOutput();
 
             Assert.AreEqual(expected,output);
         }
 
-        [TestCase]
-        public void BigTextFileSplitterTest()
+        [TestCase("BigFile")]
+        public void BigTextFileSplitterTest(String input)
         {
             var textFileSplitter = new TextSplitter();
-            var input = "BigFile";
             var expected = new List<String[]>();
 
             for (var i = 0; i < 101; i++)

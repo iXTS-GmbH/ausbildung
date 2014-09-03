@@ -12,10 +12,14 @@ namespace TextFileLines
         {
             //Erklärung siehe TextFileLines
             str = str ?? new StreamFactory();
+
             var file = str.Make(sourceFile);
+
             var nextFileName = string.Format("{0}.000", sourceFile);
             var nextFile = new List<String>();
+
             var counter = 0;
+
             var allLines = new TextFileLines(sourceFile, str);
 
             foreach (var line in allLines)
