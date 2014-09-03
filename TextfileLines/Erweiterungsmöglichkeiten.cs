@@ -17,10 +17,9 @@
             //Alles in 1337-Sprache ändern
         //Klasse einfügen die Zeilen/Wörter/Zeichen zählen kann
         //Klasse einfügen die Zeilen mit bestimmtem Anfang löscht
-        //Klasse einfügen die alles in Lowercase schreibt
         //Klasse einfügen die alle Textdokumente aus einem Verzeichnis nimmt und in einem Textdokument(Complete.txt) zusammenschreibt
         //Klasse einfügen die nach jeder x'ten zeile spaltet 
         //Klasse einfügen die jede x'te zeile in Uppercase/Lowercase/1337 schreibt
-        //
+        //Klasse einfügen die Groß-/Kleinschreibung erstellt (Im blödesten fall mit Liste aller Deutschen Wörter)
     }
 }
