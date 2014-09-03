@@ -5,7 +5,7 @@ namespace ixts.Ausbildung.TextFileLines.ConsoleApp
 {
     class Program
     {
-        static void Main(string[] args)//TODO Befehl für ToNumberLinesMapper hinzufügen
+        static void Main(string[] args)
         {
             if (args.Length == 0)
             {
@@ -25,6 +25,12 @@ namespace ixts.Ausbildung.TextFileLines.ConsoleApp
                 case "TOLOWERCASE":
 
                     ToLowerCase(args[1], args[2]);
+
+                    break;
+
+                case "TONUMBERLINES":
+
+                    ToNumberLines(args[1], args[2]);
 
                     break;
 
@@ -79,6 +85,12 @@ namespace ixts.Ausbildung.TextFileLines.ConsoleApp
             fileMapper.Map(sourcePath,targetPath);
         }
 
+        private static void ToNumberLines(String sourcePath, String targetPath)
+        {
+            var fileMapper = new ToNumberLinesMapper();
+            fileMapper.Map(sourcePath,targetPath);
+        }
+
         private static void RemoveEmptyLines(String sourcePath, String targetPath)
         {
             var fileMapper = new RemoveEmptyLinesMapper();
@@ -112,6 +124,10 @@ namespace ixts.Ausbildung.TextFileLines.ConsoleApp
 
             Console.WriteLine("-TOLOWERCASE sourcePath targetpath");
             Console.WriteLine("Ändert Text in lowercase{0}",descriptionPart);
+            ShowPathDescription();
+
+            Console.WriteLine("-TONUMBERLINES sourcePath targetpath");
+            Console.WriteLine("Nummeriert alle Zeilen{0}",descriptionPart);
             ShowPathDescription();
 
             Console.WriteLine("-REMOVEEMPTYLINES sourcePath targetPath");
