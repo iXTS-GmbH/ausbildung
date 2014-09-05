@@ -19,7 +19,7 @@ namespace ixts.Ausbildung.NameService.Test
         [TestCase]
         public void PutTest()
         {
-            
+
         }
 
         [TestCase]

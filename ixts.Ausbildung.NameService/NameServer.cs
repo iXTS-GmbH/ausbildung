@@ -36,9 +36,7 @@ namespace ixts.Ausbildung.NameService
             while (run)
             {
                 ConSocket = ss.Accept();
-                byte[] bytes = new byte[1024];
-                int bytesRec = ConSocket.Receive(bytes);
-                data += Encoding.ASCII.GetString(bytes, 0, bytesRec);//Das müssten die Daten sein
+                data += ConSocket.Receive();
 
                 String[] request = data.Split(new[] { ' ' });
                 String command = request[0];

@@ -1,5 +1,7 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Net.Sockets;
+using System.Text;
 
 namespace ixts.Ausbildung.NameService
 {
@@ -36,9 +38,12 @@ namespace ixts.Ausbildung.NameService
             return new SocketImpl(s);
         }
 
-        public int Receive(byte[] bytes)
+        public String Receive()
         {
-            return socket.Receive(bytes);
+            byte[] bytes = new byte[1024];
+            int bytesRec = socket.Receive(bytes);
+            return Encoding.ASCII.GetString(bytes, 0, bytesRec);
+             
         }
 
         public void Send(byte[] msg)

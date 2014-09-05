@@ -11,7 +11,8 @@ namespace ixts.Ausbildung.NameService
         private int socketBacklog;
         public Boolean Status = true;
         public List<String> Output;
-
+        private int lineCounter = 0;
+        private List<String> input = new List<String>(); 
 
         public void Bind(int port)
         {
@@ -25,12 +26,12 @@ namespace ixts.Ausbildung.NameService
 
         public ISocket Accept()
         {
-            return null;
+            return this;
         }
 
-        public int Receive(byte[] bytes)
+        public String Receive()
         {
-            return 2;//Hier weis ich nicht ganz was ich machen soll
+            lineCounter += 1;
         }
 
         public void Send(byte[] msg)
@@ -42,8 +43,40 @@ namespace ixts.Ausbildung.NameService
 
         public void Close()
         {
+            lineCounter = 0;
             Status = false;
             Output = new List<string>();
+        }
+
+        public void SetTestProtokoll(String protokollKey)
+        {
+            switch (protokollKey)
+            {
+                case "PutTest":
+
+                    input = new List<String>
+                        {
+                            ""
+                        };
+
+                    break;
+                case "GetTest":
+
+                    input = new List<String>
+                        {
+                            ""
+                        };
+
+                    break;
+                case "DelTest":
+
+                    input = new List<String>
+                        {
+                            ""
+                        };
+
+                    break;
+            }
         }
     }
 }

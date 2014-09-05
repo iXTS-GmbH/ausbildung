@@ -8,7 +8,7 @@ namespace ixts.Ausbildung.NameService
         void Bind(int port);
         void Listen(int backlog);
         ISocket Accept();
-        int Receive(Byte[] bytes);//Gibt die Anzahl der zu Decodierenden Bytes an
+        String Receive();
         void Send(Byte[] msg);
         void Close();
 
