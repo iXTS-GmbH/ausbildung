@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{181E562F-3C77-4325-917B-CAFD0A7AB593}</ProjectGuid>
+    <ProjectGuid>{702768A8-CDEC-492B-A3C9-FBC4E5441ADF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ixts.Ausbildung.NameServer.Test</RootNamespace>
-    <AssemblyName>ixts.Ausbildung.NameServer.Test</AssemblyName>
+    <RootNamespace>ixts.Ausbildung.NameService</RootNamespace>
+    <AssemblyName>ixts.Ausbildung.NameService</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,10 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\NUnit 2.6.3\bin\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,14 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NameServerTests.cs" />
+    <Compile Include="ISocket.cs" />
+    <Compile Include="ISocketFactory.cs" />
+    <Compile Include="NameServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ixts.Ausbildung.NameServer\ixts.Ausbildung.NameServer.csproj">
-      <Project>{902D2722-2E75-4578-99F4-46FF1350CA4E}</Project>
-      <Name>ixts.Ausbildung.NameServer</Name>
-    </ProjectReference>
+    <Compile Include="SocketFactory.cs" />
+    <Compile Include="SocketImpl.cs" />
+    <Compile Include="TestSocket.cs" />
+    <Compile Include="TestSocketFaktory.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
