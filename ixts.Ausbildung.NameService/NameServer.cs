@@ -132,6 +132,13 @@ namespace ixts.Ausbildung.NameService
 
         private Boolean Stop(ISocket socket)
         {
+            var map = new List<String>();
+            foreach (var pair in store)
+            {
+                map.Add(string.Format("{0} {1}",pair.Key,pair.Value));
+            }
+            File.WriteAllLines(SERVERFILENAME,map.ToArray());
+
             Send("",socket);
             return false;
         }
