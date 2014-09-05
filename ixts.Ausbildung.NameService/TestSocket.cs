@@ -27,11 +27,7 @@ namespace ixts.Ausbildung.NameService
         public String Receive()
         {
             lineCounter += 1;
-            if (input.Count >= lineCounter)
-            {
-                return input[lineCounter - 1];
-            }
-            return null;
+            return input[lineCounter - 1];
         }
 
         public void Send(byte[] msg)
@@ -55,6 +51,7 @@ namespace ixts.Ausbildung.NameService
                     input = new List<String>
                         {
                             "PUT testKey testValue",
+                            "PUT testKey anOtherTestValue",
                             "STOP"
                         };
 

@@ -26,6 +26,7 @@ namespace ixts.Ausbildung.NameService.Test
             var expected = new List<String>
                 {
                     "1 ",
+                    "1 testValue",
                     "1 "
                 };
 
