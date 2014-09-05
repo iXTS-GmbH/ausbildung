@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Sockets;
 using System.Text;
 
@@ -13,12 +14,21 @@ namespace ixts.Ausbildung.NameService
         private readonly int port;
         private static String data;
         private ISocketFactory sFactory;
+        private const String SERVERFILENAME = "nameservermap.ser";
         public ISocket ConSocket;
 
         public NameServer(int p, ISocketFactory socketFactory = null)
         {
+            if (File.Exists(SERVERFILENAME))
+            {
+                store = GetMapFromFile();
+            }
+            else
+            {
+                store = new Dictionary<string, string>();
+            }
             sFactory = socketFactory ?? new SocketFactory();
-            store = new Dictionary<string, string>();
+            
             port = p;
             
         }
@@ -124,6 +134,18 @@ namespace ixts.Ausbildung.NameService
         {
             Send("",socket);
             return false;
+        }
+
+        private Dictionary<String, String> GetMapFromFile()
+        {
+            var map = new Dictionary<String, String>();
+            var allLines = File.ReadAllLines(SERVERFILENAME);
+            foreach (var line in allLines)
+            {
+                var parameters = line.Split(' ');
+                map.Add(parameters[0],parameters[1]);
+            }
+            return map;
         }
 
     }
