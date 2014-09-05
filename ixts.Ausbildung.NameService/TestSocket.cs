@@ -1,27 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net.Sockets;
 using System.Text;
 
 namespace ixts.Ausbildung.NameService
 {
     public class TestSocket:ISocket
     {
-        private int socketPort;
-        private int socketBacklog;
         public Boolean Status = true;
-        public List<String> Output;
-        private int lineCounter = 0;
-        private List<String> input = new List<String>(); 
+        public static List<String> Output = new List<String>();
+        private int lineCounter;
+        private static List<String> input = new List<String>(); 
 
         public void Bind(int port)
         {
-            socketPort = port;
         }
 
         public void Listen(int backlog)
         {
-            socketBacklog = backlog;
         }
 
         public ISocket Accept()
@@ -32,11 +27,15 @@ namespace ixts.Ausbildung.NameService
         public String Receive()
         {
             lineCounter += 1;
+            if (input.Count >= lineCounter)
+            {
+                return input[lineCounter - 1];
+            }
+            return null;
         }
 
         public void Send(byte[] msg)
         {
-
             Output.Add(Encoding.ASCII.GetString(msg));
         }
 
@@ -45,7 +44,6 @@ namespace ixts.Ausbildung.NameService
         {
             lineCounter = 0;
             Status = false;
-            Output = new List<string>();
         }
 
         public void SetTestProtokoll(String protokollKey)
@@ -56,7 +54,8 @@ namespace ixts.Ausbildung.NameService
 
                     input = new List<String>
                         {
-                            ""
+                            "PUT firstKey firstValue",
+                            "STOP"
                         };
 
                     break;

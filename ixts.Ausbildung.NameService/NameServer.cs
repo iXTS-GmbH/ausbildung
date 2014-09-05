@@ -41,52 +41,51 @@ namespace ixts.Ausbildung.NameService
                 String[] request = data.Split(new[] { ' ' });
                 String command = request[0];
                 String key = request.Length > 1 ? request[1] : null;
+                Boolean contain = false;
+                String oldvalue = "";
 
                 if (key != null)
                 {
-
-                    Boolean contain = store.ContainsKey(key);
-                    String oldvalue = contain ? store[key] : "";
-
-                    switch (command)
-                    {
-                        case "PUT":
-
-                            Put(contain, request[2], key,oldvalue,ConSocket);
-                            break;
-
-                        case "GET":
-
-                            Get(contain, key,ConSocket);
-                            break;
-
-                        case "DEL":
-
-                            Del(contain, key,oldvalue,ConSocket);
-                            break;
-
-                        case "STOP":
-
-                            run = Stop(ConSocket);
-                            break;
-
-                        default:
-
-                            Console.WriteLine("Illegal command recived: {0}",command);
-
-                            break;
-                    }
+                    contain = store.ContainsKey(key);
+                    oldvalue = contain ? store[key] : "";
                 }
-                else
+
+
+                switch (command)
                 {
-                    throw new Exception("No Key Found");
+                    case "PUT":
+
+                        Put(contain, request[2], key,oldvalue,ConSocket);
+                        break;
+
+                    case "GET":
+
+                        Get(contain, key,ConSocket);
+                        break;
+
+                    case "DEL":
+
+                        Del(contain, key,oldvalue,ConSocket);
+                        break;
+
+                    case "STOP":
+
+                        run = Stop(ConSocket);
+                        break;
+
+                    default:
+
+                        Console.WriteLine("Illegal command recived: {0}",command);
+
+                        break;
                 }
 
+                data = "";
             }
             ss.Close();
         }
 
-        public void Send(String value, ISocket socket)
+        private void Send(String value, ISocket socket)
         {
             String answer = value == null ? "0" : string.Format("1 {0}", value);
 
@@ -95,7 +94,7 @@ namespace ixts.Ausbildung.NameService
         }
 
 
-        public void Put(Boolean contain,String newValue, String key,String oldvalue, ISocket socket)
+        private void Put(Boolean contain,String newValue, String key,String oldvalue, ISocket socket)
         {
             if (contain)
             {
@@ -108,20 +107,20 @@ namespace ixts.Ausbildung.NameService
             Send(oldvalue,socket);
         }
 
-        public void Get(Boolean contain, String key, ISocket socket)
+        private void Get(Boolean contain, String key, ISocket socket)
         {
             var value = contain ? store[key] : null;
             Send(value,socket);
         }
 
-        public void Del(Boolean contain, String key, String oldvalue, ISocket socket)
+        private void Del(Boolean contain, String key, String oldvalue, ISocket socket)
         {
             store.Remove(key);
             var value = contain ? oldvalue : null;
             Send(value,socket);
         }
 
-        public Boolean Stop(ISocket socket)
+        private Boolean Stop(ISocket socket)
         {
             Send("",socket);
             return false;
