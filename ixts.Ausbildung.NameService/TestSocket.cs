@@ -54,7 +54,7 @@ namespace ixts.Ausbildung.NameService
 
                     input = new List<String>
                         {
-                            "PUT firstKey firstValue",
+                            "PUT testKey testValue",
                             "STOP"
                         };
 
@@ -63,8 +63,8 @@ namespace ixts.Ausbildung.NameService
 
                     input = new List<String>
                         {
-                            "PUT firstKey firstValue",
-                            "GET firstKey",
+                            "PUT testKey testValue",
+                            "GET testKey",
                             "STOP"
                         };
 
@@ -73,7 +73,10 @@ namespace ixts.Ausbildung.NameService
 
                     input = new List<String>
                         {
-                            ""
+                            "PUT testKey testValue",
+                            "DEL testKey",
+                            "GET testKey",
+                            "STOP"
                         };
 
                     break;

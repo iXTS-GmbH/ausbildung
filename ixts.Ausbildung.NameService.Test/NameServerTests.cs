@@ -43,7 +43,7 @@ namespace ixts.Ausbildung.NameService.Test
             var expected = new List<String>
                 {
                     "1 ",
-                    "1 firstValue",
+                    "1 testValue",
                     "1 "
                 };
 
@@ -59,7 +59,19 @@ namespace ixts.Ausbildung.NameService.Test
         [TestCase]
         public void DelTest()
         {
+            var expected = new List<String>
+                {
+                    "1 ",
+                    "1 testValue",
+                    "0",
+                    "1 "
+                };
+            testSocket.SetTestProtokoll("DelTest");
+            sut.Loop();
+            var actual = TestSocket.Output;
+            TestSocket.Output = new List<String>();
 
+            Assert.AreEqual(expected,actual);
         }
 
         [TestCase]
