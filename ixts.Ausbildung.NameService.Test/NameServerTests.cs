@@ -33,12 +33,26 @@ namespace ixts.Ausbildung.NameService.Test
             sut.Loop();
             var actual = TestSocket.Output;
             TestSocket.Output = new List<String>();
+
             Assert.AreEqual(expected,actual);
         }
 
         [TestCase]
         public void GetTest()
         {
+            var expected = new List<String>
+                {
+                    "1 ",
+                    "1 firstValue",
+                    "1 "
+                };
+
+            testSocket.SetTestProtokoll("GetTest");
+            sut.Loop();
+            var actual = TestSocket.Output;
+            TestSocket.Output = new List<String>();
+
+            Assert.AreEqual(expected,actual);
 
         }
 

@@ -63,7 +63,9 @@ namespace ixts.Ausbildung.NameService
 
                     input = new List<String>
                         {
-                            ""
+                            "PUT firstKey firstValue",
+                            "GET firstKey",
+                            "STOP"
                         };
 
                     break;
