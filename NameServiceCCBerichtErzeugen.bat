@@ -1,4 +1,4 @@
-.\Misc\OpenCover\OpenCover.console.exe -register:user -target:"C:\Program Files (x86)\NUnit 2.6.3\bin\nunit-console.exe" -targetargs:".\NameService.Test\bin\Debug\NameService.Test.dll  /noshadow" -output:.\CCB.xml
+.\Misc\OpenCover\OpenCover.console.exe -register:user -target:"C:\Program Files (x86)\NUnit 2.6.3\bin\nunit-console.exe" -targetargs:".\ixts.Ausbildung.NameService.Test\bin\Debug\ixts.Ausbildung.NameService.Test.dll  /noshadow" -output:.\CCB.xml
 
 .\Misc\ReportGenerator_1.9.1.0\bin\ReportGenerator.exe -reports:".\CCB.xml" -targetdir:".\CCBericht"
 

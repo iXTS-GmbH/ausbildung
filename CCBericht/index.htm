@@ -12,26 +12,73 @@
 <col />
 </colgroup>
 <tbody>
-<tr><th>Generated on:</th><td>05.09.2014 - 13:18:49</td></tr>
+<tr><th>Generated on:</th><td>05.09.2014 - 14:41:57</td></tr>
 <tr><th>Parser:</th><td>OpenCoverParser</td></tr>
-<tr><th>Assemblies:</th><td>0</td></tr>
-<tr><th>Classes:</th><td>0</td></tr>
-<tr><th>Files:</th><td>0</td></tr>
-<tr><th>Coverage:</th><td></td></tr>
-<tr><th>Covered lines:</th><td>0</td></tr>
-<tr><th>Uncovered lines:</th><td>0</td></tr>
-<tr><th>Coverable lines:</th><td>0</td></tr>
-<tr><th>Total lines:</th><td>0</td></tr>
+<tr><th>Assemblies:</th><td>2</td></tr>
+<tr><th>Classes:</th><td>6</td></tr>
+<tr><th>Files:</th><td>6</td></tr>
+<tr><th>Coverage:</th><td>76.8%</td></tr>
+<tr><th>Covered lines:</th><td>136</td></tr>
+<tr><th>Uncovered lines:</th><td>41</td></tr>
+<tr><th>Coverable lines:</th><td>177</td></tr>
+<tr><th>Total lines:</th><td>393</td></tr>
 </tbody>
 </table>
 <h1>Assemblies</h1>
-<p>No assemblies have been covered.</p>
+<script type="text/javascript">
+/* <![CDATA[ */
+document.write('<div id="showcustomizebox" class="customizebox"><input href="#" id="showcustomizeboxbutton" value="Enable filtering" title="This may take some time since the report contains many classes." type="submit" /></div><div id="customizebox" class="customizebox hidden"><div><a href="#" data-bind="click: collapseAll">Collapse all</a> | <a href="#" data-bind="click: expandAll">Expand all</a></div><div class="center"><span data-bind="text: groupingDescription"></span><br />Grouping: <div id="namespaceslider"></div></div> <div class="right">Filter: <input type="text" data-bind="value: filter, valueUpdate: \'afterkeydown\'" /></div></div>');
+/* ]]> */
+</script>
+<script type="text/html" id="assembly-template">
+<tr data-bind="visible: visible, css: { namespace: parent != null }"><th><a href="#" data-bind="text: name, click: toggleCollapse, attr: { class: collapsed() ? 'collapsed' : 'expanded' }" title="Collapse/Expand"> </a></th><th class="right" data-bind="text: coveredLines"></th><th class="right" data-bind="text: uncoveredLines"></th><th class="right" data-bind="text: coverableLines"></th><th class="right" data-bind="text: isNaN(coverage()) ? '' : coverage() + '%', attr: { title: isNaN(coverage()) ? '' : coverageType }"></th><th><table class="coverage"><tr><td class="green" data-bind="style: { width: Math.round(coverage()) + 'px' }, visible: !isNaN(coverage()) && Math.round(coverage()) > 0">&nbsp;</td><td class="red"data-bind="style: { width: (100 - Math.round(coverage())) + 'px' }, visible: !isNaN(coverage()) && 100 - Math.round(coverage()) > 0">&nbsp;</td><td class="gray" style="width: 100px;" data-bind="visible: isNaN(coverage())">&nbsp;</td></tr></table></th></tr>
+<!-- ko template: { name: function(element) { return element.isNamespace ? 'assembly-template' : 'class-template'; } , foreach: subelements } -->
+<!-- /ko -->
+</script>
+<script type="text/html" id="class-template">
+<tr data-bind="visible: visible, css: { namespace: parent().parent != null }"><td><a data-bind="text: name, attr: { href: reportPath }, visible: reportPath !== ''"></a><span data-bind="text: name, visible: reportPath === ''"></span></td><td class="right" data-bind="text: coveredLines"></td><td class="right" data-bind="text: uncoveredLines"></td><td class="right" data-bind="text: coverableLines"></td><td class="right" data-bind="text: isNaN(coverage()) ? '' : coverage() + '%', attr: { title: isNaN(coverage()) ? '' : coverageType }"></td><td><table class="coverage"><tr><td class="green" data-bind="style: { width: Math.round(coverage()) + 'px' }, visible: !isNaN(coverage()) && Math.round(coverage()) > 0">&nbsp;</td><td class="red"data-bind="style: { width: (100 - Math.round(coverage())) + 'px' }, visible: !isNaN(coverage()) && 100 - Math.round(coverage()) > 0">&nbsp;</td><td class="gray" style="width: 100px;" data-bind="visible: isNaN(coverage())">&nbsp;</td></tr></table></td></tr>
+</script>
+<table id="summaryTable" class="overview">
+<colgroup>
+<col />
+<col width="90" />
+<col width="105" />
+<col width="100" />
+<col width="60" />
+<col width="112" />
+</colgroup>
+<thead><tr><th><a href="#" data-bind="attr: { class: sortby() === 'name' ? 'sortactive' + '_' + sortorder() : 'sortinactive_asc' }, click: function(data, event) { changeSorting(data, event, 'name') }">Name</a></th><th class="right"><a href="#" data-bind="attr: { class: sortby() === 'covered' ? 'sortactive' + '_' + sortorder() : 'sortinactive_asc' }, click: function(data, event) { changeSorting(data, event, 'covered') }">Covered</a></th><th class="right"><a href="#" data-bind="attr: { class: sortby() === 'uncovered' ? 'sortactive' + '_' + sortorder() : 'sortinactive_asc' }, click: function(data, event) { changeSorting(data, event, 'uncovered') }">Uncovered</a></th><th class="right"><a href="#" data-bind="attr: { class: sortby() === 'coverable' ? 'sortactive' + '_' + sortorder() : 'sortinactive_asc' }, click: function(data, event) { changeSorting(data, event, 'coverable') }">Coverable</a></th><th class="center" colspan="2"><a href="#" data-bind="attr: { class: sortby() === 'coverage' ? 'sortactive' + '_' + sortorder() : 'sortinactive_asc' }, click: function(data, event) { changeSorting(data, event, 'coverage') }">Coverage</a></th></tr></thead>
+<tbody data-bind="template: { name: 'assembly-template', foreach: assemblies }">
+<tr><th>ixts.Ausbildung.NameService</th><th class="right">102</th><th class="right">41</th><th class="right">143</th><th title="LineCoverage" class="right">71.3%</th><th><table class="coverage"><tr><td class="green" style="width: 71px;">&nbsp;</td><td class="red" style="width: 29px;">&nbsp;</td></tr></table></th></tr>
+<tr><td><a href="ixts.Ausbildung.NameService_NameServer.htm">ixts.Ausbildung.NameService.NameServer</a></td><td class="right">65</td><td class="right">5</td><td class="right">70</td><td title="LineCoverage" class="right">92.8%</td><td><table class="coverage"><tr><td class="green" style="width: 93px;">&nbsp;</td><td class="red" style="width: 7px;">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ixts.Ausbildung.NameService_SocketFactory.htm">ixts.Ausbildung.NameService.SocketFactory</a></td><td class="right">0</td><td class="right">3</td><td class="right">3</td><td title="LineCoverage" class="right">0%</td><td><table class="coverage"><tr><td class="red" style="width: 100px;">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ixts.Ausbildung.NameService_SocketImpl.htm">ixts.Ausbildung.NameService.SocketImpl</a></td><td class="right">0</td><td class="right">32</td><td class="right">32</td><td title="LineCoverage" class="right">0%</td><td><table class="coverage"><tr><td class="red" style="width: 100px;">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ixts.Ausbildung.NameService_TestSocket.htm">ixts.Ausbildung.NameService.TestSocket</a></td><td class="right">34</td><td class="right">1</td><td class="right">35</td><td title="LineCoverage" class="right">97.1%</td><td><table class="coverage"><tr><td class="green" style="width: 97px;">&nbsp;</td><td class="red" style="width: 3px;">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ixts.Ausbildung.NameService_TestSocketFaktory.htm">ixts.Ausbildung.NameService.TestSocketFaktory</a></td><td class="right">3</td><td class="right">0</td><td class="right">3</td><td title="LineCoverage" class="right">100%</td><td><table class="coverage"><tr><td class="green" style="width: 100px;">&nbsp;</td></tr></table></td></tr>
+<tr><th>ixts.Ausbildung.NameService.Test</th><th class="right">34</th><th class="right">0</th><th class="right">34</th><th title="LineCoverage" class="right">100%</th><th><table class="coverage"><tr><td class="green" style="width: 100px;">&nbsp;</td></tr></table></th></tr>
+<tr><td><a href="ixts.Ausbildung.NameService.Test_NameServerTests.htm">ixts.Ausbildung.NameService.Test.NameServerTests</a></td><td class="right">34</td><td class="right">0</td><td class="right">34</td><td title="LineCoverage" class="right">100%</td><td><table class="coverage"><tr><td class="green" style="width: 100px;">&nbsp;</td></tr></table></td></tr>
+</tbody>
+</table>
 <script type="text/javascript">
 /* <![CDATA[ */
 var assemblies = [
+  {
+    "name" : 'ixts.Ausbildung.NameService',
+    "classes" : [
+    { "name" : 'ixts.Ausbildung.NameService.NameServer', "reportPath" : 'ixts.Ausbildung.NameService_NameServer.htm', "coveredLines" : 65, "uncoveredLines" : 5, "coverableLines" : 70, "coverageType" : 'LineCoverage', "methodCoverage" : '-' },
+    { "name" : 'ixts.Ausbildung.NameService.SocketFactory', "reportPath" : 'ixts.Ausbildung.NameService_SocketFactory.htm', "coveredLines" : 0, "uncoveredLines" : 3, "coverableLines" : 3, "coverageType" : 'LineCoverage', "methodCoverage" : '-' },
+    { "name" : 'ixts.Ausbildung.NameService.SocketImpl', "reportPath" : 'ixts.Ausbildung.NameService_SocketImpl.htm', "coveredLines" : 0, "uncoveredLines" : 32, "coverableLines" : 32, "coverageType" : 'LineCoverage', "methodCoverage" : '-' },
+    { "name" : 'ixts.Ausbildung.NameService.TestSocket', "reportPath" : 'ixts.Ausbildung.NameService_TestSocket.htm', "coveredLines" : 34, "uncoveredLines" : 1, "coverableLines" : 35, "coverageType" : 'LineCoverage', "methodCoverage" : '-' },
+    { "name" : 'ixts.Ausbildung.NameService.TestSocketFaktory', "reportPath" : 'ixts.Ausbildung.NameService_TestSocketFaktory.htm', "coveredLines" : 3, "uncoveredLines" : 0, "coverableLines" : 3, "coverageType" : 'LineCoverage', "methodCoverage" : '-' },
+  ]},
+  {
+    "name" : 'ixts.Ausbildung.NameService.Test',
+    "classes" : [
+    { "name" : 'ixts.Ausbildung.NameService.Test.NameServerTests', "reportPath" : 'ixts.Ausbildung.NameService.Test_NameServerTests.htm', "coveredLines" : 34, "uncoveredLines" : 0, "coverableLines" : 34, "coverageType" : 'LineCoverage', "methodCoverage" : '-' },
+  ]},
 ];
 /* ]]> */
 </script>
-<div class="footer">Generated by: ReportGenerator 1.9.1.0<br />05.09.2014 - 13:18:49<br /><a href="http://www.palmmedia.de">www.palmmedia.de</a></div></div>
+<div class="footer">Generated by: ReportGenerator 1.9.1.0<br />05.09.2014 - 14:41:57<br /><a href="http://www.palmmedia.de">www.palmmedia.de</a></div></div>
 <script type="text/javascript" src="combined.js"></script>
 </body></html>
