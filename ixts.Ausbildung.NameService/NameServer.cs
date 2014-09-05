@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Net.Sockets;
 using System.Text;
 
@@ -75,8 +74,8 @@ namespace ixts.Ausbildung.NameService
 
                     default:
 
-                        Console.WriteLine("Illegal command recived: {0}", command);
-                        ConSocket.Send(Encoding.ASCII.GetBytes(string.Format("Illegal command: {0}",command)));
+                        Console.WriteLine("Illegal Command recived: {0}", command);
+                        ConSocket.Send(Encoding.ASCII.GetBytes(string.Format("Illegal Command: {0}",command)));
 
                         break;
                 }

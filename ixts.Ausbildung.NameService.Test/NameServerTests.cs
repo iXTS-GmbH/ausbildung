@@ -88,10 +88,16 @@ namespace ixts.Ausbildung.NameService.Test
         {
             var expected = new List<String>
                 {
-                    "Illegal Command NotACommand",
+                    "Illegal Command: NotACommand",
                     "1 "
                 };
-            //testSocket.
+            testSocket.SetTestProtokoll("IllegalCommandTest");
+            sut.Loop();
+            var actual = TestSocket.Output;
+            TestSocket.Output = new List<String>();
+
+            Assert.AreEqual(expected,actual);
+
         }
     }
 }
