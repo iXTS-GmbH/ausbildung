@@ -7,7 +7,7 @@ namespace TextFileLines
         String ReadLine();
         String[][] GetOutput();
         void WriteLine(String line);
-        void WriteLines(String targetPath, String[] lines);
+        void WriteLine(String targetPath, String line);
         void Close();
     }
 }

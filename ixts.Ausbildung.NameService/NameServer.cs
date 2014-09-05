@@ -75,7 +75,8 @@ namespace ixts.Ausbildung.NameService
 
                     default:
 
-                        Console.WriteLine("Illegal command recived: {0}",command);
+                        Console.WriteLine("Illegal command recived: {0}", command);
+                        ConSocket.Send(Encoding.ASCII.GetBytes(string.Format("Illegal command: {0}",command)));
 
                         break;
                 }

@@ -87,6 +87,13 @@ namespace ixts.Ausbildung.NameService
                             "STOP"
                         };
                     break;
+                case "IllegalCommandTest":
+                    input = new List<string>
+                        {
+                            "NotACommand",
+                            "STOP"
+                        };
+                    break;
             }
         }
     }

@@ -43,9 +43,10 @@ namespace TextFileLines
             }
         }
 
-        public void WriteLines(string targetPath, string[] lines)
+        public void WriteLine(string targetPath, string line)
         {
-            File.WriteAllLines(targetPath, lines);
+            var fileWriter = new StreamWriter(targetPath);
+            fileWriter.WriteLine(line);
         }
 
 

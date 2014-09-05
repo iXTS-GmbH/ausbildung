@@ -7,7 +7,6 @@ namespace TextFileLines
 
         public void Map(String sourcePath, String targetPath, IStreamFactory str = null)
         {   
-            //Erklärung siehe TextFileLines
             str = str ?? new StreamFactory();
 
             var file = str.Make(sourcePath, targetPath);

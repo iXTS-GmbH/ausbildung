@@ -82,5 +82,16 @@ namespace ixts.Ausbildung.NameService.Test
             
             Assert.IsFalse(TestSocket.Status);
         }
+
+        [TestCase]
+        public void IllegalCommandTest()
+        {
+            var expected = new List<String>
+                {
+                    "Illegal Command NotACommand",
+                    "1 "
+                };
+            //testSocket.
+        }
     }
 }

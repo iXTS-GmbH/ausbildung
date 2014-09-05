@@ -7,7 +7,9 @@ namespace TextFileLines
     {
         private static List<String> readFile = new List<String>();
         private static List<String> writeFile = new List<String>();
-        private static List<String[]> outputFiles = new List<string[]>();
+        private static List<String[]> outputFiles = new List<String[]>();
+        private String lastFile = "";
+        private static List<String> currentFile = new List<String>(); 
         private readonly String outputFile;
         private int readFileLineCounter = -1;
 
@@ -134,6 +136,7 @@ namespace TextFileLines
 
         public string[][] GetOutput()
         {
+            outputFiles.Add(currentFile.ToArray());
             var output = outputFiles;
             outputFiles = new List<String[]>();
             return output.ToArray();
@@ -151,9 +154,20 @@ namespace TextFileLines
             }
         }
 
-        public void WriteLines(string targetPath, string[] lines)
+        public void WriteLine(string targetPath, string line)
         {
-            outputFiles.Add(lines);
+            if (lastFile == "" || lastFile == targetPath)
+            {
+                currentFile.Add(line);
+                lastFile = targetPath;
+            }
+            else
+            {
+                outputFiles.Add(currentFile.ToArray());
+                currentFile = new List<string>{line};
+                lastFile = targetPath;
+            }   
+            
         }
 
 
