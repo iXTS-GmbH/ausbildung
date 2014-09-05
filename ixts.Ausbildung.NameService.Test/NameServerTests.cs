@@ -77,7 +77,10 @@ namespace ixts.Ausbildung.NameService.Test
         [TestCase]
         public void StopTest()
         {
-
+            testSocket.SetTestProtokoll("StopTest");
+            sut.Loop();
+            
+            Assert.IsFalse(TestSocket.Status);
         }
     }
 }

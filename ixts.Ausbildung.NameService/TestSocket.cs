@@ -6,7 +6,7 @@ namespace ixts.Ausbildung.NameService
 {
     public class TestSocket:ISocket
     {
-        public Boolean Status = true;
+        public static Boolean Status = true;
         public static List<String> Output = new List<String>();
         private int lineCounter;
         private static List<String> input = new List<String>(); 
@@ -79,6 +79,13 @@ namespace ixts.Ausbildung.NameService
                             "STOP"
                         };
 
+                    break;
+                case "StopTest":
+
+                    input = new List<string>
+                        {
+                            "STOP"
+                        };
                     break;
             }
         }
