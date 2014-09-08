@@ -5,15 +5,9 @@ namespace ixts.Ausbildung.NameService
 {
     public class TestStream:IStream
     {
+        public static Dictionary<String,String> ServerFile = new Dictionary<String, String>(); 
         private String serverFileName;
-
-        private Dictionary<String, String> map = new Dictionary<String, String>
-            {
-                {"firstKey","firstValue"},
-                {"secondKey","secondValue"},
-                {"thirdKey","thirdValue"},
-                {"fourdKey","fourdValue"}
-            }; 
+        public static Dictionary<String, String> Map = new Dictionary<String, String>(); 
 
         public TestStream(String fileName)
         {
@@ -22,12 +16,12 @@ namespace ixts.Ausbildung.NameService
 
         public Dictionary<String, String> LoadMap()
         {
-            return map;
+            return Map;
         }
 
         public void SaveMap(Dictionary<String, String> store)
         {
-            map = store;
+            ServerFile = store;
         }
 
 

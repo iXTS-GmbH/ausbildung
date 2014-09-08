@@ -50,8 +50,8 @@ namespace ixts.Ausbildung.NameService
 
                     input = new List<String>
                         {
-                            "PUT testKey testValue",
-                            "PUT testKey anOtherTestValue",
+                            "PUT firstKey firstValue",
+                            "PUT firstKey newfirstValue",
                             "STOP"
                         };
 
@@ -60,8 +60,8 @@ namespace ixts.Ausbildung.NameService
 
                     input = new List<String>
                         {
-                            "PUT testKey testValue",
-                            "GET testKey",
+                            "PUT firstKey firstValue",
+                            "GET firstKey",
                             "STOP"
                         };
 
@@ -70,9 +70,9 @@ namespace ixts.Ausbildung.NameService
 
                     input = new List<String>
                         {
-                            "PUT testKey testValue",
-                            "DEL testKey",
-                            "GET testKey",
+                            "PUT firstKey firstValue",
+                            "DEL firstKey",
+                            "GET firstKey",
                             "STOP"
                         };
 
@@ -90,6 +90,29 @@ namespace ixts.Ausbildung.NameService
                             "NotACommand",
                             "STOP"
                         };
+                    break;
+                case "LoadTest":
+
+                    input = new List<String>
+                        {
+                            "GET firstKey",
+                            "GET secondKey",
+                            "GET thirdKey",
+                            "GET fourdKey",
+                            "STOP"
+                        };
+
+                    break;
+                case "SaveTest":
+
+                    input = new List<String>
+                        {
+                            "DEL secondKey",
+                            "PUT fourdKey newfourdValue",
+                            "PUT fiftKey fiftValue",
+                            "STOP"
+                        };
+
                     break;
             }
         }

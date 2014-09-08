@@ -9,7 +9,7 @@ namespace ixts.Ausbildung.NameService
     public class NameServer
     {
 
-        private readonly Dictionary<string, string> store = new Dictionary<String, String>();
+        private Dictionary<string, string> store = new Dictionary<String, String>();
         private readonly int port;
         private static String data;
         private ISocketFactory sFactory;
@@ -23,6 +23,12 @@ namespace ixts.Ausbildung.NameService
             sFactory = socketFactory ?? new SocketFactory();
 
             stream = streamFactory.Make(SERVERFILENAME);
+            port = p;
+            
+        }
+
+        public void Loop()
+        {
 
             if (stream.Exists(SERVERFILENAME))
             {
@@ -33,12 +39,6 @@ namespace ixts.Ausbildung.NameService
                 store = new Dictionary<String, String>();
             }
 
-            port = p;
-            
-        }
-
-        public void Loop()
-        {
             var ss = sFactory.Make(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             ss.Bind(port);
             ss.Listen(10);
