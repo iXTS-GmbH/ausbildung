@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{CCD517B4-AEC4-493C-9451-ED7E80BBDEE8}</ProjectGuid>
+    <ProjectGuid>{ACA6A75B-3146-4E18-9C85-03E9AE5FDA47}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ixts.Ausbildung.NameService.ConsoleApp</RootNamespace>
-    <AssemblyName>ixts.Ausbildung.NameService.ConsoleApp</AssemblyName>
+    <RootNamespace>ixts.Ausbildung.NameService.ClientApp</RootNamespace>
+    <AssemblyName>ixts.Ausbildung.NameService.ClientApp</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>

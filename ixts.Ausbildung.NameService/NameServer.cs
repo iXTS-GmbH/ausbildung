@@ -12,8 +12,8 @@ namespace ixts.Ausbildung.NameService
         private Dictionary<string, string> store = new Dictionary<String, String>();
         private readonly int port;
         private static String data;
-        private ISocketFactory sFactory;
-        private IStream stream;
+        private readonly ISocketFactory sFactory;
+        private readonly IStream stream;
         private const String SERVERFILENAME = "nameservermap.ser";
         public ISocket ConSocket;
 
