@@ -27,8 +27,13 @@ namespace ixts.Ausbildung.NameService
 
         public String Receive()
         {
+            if (input.Count > lineCounter)
+            {
             lineCounter += 1;
             return input[lineCounter - 1];
+            }
+            return null;
+
         }
 
         public void Send(byte[] msg)
@@ -57,6 +62,7 @@ namespace ixts.Ausbildung.NameService
                         };
 
                     break;
+
                 case "GetTest":
 
                     input = new List<String>
@@ -67,6 +73,7 @@ namespace ixts.Ausbildung.NameService
                         };
 
                     break;
+
                 case "DelTest":
 
                     input = new List<String>
@@ -78,6 +85,7 @@ namespace ixts.Ausbildung.NameService
                         };
 
                     break;
+
                 case "StopTest":
 
                     input = new List<string>
@@ -85,6 +93,7 @@ namespace ixts.Ausbildung.NameService
                             "STOP"
                         };
                     break;
+
                 case "IllegalCommandTest":
                     input = new List<string>
                         {
@@ -92,6 +101,7 @@ namespace ixts.Ausbildung.NameService
                             "STOP"
                         };
                     break;
+
                 case "LoadTest":
 
                     input = new List<String>
@@ -104,6 +114,7 @@ namespace ixts.Ausbildung.NameService
                         };
 
                     break;
+
                 case "SaveTest":
 
                     input = new List<String>
@@ -113,6 +124,37 @@ namespace ixts.Ausbildung.NameService
                             "PUT fiftKey fiftValue",
                             "STOP"
                         };
+
+                    break;
+
+                case "ClientPutTest":
+
+                    input = new List<String>
+                        {
+                            "1 "
+                        };
+
+                    break;
+
+                case "ClientGetTest":
+
+                    input = new List<String>
+                        {
+                            "1 ",
+                            "1 Get"
+                        };
+
+
+                    break;
+
+                case "ClientDelTest":
+
+                    input = new List<string>
+                        {
+                            "1 ",
+                            "1 Del"
+                        };
+
 
                     break;
             }

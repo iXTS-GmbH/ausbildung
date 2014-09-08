@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net.Sockets;
 using NUnit.Framework;
 
 namespace ixts.Ausbildung.NameService.Test
@@ -15,7 +14,7 @@ namespace ixts.Ausbildung.NameService.Test
         [SetUp]
         public void SetUp()
         {
-            var testSocketFactory = new TestSocketFaktory();
+            var testSocketFactory = new TestSocketFactory();
             var testStreamFactory = new TestStreamFactory();
             sut = new NameServer(2000,testSocketFactory,testStreamFactory);
             testSocket = new TestSocket();

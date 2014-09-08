@@ -2,7 +2,7 @@
 
 namespace ixts.Ausbildung.NameService
 {
-    public class TestSocketFaktory:ISocketFactory
+    public class TestSocketFactory:ISocketFactory
     {
         public ISocket Make(AddressFamily addressFamily, SocketType socketType, ProtocolType protocolType)
         {

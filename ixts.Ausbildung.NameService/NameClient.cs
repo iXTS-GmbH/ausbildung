@@ -9,41 +9,74 @@ namespace ixts.Ausbildung.NameService
     {
         private readonly IPAddress ip;
         private readonly int port;
-        private ISocketFactory socketFactory;
+        private readonly ISocketFactory socketFactory;
 
         public NameClient(String serverIP, int serverPort,ISocketFactory sFactory = null)
         {
             socketFactory = sFactory ?? new SocketFactory();
-            ip = IPAddress.Parse(serverIP);
+
+            if (serverIP == "localhost")
+            {
+                ip = null;
+            }
+            else
+            {
+                ip = IPAddress.Parse(serverIP);
+            }
+
             port = serverPort;
         }
 
-        public String Action(String command,String key,String value)
+        public String Action(String command,String key,String value = null)
         {
             String result = null;
+            String answer;
 
             command = command.ToUpper();
 
             switch (command)
             {
                 case "PUT":
-                    result = Send(string.Format("PUT"));
+                    answer = Send(string.Format("PUT {0} {1}",key,value));
+
+                    if (answer.StartsWith("1"))
+                    {
+                        result = answer.Substring(1).Trim();
+                    }
+                     
                     break;
+
                 case "GET":
-                    result = Send(string.Format("GET"));
+
+                    answer = Send(string.Format("GET {0}",key));
+
+                    if (answer.StartsWith("1"))
+                    {
+                        result = answer.Substring(1).Trim();
+                    }
+
                     break;
+
                 case "DEL":
-                   result = Send(string.Format("DEL"));
+
+                    answer = Send(string.Format("DEL {0}",key));
+
+                    if (answer.StartsWith("1"))
+                    {
+                        result = answer.Substring(1).Trim();
+                    }
+
                     break;
+
                 default:
+
                     Console.WriteLine("{0} ist kein gültiger Befehl",command);
+
                     break;
             }
 
             return result;
         }
-
-
 
         private String Send(String command)
         {
@@ -61,6 +94,5 @@ namespace ixts.Ausbildung.NameService
             return answer;
 
         }
-
     }
 }

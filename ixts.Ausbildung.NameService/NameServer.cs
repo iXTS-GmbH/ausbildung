@@ -96,6 +96,7 @@ namespace ixts.Ausbildung.NameService
 
                 data = "";
             }
+            stream.SaveMap(store);
             ss.Close();
         }
 
