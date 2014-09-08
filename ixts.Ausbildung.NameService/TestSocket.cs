@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text;
 
 namespace ixts.Ausbildung.NameService
@@ -11,7 +12,7 @@ namespace ixts.Ausbildung.NameService
         private int lineCounter;
         private static List<String> input = new List<String>(); 
 
-        public void Bind(int port)
+        public void Bind(int port, IPAddress ip = null)
         {
         }
 

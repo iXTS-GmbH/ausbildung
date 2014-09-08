@@ -19,11 +19,15 @@ namespace ixts.Ausbildung.NameService
             socket = s;
         }
 
-        public void Bind(int port)
+        public void Bind(int port, IPAddress ip = null)
         {
-            IPHostEntry ipHostInfo = Dns.Resolve(Dns.GetHostName());
-            IPAddress ipAddress = ipHostInfo.AddressList[0];
-            IPEndPoint localEndPoint = new IPEndPoint(ipAddress, port);
+            if (ip == null)
+            {
+            var ipHostInfo = Dns.Resolve(Dns.GetHostName());
+            ip = ipHostInfo.AddressList[0];
+            }
+            
+            var localEndPoint = new IPEndPoint(ip, port);
             socket.Bind(localEndPoint);
         }
 
@@ -32,7 +36,7 @@ namespace ixts.Ausbildung.NameService
             socket.Listen(backlog);
         }
 
-        public ISocket Accept()//TODO Herausfinden was die Methode überhaupt macht
+        public ISocket Accept()
         {
             Socket s = socket.Accept();
             return new SocketImpl(s);
