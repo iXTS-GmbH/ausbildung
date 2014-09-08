@@ -49,7 +49,7 @@ namespace ixts.Ausbildung.NameService.Test
         [TestCase]
         public void IllegalCommandTest()
         {
-            sut.Action("ILLEGALCOMMAND", "AFFE");
+            sut.Action("NotACommand", "NoKey");
         }
 
         [TestCase]
