@@ -165,6 +165,21 @@ namespace ixts.Ausbildung.NameService.Test
             Assert.AreEqual(expected,actual);
         }
 
+        [TestCase]
+        public void NoFileTest()
+        {
+            TestStream.Exist = false;
+            var server = new NameServer(2000, new TestSocketFactory(), new TestStreamFactory());
+            testSocket.SetTestProtokoll("NoFileTest");
+            server.Loop();
+            var expected = new Dictionary<String, String>();
+            var actual = TestStream.ServerFile;
+            TestStream.Exist = true;
+            TestSocket.Output = new List<String>();
+
+
+            Assert.AreEqual(expected,actual);
+        }
 
     }
 }

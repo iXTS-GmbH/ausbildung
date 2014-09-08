@@ -151,6 +151,15 @@ namespace ixts.Ausbildung.NameService
                         };
 
                     break;
+
+                case "NoFileTest":
+
+                    input = new List<String>
+                        {
+                            "STOP"
+                        };
+
+                    break;
             }
         }
     }
