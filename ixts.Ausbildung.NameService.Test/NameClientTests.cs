@@ -34,7 +34,11 @@ namespace ixts.Ausbildung.NameService.Test
         [TestCase]
         public void ClientGetTest()
         {
+            testSocket.SetTestProtokoll("ClientGetTest");
 
+            var expected = "GetValue";
+            var actual = sut.Action("GET", "GET");
+            Assert.AreEqual(expected, actual);
         }
 
         [TestCase]

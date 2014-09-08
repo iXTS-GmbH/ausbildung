@@ -140,8 +140,7 @@ namespace ixts.Ausbildung.NameService
 
                     input = new List<String>
                         {
-                            "1 ",
-                            "1 Get"
+                            "1 GetValue"
                         };
 
 
@@ -151,8 +150,7 @@ namespace ixts.Ausbildung.NameService
 
                     input = new List<string>
                         {
-                            "1 ",
-                            "1 Del"
+                            "1 DelValue"
                         };
 
 
