@@ -104,7 +104,10 @@ namespace ixts.Ausbildung.NameService.Test
         [TestCase]
         public void LoadTest()
         {
-
+            var expected = new List<String>
+                {
+                    
+                };
         }
 
         [TestCase]

@@ -29,5 +29,11 @@ namespace ixts.Ausbildung.NameService
         {
             map = store;
         }
+
+
+        public Boolean Exists(string fileName)
+        {
+            return true;
+        }
     }
 }

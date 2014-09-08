@@ -34,5 +34,11 @@ namespace ixts.Ausbildung.NameService
             }
             File.WriteAllLines(serverFileName, map.ToArray());
         }
+
+
+        public bool Exists(string fileName)
+        {
+            return File.Exists(fileName);
+        }
     }
 }

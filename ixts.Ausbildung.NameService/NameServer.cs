@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Net.Sockets;
 using System.Text;
 
@@ -25,13 +24,13 @@ namespace ixts.Ausbildung.NameService
 
             stream = streamFactory.Make(SERVERFILENAME);
 
-            if (File.Exists(SERVERFILENAME))
+            if (stream.Exists(SERVERFILENAME))
             {
                 store = stream.LoadMap();
             }
             else
             {
-                store = new Dictionary<string, string>();
+                store = new Dictionary<String, String>();
             }
 
             port = p;
