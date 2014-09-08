@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Sockets;
-using System.Text;
+﻿using System.Net;
 using NUnit.Framework;
 
 namespace ixts.Ausbildung.NameService.Test
@@ -49,6 +45,24 @@ namespace ixts.Ausbildung.NameService.Test
             var expected = "DelValue";
             var actual = sut.Action("DEL", "DEL");
             Assert.AreEqual(expected, actual);
+        }
+
+        [ExpectedException]
+        [TestCase]
+        public void IllegalCommandTest()
+        {
+            sut.Action("ILLEGALCOMMAND", "AFFE");
+        }
+
+        [TestCase]
+        public void IPTest()
+        {
+            var expected = IPAddress.Parse("172.16.92.128");
+            var client = new NameClient("172.16.92.128", 2000, testSocketFactory);
+            client.Action("PUT", "IPTest", "172.16.92.128");
+            var actual = TestSocket.ServerIP;
+
+            Assert.AreEqual(expected,actual);
         }
 
 

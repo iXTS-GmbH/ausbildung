@@ -10,10 +10,13 @@ namespace ixts.Ausbildung.NameService
         public static Boolean Status = true;
         public static List<String> Output = new List<String>();
         private int lineCounter;
-        private static List<String> input = new List<String>(); 
+        private static List<String> input = new List<String>();
+        public static IPAddress ServerIP;
 
-        public void Bind(int port, IPAddress ip = null)
+
+        public void Bind(int port, IPAddress ip)
         {
+            ServerIP = ip;
         }
 
         public void Listen(int backlog)
@@ -27,13 +30,8 @@ namespace ixts.Ausbildung.NameService
 
         public String Receive()
         {
-            if (input.Count > lineCounter)
-            {
             lineCounter += 1;
             return input[lineCounter - 1];
-            }
-            return null;
-
         }
 
         public void Send(byte[] msg)
@@ -143,16 +141,14 @@ namespace ixts.Ausbildung.NameService
                             "1 GetValue"
                         };
 
-
                     break;
 
                 case "ClientDelTest":
 
-                    input = new List<string>
+                    input = new List<String>
                         {
                             "1 DelValue"
                         };
-
 
                     break;
             }

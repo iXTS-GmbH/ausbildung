@@ -7,7 +7,8 @@ namespace ixts.Ausbildung.NameService
     {
         public static Dictionary<String,String> ServerFile = new Dictionary<String, String>(); 
         private String serverFileName;
-        public static Dictionary<String, String> Map = new Dictionary<String, String>(); 
+        public static Dictionary<String, String> Map = new Dictionary<String, String>();
+        public static Boolean Exist = true;
 
         public TestStream(String fileName)
         {
@@ -27,7 +28,7 @@ namespace ixts.Ausbildung.NameService
 
         public Boolean Exists(string fileName)
         {
-            return true;
+            return Exist;
         }
     }
 }

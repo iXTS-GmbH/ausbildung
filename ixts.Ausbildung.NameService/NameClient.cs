@@ -70,9 +70,7 @@ namespace ixts.Ausbildung.NameService
 
                 default:
 
-                    Console.WriteLine("{0} ist kein gültiger Befehl",command);
-
-                    break;
+                    throw new Exception(string.Format("{0} ist kein gültiger Befehl",command));
             }
 
             return result;
