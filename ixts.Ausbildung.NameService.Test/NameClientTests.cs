@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using NUnit.Framework;
 
 namespace ixts.Ausbildung.NameService.Test
@@ -7,8 +8,8 @@ namespace ixts.Ausbildung.NameService.Test
     public class NameClientTests
     {
         private NameClient sut;
-        private TestSocketFactory testSocketFactory = new TestSocketFactory();
-        private TestSocket testSocket = new TestSocket();
+        private readonly TestSocketFactory testSocketFactory = new TestSocketFactory();
+        private readonly TestSocket testSocket = new TestSocket();
         
         [SetUp]
         public void SetUp()
@@ -16,33 +17,30 @@ namespace ixts.Ausbildung.NameService.Test
             sut = new NameClient("localhost",2000,testSocketFactory);
         }
 
-        [TestCase]
-        public void ClientPutTest()
+        [TestCase("")]
+        public void ClientPutTest(String expected)
         {
             testSocket.SetTestProtokoll("ClientPutTest");
             
-            var expected = "";
             var actual = sut.Action("PUT", "GET", "VALUE");
             Assert.AreEqual(expected, actual);
 
         }
 
-        [TestCase]
-        public void ClientGetTest()
+        [TestCase("GetValue")]
+        public void ClientGetTest(String expected)
         {
             testSocket.SetTestProtokoll("ClientGetTest");
 
-            var expected = "GetValue";
             var actual = sut.Action("GET", "GET");
             Assert.AreEqual(expected, actual);
         }
 
-        [TestCase]
-        public void ClientDelTest()
+        [TestCase("DelValue")]
+        public void ClientDelTest(String expected)
         {
             testSocket.SetTestProtokoll("ClientDelTest");
 
-            var expected = "DelValue";
             var actual = sut.Action("DEL", "DEL");
             Assert.AreEqual(expected, actual);
         }

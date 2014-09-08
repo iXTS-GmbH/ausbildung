@@ -15,14 +15,7 @@ namespace ixts.Ausbildung.NameService
         {
             socketFactory = sFactory ?? new SocketFactory();
 
-            if (serverIP == "localhost")
-            {
-                ip = null;
-            }
-            else
-            {
-                ip = IPAddress.Parse(serverIP);
-            }
+            ip = serverIP == "localhost" ? null : IPAddress.Parse(serverIP);
 
             port = serverPort;
         }
@@ -78,7 +71,7 @@ namespace ixts.Ausbildung.NameService
 
         private String Send(String command)
         {
-            ISocket s = socketFactory.Make(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            var s = socketFactory.Make(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             s.Bind(port,ip);
 
             var msg = Encoding.ASCII.GetBytes(command);

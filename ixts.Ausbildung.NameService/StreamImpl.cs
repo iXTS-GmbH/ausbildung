@@ -6,7 +6,7 @@ namespace ixts.Ausbildung.NameService
 {
     public class StreamImpl:IStream
     {
-        private String serverFileName;
+        private readonly String serverFileName;
 
         public StreamImpl(String fileName)
         {

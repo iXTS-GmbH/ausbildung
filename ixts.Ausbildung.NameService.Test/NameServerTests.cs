@@ -116,10 +116,10 @@ namespace ixts.Ausbildung.NameService.Test
         {
             TestStream.Map = new Dictionary<string, string>
                 {
-                {"firstKey","firstValue"},
-                {"secondKey","secondValue"},
-                {"thirdKey","thirdValue"},
-                {"fourdKey","fourdValue"}
+                    {"firstKey","firstValue"},
+                    {"secondKey","secondValue"},
+                    {"thirdKey","thirdValue"},
+                    {"fourdKey","fourdValue"}
                 };
 
             var expected = new List<String>
@@ -143,10 +143,10 @@ namespace ixts.Ausbildung.NameService.Test
         {
             TestStream.Map = new Dictionary<string, string>
                 {
-                {"firstKey","firstValue"},
-                {"secondKey","secondValue"},
-                {"thirdKey","thirdValue"},
-                {"fourdKey","fourdValue"}
+                    {"firstKey","firstValue"},
+                    {"secondKey","secondValue"},
+                    {"thirdKey","thirdValue"},
+                    {"fourdKey","fourdValue"}
                 };
 
             var expected = new Dictionary<String, String>
@@ -176,7 +176,6 @@ namespace ixts.Ausbildung.NameService.Test
             var actual = TestStream.ServerFile;
             TestStream.Exist = true;
             TestSocket.Output = new List<String>();
-
 
             Assert.AreEqual(expected,actual);
         }

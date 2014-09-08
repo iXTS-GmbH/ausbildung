@@ -23,7 +23,7 @@ namespace ixts.Ausbildung.NameService
         {
             if (ip == null)
             {
-            var ipHostInfo = Dns.Resolve(Dns.GetHostName());
+            var ipHostInfo = Dns.Resolve(Dns.GetHostName());//TODO das irgendwie biegen
             ip = ipHostInfo.AddressList[0];
             }
             
@@ -38,14 +38,13 @@ namespace ixts.Ausbildung.NameService
 
         public ISocket Accept()
         {
-            Socket s = socket.Accept();
-            return new SocketImpl(s);
+            return new SocketImpl(socket.Accept());
         }
 
         public String Receive()
         {
-            byte[] bytes = new byte[1024];
-            int bytesRec = socket.Receive(bytes);
+            var bytes = new byte[1024];
+            var bytesRec = socket.Receive(bytes);
             return Encoding.ASCII.GetString(bytes, 0, bytesRec);
              
         }

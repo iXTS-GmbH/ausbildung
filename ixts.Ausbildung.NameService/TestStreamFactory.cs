@@ -6,7 +6,7 @@ namespace ixts.Ausbildung.NameService
     {
         public IStream Make(String fileName)
         {
-            return new TestStream(fileName);
+            return new TestStream();
         }
     }
 }

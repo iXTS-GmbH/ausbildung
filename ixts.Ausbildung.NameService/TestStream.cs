@@ -6,14 +6,8 @@ namespace ixts.Ausbildung.NameService
     public class TestStream:IStream
     {
         public static Dictionary<String,String> ServerFile = new Dictionary<String, String>(); 
-        private String serverFileName;
         public static Dictionary<String, String> Map = new Dictionary<String, String>();
         public static Boolean Exist = true;
-
-        public TestStream(String fileName)
-        {
-            serverFileName = fileName;
-        }
 
         public Dictionary<String, String> LoadMap()
         {

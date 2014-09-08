@@ -30,19 +30,12 @@ namespace ixts.Ausbildung.NameService
         public void Loop()
         {
 
-            if (stream.Exists(SERVERFILENAME))
-            {
-                store = stream.LoadMap();
-            }
-            else
-            {
-                store = new Dictionary<String, String>();
-            }
+            store = stream.Exists(SERVERFILENAME) ? stream.LoadMap() : new Dictionary<String, String>();
 
             var ss = sFactory.Make(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             ss.Bind(port);
             ss.Listen(10);
-            Boolean run = true;
+            var run = true;
 
             Console.WriteLine("Server started on Port:{0}",port);
 
@@ -51,11 +44,11 @@ namespace ixts.Ausbildung.NameService
                 ConSocket = ss.Accept();
                 data += ConSocket.Receive();
 
-                String[] request = data.Split(new[] { ' ' });
-                String command = request[0];
-                String key = request.Length > 1 ? request[1] : null;
-                Boolean contain = false;
-                String oldvalue = "";
+                var request = data.Split(new[] { ' ' });
+                var command = request[0];
+                var key = request.Length > 1 ? request[1] : null;
+                var contain = false;
+                var oldvalue = "";
 
                 if (key != null)
                 {
@@ -68,22 +61,27 @@ namespace ixts.Ausbildung.NameService
                 {
                     case "PUT":
 
-                        Put(contain, request[2], key,oldvalue,ConSocket);
+                        Put(contain, request[2], key);
+                        Send(oldvalue);
+
                         break;
 
                     case "GET":
 
-                        Get(contain, key,ConSocket);
+                        Send(contain ? store[key] : null);
+
                         break;
 
                     case "DEL":
 
-                        Del(contain, key,oldvalue,ConSocket);
+                        store.Remove(key);
+                        Send(oldvalue);
+                        
                         break;
 
                     case "STOP":
-
-                        run = Stop(ConSocket);
+                        Send("");
+                        run = false;
                         break;
 
                     default:
@@ -100,16 +98,16 @@ namespace ixts.Ausbildung.NameService
             ss.Close();
         }
 
-        private void Send(String value, ISocket socket)
+        private void Send(String value)
         {
             String answer = value == null ? "0" : string.Format("1 {0}", value);
 
             byte[] msg = Encoding.ASCII.GetBytes(answer);
-            socket.Send(msg);
+            ConSocket.Send(msg);
         }
 
 
-        private void Put(Boolean contain,String newValue, String key,String oldvalue, ISocket socket)
+        private void Put(Boolean contain,String newValue, String key)
         {
             if (contain)
             {
@@ -119,28 +117,6 @@ namespace ixts.Ausbildung.NameService
             {
                 store.Add(key, newValue);
             }
-            Send(oldvalue,socket);
-        }
-
-        private void Get(Boolean contain, String key, ISocket socket)
-        {
-            var value = contain ? store[key] : null;
-            Send(value,socket);
-        }
-
-        private void Del(Boolean contain, String key, String oldvalue, ISocket socket)
-        {
-            store.Remove(key);
-            var value = contain ? oldvalue : null;
-            Send(value,socket);
-        }
-
-        private Boolean Stop(ISocket socket)
-        {
-            stream.SaveMap(store);
-
-            Send("",socket);
-            return false;
         }
     }
 }
