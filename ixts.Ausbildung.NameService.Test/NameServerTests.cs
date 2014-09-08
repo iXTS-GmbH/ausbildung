@@ -100,5 +100,18 @@ namespace ixts.Ausbildung.NameService.Test
             Assert.AreEqual(expected,actual);
 
         }
+
+        [TestCase]
+        public void LoadTest()
+        {
+
+        }
+
+        [TestCase]
+        public void SaveTest()
+        {
+
+        }
+
     }
 }

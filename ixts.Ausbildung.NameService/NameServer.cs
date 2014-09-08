@@ -14,21 +14,26 @@ namespace ixts.Ausbildung.NameService
         private readonly int port;
         private static String data;
         private ISocketFactory sFactory;
+        private IStream stream;
         private const String SERVERFILENAME = "nameservermap.ser";
         public ISocket ConSocket;
 
-        public NameServer(int p, ISocketFactory socketFactory = null)
+        public NameServer(int p, ISocketFactory socketFactory = null, IStreamFactory streamFactory = null)
         {
+            streamFactory = streamFactory ?? new StreamFactory();
+            sFactory = socketFactory ?? new SocketFactory();
+
+            stream = streamFactory.Make(SERVERFILENAME);
+
             if (File.Exists(SERVERFILENAME))
             {
-                store = GetMapFromFile();
+                store = stream.LoadMap();
             }
             else
             {
                 store = new Dictionary<string, string>();
             }
-            sFactory = socketFactory ?? new SocketFactory();
-            
+
             port = p;
             
         }
@@ -132,28 +137,10 @@ namespace ixts.Ausbildung.NameService
 
         private Boolean Stop(ISocket socket)
         {
-            var map = new List<String>();
-            foreach (var pair in store)
-            {
-                map.Add(string.Format("{0} {1}",pair.Key,pair.Value));
-            }
-            File.WriteAllLines(SERVERFILENAME,map.ToArray());
+            stream.SaveMap(store);
 
             Send("",socket);
             return false;
         }
-
-        private Dictionary<String, String> GetMapFromFile()
-        {
-            var map = new Dictionary<String, String>();
-            var allLines = File.ReadAllLines(SERVERFILENAME);
-            foreach (var line in allLines)
-            {
-                var parameters = line.Split(' ');
-                map.Add(parameters[0],parameters[1]);
-            }
-            return map;
-        }
-
     }
 }
