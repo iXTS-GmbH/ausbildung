@@ -44,7 +44,11 @@ namespace ixts.Ausbildung.NameService.Test
         [TestCase]
         public void ClientDelTest()
         {
+            testSocket.SetTestProtokoll("ClientDelTest");
 
+            var expected = "DelValue";
+            var actual = sut.Action("DEL", "DEL");
+            Assert.AreEqual(expected, actual);
         }
 
 

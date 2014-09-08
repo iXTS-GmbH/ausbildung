@@ -74,6 +74,7 @@ namespace ixts.Ausbildung.NameService.Test
                     "1 "
                 };
             testSocket.SetTestProtokoll("DelTest");
+            TestSocket.Output = new List<String>();
             sut.Loop();
             var actual = TestSocket.Output;
             TestSocket.Output = new List<String>();
