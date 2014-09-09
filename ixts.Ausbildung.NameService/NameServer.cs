@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Net.Sockets;
 using System.Text;
 
@@ -50,13 +49,13 @@ namespace ixts.Ausbildung.NameService
                 {
                     data += ConSocket.Receive();
 
-                    if (data.IndexOf("\r\n") > -1)
+                    if (data.IndexOf("\r\n", StringComparison.Ordinal) > -1)
                     {
                         receive = false;
                     }
                 }
 
-                receive = true;
+                //receive = true;
 
                 Console.WriteLine(data);
 
@@ -92,9 +91,11 @@ namespace ixts.Ausbildung.NameService
                         break;
 
                     case "DEL":
-
-                        store.Remove(key);
-                        Send(oldvalue);
+                        if (key != null)
+                        {
+                            store.Remove(key);
+                            Send(oldvalue);
+                        }
                         data = "";
                         break;
 
@@ -145,9 +146,9 @@ namespace ixts.Ausbildung.NameService
         {
             data = data.Replace("\r\n", "");
 
-            while (data.IndexOf("\b") > -1)
+            while (data.IndexOf("\b", StringComparison.Ordinal) > -1)
             {
-                data = data.Remove(data.IndexOf("\b") - 1, 2);
+                data = data.Remove(data.IndexOf("\b", StringComparison.Ordinal) - 1, 2);
             }
         }
     }
