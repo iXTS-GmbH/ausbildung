@@ -20,7 +20,8 @@ namespace ixts.Ausbildung.NameService.ClientApp
                 {
                     String[] parameters = line.Split(' ');
                     var value = parameters.Length > 2 ? parameters[2] : null;
-                    Console.WriteLine(nc.Action(parameters[0], parameters[1], value));
+                    var key = parameters[0] == "STOP" ? null : parameters[1];
+                    Console.WriteLine(nc.Action(parameters[0], key, value));
                     if(parameters[0] == "STOP")
                     {
                         run = false;
