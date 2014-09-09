@@ -96,13 +96,15 @@ namespace ixts.Ausbildung.NameService
 
                 data = "";
             }
-            stream.SaveMap(store);
+
             ss.Close();
         }
 
         private void Send(String value)
         {
             String answer = value == null ? "0" : string.Format("1 {0}", value);
+
+            stream.SaveMap(store);
 
             byte[] msg = Encoding.ASCII.GetBytes(answer);
             ConSocket.Send(msg);

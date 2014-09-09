@@ -15,13 +15,17 @@ namespace ixts.Ausbildung.NameService.ClientApp
 
             while(run)
             {
-                String line = Console.ReadLine();
+                var line = Console.ReadLine();
                 if (line != null)
                 {
-                    String[] parameters = line.Split(' ');
+                    var parameters = line.Split(' ');
                     var value = parameters.Length > 2 ? parameters[2] : null;
                     var key = parameters[0] == "STOP" ? null : parameters[1];
-                    Console.WriteLine(nc.Action(parameters[0], key, value));
+
+                    var answer = nc.Action(parameters[0], key, value);
+
+                    Console.WriteLine(answer);
+
                     if(parameters[0] == "STOP")
                     {
                         run = false;
