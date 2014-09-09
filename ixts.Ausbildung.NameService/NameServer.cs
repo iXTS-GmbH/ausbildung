@@ -43,7 +43,15 @@ namespace ixts.Ausbildung.NameService
 
             while (run)
             {
-                
+
+                //var a = "Hello";
+                //var b = "Hello";
+
+                //if (a.Equals(b,StringComparison.InvariantCultureIgnoreCase))
+                //{
+
+                //}
+
                 var receive = true;
                 while (receive)
                 {
@@ -71,44 +79,35 @@ namespace ixts.Ausbildung.NameService
                     oldvalue = contain ? store[key] : "";
                 }
 
-                command = command.ToUpper();
-
-                switch (command)
+                if ("PUT".Equals(command, StringComparison.InvariantCultureIgnoreCase))
                 {
-                    case "PUT":
+                    Put(contain, request[2], key);
+                    Send(oldvalue);
 
-                        Put(contain, request[2], key);
+                }
+                else if ("GET".Equals(command, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    Send(contain ? store[key] : null);
+
+                }
+                else if ("DEL".Equals(command, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    if (key != null)
+                    {
+                        store.Remove(key);
                         Send(oldvalue);
-                        data = "";
-                        break;
+                    }
 
-                    case "GET":
-
-                        Send(contain ? store[key] : null);
-                        data = "";
-                        break;
-
-                    case "DEL":
-                        if (key != null)
-                        {
-                            store.Remove(key);
-                            Send(oldvalue);
-                        }
-                        data = "";
-                        break;
-
-                    case "STOP":
-                        Send("");
-                        run = false;
-                        data = "";
-                        break;
-
-                    default:
-
-                        Console.WriteLine("Illegal Command recived: {0}", command);
-                        ConSocket.Send(Encoding.ASCII.GetBytes(string.Format("Illegal Command: {0}", command)));
-
-                        break;
+                }
+                else if ("STOP".Equals(command, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    Send("");
+                    run = false;
+                }
+                else
+                {
+                    Console.WriteLine("Illegal Command recived: {0}", command);
+                    ConSocket.Send(Encoding.ASCII.GetBytes(string.Format("Illegal Command: {0}", command)));
                 }
 
                 data = "";
@@ -151,3 +150,44 @@ namespace ixts.Ausbildung.NameService
         }
     }
 }
+
+
+// command = command.ToUpper();
+//
+//switch (command) //Protokolverarbeitung als Switch
+//{
+//    case "PUT":
+
+//        Put(contain, request[2], key);
+//        Send(oldvalue);
+
+//        break;
+
+//    case "GET":
+
+//        Send(contain ? store[key] : null);
+
+//        break;
+
+//    case "DEL":
+//        if (key != null)
+//        {
+//            store.Remove(key);
+//            Send(oldvalue);
+//        }
+
+//        break;
+
+//    case "STOP":
+//        Send("");
+//        run = false;
+
+//        break;
+
+//    default:
+
+//        Console.WriteLine("Illegal Command recived: {0}", command);
+//        ConSocket.Send(Encoding.ASCII.GetBytes(string.Format("Illegal Command: {0}", command)));
+
+//        break;
+//}
