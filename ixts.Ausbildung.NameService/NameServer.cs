@@ -55,8 +55,6 @@ namespace ixts.Ausbildung.NameService
                     }
                 }
 
-                //receive = true;
-
                 Console.WriteLine(data);
 
                 RefinereData();
