@@ -49,7 +49,7 @@ namespace ixts.Ausbildung.NameService
                 {
                     data += ConSocket.Receive();
 
-                    if (data.IndexOf("---") > -1)
+                    if (data.IndexOf("\r\n") > -1)
                     {
                         receive = false;
                     }
@@ -59,6 +59,11 @@ namespace ixts.Ausbildung.NameService
 
                 Console.WriteLine(data);
                 data = data.Replace("\r\n", "");
+
+                while (data.IndexOf("\b") > -1)
+                {
+                    data = data.Remove(data.IndexOf("\b") - 1, 2);
+                }
 
                 var request = data.Split(new[] { ' ' });
                 var command = request[0];
