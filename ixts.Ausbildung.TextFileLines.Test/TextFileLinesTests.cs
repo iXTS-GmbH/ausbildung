@@ -1,32 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using NUnit.Framework;
-using ixts.Ausbildung.TextfileLines;
+﻿//using System;
+//using System.Collections.Generic;
+//using NUnit.Framework;
 
-namespace ixts.Ausbildung.TextFileLines.Test
-{
-    [TestFixture]
-    public class TextFileLinesTests
-    {
-        [TestCase("LinesTest")]
-        public void TextfileLinesTest(String path)
-        {
-            var expected = new List<String>
-                {
-                    "Das ist ein Test.",
-                    "Wenn dieser Test erfolgreich ist,",
-                    "kann man diese Zeilen",
-                    "in einer List<String> lesen."
-                };
+//namespace ixts.Ausbildung.TextFileLines.Test
+//{
+//    [TestFixture]
+//    public class TextFileLinesTests
+//    {
+//        [TestCase("LinesTest")]
+//        public void TextfileLinesTest(String path)
+//        {
+//            var expected = new List<String>
+//                {
+//                    "Das ist ein Test.",
+//                    "Wenn dieser Test erfolgreich ist,",
+//                    "kann man diese Zeilen",
+//                    "in einer List<String> lesen."
+//                };
 
-            var textFileLines = new TextFileLines(path,new TestStreamFactory());
-            var counter = 0;
+//            var textFileLines = new TextFileLines(path,new TestStreamFactory());
+//            var counter = 0;
 
-            foreach (var line in textFileLines)
-            {
-                Assert.AreEqual(expected[counter],line);
-                counter += 1;
-            }
-        }
-    }
-}
+//            foreach (var line in textFileLines)
+//            {
+//                Assert.AreEqual(expected[counter],line);
+//                counter += 1;
+//            }
+//        }
+//    }
+//}
