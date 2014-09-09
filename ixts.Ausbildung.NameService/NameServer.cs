@@ -53,16 +53,12 @@ namespace ixts.Ausbildung.NameService
                     {
                         receive = false;
                     }
-                }//Ich muss also auch enters rausschneiden
+                }
 
                 receive = true;
+
                 Console.WriteLine(data);
                 data = data.Replace("\r\n", "");
-
-                //while(data.IndexOf("\b") > -1) //Ich muss es hinkriegen das die löschzeichen und der gelöscht wert entfernt werden
-                //{
-                //    data = data.Remove(data.IndexOf("\b") - 1, data.IndexOf("\b"));
-                //}
 
                 var request = data.Split(new[] { ' ' });
                 var command = request[0];
@@ -76,6 +72,7 @@ namespace ixts.Ausbildung.NameService
                     oldvalue = contain ? store[key] : "";
                 }
 
+                command = command.ToUpper();
 
                 switch (command)
                 {
