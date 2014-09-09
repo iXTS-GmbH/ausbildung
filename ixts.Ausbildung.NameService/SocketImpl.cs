@@ -23,7 +23,7 @@ namespace ixts.Ausbildung.NameService
         {
             if (ip == null)
             {
-            var ipHostInfo = Dns.Resolve(Dns.GetHostName());//TODO das irgendwie biegen
+            var ipHostInfo = Dns.Resolve(Dns.GetHostName());
             ip = ipHostInfo.AddressList[0];
             }
             
@@ -34,7 +34,7 @@ namespace ixts.Ausbildung.NameService
             }
             else
             {
-                socket.Bind(localEndPoint); //Ich müsste hier zwischen Client und Server unterscheiden
+                socket.Bind(localEndPoint);
             }
         }
 
