@@ -42,6 +42,10 @@ namespace ixts.Ausbildung.NameService
                     {
                         result = answer.Substring(1).Trim();
                     }
+                    else
+                    {
+                        result = "0";
+                    }
                      
                     break;
 
@@ -54,6 +58,10 @@ namespace ixts.Ausbildung.NameService
                     if (answer.StartsWith("1"))
                     {
                         result = answer.Substring(1).Trim();
+                    }
+                    else
+                    {
+                        result = "0";
                     }
 
                     break;
@@ -68,6 +76,10 @@ namespace ixts.Ausbildung.NameService
                     {
                         result = answer.Substring(1).Trim();
                     }
+                    else
+                    {
+                        result = "0";
+                    }
 
                     break;
 
@@ -75,8 +87,7 @@ namespace ixts.Ausbildung.NameService
 
                     throw new Exception(string.Format("{0} ist kein gültiger Befehl",command));
             }
-
-            return result;
+            return result == "0" ? null : result;
         }
 
         private String Send(String command)

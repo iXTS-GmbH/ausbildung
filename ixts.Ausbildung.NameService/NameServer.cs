@@ -43,16 +43,8 @@ namespace ixts.Ausbildung.NameService
 
             while (run)
             {
-
-                //var a = "Hello";
-                //var b = "Hello";
-
-                //if (a.Equals(b,StringComparison.InvariantCultureIgnoreCase))
-                //{
-
-                //}
-
                 var receive = true;
+
                 while (receive)
                 {
                     data += ConSocket.Receive();
@@ -118,7 +110,7 @@ namespace ixts.Ausbildung.NameService
 
         private void Send(String value)
         {
-            String answer = value == null ? "0" : string.Format("\r\n1 {0}\r\n", value);
+            String answer = value == null ? "0\r\n" : string.Format("\r\n1 {0}\r\n", value);
 
             stream.SaveMap(store);
 
