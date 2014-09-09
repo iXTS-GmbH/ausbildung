@@ -27,7 +27,7 @@ namespace ixts.Ausbildung.NameService
                 ip = IPAddress.Any;
             }
 
-            var endPoints = new IPEndPoint(ip, port);
+            IPEndPoint endPoints = new IPEndPoint(ip, port);
 
             if (client)
             {
@@ -51,8 +51,8 @@ namespace ixts.Ausbildung.NameService
 
         public String Receive()
         {
-            var bytes = new byte[1024];
-            var bytesRec = socket.Receive(bytes);
+            Byte[] bytes = new byte[1024];
+            int bytesRec = socket.Receive(bytes);
             return Encoding.ASCII.GetString(bytes, 0, bytesRec);
              
         }

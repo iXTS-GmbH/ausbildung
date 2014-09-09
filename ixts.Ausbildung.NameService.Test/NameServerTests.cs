@@ -14,8 +14,8 @@ namespace ixts.Ausbildung.NameService.Test
         [SetUp]
         public void SetUp()
         {
-            var testSocketFactory = new TestSocketFactory();
-            var testStreamFactory = new TestStreamFactory();
+            TestSocketFactory testSocketFactory = new TestSocketFactory();
+            TestStreamFactory testStreamFactory = new TestStreamFactory();
             sut = new NameServer(2000,testSocketFactory,testStreamFactory);
             testSocket = new TestSocket();
         }
@@ -25,7 +25,7 @@ namespace ixts.Ausbildung.NameService.Test
         {
             TestStream.Map = new Dictionary<String, String>();
 
-            var expected = new List<String>
+            List<String> expected = new List<String>
                 {
                     "1 ",
                     "1 firstValue",
@@ -34,7 +34,7 @@ namespace ixts.Ausbildung.NameService.Test
 
             testSocket.SetTestProtokoll("PutTest");
             sut.Loop();
-            var actual = TestSocket.Output;
+            List<String> actual = TestSocket.Output;
             TestSocket.Output = new List<String>();
 
             Assert.AreEqual(expected,actual);
@@ -45,7 +45,7 @@ namespace ixts.Ausbildung.NameService.Test
         {
             TestStream.Map = new Dictionary<String, String>();
 
-            var expected = new List<String>
+            List<String> expected = new List<String>
                 {
                     "1 ",
                     "1 firstValue",
@@ -54,7 +54,7 @@ namespace ixts.Ausbildung.NameService.Test
 
             testSocket.SetTestProtokoll("GetTest");
             sut.Loop();
-            var actual = TestSocket.Output;
+            List<String> actual = TestSocket.Output;
             TestSocket.Output = new List<String>();
 
             Assert.AreEqual(expected,actual);
@@ -66,7 +66,7 @@ namespace ixts.Ausbildung.NameService.Test
         {
             TestStream.Map = new Dictionary<String, String>();
 
-            var expected = new List<String>
+            List<String> expected = new List<String>
                 {
                     "1 ",
                     "1 firstValue",
@@ -76,7 +76,7 @@ namespace ixts.Ausbildung.NameService.Test
             testSocket.SetTestProtokoll("DelTest");
             TestSocket.Output = new List<String>();
             sut.Loop();
-            var actual = TestSocket.Output;
+            List<String> actual = TestSocket.Output;
             TestSocket.Output = new List<String>();
 
             Assert.AreEqual(expected,actual);
@@ -97,14 +97,14 @@ namespace ixts.Ausbildung.NameService.Test
         public void IllegalCommandTest()
         {
 
-            var expected = new List<String>
+            List<String> expected = new List<String>
                 {
                     "Illegal Command: NotACommand",
                     "1 "
                 };
             testSocket.SetTestProtokoll("IllegalCommandTest");
             sut.Loop();
-            var actual = TestSocket.Output;
+            List<String> actual = TestSocket.Output;
             TestSocket.Output = new List<String>();
 
             Assert.AreEqual(expected,actual);
@@ -122,7 +122,7 @@ namespace ixts.Ausbildung.NameService.Test
                     {"fourdKey","fourdValue"}
                 };
 
-            var expected = new List<String>
+            List<String> expected = new List<String>
                 {
                     "1 firstValue",
                     "1 secondValue",
@@ -132,8 +132,8 @@ namespace ixts.Ausbildung.NameService.Test
                 };
             testSocket.SetTestProtokoll("LoadTest");
             sut.Loop();
-            var actual = TestSocket.Output;
-            TestSocket.Output = new List<string>();
+            List<String> actual = TestSocket.Output;
+            TestSocket.Output = new List<String>();
 
             Assert.AreEqual(expected, actual);
         }
@@ -149,7 +149,7 @@ namespace ixts.Ausbildung.NameService.Test
                     {"fourdKey","fourdValue"}
                 };
 
-            var expected = new Dictionary<String, String>
+            Dictionary<String,String> expected = new Dictionary<String, String>
                 {
                     {"firstKey","firstValue"},
                     {"fiftKey","fiftValue"},
@@ -159,7 +159,7 @@ namespace ixts.Ausbildung.NameService.Test
                 };
             testSocket.SetTestProtokoll("SaveTest");
             sut.Loop();
-            var actual = TestStream.ServerFile;
+            Dictionary<String,String> actual = TestStream.ServerFile;
             TestStream.ServerFile = new Dictionary<String, String>();
 
             Assert.AreEqual(expected,actual);
@@ -169,11 +169,11 @@ namespace ixts.Ausbildung.NameService.Test
         public void NoFileTest()
         {
             TestStream.Exist = false;
-            var server = new NameServer(2000, new TestSocketFactory(), new TestStreamFactory());
+            NameServer server = new NameServer(2000, new TestSocketFactory(), new TestStreamFactory());
             testSocket.SetTestProtokoll("NoFileTest");
             server.Loop();
-            var expected = new Dictionary<String, String>();
-            var actual = TestStream.ServerFile;
+            Dictionary<String,String> expected = new Dictionary<String, String>();
+            Dictionary<String,String> actual = TestStream.ServerFile;
             TestStream.Exist = true;
             TestSocket.Output = new List<String>();
 

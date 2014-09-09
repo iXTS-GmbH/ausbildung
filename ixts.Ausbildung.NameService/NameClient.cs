@@ -93,11 +93,11 @@ namespace ixts.Ausbildung.NameService
         private String Send(String command)
         {
 
-            var msg = Encoding.ASCII.GetBytes(command);
+            Byte[] msg = Encoding.ASCII.GetBytes(command);
 
             s.Send(msg);
 
-            var answer = s.Receive();
+            String answer = s.Receive();
 
             return answer;
 

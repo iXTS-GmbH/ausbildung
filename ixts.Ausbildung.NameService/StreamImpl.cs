@@ -15,23 +15,25 @@ namespace ixts.Ausbildung.NameService
 
         public Dictionary<String, String> LoadMap()
         {
-            var map = new Dictionary<String, String>();
-            var allLines = File.ReadAllLines(serverFileName);
-            foreach (var line in allLines)
+            Dictionary<String,String> map = new Dictionary<String, String>();
+            String[] allLines = File.ReadAllLines(serverFileName);
+            foreach (String line in allLines)
             {
-                var parameters = line.Split(' ');
+                String[] parameters = line.Split(' ');
                 map.Add(parameters[0], parameters[1]);
             }
             return map;
         }
 
-        public void SaveMap(Dictionary<string, string> store)
+        public void SaveMap(Dictionary<String, String> store)
         {
-            var map = new List<String>();
-            foreach (var pair in store)
+            List<String> map = new List<String>();
+
+            foreach (KeyValuePair<String, String> pair in store)
             {
                 map.Add(string.Format("{0} {1}", pair.Key, pair.Value));
             }
+
             File.WriteAllLines(serverFileName, map.ToArray());
         }
 

@@ -9,47 +9,50 @@ namespace ixts.Ausbildung.NameService
     public class NameServer
     {
 
-        private Dictionary<string, string> store = new Dictionary<String, String>();
+        private readonly Dictionary<string, string> store = new Dictionary<String, String>();
         private readonly int port;
-        private static String data;
-        private readonly ISocketFactory sFactory;
         private readonly IStream stream;
-        private const String SERVERFILENAME = "nameservermap.ser";
-        public ISocket ConSocket;
+        private readonly ISocket socket;
+        private const String SERVER_FILENAME = "nameservermap.ser";
+        private ISocket conSocket;
 
-        public NameServer(int p, ISocketFactory socketFactory = null, IStreamFactory streamFactory = null)
+        public NameServer(int port, ISocketFactory socketFactory = null, IStreamFactory streamFactory = null)
         {
-            streamFactory = streamFactory ?? new StreamFactory();
-            sFactory = socketFactory ?? new SocketFactory();
+            this.port = port;
 
-            stream = streamFactory.Make(SERVERFILENAME);
-            port = p;
-            
+            streamFactory = streamFactory ?? new StreamFactory();
+            socketFactory = socketFactory ?? new SocketFactory();
+
+            stream = streamFactory.Make(SERVER_FILENAME);
+
+            store = stream.Exists(SERVER_FILENAME) ? stream.LoadMap() : new Dictionary<String, String>();
+
+            socket = socketFactory.Make(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+            socket.Bind(port,false);
+
         }
 
         public void Loop()
         {
+            Boolean run = true;
 
-            store = stream.Exists(SERVERFILENAME) ? stream.LoadMap() : new Dictionary<String, String>();
+            socket.Listen(10);
 
-            var ss = sFactory.Make(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            ss.Bind(port,false);
-            ss.Listen(10);
-            var run = true;
+            Console.WriteLine("Server started on Port: {0}",port);
 
-            Console.WriteLine("Server started on Port:{0}",port);
-
-            ConSocket = ss.Accept();
+            conSocket = socket.Accept();
 
             while (run)
             {
-                var receive = true;
+                Boolean receive = true;
+                String data = "";
 
                 while (receive)
                 {
-                    data += ConSocket.Receive();
+                    data += conSocket.Receive();
 
-                    if (data.IndexOf("\r\n", StringComparison.Ordinal) > -1)
+                    if (data.Contains(Environment.NewLine))
                     {
                         receive = false;
                     }
@@ -57,13 +60,13 @@ namespace ixts.Ausbildung.NameService
 
                 Console.WriteLine(data);
 
-                RefinereData();
+                data = NormalizeData(data);
 
-                var request = data.Split(new[] { ' ' });
-                var command = request[0];
-                var key = request.Length > 1 ? request[1] : null;
-                var contain = false;
-                var oldvalue = "";
+                String[] request = data.Split(new[] { ' ' });
+                String command = request[0];
+                String key = request.Length > 1 ? request[1] : null;
+                Boolean contain = false;
+                String oldvalue = "";
 
                 if (key != null)
                 {
@@ -99,13 +102,11 @@ namespace ixts.Ausbildung.NameService
                 else
                 {
                     Console.WriteLine("Illegal Command recived: {0}", command);
-                    ConSocket.Send(Encoding.ASCII.GetBytes(string.Format("Illegal Command: {0}", command)));
+                    conSocket.Send(Encoding.ASCII.GetBytes(string.Format("Illegal Command: {0}", command)));
                 }
-
-                data = "";
             }
 
-            ss.Close();
+            socket.Close();
         }
 
         private void Send(String value)
@@ -115,7 +116,7 @@ namespace ixts.Ausbildung.NameService
             stream.SaveMap(store);
 
             byte[] msg = Encoding.ASCII.GetBytes(answer);
-            ConSocket.Send(msg);
+            conSocket.Send(msg);
         }
 
 
@@ -131,7 +132,7 @@ namespace ixts.Ausbildung.NameService
             }
         }
 
-        private void RefinereData()
+        private String NormalizeData(String data)
         {
             data = data.Replace("\r\n", "");
 
@@ -139,47 +140,7 @@ namespace ixts.Ausbildung.NameService
             {
                 data = data.Remove(data.IndexOf("\b", StringComparison.Ordinal) - 1, 2);
             }
+            return data;
         }
     }
 }
-
-
-// command = command.ToUpper();
-//
-//switch (command) //Protokolverarbeitung als Switch
-//{
-//    case "PUT":
-
-//        Put(contain, request[2], key);
-//        Send(oldvalue);
-
-//        break;
-
-//    case "GET":
-
-//        Send(contain ? store[key] : null);
-
-//        break;
-
-//    case "DEL":
-//        if (key != null)
-//        {
-//            store.Remove(key);
-//            Send(oldvalue);
-//        }
-
-//        break;
-
-//    case "STOP":
-//        Send("");
-//        run = false;
-
-//        break;
-
-//    default:
-
-//        Console.WriteLine("Illegal Command recived: {0}", command);
-//        ConSocket.Send(Encoding.ASCII.GetBytes(string.Format("Illegal Command: {0}", command)));
-
-//        break;
-//}
