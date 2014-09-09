@@ -19,22 +19,23 @@ namespace ixts.Ausbildung.NameService
             socket = s;
         }
 
-        public void Bind(int port,Boolean client , IPAddress ip = null)
+        public void Bind(int port,Boolean client, IPAddress ip = null)
         {
+
             if (ip == null)
             {
-            var ipHostInfo = Dns.Resolve(Dns.GetHostName());
-            ip = ipHostInfo.AddressList[0];
+                ip = IPAddress.Any;
             }
-            
-            var localEndPoint = new IPEndPoint(ip, port);
+
+            var endPoints = new IPEndPoint(ip, port);
+
             if (client)
             {
-                socket.Connect(localEndPoint);
+                socket.Connect(endPoints);
             }
             else
             {
-                socket.Bind(localEndPoint);
+                socket.Bind(endPoints);
             }
         }
 
