@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Allgemeine Informationen über eine Assembly werden über die folgenden 
 // Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
 // die mit einer Assembly verknüpft sind.
-[assembly: AssemblyTitle("ixts.Ausbildung.NameService.ConsoleApp")]
+[assembly: AssemblyTitle("ixts.Ausbildung.NameService.ServerApp")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ixts.Ausbildung.NameService.ConsoleApp")]
+[assembly: AssemblyProduct("ixts.Ausbildung.NameService.ServerApp")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Die folgende GUID bestimmt die ID der Typbibliothek, wenn dieses Projekt für COM verfügbar gemacht wird
-[assembly: Guid("8c138094-c9c0-4ba9-be2d-79cec67e51dd")]
+[assembly: Guid("9e87f36b-c7c1-444e-9387-ee1c92e3e7af")]
 
 // Versionsinformationen für eine Assembly bestehen aus den folgenden vier Werten:
 //
