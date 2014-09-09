@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using NUnit.Framework;
+using ixts.Ausbildung.TextfileLines;
 
-namespace TextFileLines.Test
+namespace ixts.Ausbildung.TextFileLines.Test
 {
     [TestFixture]
     public class TextFileMapperTests

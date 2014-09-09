@@ -1,4 +1,4 @@
-﻿namespace TextFileLines
+﻿namespace ixts.Ausbildung.TextfileLines
 {
     class Erweiterungsmöglichkeiten
     {

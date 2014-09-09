@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TextFileLines
+namespace ixts.Ausbildung.TextfileLines
 {
     public abstract class TextFileMapper
     {
@@ -10,7 +10,7 @@ namespace TextFileLines
             str = str ?? new StreamFactory();
 
             var file = str.Make(sourcePath, targetPath);
-            var tfL = new TextFileLines(sourcePath, str);
+            var tfL = new ixts.Ausbildung.TextfileLines.TextFileLines(sourcePath, str);
 
             foreach (var line in tfL)
             {

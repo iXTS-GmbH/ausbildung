@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{28F00420-9D40-4771-8AE9-4FEB09439B21}</ProjectGuid>
+    <ProjectGuid>{080828F4-1887-49D6-85EC-3637E7C242FB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TextFileLines</RootNamespace>
-    <AssemblyName>TextfileLines</AssemblyName>
+    <RootNamespace>ixts.Ausbildung.TextfileLines</RootNamespace>
+    <AssemblyName>ixts.Ausbildung.TextfileLines</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,21 +41,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Erweiterungsmöglichkeiten.cs" />
-    <Compile Include="RemoveEmptyLinesMapper.cs" />
-    <Compile Include="RemoveDuplicateLinesMapper.cs" />
     <Compile Include="IStream.cs" />
     <Compile Include="IStreamFactory.cs" />
     <Compile Include="NoOutputFile.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RemoveDuplicateLinesMapper.cs" />
+    <Compile Include="RemoveEmptyLinesMapper.cs" />
     <Compile Include="RemoveLinesStartsWithMapper.cs" />
-    <Compile Include="TextSplitter.cs" />
     <Compile Include="StreamFactory.cs" />
     <Compile Include="StreamImpl.cs" />
     <Compile Include="TestStream.cs" />
     <Compile Include="TestStreamFactory.cs" />
     <Compile Include="TextFileLines.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TextFileMapper.cs" />
+    <Compile Include="TextfileMapper.cs" />
     <Compile Include="TextFileSplitter.cs" />
+    <Compile Include="TextSplitter.cs" />
     <Compile Include="ToLowerLineMapper.cs" />
     <Compile Include="ToNumberLinesMapper.cs" />
     <Compile Include="ToUpperLineMapper.cs" />

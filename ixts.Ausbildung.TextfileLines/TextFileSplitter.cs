@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 
-namespace TextFileLines
+namespace ixts.Ausbildung.TextfileLines
 {
     public abstract class TextFileSplitter
     {
@@ -15,7 +14,7 @@ namespace TextFileLines
 
             var counter = 0;
 
-            var allLines = new TextFileLines(sourceFile, str);
+            var allLines = new ixts.Ausbildung.TextfileLines.TextFileLines(sourceFile, str);
 
             foreach (var line in allLines)
             {

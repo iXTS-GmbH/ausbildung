@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{12CAA216-6D9F-4DAB-A73A-FA0E3D33E551}</ProjectGuid>
+    <ProjectGuid>{877DDDBD-4893-4F68-8202-0249C8773EDC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TextFileLines.Test</RootNamespace>
-    <AssemblyName>TextfileLines.Test</AssemblyName>
+    <RootNamespace>ixts.Ausbildung.TextFileLines.Test</RootNamespace>
+    <AssemblyName>ixts.Ausbildung.TextFileLines.Test</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -44,16 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TextFileLinesTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TextFileMapperTests.cs" />
+    <Compile Include="TextFileLinesTests.cs" />
+    <Compile Include="TextfileMapperTests.cs" />
     <Compile Include="TextFileSplitterTests.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TextfileLines\ixts.Ausbildung.TextFileLines.csproj">
-      <Project>{28F00420-9D40-4771-8AE9-4FEB09439B21}</Project>
-      <Name>ixts.Ausbildung.TextFileLines</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

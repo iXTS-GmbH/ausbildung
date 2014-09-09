@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace TextFileLines
+namespace ixts.Ausbildung.TextfileLines
 {
     public class TextFileLines:IEnumerable<String>
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace TextFileLines
+namespace ixts.Ausbildung.TextfileLines
 {
     public class StreamImpl:IStream
     {

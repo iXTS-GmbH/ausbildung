@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TextFileLines
+namespace ixts.Ausbildung.TextfileLines
 {
     public class StreamFactory:IStreamFactory
     {

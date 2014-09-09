@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 
-namespace TextFileLines.Test
+namespace ixts.Ausbildung.TextFileLines.Test
 {
     [TestFixture]
     public class TextFileSplitterTests
