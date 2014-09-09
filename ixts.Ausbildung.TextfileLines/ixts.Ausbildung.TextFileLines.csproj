@@ -58,7 +58,6 @@
     <Compile Include="TextSplitter.cs" />
     <Compile Include="ToLowerLineMapper.cs" />
     <Compile Include="ToNumberLinesMapper.cs" />
-    <Compile Include="ToUpperLineMapper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

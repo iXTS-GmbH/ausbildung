@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ixts.Ausbildung.TextfileLines
+namespace ixts.Ausbildung.TextfileLines.Test
 {
     public class ToUpperLineMapper : TextFileMapper
     {

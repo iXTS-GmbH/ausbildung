@@ -45,9 +45,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RemoveDuplicateLinesMapper.cs" />
+    <Compile Include="RemoveEmptyLinesMapper.cs" />
     <Compile Include="TextFileLinesTests.cs" />
     <Compile Include="TextfileMapperTests.cs" />
     <Compile Include="TextFileSplitterTests.cs" />
+    <Compile Include="ToUpperLineMapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ixts.Ausbildung.TextfileLines\ixts.Ausbildung.TextFileLines.csproj">
+      <Project>{080828F4-1887-49D6-85EC-3637E7C242FB}</Project>
+      <Name>ixts.Ausbildung.TextFileLines</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
