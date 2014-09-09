@@ -5,7 +5,7 @@ namespace ixts.Ausbildung.NameService
 {
     public interface ISocket
     {
-        void Bind(int port, IPAddress ip = null);
+        void Bind(int port, Boolean client, IPAddress ip = null);
         void Listen(int backlog);
         ISocket Accept();
         String Receive();

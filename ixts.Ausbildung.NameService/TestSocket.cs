@@ -14,7 +14,7 @@ namespace ixts.Ausbildung.NameService
         public static IPAddress ServerIP;
 
 
-        public void Bind(int port, IPAddress ip)
+        public void Bind(int port, Boolean client , IPAddress ip)
         {
             ServerIP = ip;
         }

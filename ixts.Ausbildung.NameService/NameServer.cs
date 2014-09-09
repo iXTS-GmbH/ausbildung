@@ -33,7 +33,7 @@ namespace ixts.Ausbildung.NameService
             store = stream.Exists(SERVERFILENAME) ? stream.LoadMap() : new Dictionary<String, String>();
 
             var ss = sFactory.Make(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            ss.Bind(port);
+            ss.Bind(port,false);
             ss.Listen(10);
             var run = true;
 
@@ -43,6 +43,8 @@ namespace ixts.Ausbildung.NameService
             {
                 ConSocket = ss.Accept();
                 data += ConSocket.Receive();
+
+                Console.WriteLine(data);
 
                 var request = data.Split(new[] { ' ' });
                 var command = request[0];

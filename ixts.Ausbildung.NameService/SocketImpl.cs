@@ -19,7 +19,7 @@ namespace ixts.Ausbildung.NameService
             socket = s;
         }
 
-        public void Bind(int port, IPAddress ip = null)
+        public void Bind(int port,Boolean client , IPAddress ip = null)
         {
             if (ip == null)
             {
@@ -28,7 +28,14 @@ namespace ixts.Ausbildung.NameService
             }
             
             var localEndPoint = new IPEndPoint(ip, port);
-            socket.Bind(localEndPoint);
+            if (client)
+            {
+                socket.Connect(localEndPoint);
+            }
+            else
+            {
+                socket.Bind(localEndPoint); //Ich müsste hier zwischen Client und Server unterscheiden
+            }
         }
 
         public void Listen(int backlog)

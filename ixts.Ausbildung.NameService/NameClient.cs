@@ -72,7 +72,7 @@ namespace ixts.Ausbildung.NameService
         private String Send(String command)
         {
             var s = socketFactory.Make(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            s.Bind(port,ip);
+            s.Bind(port,true ,ip);
 
             var msg = Encoding.ASCII.GetBytes(command);
 
