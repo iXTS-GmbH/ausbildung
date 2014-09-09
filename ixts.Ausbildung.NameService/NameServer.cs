@@ -39,12 +39,30 @@ namespace ixts.Ausbildung.NameService
 
             Console.WriteLine("Server started on Port:{0}",port);
 
+            ConSocket = ss.Accept();
+
             while (run)
             {
-                ConSocket = ss.Accept();
-                data += ConSocket.Receive();
+                
+                var receive = true;
+                while (receive)
+                {
+                    data += ConSocket.Receive();
 
+                    if (data.IndexOf("---") > -1)
+                    {
+                        receive = false;
+                    }
+                }//Ich muss also auch enters rausschneiden
+
+                receive = true;
                 Console.WriteLine(data);
+                data = data.Replace("\r\n", "");
+
+                //while(data.IndexOf("\b") > -1) //Ich muss es hinkriegen das die löschzeichen und der gelöscht wert entfernt werden
+                //{
+                //    data = data.Remove(data.IndexOf("\b") - 1, data.IndexOf("\b"));
+                //}
 
                 var request = data.Split(new[] { ' ' });
                 var command = request[0];
@@ -65,31 +83,32 @@ namespace ixts.Ausbildung.NameService
 
                         Put(contain, request[2], key);
                         Send(oldvalue);
-
+                        data = "";
                         break;
 
                     case "GET":
 
                         Send(contain ? store[key] : null);
-
+                        data = "";
                         break;
 
                     case "DEL":
 
                         store.Remove(key);
                         Send(oldvalue);
-                        
+                        data = "";
                         break;
 
                     case "STOP":
                         Send("");
                         run = false;
+                        data = "";
                         break;
 
                     default:
 
                         Console.WriteLine("Illegal Command recived: {0}", command);
-                        ConSocket.Send(Encoding.ASCII.GetBytes(string.Format("Illegal Command: {0}",command)));
+                        ConSocket.Send(Encoding.ASCII.GetBytes(string.Format("Illegal Command: {0}", command)));
 
                         break;
                 }
@@ -102,7 +121,7 @@ namespace ixts.Ausbildung.NameService
 
         private void Send(String value)
         {
-            String answer = value == null ? "0" : string.Format("1 {0}", value);
+            String answer = value == null ? "0" : string.Format("\r\n1 {0}\r\n", value);
 
             stream.SaveMap(store);
 
