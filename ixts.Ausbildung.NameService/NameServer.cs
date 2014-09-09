@@ -58,12 +58,8 @@ namespace ixts.Ausbildung.NameService
                 receive = true;
 
                 Console.WriteLine(data);
-                data = data.Replace("\r\n", "");
 
-                while (data.IndexOf("\b") > -1)
-                {
-                    data = data.Remove(data.IndexOf("\b") - 1, 2);
-                }
+                RefinereData();
 
                 var request = data.Split(new[] { ' ' });
                 var command = request[0];
@@ -141,6 +137,16 @@ namespace ixts.Ausbildung.NameService
             else
             {
                 store.Add(key, newValue);
+            }
+        }
+
+        private void RefinereData()
+        {
+            data = data.Replace("\r\n", "");
+
+            while (data.IndexOf("\b") > -1)
+            {
+                data = data.Remove(data.IndexOf("\b") - 1, 2);
             }
         }
     }
