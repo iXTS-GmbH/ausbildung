@@ -10,6 +10,7 @@ namespace ixts.Ausbildung.NameService
         private readonly IPAddress ip;
         private readonly int port;
         private readonly ISocketFactory socketFactory;
+        private readonly ISocket s;
 
         public NameClient(String serverIP, int serverPort,ISocketFactory sFactory = null)
         {
@@ -18,6 +19,9 @@ namespace ixts.Ausbildung.NameService
             ip = serverIP == "localhost" ? null : IPAddress.Parse(serverIP);
 
             port = serverPort;
+
+            s = socketFactory.Make(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            s.Bind(port, true, ip);
         }
 
         public String Action(String command,String key,String value = null)
@@ -30,7 +34,9 @@ namespace ixts.Ausbildung.NameService
             switch (command)
             {
                 case "PUT":
-                    answer = Send(string.Format("PUT {0} {1}",key,value));
+                    answer = Send(string.Format("PUT {0} {1}\r\n",key,value));
+
+                    answer = answer.Replace("\r\n", "");
 
                     if (answer.StartsWith("1"))
                     {
@@ -41,7 +47,9 @@ namespace ixts.Ausbildung.NameService
 
                 case "GET":
 
-                    answer = Send(string.Format("GET {0}",key));
+                    answer = Send(string.Format("GET {0}\r\n",key));
+
+                    answer = answer.Replace("\r\n", "");
 
                     if (answer.StartsWith("1"))
                     {
@@ -52,7 +60,9 @@ namespace ixts.Ausbildung.NameService
 
                 case "DEL":
 
-                    answer = Send(string.Format("DEL {0}",key));
+                    answer = Send(string.Format("DEL {0}\r\n",key));
+
+                    answer = answer.Replace("\r\n", "");
 
                     if (answer.StartsWith("1"))
                     {
@@ -71,16 +81,12 @@ namespace ixts.Ausbildung.NameService
 
         private String Send(String command)
         {
-            var s = socketFactory.Make(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            s.Bind(port,true ,ip);
 
             var msg = Encoding.ASCII.GetBytes(command);
 
             s.Send(msg);
 
             var answer = s.Receive();
-
-            s.Close();
 
             return answer;
 
