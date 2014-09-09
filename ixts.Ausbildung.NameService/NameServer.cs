@@ -35,75 +35,21 @@ namespace ixts.Ausbildung.NameService
 
         public void Loop()
         {
+            StartSocket();
+
             Boolean run = true;
-
-            socket.Listen(10);
-
-            Console.WriteLine("Server started on Port: {0}",port);
-
-            conSocket = socket.Accept();
 
             while (run)
             {
-                Boolean receive = true;
-                String data = "";
-
-                while (receive)
-                {
-                    data += conSocket.Receive();
-
-                    if (data.Contains(Environment.NewLine))
-                    {
-                        receive = false;
-                    }
-                }
-
-                Console.WriteLine(data);
+                String data = GetData();
 
                 data = NormalizeData(data);
 
                 String[] request = data.Split(new[] { ' ' });
                 String command = request[0];
                 String key = request.Length > 1 ? request[1] : null;
-                Boolean contain = false;
-                String oldvalue = "";
 
-                if (key != null)
-                {
-                    contain = store.ContainsKey(key);
-                    oldvalue = contain ? store[key] : "";
-                }
-
-                if ("PUT".Equals(command, StringComparison.InvariantCultureIgnoreCase))
-                {
-                    Put(contain, request[2], key);
-                    Send(oldvalue);
-
-                }
-                else if ("GET".Equals(command, StringComparison.InvariantCultureIgnoreCase))
-                {
-                    Send(contain ? store[key] : null);
-
-                }
-                else if ("DEL".Equals(command, StringComparison.InvariantCultureIgnoreCase))
-                {
-                    if (key != null)
-                    {
-                        store.Remove(key);
-                        Send(oldvalue);
-                    }
-
-                }
-                else if ("STOP".Equals(command, StringComparison.InvariantCultureIgnoreCase))
-                {
-                    Send("");
-                    run = false;
-                }
-                else
-                {
-                    Console.WriteLine("Illegal Command recived: {0}", command);
-                    conSocket.Send(Encoding.ASCII.GetBytes(string.Format("Illegal Command: {0}", command)));
-                }
+                run = HandleCommands(command, request, key);
             }
 
             socket.Close();
@@ -141,6 +87,71 @@ namespace ixts.Ausbildung.NameService
                 data = data.Remove(data.IndexOf("\b", StringComparison.Ordinal) - 1, 2);
             }
             return data;
+        }
+
+        private void StartSocket()
+        {
+            socket.Listen(10);
+
+            Console.WriteLine("Server started on Port: {0}", port);
+
+            conSocket = socket.Accept();
+        }
+
+        private String GetData()
+        {
+            Boolean receive = true;
+            String data = "";
+
+            while (receive)
+            {
+                data += conSocket.Receive();
+
+                if (data.Contains(Environment.NewLine))
+                {
+                    receive = false;
+                }
+            }
+
+            Console.WriteLine(data);
+            return data;
+        }
+
+        private Boolean HandleCommands(String command,String[]request,String key)
+        {
+            if ("PUT".Equals(command, StringComparison.InvariantCultureIgnoreCase))
+            {
+                Boolean contain = store.ContainsKey(key);
+                Put(contain, request[2], key);
+                Send(contain ? store[key] : "");
+
+            }
+            else if ("GET".Equals(command, StringComparison.InvariantCultureIgnoreCase))
+            {
+                Send(store.ContainsKey(key) ? store[key] : null);
+
+            }
+            else if ("DEL".Equals(command, StringComparison.InvariantCultureIgnoreCase))
+            {
+                if (key != null)
+                {
+                    String oldvalue = store[key];
+                    store.Remove(key);
+                    Send(oldvalue);
+                }
+
+            }
+            else if ("STOP".Equals(command, StringComparison.InvariantCultureIgnoreCase))
+            {
+                Send("");
+                return false;
+            }
+            else
+            {
+                Console.WriteLine("Illegal Command recived: {0}", command);
+                conSocket.Send(Encoding.ASCII.GetBytes(string.Format("Illegal Command: {0}", command)));
+            }
+            return true;
         }
     }
 }

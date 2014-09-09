@@ -45,8 +45,6 @@
     <Compile Include="IStreamFactory.cs" />
     <Compile Include="NoOutputFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RemoveDuplicateLinesMapper.cs" />
-    <Compile Include="RemoveEmptyLinesMapper.cs" />
     <Compile Include="RemoveLinesStartsWithMapper.cs" />
     <Compile Include="StreamFactory.cs" />
     <Compile Include="StreamImpl.cs" />
