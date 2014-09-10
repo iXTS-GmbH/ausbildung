@@ -57,16 +57,20 @@ namespace ixts.Ausbildung.NameService
         }
 
 
-        protected void Put(Boolean contain,String newValue, String key)
+        protected String Put(Boolean contain,String newValue, String key)
         {
+            String oldvalue = "";
+
             if (contain)
             {
+                oldvalue = Store[key];
                 Store[key] = newValue;
             }
             else
             {
                 Store.Add(key, newValue);
             }
+            return oldvalue;
         }
 
         protected String NormalizeData(String data)
@@ -113,8 +117,9 @@ namespace ixts.Ausbildung.NameService
             if ("PUT".Equals(command, StringComparison.InvariantCultureIgnoreCase))
             {
                 Boolean contain = Store.ContainsKey(key);
-                Put(contain, request[2], key);
-                Send(contain ? Store[key] : "");
+                
+               String value = Put(contain, request[2], key);
+                Send(value);
 
             }
             else if ("GET".Equals(command, StringComparison.InvariantCultureIgnoreCase))
