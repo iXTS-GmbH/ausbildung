@@ -30,19 +30,19 @@ namespace ixts.Ausbildung.NameService
         {
             StartSocket();
 
-            Boolean run = true;
+            var run = true;
 
             while (run)
             {
-                String data = GetData();
+                var data = GetData();
                 data = NormalizeData(data);
 
-                String[] parameters = data.Split(new[] { ' ' });
+                var parameters = data.Split(new[] { ' ' });
                 parameters = ParameterHandler.Normalize(parameters);
-                //parameters = ParameterHandler.ParseSpezialCharsToNormal(parameters);
-                String command = parameters[0];
-                String key = parameters.Length > 1 ? parameters[1] : null;
-                String value = parameters.Length > 2 ? parameters[2] : null;
+
+                var command = parameters[0];
+                var key = parameters.Length > 1 ? parameters[1] : null;
+                var value = parameters.Length > 2 ? parameters[2] : null;
 
                 run = HandleCommands(command, key, value);
             }
@@ -52,16 +52,16 @@ namespace ixts.Ausbildung.NameService
 
         protected void Send(String value)
         {
-            String answer = value == null ? string.Format("{0}0{0}",Environment.NewLine) : string.Format("{1}1 {0}{1}", value,Environment.NewLine);
+            var answer = value == null ? string.Format("{0}0{0}",Environment.NewLine) : string.Format("{1}1 {0}{1}", value,Environment.NewLine);
 
-            byte[] msg = Encoding.UTF8.GetBytes(answer);
+            var msg = Encoding.UTF8.GetBytes(answer);
             ConSocket.Send(msg);
         }
 
 
         protected String Put(Boolean contain,String newValue, String key)
         {
-            String oldvalue = "";
+            var oldvalue = "";
 
             if (contain)
             {
@@ -72,6 +72,7 @@ namespace ixts.Ausbildung.NameService
             {
                 Store.Add(key, newValue);
             }
+
             return oldvalue;
         }
 
@@ -83,6 +84,7 @@ namespace ixts.Ausbildung.NameService
             {
                 data = data.Remove(data.IndexOf("\b", StringComparison.Ordinal) - 1, 2);
             }
+
             return data;
         }
 
@@ -97,8 +99,8 @@ namespace ixts.Ausbildung.NameService
 
         protected String GetData()
         {
-            Boolean receive = true;
-            String data = "";
+            var receive = true;
+            var data = "";
 
             while (receive)
             {
@@ -110,10 +112,8 @@ namespace ixts.Ausbildung.NameService
                 }
             }
 
-            data = data.Replace("oe-", "ö").Replace("ae-", "ä").Replace("ue-", "ü");//TODO Punkt
-            data = data.Replace("Oe-", "Ö").Replace("Ae-", "Ä").Replace("Ue-", "Ü").Replace("ss-", "ß");
-
             Console.WriteLine(data);
+
             return data;
         }
 
@@ -121,9 +121,9 @@ namespace ixts.Ausbildung.NameService
         {
             if ("PUT".Equals(command, StringComparison.InvariantCultureIgnoreCase))
             {
-                Boolean contain = Store.ContainsKey(key);
+                var contain = Store.ContainsKey(key);
                 
-               String answer = Put(contain, value, key);
+                var answer = Put(contain, value, key);
                 Send(answer);
 
             }
@@ -136,7 +136,7 @@ namespace ixts.Ausbildung.NameService
             {
                 if (key != null)
                 {
-                    String oldvalue = Store[key];
+                    var oldvalue = Store[key];
                     Store.Remove(key);
                     Send(oldvalue);
                 }

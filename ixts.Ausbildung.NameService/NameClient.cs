@@ -28,7 +28,7 @@ namespace ixts.Ausbildung.NameService
 
         public String Action(String command,String key,String value = null)
         {
-            String result;
+            var result;
 
             var valid = ValidateCommand(command);
 
@@ -36,7 +36,7 @@ namespace ixts.Ausbildung.NameService
             {
                 LastCommandUnkown = false;
 
-                String answer = Send(string.Format("{0} {1} {2}{3}", command, key, value, Environment.NewLine));
+                var answer = Send(string.Format("{0} {1} {2}{3}", command, key, value, Environment.NewLine));
 
                 result = answer.Replace(Environment.NewLine,"");
             }
@@ -55,11 +55,11 @@ namespace ixts.Ausbildung.NameService
         private String Send(String command)
         {
 
-            Byte[] msg = Encoding.UTF8.GetBytes(command);
+            var msg = Encoding.UTF8.GetBytes(command);
 
             s.Send(msg);
 
-            String answer = s.Receive();
+            var answer = s.Receive();
 
             return answer;
         }

@@ -20,22 +20,21 @@ namespace ixts.Ausbildung.NameService
         {
             StartSocket();
 
-            Boolean run = true;
+            var run = true;
 
             while (run)
             {
-                String data = GetData();
+                var data = GetData();
 
                 data = NormalizeData(data);
 
-                String[] parameters = data.Split(new[] { ' ' });
+                var parameters = data.Split(new[] { ' ' });
 
                 parameters = ParameterHandler.Normalize(parameters);
-                //parameters = ParameterHandler.ParseSpezialCharsToNormal(parameters);
 
-                String command = parameters[0];
-                String key = parameters.Length > 1 ? parameters[1] : null;
-                String value = parameters.Length > 2 ? parameters[2] : null;
+                var command = parameters[0];
+                var key = parameters.Length > 1 ? parameters[1] : null;
+                var value = parameters.Length > 2 ? parameters[2] : null;
 
                 run = HandleCommands(command, key, value);
 

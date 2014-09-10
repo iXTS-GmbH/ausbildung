@@ -7,9 +7,9 @@ namespace ixts.Ausbildung.NameService
     {
         public static String[] Normalize(String[] parameters)
         {
-            List<String> allParameters = new List<String>();
+            var allParameters = new List<String>();
 
-            foreach (String parameter in parameters)
+            foreach (var parameter in parameters)
             {
                 if (parameter != "" && parameter != " ")
                 {
@@ -22,7 +22,7 @@ namespace ixts.Ausbildung.NameService
 
             normalizedParameters[1] = allParameters.Count <= 1 ? null : allParameters[1];
 
-            for (int i = 2; i < allParameters.Count; i++)
+            for (var i = 2; i < allParameters.Count; i++)
             {
                 normalizedParameters[2] += string.Format(" {0}", allParameters[i]);
             }

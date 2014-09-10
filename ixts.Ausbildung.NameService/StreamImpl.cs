@@ -15,21 +15,23 @@ namespace ixts.Ausbildung.NameService
 
         public Dictionary<String, String> LoadMap()
         {
-            Dictionary<String,String> map = new Dictionary<String, String>();
-            String[] allLines = File.ReadAllLines(serverFileName);
+            var map = new Dictionary<String, String>();
+            var allLines = File.ReadAllLines(serverFileName);
+
             foreach (String line in allLines)
             {
-                String[] parameters = line.Split(' ');
+                var parameters = line.Split(' ');
                 map.Add(parameters[0], parameters[1]);
             }
+
             return map;
         }
 
         public void SaveMap(Dictionary<String, String> store)
         {
-            List<String> map = new List<String>();
+            var map = new List<String>();
 
-            foreach (KeyValuePair<String, String> pair in store)
+            foreach (var pair in store)
             {
                 map.Add(string.Format("{0} {1}", pair.Key, pair.Value));
             }
@@ -38,7 +40,7 @@ namespace ixts.Ausbildung.NameService
         }
 
 
-        public bool Exists(String fileName)
+        public Boolean Exists(String fileName)
         {
             return File.Exists(fileName);
         }
