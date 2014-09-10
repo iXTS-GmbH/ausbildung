@@ -24,20 +24,21 @@ namespace ixts.Ausbildung.NameService
 
             while (run)
             {
-                String data = GetData();
+                    String data = GetData();
 
-                data = NormalizeData(data);
+                    data = NormalizeData(data);
 
-                String[] parameters = data.Split(new[] { ' ' });
+                    String[] parameters = data.Split(new[] { ' ' });
 
-                parameters = NormalizeParameters.Normalize(parameters);
+                    parameters = NormalizeParameters.Normalize(parameters);
 
-                String command = parameters[0];
-                String key = parameters.Length > 1 ? parameters[1] : null;
+                    String command = parameters[0];
+                    String key = parameters.Length > 1 ? parameters[1] : null;
 
-                run = HandleCommands(command, key, parameters[2]);
+                    run = HandleCommands(command, key, parameters[2]);
 
-                stream.SaveMap(Store);
+                    stream.SaveMap(Store);
+
             }
 
             Socket.Close();

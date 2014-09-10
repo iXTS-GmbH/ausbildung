@@ -30,8 +30,8 @@ namespace ixts.Ausbildung.NameService
             if (normalizedParameters[2] != null)
             {
                 normalizedParameters[2] = normalizedParameters[2].Substring(1);
-                normalizedParameters[2] = normalizedParameters[2].Replace("ä", "ae").Replace("ö","oe").Replace("ü","ue");
-                normalizedParameters[2] = normalizedParameters[2].Replace("Ä", "Ae").Replace("Ö", "Oe").Replace("Ü", "Ue").Replace("ß", "ss");
+                normalizedParameters[2] = normalizedParameters[2].Replace("ä", "ae-").Replace("ö","oe-").Replace("ü","ue-");
+                normalizedParameters[2] = normalizedParameters[2].Replace("Ä", "Ae-").Replace("Ö", "Oe-").Replace("Ü", "Ue-").Replace("ß", "ss-");
             }
 
             return normalizedParameters;

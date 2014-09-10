@@ -30,7 +30,13 @@ namespace ixts.Ausbildung.NameService.ClientApp
 
                     String answer = nc.Action(parameters[0], key, value);
 
-                    Console.WriteLine(answer);
+                    if (answer != null)
+                    {
+                        answer = answer.Replace("ue-", "ü").Replace("oe-", "ö").Replace("ae-", "ä");
+                        answer = answer.Replace("Ue-", "Ü").Replace("Oe-", "Ö").Replace("Ae-", "Ä").Replace("ss-", "ß");
+                        Console.WriteLine(answer);
+                    }
+                    
 
                     if(parameters[0] == "STOP")
                     {

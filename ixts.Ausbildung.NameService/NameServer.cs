@@ -34,16 +34,15 @@ namespace ixts.Ausbildung.NameService
 
             while (run)
             {
-                String data = GetData();
+                    String data = GetData();
+                    data = NormalizeData(data);
 
-                data = NormalizeData(data);
+                    String[] parameters = data.Split(new[] { ' ' });
+                    parameters = NormalizeParameters.Normalize(parameters);
+                    String command = parameters[0];
+                    String key = parameters.Length > 1 ? parameters[1] : null;
 
-                String[] parameters = data.Split(new[] { ' ' });
-                parameters = NormalizeParameters.Normalize(parameters);
-                String command = parameters[0];
-                String key = parameters.Length > 1 ? parameters[1] : null;
-
-                run = HandleCommands(command, key, parameters[2]);
+                    run = HandleCommands(command, key, parameters[2]);
             }
 
             Socket.Close();
@@ -108,6 +107,9 @@ namespace ixts.Ausbildung.NameService
                     receive = false;
                 }
             }
+
+            data = data.Replace("oe-", "ö").Replace("ae-", "ä").Replace("ue-", "ü");
+            data = data.Replace("Oe-", "Ö").Replace("Ae-", "Ä").Replace("Ue-", "Ü").Replace("ss-", "ß");
 
             Console.WriteLine(data);
             return data;
