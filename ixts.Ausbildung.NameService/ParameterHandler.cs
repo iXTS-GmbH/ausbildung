@@ -53,7 +53,10 @@ namespace ixts.Ausbildung.NameService
             return parsedParameters.ToArray();
         }
 
-
+        public static String[] ParseNormalCharsToSpezial(String[] parameters)
+        {
+            return null;
+        }
 
     }
 }

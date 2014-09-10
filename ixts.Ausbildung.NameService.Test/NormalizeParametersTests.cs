@@ -64,5 +64,39 @@ namespace ixts.Ausbildung.NameService.Test
             Assert.AreEqual(expected,actual);
 
         }
+
+        [TestCase]
+        public void ParseNormalCharsToSpezialTest()
+        {
+            String[] parameters = new[]
+                {
+                    "Command",
+                    "Key",
+                    "Ae-Value Ae",
+                    "ae-Value ae",
+                    "Oe-Value Oe",
+                    "oe-Value oe",
+                    "Ue-Value Ue",
+                    "ue-Value ue",
+                    "ss-Value ss"
+                };
+
+            String[] expected = new[]
+                {
+                    "Command",
+                    "Key",
+                    "ÄValue Ae",
+                    "äValue ae",
+                    "ÖValue Oe",
+                    "öValue oe",
+                    "ÜValue Ue",
+                    "üValue ue",
+                    "ßValue ss"
+                };
+
+            String[] actual = ParameterHandler.ParseNormalCharsToSpezial(parameters);
+
+            Assert.AreEqual(expected,actual);
+        }
     }
 }

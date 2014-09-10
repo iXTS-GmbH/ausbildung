@@ -110,7 +110,7 @@ namespace ixts.Ausbildung.NameService
                 }
             }
 
-            data = data.Replace("oe-", "ö").Replace("ae-", "ä").Replace("ue-", "ü");
+            data = data.Replace("oe-", "ö").Replace("ae-", "ä").Replace("ue-", "ü");//TODO Punkt
             data = data.Replace("Oe-", "Ö").Replace("Ae-", "Ä").Replace("Ue-", "Ü").Replace("ss-", "ß");
 
             Console.WriteLine(data);

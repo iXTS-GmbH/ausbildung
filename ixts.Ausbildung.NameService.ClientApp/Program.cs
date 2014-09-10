@@ -33,7 +33,7 @@ namespace ixts.Ausbildung.NameService.ClientApp
 
                     if (answer != null)
                     {
-                        answer = answer.Replace("ue-", "ü").Replace("oe-", "ö").Replace("ae-", "ä");
+                        answer = answer.Replace("ue-", "ü").Replace("oe-", "ö").Replace("ae-", "ä");//TODO Punkt
                         answer = answer.Replace("Ue-", "Ü").Replace("Oe-", "Ö").Replace("Ae-", "Ä").Replace("ss-", "ß");
                         Console.WriteLine(answer);
                     }
