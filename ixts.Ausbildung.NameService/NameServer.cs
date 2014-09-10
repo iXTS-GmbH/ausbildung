@@ -50,7 +50,7 @@ namespace ixts.Ausbildung.NameService
 
         protected void Send(String value)
         {
-            String answer = value == null ? "\r\n0\r\n" : string.Format("\r\n1 {0}\r\n", value);
+            String answer = value == null ? string.Format("{0}0{0}",Environment.NewLine) : string.Format("{1}1 {0}{1}", value,Environment.NewLine);
 
             byte[] msg = Encoding.ASCII.GetBytes(answer);
             ConSocket.Send(msg);
@@ -71,7 +71,7 @@ namespace ixts.Ausbildung.NameService
 
         protected String NormalizeData(String data)
         {
-            data = data.Replace("\r\n", "");
+            data = data.Replace(Environment.NewLine, "");
 
             while (data.IndexOf("\b", StringComparison.Ordinal) > -1)
             {

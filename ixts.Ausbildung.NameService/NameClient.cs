@@ -34,9 +34,9 @@ namespace ixts.Ausbildung.NameService
             switch (command)
             {
                 case "PUT":
-                    answer = Send(string.Format("PUT {0} {1}\r\n",key,value));
+                    answer = Send(string.Format("PUT {0} {1}{2}",key,value,Environment.NewLine));
 
-                    answer = answer.Replace("\r\n", "");
+                    answer = answer.Replace(Environment.NewLine, "");
 
                     if (answer.StartsWith("1"))
                     {
@@ -51,9 +51,9 @@ namespace ixts.Ausbildung.NameService
 
                 case "GET":
 
-                    answer = Send(string.Format("GET {0}\r\n",key));
+                    answer = Send(string.Format("GET {0}{1}",key,Environment.NewLine));
 
-                    answer = answer.Replace("\r\n", "");
+                    answer = answer.Replace(Environment.NewLine, "");
 
                     if (answer.StartsWith("1"))
                     {
@@ -68,9 +68,9 @@ namespace ixts.Ausbildung.NameService
 
                 case "DEL":
 
-                    answer = Send(string.Format("DEL {0}\r\n",key));
+                    answer = Send(string.Format("DEL {0}{1}",key,Environment.NewLine));
 
-                    answer = answer.Replace("\r\n", "");
+                    answer = answer.Replace(Environment.NewLine, "");
 
                     if (answer.StartsWith("1"))
                     {
