@@ -28,7 +28,7 @@ namespace ixts.Ausbildung.NameService.Test
             List<String> expected = new List<String>
                 {
                     string.Format("{0}1 {0}",Environment.NewLine),
-                    string.Format("{0}1 newfirstValue{0}",Environment.NewLine),
+                    string.Format("{0}1 firstValue{0}",Environment.NewLine),
                     string.Format("{0}1 {0}",Environment.NewLine)
                 };
 

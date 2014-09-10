@@ -20,7 +20,7 @@ namespace ixts.Ausbildung.NameService
 
             normalizedParameters[0] = allParameters[0];
 
-            normalizedParameters[1] = allParameters[0] == "STOP" ? null : allParameters[1];
+            normalizedParameters[1] = allParameters.Count <= 1 ? null : allParameters[1];
 
             for (int i = 2; i < allParameters.Count; i++)
             {

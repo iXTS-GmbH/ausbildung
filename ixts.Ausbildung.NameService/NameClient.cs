@@ -23,15 +23,7 @@ namespace ixts.Ausbildung.NameService
 
             s = socketFactory.Make(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
-            try
-            {
-                s.Bind(port, true, ip);
-            }
-            catch (SocketException)
-            {
-                Console.WriteLine("Es konnte keine Verbindung zu einem Server mit der Adresse {0}:{1} hergestellt werden", ip, port);
-                    
-            }
+            s.Bind(port, true, ip);
         }
 
         public String Action(String command,String key,String value = null)
