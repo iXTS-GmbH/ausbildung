@@ -15,8 +15,8 @@ namespace ixts.Ausbildung.NameService.Test
         public void SetUp()
         {
             TestSocketFactory testSocketFactory = new TestSocketFactory();
-            TestStreamFactory testStreamFactory = new TestStreamFactory();
-            sut = new NameServer(2000,testSocketFactory,testStreamFactory);
+            //TestStreamFactory testStreamFactory = new TestStreamFactory();
+            sut = new NameServer(2000,testSocketFactory);
             testSocket = new TestSocket();
         }
 
@@ -169,7 +169,7 @@ namespace ixts.Ausbildung.NameService.Test
         public void NoFileTest()
         {
             TestStream.Exist = false;
-            NameServer server = new NameServer(2000, new TestSocketFactory(), new TestStreamFactory());
+            NameServer server = new NameServer(2000, new TestSocketFactory());
             testSocket.SetTestProtokoll("NoFileTest");
             server.Loop();
             Dictionary<String,String> expected = new Dictionary<String, String>();

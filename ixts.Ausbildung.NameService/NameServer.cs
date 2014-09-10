@@ -9,27 +9,20 @@ namespace ixts.Ausbildung.NameService
     public class NameServer
     {
 
-        private readonly Dictionary<string, string> store = new Dictionary<String, String>();
-        private readonly int port;
-        private readonly IStream stream;
-        private readonly ISocket socket;
-        private const String SERVER_FILENAME = "nameservermap.ser";
-        private ISocket conSocket;
+        protected Dictionary<string, string> Store = new Dictionary<String, String>();
+        protected readonly int Port;
+        protected readonly ISocket Socket;
+        protected ISocket ConSocket;
 
-        public NameServer(int port, ISocketFactory socketFactory = null, IStreamFactory streamFactory = null)
+        public NameServer(int port, ISocketFactory socketFactory = null)
         {
-            this.port = port;
+            Port = port;
 
-            streamFactory = streamFactory ?? new StreamFactory();
             socketFactory = socketFactory ?? new SocketFactory();
 
-            stream = streamFactory.Make(SERVER_FILENAME);
+            Socket = socketFactory.Make(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
-            store = stream.Exists(SERVER_FILENAME) ? stream.LoadMap() : new Dictionary<String, String>();
-
-            socket = socketFactory.Make(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-
-            socket.Bind(port,false);
+            Socket.Bind(port,false);
 
         }
 
@@ -52,33 +45,31 @@ namespace ixts.Ausbildung.NameService
                 run = HandleCommands(command, request, key);
             }
 
-            socket.Close();
+            Socket.Close();
         }
 
-        private void Send(String value)
+        protected void Send(String value)
         {
             String answer = value == null ? "0\r\n" : string.Format("\r\n1 {0}\r\n", value);
 
-            stream.SaveMap(store);
-
             byte[] msg = Encoding.ASCII.GetBytes(answer);
-            conSocket.Send(msg);
+            ConSocket.Send(msg);
         }
 
 
-        private void Put(Boolean contain,String newValue, String key)
+        protected void Put(Boolean contain,String newValue, String key)
         {
             if (contain)
             {
-                store[key] = newValue;
+                Store[key] = newValue;
             }
             else
             {
-                store.Add(key, newValue);
+                Store.Add(key, newValue);
             }
         }
 
-        private String NormalizeData(String data)
+        protected String NormalizeData(String data)
         {
             data = data.Replace("\r\n", "");
 
@@ -89,23 +80,23 @@ namespace ixts.Ausbildung.NameService
             return data;
         }
 
-        private void StartSocket()
+        protected void StartSocket()
         {
-            socket.Listen(10);
+            Socket.Listen(10);
 
-            Console.WriteLine("Server started on Port: {0}", port);
+            Console.WriteLine("Server started on Port: {0}", Port);
 
-            conSocket = socket.Accept();
+            ConSocket = Socket.Accept();
         }
 
-        private String GetData()
+        protected String GetData()
         {
             Boolean receive = true;
             String data = "";
 
             while (receive)
             {
-                data += conSocket.Receive();
+                data += ConSocket.Receive();
 
                 if (data.Contains(Environment.NewLine))
                 {
@@ -117,26 +108,26 @@ namespace ixts.Ausbildung.NameService
             return data;
         }
 
-        private Boolean HandleCommands(String command,String[]request,String key)
+        protected Boolean HandleCommands(String command,String[]request,String key)
         {
             if ("PUT".Equals(command, StringComparison.InvariantCultureIgnoreCase))
             {
-                Boolean contain = store.ContainsKey(key);
+                Boolean contain = Store.ContainsKey(key);
                 Put(contain, request[2], key);
-                Send(contain ? store[key] : "");
+                Send(contain ? Store[key] : "");
 
             }
             else if ("GET".Equals(command, StringComparison.InvariantCultureIgnoreCase))
             {
-                Send(store.ContainsKey(key) ? store[key] : null);
+                Send(Store.ContainsKey(key) ? Store[key] : null);
 
             }
             else if ("DEL".Equals(command, StringComparison.InvariantCultureIgnoreCase))
             {
                 if (key != null)
                 {
-                    String oldvalue = store[key];
-                    store.Remove(key);
+                    String oldvalue = Store[key];
+                    Store.Remove(key);
                     Send(oldvalue);
                 }
 
@@ -149,7 +140,7 @@ namespace ixts.Ausbildung.NameService
             else
             {
                 Console.WriteLine("Illegal Command recived: {0}", command);
-                conSocket.Send(Encoding.ASCII.GetBytes(string.Format("Illegal Command: {0}", command)));
+                ConSocket.Send(Encoding.ASCII.GetBytes(string.Format("Illegal Command: {0}", command)));
             }
             return true;
         }
