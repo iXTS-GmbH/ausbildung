@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ixts.Ausbildung.TextfileLines
+namespace ixts.Ausbildung.TextfileLines.Test
 {
     public class TestStream:IStream
     {

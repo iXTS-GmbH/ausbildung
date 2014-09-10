@@ -55,7 +55,20 @@ namespace ixts.Ausbildung.NameService
 
         public static String[] ParseNormalCharsToSpezial(String[] parameters)
         {
-            return null;
+            List<String> parsedParameters = new List<String>();
+
+            for (int i = 0; i < parameters.Length; i++)
+            {
+                if (parameters[i] != null)
+                {
+                    String parsedParameter = parameters[i].Replace("Ae-", "Ä").Replace("Oe-", "Ö").Replace("UE-", "Ü").Replace("ss-", "ß");
+                    parsedParameter = parsedParameter.Replace("ae-", "ä").Replace("oe-", "ö").Replace("ue-", "ü");
+                    parsedParameters.Add(parsedParameter);
+                }
+
+            }
+
+            return parsedParameters.ToArray();
         }
 
     }
