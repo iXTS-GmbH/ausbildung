@@ -16,56 +16,43 @@ namespace ixts.Ausbildung.NameService
         {
             socketFactory = sFactory ?? new SocketFactory();
 
-            ip = serverIP == "localhost" ? null : IPAddress.Parse(serverIP);
+            ip = serverIP == "localhost" ? IPAddress.Parse("127.0.0.1") : IPAddress.Parse(serverIP);
 
             port = serverPort;
 
             s = socketFactory.Make(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            s.Bind(port, true, ip);
+
+            try
+            {
+                s.Bind(port, true, ip);
+            }
+            catch (SocketException)
+            {
+                Console.WriteLine("Es konnte keine Verbindung zu einem Server mit der Adresse {0}:{1} hergestellt werden", ip, port);
+                    
+            }
         }
 
         public String Action(String command,String key,String value = null)
         {
             String result;
-            String answer;
 
-            command = command.ToUpper();
-
-            switch (command)
+            if ("PUT".Equals(command, StringComparison.InvariantCultureIgnoreCase) ||
+                "GET".Equals(command, StringComparison.InvariantCultureIgnoreCase) ||
+                "DEL".Equals(command, StringComparison.InvariantCultureIgnoreCase)
+                )
             {
-                case "PUT":
-                    answer = Send(string.Format("PUT {0} {1}{2}",key,value,Environment.NewLine));
+                String answer = Send(string.Format("{0} {1} {2}{3}", command, key, value, Environment.NewLine));
 
-                    answer = answer.Replace(Environment.NewLine, "");
-
-                    result = answer.StartsWith("1") ? answer.Substring(1).Trim() : "0";
-                     
-                    break;
-
-                case "GET":
-
-                    answer = Send(string.Format("GET {0}{1}",key,Environment.NewLine));
-
-                    answer = answer.Replace(Environment.NewLine, "");
-
-                    result = answer.StartsWith("1") ? answer.Substring(1).Trim() : "0";
-
-                    break;
-
-                case "DEL":
-
-                    answer = Send(string.Format("DEL {0}{1}",key,Environment.NewLine));
-
-                    answer = answer.Replace(Environment.NewLine, "");
-
-                    result = answer.StartsWith("1") ? answer.Substring(1).Trim() : "0";
-
-                    break;
-
-                default:
-
-                    throw new Exception(string.Format("{0} ist kein gültiger Befehl",command));
+                result = answer.Replace(Environment.NewLine,"");
             }
+            else
+            {
+                Console.WriteLine("{0} ist kein gültiger Befehl{1}",command,Environment.NewLine);
+
+                result = "0";
+            }
+
             return result == "0" ? null : result;
         }
 

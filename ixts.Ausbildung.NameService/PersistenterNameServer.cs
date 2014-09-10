@@ -5,6 +5,7 @@ namespace ixts.Ausbildung.NameService
 {
     public class PersistenterNameServer:NameServer
     {
+
         private const String SERVER_FILENAME = "nameservermap.ser";
         private readonly IStream stream;
 
