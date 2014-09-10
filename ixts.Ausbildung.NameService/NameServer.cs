@@ -38,11 +38,12 @@ namespace ixts.Ausbildung.NameService
 
                 data = NormalizeData(data);
 
-                String[] request = data.Split(new[] { ' ' });
-                String command = request[0];
-                String key = request.Length > 1 ? request[1] : null;
+                String[] parameters = data.Split(new[] { ' ' });
+                parameters = NormalizeParameters.Normalize(parameters);
+                String command = parameters[0];
+                String key = parameters.Length > 1 ? parameters[1] : null;
 
-                run = HandleCommands(command, request, key);
+                run = HandleCommands(command, key, parameters[2]);
             }
 
             Socket.Close();
@@ -112,14 +113,14 @@ namespace ixts.Ausbildung.NameService
             return data;
         }
 
-        protected Boolean HandleCommands(String command,String[]request,String key)
+        protected Boolean HandleCommands(String command,String key, String value)
         {
             if ("PUT".Equals(command, StringComparison.InvariantCultureIgnoreCase))
             {
                 Boolean contain = Store.ContainsKey(key);
                 
-               String value = Put(contain, request[2], key);
-                Send(value);
+               String answer = Put(contain, value, key);
+                Send(answer);
 
             }
             else if ("GET".Equals(command, StringComparison.InvariantCultureIgnoreCase))

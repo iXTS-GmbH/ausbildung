@@ -28,11 +28,14 @@ namespace ixts.Ausbildung.NameService
 
                 data = NormalizeData(data);
 
-                String[] request = data.Split(new[] { ' ' });
-                String command = request[0];
-                String key = request.Length > 1 ? request[1] : null;
+                String[] parameters = data.Split(new[] { ' ' });
 
-                run = HandleCommands(command, request, key);
+                parameters = NormalizeParameters.Normalize(parameters);
+
+                String command = parameters[0];
+                String key = parameters.Length > 1 ? parameters[1] : null;
+
+                run = HandleCommands(command, key, parameters[2]);
 
                 stream.SaveMap(Store);
             }

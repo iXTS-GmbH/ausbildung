@@ -20,9 +20,11 @@ namespace ixts.Ausbildung.NameService.ClientApp
                 if (line != null)
                 {
                     String[] parameters = line.Split(' ');
-                    parameters = NormalizeParameters(parameters);
+                    parameters = NormalizeParameters.Normalize(parameters);
 
                     String key = parameters[0] == "STOP" ? null : parameters[1];
+
+                    
                     String value = parameters.Length > 2 ? parameters[2] : null;
                     
 
@@ -36,21 +38,6 @@ namespace ixts.Ausbildung.NameService.ClientApp
                     }
                 }
             }
-        }
-
-        private static String[] NormalizeParameters(String[] parameters)
-        {
-            List<String> normalizedParameters = new List<String>();
-
-            foreach (String parameter in parameters)
-            {
-                if (parameter != "" && parameter != " ")
-                {
-                    normalizedParameters.Add(parameter);
-                }   
-            }
-
-            return normalizedParameters.ToArray();
         }
     }
 }
