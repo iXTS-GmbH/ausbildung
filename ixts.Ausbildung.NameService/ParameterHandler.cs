@@ -35,7 +35,7 @@ namespace ixts.Ausbildung.NameService
             return normalizedParameters;
         }
 
-        public static String[] ParseParametersToSendable(String[] parameters)
+        public static String[] ParseSpezialCharsToNormal(String[] parameters)
         {
             List<String> parsedParameters = new List<String>();
 
@@ -52,6 +52,8 @@ namespace ixts.Ausbildung.NameService
 
             return parsedParameters.ToArray();
         }
+
+
 
     }
 }

@@ -9,7 +9,7 @@ namespace ixts.Ausbildung.NameService.Test
         [TestCase]
         public void NormalizeTest()
         {
-            String[] parameters = new String[]
+            String[] parameters = new []
                 {
                     "Command",
                     "Key",
@@ -18,7 +18,7 @@ namespace ixts.Ausbildung.NameService.Test
                     "Value3"
                 };
 
-            String[] expected = new String[]
+            String[] expected = new []
                 {
                     "Command",
                     "Key",
@@ -28,6 +28,41 @@ namespace ixts.Ausbildung.NameService.Test
             String[] actual = ParameterHandler.Normalize(parameters);
 
             Assert.AreEqual(expected,actual);
+        }
+
+        [TestCase]
+        public void ParseSpezialCharsToNormalTest()
+        {
+            String[] parameters = new []
+                {
+                    "Command",
+                    "Key",
+                    "ÄValue",
+                    "äValue",
+                    "ÖValue",
+                    "öValue",
+                    "ÜValue",
+                    "üValue",
+                    "ßValue"
+                };
+
+            String[] expected = new[]
+                {
+                    "Command",
+                    "Key",
+                    "Ae-Value",
+                    "ae-Value",
+                    "Oe-Value",
+                    "oe-Value",
+                    "Ue-Value",
+                    "ue-Value",
+                    "ss-Value"
+                };
+
+            String[] actual = ParameterHandler.ParseSpezialCharsToNormal(parameters);
+
+            Assert.AreEqual(expected,actual);
+
         }
     }
 }

@@ -31,7 +31,7 @@ namespace ixts.Ausbildung.NameService
                 String[] parameters = data.Split(new[] { ' ' });
 
                 parameters = ParameterHandler.Normalize(parameters);
-                parameters = ParameterHandler.ParseParametersToSendable(parameters);
+                parameters = ParameterHandler.ParseSpezialCharsToNormal(parameters);
 
                 String command = parameters[0];
                 String key = parameters.Length > 1 ? parameters[1] : null;
