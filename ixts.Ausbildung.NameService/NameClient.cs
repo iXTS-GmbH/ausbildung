@@ -26,7 +26,7 @@ namespace ixts.Ausbildung.NameService
 
         public String Action(String command,String key,String value = null)
         {
-            String result = null;
+            String result;
             String answer;
 
             command = command.ToUpper();
@@ -38,14 +38,7 @@ namespace ixts.Ausbildung.NameService
 
                     answer = answer.Replace(Environment.NewLine, "");
 
-                    if (answer.StartsWith("1"))
-                    {
-                        result = answer.Substring(1).Trim();
-                    }
-                    else
-                    {
-                        result = "0";
-                    }
+                    result = answer.StartsWith("1") ? answer.Substring(1).Trim() : "0";
                      
                     break;
 
@@ -55,14 +48,7 @@ namespace ixts.Ausbildung.NameService
 
                     answer = answer.Replace(Environment.NewLine, "");
 
-                    if (answer.StartsWith("1"))
-                    {
-                        result = answer.Substring(1).Trim();
-                    }
-                    else
-                    {
-                        result = "0";
-                    }
+                    result = answer.StartsWith("1") ? answer.Substring(1).Trim() : "0";
 
                     break;
 
@@ -72,14 +58,7 @@ namespace ixts.Ausbildung.NameService
 
                     answer = answer.Replace(Environment.NewLine, "");
 
-                    if (answer.StartsWith("1"))
-                    {
-                        result = answer.Substring(1).Trim();
-                    }
-                    else
-                    {
-                        result = "0";
-                    }
+                    result = answer.StartsWith("1") ? answer.Substring(1).Trim() : "0";
 
                     break;
 

@@ -20,7 +20,7 @@ namespace ixts.Ausbildung.NameService
         }
 
 
-        public Boolean Exists(string fileName)
+        public Boolean Exists(String fileName)
         {
             return Exist;
         }

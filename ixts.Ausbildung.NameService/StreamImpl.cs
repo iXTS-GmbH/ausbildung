@@ -38,7 +38,7 @@ namespace ixts.Ausbildung.NameService
         }
 
 
-        public bool Exists(string fileName)
+        public bool Exists(String fileName)
         {
             return File.Exists(fileName);
         }

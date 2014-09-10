@@ -9,7 +9,7 @@ namespace ixts.Ausbildung.NameService
     public class NameServer
     {
 
-        protected Dictionary<string, string> Store = new Dictionary<String, String>();
+        protected Dictionary<String, String> Store = new Dictionary<String, String>();
         protected readonly int Port;
         protected readonly ISocket Socket;
         protected ISocket ConSocket;

@@ -86,14 +86,14 @@ namespace ixts.Ausbildung.NameService
 
                 case "StopTest":
 
-                    input = new List<string>
+                    input = new List<String>
                         {
                             string.Format("STOP{0}",Environment.NewLine)
                         };
                     break;
 
                 case "IllegalCommandTest":
-                    input = new List<string>
+                    input = new List<String>
                         {
                             string.Format("NotACommand{0}",Environment.NewLine),
                             string.Format("STOP{0}",Environment.NewLine)
