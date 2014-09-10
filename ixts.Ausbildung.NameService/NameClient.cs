@@ -11,6 +11,7 @@ namespace ixts.Ausbildung.NameService
         private readonly int port;
         private readonly ISocketFactory socketFactory;
         private readonly ISocket s;
+        public Boolean LastCommandUnkown;
 
         public NameClient(String serverIP, int serverPort,ISocketFactory sFactory = null)
         {
@@ -42,15 +43,19 @@ namespace ixts.Ausbildung.NameService
                 "DEL".Equals(command, StringComparison.InvariantCultureIgnoreCase)
                 )
             {
+                LastCommandUnkown = false;
+
                 String answer = Send(string.Format("{0} {1} {2}{3}", command, key, value, Environment.NewLine));
 
                 result = answer.Replace(Environment.NewLine,"");
             }
             else
             {
-                Console.WriteLine("{0} ist kein gültiger Befehl{1}",command,Environment.NewLine);
+                LastCommandUnkown = true;
 
+                Console.WriteLine("{0} ist kein gültiger Befehl{1}",command,Environment.NewLine);
                 result = "0";
+
             }
 
             return result == "0" ? null : result;

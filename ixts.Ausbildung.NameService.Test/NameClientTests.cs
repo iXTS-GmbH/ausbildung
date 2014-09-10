@@ -17,7 +17,7 @@ namespace ixts.Ausbildung.NameService.Test
             sut = new NameClient("localhost",2000,testSocketFactory);
         }
 
-        [TestCase("")]
+        [TestCase("1 ")]
         public void ClientPutTest(String expected)
         {
             testSocket.SetTestProtokoll("ClientPutTest");
@@ -27,7 +27,7 @@ namespace ixts.Ausbildung.NameService.Test
 
         }
 
-        [TestCase("GetValue")]
+        [TestCase("1 GetValue")]
         public void ClientGetTest(String expected)
         {
             testSocket.SetTestProtokoll("ClientGetTest");
@@ -36,7 +36,7 @@ namespace ixts.Ausbildung.NameService.Test
             Assert.AreEqual(expected, actual);
         }
 
-        [TestCase("DelValue")]
+        [TestCase("1 DelValue")]
         public void ClientDelTest(String expected)
         {
             testSocket.SetTestProtokoll("ClientDelTest");
@@ -45,11 +45,12 @@ namespace ixts.Ausbildung.NameService.Test
             Assert.AreEqual(expected, actual);
         }
 
-        [ExpectedException]
         [TestCase]
-        public void IllegalCommandTest()
+        public void UnkownCommandTest()
         {
-            sut.Action("NotACommand", "NoKey");
+            sut.Action("UnkownCommand", "NoKey");
+
+            Assert.True(sut.LastCommandUnkown);
         }
 
         [TestCase]
