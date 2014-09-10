@@ -38,10 +38,9 @@ namespace ixts.Ausbildung.NameService
         {
             String result;
 
-            if ("PUT".Equals(command, StringComparison.InvariantCultureIgnoreCase) ||
-                "GET".Equals(command, StringComparison.InvariantCultureIgnoreCase) ||
-                "DEL".Equals(command, StringComparison.InvariantCultureIgnoreCase)
-                )
+            var valid = ValidateCommand(command);
+
+            if (valid)
             {
                 LastCommandUnkown = false;
 
@@ -71,7 +70,19 @@ namespace ixts.Ausbildung.NameService
             String answer = s.Receive();
 
             return answer;
-
         }
+
+        private Boolean ValidateCommand(String command)
+        {
+            if ("PUT".Equals(command, StringComparison.InvariantCultureIgnoreCase) ||
+                "GET".Equals(command, StringComparison.InvariantCultureIgnoreCase) ||
+                "DEL".Equals(command, StringComparison.InvariantCultureIgnoreCase))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
     }
 }
