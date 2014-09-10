@@ -34,42 +34,5 @@ namespace ixts.Ausbildung.NameService
 
             return normalizedParameters;
         }
-
-        public static String[] ParseSpezialCharsToNormal(String[] parameters)
-        {
-            List<String> parsedParameters = new List<String>();
-
-            for (int i = 0; i < parameters.Length; i++)
-            {
-                if (parameters[i] != null)
-                {
-                    String parsedParameter = parameters[i].Replace("Ä", "Ae-").Replace("Ö", "Oe-").Replace("Ü", "Ue-").Replace("ß", "ss-");
-                    parsedParameter = parsedParameter.Replace("ä", "ae-").Replace("ö", "oe-").Replace("ü", "ue-");
-                    parsedParameters.Add(parsedParameter);
-                }
-                
-            }
-
-            return parsedParameters.ToArray();
-        }
-
-        public static String[] ParseNormalCharsToSpezial(String[] parameters)
-        {
-            List<String> parsedParameters = new List<String>();
-
-            for (int i = 0; i < parameters.Length; i++)
-            {
-                if (parameters[i] != null)
-                {
-                    String parsedParameter = parameters[i].Replace("Ae-", "Ä").Replace("Oe-", "Ö").Replace("UE-", "Ü").Replace("ss-", "ß");
-                    parsedParameter = parsedParameter.Replace("ae-", "ä").Replace("oe-", "ö").Replace("ue-", "ü");
-                    parsedParameters.Add(parsedParameter);
-                }
-
-            }
-
-            return parsedParameters.ToArray();
-        }
-
     }
 }

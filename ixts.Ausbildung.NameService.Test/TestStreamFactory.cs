@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ixts.Ausbildung.NameService
+namespace ixts.Ausbildung.NameService.Test
 {
     public class TestStreamFactory:IStreamFactory
     {

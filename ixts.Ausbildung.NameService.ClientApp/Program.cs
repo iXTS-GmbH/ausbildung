@@ -21,7 +21,7 @@ namespace ixts.Ausbildung.NameService.ClientApp
                 {
                     String[] parameters = line.Split(' ');
                     parameters = ParameterHandler.Normalize(parameters);
-                    parameters = ParameterHandler.ParseSpezialCharsToNormal(parameters);
+                    //parameters = ParameterHandler.ParseSpezialCharsToNormal(parameters);
 
                     String key = parameters[0] == "STOP" ? null : parameters[1];
 

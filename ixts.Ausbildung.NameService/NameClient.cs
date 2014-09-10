@@ -55,7 +55,7 @@ namespace ixts.Ausbildung.NameService
         private String Send(String command)
         {
 
-            Byte[] msg = Encoding.ASCII.GetBytes(command);
+            Byte[] msg = Encoding.UTF8.GetBytes(command);
 
             s.Send(msg);
 

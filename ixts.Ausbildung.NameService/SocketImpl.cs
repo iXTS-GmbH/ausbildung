@@ -53,8 +53,7 @@ namespace ixts.Ausbildung.NameService
         {
             Byte[] bytes = new byte[1024];
             int bytesRec = socket.Receive(bytes);
-            return Encoding.ASCII.GetString(bytes, 0, bytesRec);
-             
+            return Encoding.UTF8.GetString(bytes, 0, bytesRec);//TODO bei Patrick fragen ob das die richtige ist
         }
 
         public void Send(byte[] msg)

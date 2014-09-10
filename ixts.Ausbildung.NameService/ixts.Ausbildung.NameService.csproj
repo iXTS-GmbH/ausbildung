@@ -55,8 +55,6 @@
     <Compile Include="StreamImpl.cs" />
     <Compile Include="TestSocket.cs" />
     <Compile Include="TestSocketFactory.cs" />
-    <Compile Include="TestStream.cs" />
-    <Compile Include="TestStreamFactory.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

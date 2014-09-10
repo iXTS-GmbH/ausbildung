@@ -39,7 +39,7 @@ namespace ixts.Ausbildung.NameService
 
                 String[] parameters = data.Split(new[] { ' ' });
                 parameters = ParameterHandler.Normalize(parameters);
-                parameters = ParameterHandler.ParseSpezialCharsToNormal(parameters);
+                //parameters = ParameterHandler.ParseSpezialCharsToNormal(parameters);
                 String command = parameters[0];
                 String key = parameters.Length > 1 ? parameters[1] : null;
                 String value = parameters.Length > 2 ? parameters[2] : null;
@@ -54,7 +54,7 @@ namespace ixts.Ausbildung.NameService
         {
             String answer = value == null ? string.Format("{0}0{0}",Environment.NewLine) : string.Format("{1}1 {0}{1}", value,Environment.NewLine);
 
-            byte[] msg = Encoding.ASCII.GetBytes(answer);
+            byte[] msg = Encoding.UTF8.GetBytes(answer);
             ConSocket.Send(msg);
         }
 

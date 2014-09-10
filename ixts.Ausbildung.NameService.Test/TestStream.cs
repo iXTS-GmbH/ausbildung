@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ixts.Ausbildung.NameService
+namespace ixts.Ausbildung.NameService.Test
 {
     public class TestStream:IStream
     {
