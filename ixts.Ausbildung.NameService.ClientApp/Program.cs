@@ -20,7 +20,8 @@ namespace ixts.Ausbildung.NameService.ClientApp
                 if (line != null)
                 {
                     String[] parameters = line.Split(' ');
-                    parameters = NormalizeParameters.Normalize(parameters);
+                    parameters = ParameterHandler.Normalize(parameters);
+                    parameters = ParameterHandler.ParseParametersToSendable(parameters);
 
                     String key = parameters[0] == "STOP" ? null : parameters[1];
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ixts.Ausbildung.NameService
 {
-    public class NormalizeParameters
+    public class ParameterHandler
     {
         public static String[] Normalize(String[] parameters)
         {
@@ -30,11 +30,28 @@ namespace ixts.Ausbildung.NameService
             if (normalizedParameters[2] != null)
             {
                 normalizedParameters[2] = normalizedParameters[2].Substring(1);
-                normalizedParameters[2] = normalizedParameters[2].Replace("ä", "ae-").Replace("ö","oe-").Replace("ü","ue-");
-                normalizedParameters[2] = normalizedParameters[2].Replace("Ä", "Ae-").Replace("Ö", "Oe-").Replace("Ü", "Ue-").Replace("ß", "ss-");
             }
 
             return normalizedParameters;
         }
+
+        public static String[] ParseParametersToSendable(String[] parameters)
+        {
+            List<String> parsedParameters = new List<String>();
+
+            for (int i = 0; i < parameters.Length; i++)
+            {
+                if (parameters[i] != null)
+                {
+                    String parsedParameter = parameters[i].Replace("Ä", "Ae-").Replace("Ö", "Oe-").Replace("Ü", "Ue-").Replace("ß", "ss-");
+                    parsedParameter = parsedParameter.Replace("ä", "ae-").Replace("ö", "oe-").Replace("ü", "ue-");
+                    parsedParameters.Add(parsedParameter);
+                }
+                
+            }
+
+            return parsedParameters.ToArray();
+        }
+
     }
 }

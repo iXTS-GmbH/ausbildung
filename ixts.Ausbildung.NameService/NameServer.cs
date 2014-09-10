@@ -34,15 +34,17 @@ namespace ixts.Ausbildung.NameService
 
             while (run)
             {
-                    String data = GetData();
-                    data = NormalizeData(data);
+                String data = GetData();
+                data = NormalizeData(data);
 
-                    String[] parameters = data.Split(new[] { ' ' });
-                    parameters = NormalizeParameters.Normalize(parameters);
-                    String command = parameters[0];
-                    String key = parameters.Length > 1 ? parameters[1] : null;
+                String[] parameters = data.Split(new[] { ' ' });
+                parameters = ParameterHandler.Normalize(parameters);
+                parameters = ParameterHandler.ParseParametersToSendable(parameters);
+                String command = parameters[0];
+                String key = parameters.Length > 1 ? parameters[1] : null;
+                String value = parameters.Length > 2 ? parameters[2] : null;
 
-                    run = HandleCommands(command, key, parameters[2]);
+                run = HandleCommands(command, key, value);
             }
 
             Socket.Close();
