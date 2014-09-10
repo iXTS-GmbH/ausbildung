@@ -15,7 +15,6 @@ namespace ixts.Ausbildung.NameService.Test
         public void SetUp()
         {
             TestSocketFactory testSocketFactory = new TestSocketFactory();
-            //TestStreamFactory testStreamFactory = new TestStreamFactory();
             sut = new NameServer(2000,testSocketFactory);
             testSocket = new TestSocket();
         }
@@ -24,15 +23,17 @@ namespace ixts.Ausbildung.NameService.Test
         public void PutTest()
         {
             TestStream.Map = new Dictionary<String, String>();
+            TestSocket.Output = new List<String>();
 
             List<String> expected = new List<String>
                 {
-                    "1 ",
-                    "1 firstValue",
-                    "1 "
+                    string.Format("{0}1 {0}",Environment.NewLine),
+                    string.Format("{0}1 newfirstValue{0}",Environment.NewLine),
+                    string.Format("{0}1 {0}",Environment.NewLine)
                 };
 
             testSocket.SetTestProtokoll("PutTest");
+            
             sut.Loop();
             List<String> actual = TestSocket.Output;
             TestSocket.Output = new List<String>();
@@ -47,9 +48,9 @@ namespace ixts.Ausbildung.NameService.Test
 
             List<String> expected = new List<String>
                 {
-                    "1 ",
-                    "1 firstValue",
-                    "1 "
+                    string.Format("{0}1 {0}",Environment.NewLine),
+                    string.Format("{0}1 firstValue{0}",Environment.NewLine),
+                    string.Format("{0}1 {0}",Environment.NewLine)
                 };
 
             testSocket.SetTestProtokoll("GetTest");
@@ -68,10 +69,10 @@ namespace ixts.Ausbildung.NameService.Test
 
             List<String> expected = new List<String>
                 {
-                    "1 ",
-                    "1 firstValue",
-                    "0",
-                    "1 "
+                    string.Format("{0}1 {0}",Environment.NewLine),
+                    string.Format("{0}1 firstValue{0}",Environment.NewLine),
+                    string.Format("{0}0{0}",Environment.NewLine),
+                    string.Format("{0}1 {0}",Environment.NewLine)
                 };
             testSocket.SetTestProtokoll("DelTest");
             TestSocket.Output = new List<String>();
@@ -99,8 +100,8 @@ namespace ixts.Ausbildung.NameService.Test
 
             List<String> expected = new List<String>
                 {
-                    "Illegal Command: NotACommand",
-                    "1 "
+                    string.Format("{0}Illegal Command: NotACommand{0}",Environment.NewLine),
+                    string.Format("{0}1 {0}",Environment.NewLine)
                 };
             testSocket.SetTestProtokoll("IllegalCommandTest");
             sut.Loop();
@@ -114,7 +115,7 @@ namespace ixts.Ausbildung.NameService.Test
         [TestCase]
         public void LoadTest()
         {
-            TestStream.Map = new Dictionary<string, string>
+            TestStream.Map = new Dictionary<String, String>
                 {
                     {"firstKey","firstValue"},
                     {"secondKey","secondValue"},
@@ -124,14 +125,15 @@ namespace ixts.Ausbildung.NameService.Test
 
             List<String> expected = new List<String>
                 {
-                    "1 firstValue",
-                    "1 secondValue",
-                    "1 thirdValue",
-                    "1 fourdValue",
-                    "1 "
+                    string.Format("{0}1 firstValue{0}",Environment.NewLine),
+                    string.Format("{0}1 secondValue{0}",Environment.NewLine),
+                    string.Format("{0}1 thirdValue{0}",Environment.NewLine),
+                    string.Format("{0}1 fourdValue{0}",Environment.NewLine),
+                    string.Format("{0}1 {0}",Environment.NewLine)
                 };
             testSocket.SetTestProtokoll("LoadTest");
-            sut.Loop();
+            PersistenterNameServer server = new PersistenterNameServer(2000,new TestSocketFactory(),new TestStreamFactory());
+            server.Loop();
             List<String> actual = TestSocket.Output;
             TestSocket.Output = new List<String>();
 
@@ -158,7 +160,8 @@ namespace ixts.Ausbildung.NameService.Test
                     
                 };
             testSocket.SetTestProtokoll("SaveTest");
-            sut.Loop();
+            PersistenterNameServer server = new PersistenterNameServer(2000,new TestSocketFactory(),new TestStreamFactory());
+            server.Loop();
             Dictionary<String,String> actual = TestStream.ServerFile;
             TestStream.ServerFile = new Dictionary<String, String>();
 
@@ -169,13 +172,36 @@ namespace ixts.Ausbildung.NameService.Test
         public void NoFileTest()
         {
             TestStream.Exist = false;
-            NameServer server = new NameServer(2000, new TestSocketFactory());
-            testSocket.SetTestProtokoll("NoFileTest");
-            server.Loop();
             Dictionary<String,String> expected = new Dictionary<String, String>();
+            testSocket.SetTestProtokoll("NoFileTest");
+
+            PersistenterNameServer server = new PersistenterNameServer(2000, new TestSocketFactory(),new TestStreamFactory());
+            server.Loop();
+
             Dictionary<String,String> actual = TestStream.ServerFile;
+
             TestStream.Exist = true;
             TestSocket.Output = new List<String>();
+
+            Assert.AreEqual(expected,actual);
+        }
+
+        [TestCase]
+        public void NormalizeDataTest()
+        {
+            TestStream.Map = new Dictionary<String, String>();
+
+            Dictionary<String,String> expected = new Dictionary<String, String>
+                {
+                    {"NormalizedKey","NormalizedValue"}
+                };
+            testSocket.SetTestProtokoll("NormalizeDataTest");
+            
+
+            PersistenterNameServer server = new PersistenterNameServer(2000,new TestSocketFactory(),new TestStreamFactory());
+            server.Loop();
+
+            Dictionary<String, String> actual = TestStream.ServerFile;
 
             Assert.AreEqual(expected,actual);
         }

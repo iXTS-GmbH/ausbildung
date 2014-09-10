@@ -54,9 +54,9 @@ namespace ixts.Ausbildung.NameService
 
                     input = new List<String>
                         {
-                            "PUT firstKey firstValue",
-                            "PUT firstKey newfirstValue",
-                            "STOP"
+                            string.Format("PUT firstKey firstValue{0}",Environment.NewLine),
+                            string.Format("PUT firstKey newfirstValue{0}",Environment.NewLine),
+                            string.Format("STOP{0}",Environment.NewLine)
                         };
 
                     break;
@@ -65,9 +65,9 @@ namespace ixts.Ausbildung.NameService
 
                     input = new List<String>
                         {
-                            "PUT firstKey firstValue",
-                            "GET firstKey",
-                            "STOP"
+                            string.Format("PUT firstKey firstValue{0}",Environment.NewLine),
+                            string.Format("GET firstKey{0}",Environment.NewLine),
+                            string.Format("STOP{0}",Environment.NewLine)
                         };
 
                     break;
@@ -76,10 +76,10 @@ namespace ixts.Ausbildung.NameService
 
                     input = new List<String>
                         {
-                            "PUT firstKey firstValue",
-                            "DEL firstKey",
-                            "GET firstKey",
-                            "STOP"
+                            string.Format("PUT firstKey firstValue{0}",Environment.NewLine),
+                            string.Format("DEL firstKey{0}",Environment.NewLine),
+                            string.Format("GET firstKey{0}",Environment.NewLine),
+                            string.Format("STOP{0}",Environment.NewLine)
                         };
 
                     break;
@@ -88,15 +88,15 @@ namespace ixts.Ausbildung.NameService
 
                     input = new List<string>
                         {
-                            "STOP"
+                            string.Format("STOP{0}",Environment.NewLine)
                         };
                     break;
 
                 case "IllegalCommandTest":
                     input = new List<string>
                         {
-                            "NotACommand",
-                            "STOP"
+                            string.Format("NotACommand{0}",Environment.NewLine),
+                            string.Format("STOP{0}",Environment.NewLine)
                         };
                     break;
 
@@ -104,11 +104,11 @@ namespace ixts.Ausbildung.NameService
 
                     input = new List<String>
                         {
-                            "GET firstKey",
-                            "GET secondKey",
-                            "GET thirdKey",
-                            "GET fourdKey",
-                            "STOP"
+                            string.Format("GET firstKey{0}",Environment.NewLine),
+                            string.Format("GET secondKey{0}",Environment.NewLine),
+                            string.Format("GET thirdKey{0}",Environment.NewLine),
+                            string.Format("GET fourdKey{0}",Environment.NewLine),
+                            string.Format("STOP{0}",Environment.NewLine)
                         };
 
                     break;
@@ -117,10 +117,10 @@ namespace ixts.Ausbildung.NameService
 
                     input = new List<String>
                         {
-                            "DEL secondKey",
-                            "PUT fourdKey newfourdValue",
-                            "PUT fiftKey fiftValue",
-                            "STOP"
+                            string.Format("DEL secondKey{0}",Environment.NewLine),
+                            string.Format("PUT fourdKey newfourdValue{0}",Environment.NewLine),
+                            string.Format("PUT fiftKey fiftValue{0}",Environment.NewLine),
+                            string.Format("STOP{0}",Environment.NewLine)
                         };
 
                     break;
@@ -156,7 +156,16 @@ namespace ixts.Ausbildung.NameService
 
                     input = new List<String>
                         {
-                            "STOP"
+                            string.Format("STOP{0}",Environment.NewLine)
+                        };
+
+                    break;
+                case "NormalizeDataTest":
+
+                    input = new List<String>
+                        {
+                            string.Format("PP\bUT Nor\brmalizew\bdKey Normn\balizt\bedValue{0}",Environment.NewLine),
+                            string.Format("STOP{0}",Environment.NewLine)
                         };
 
                     break;
