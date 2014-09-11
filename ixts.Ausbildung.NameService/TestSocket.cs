@@ -36,7 +36,7 @@ namespace ixts.Ausbildung.NameService
 
         public void Send(byte[] msg)
         {
-            Output.Add(Encoding.ASCII.GetString(msg));
+            Output.Add(Encoding.UTF8.GetString(msg));
         }
 
 

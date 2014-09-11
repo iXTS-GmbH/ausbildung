@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using NUnit.Framework;
 
 namespace ixts.Ausbildung.NameService.Test
@@ -212,6 +213,5 @@ namespace ixts.Ausbildung.NameService.Test
 
             Assert.AreEqual(expected,actual);
         }
-
     }
 }

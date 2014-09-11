@@ -53,7 +53,13 @@ namespace ixts.Ausbildung.NameService
         {
             var bytes = new byte[1024];
             var bytesRec = socket.Receive(bytes);
-            return Encoding.UTF8.GetString(bytes, 0, bytesRec);
+
+            return Encoding.UTF8.GetString(bytes, 0, bytesRec);//Erkennt Zeichen nicht
+            //return Encoding.UTF7.GetString(bytes, 0, bytesRec);//Erkennt Zeichen nicht
+            //return Encoding.UTF32.GetString(bytes, 0, bytesRec);//Erkennt Zeichen und Zeilenumbruch nicht
+            //return Encoding.Unicode.GetString(bytes, 0, bytesRec);//Erkennt Zeichen und Zeilenumbruch nicht
+            //return Encoding.BigEndianUnicode.GetString(bytes, 0, bytesRec);//Erkennt Zeichen und Zeilenumbruch nicht
+            //return Encoding.Default.GetString(bytes, 0, bytesRec);//Erkennt Zeichen falsch
         }
 
         public void Send(byte[] msg)
