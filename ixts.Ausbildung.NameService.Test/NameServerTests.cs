@@ -23,7 +23,6 @@ namespace ixts.Ausbildung.NameService.Test
         [TestCase]
         public void PutTest()
         {
-            //TestStream.Map = new Dictionary<String, String>();
             TestSocket.Output = new List<String>();
 
             var expected = new List<String>
@@ -45,7 +44,6 @@ namespace ixts.Ausbildung.NameService.Test
         [TestCase]
         public void GetTest()
         {
-            //TestStream.Map = new Dictionary<String, String>();
 
             var expected = new List<String>
                 {
@@ -66,8 +64,6 @@ namespace ixts.Ausbildung.NameService.Test
         [TestCase]
         public void DelTest()
         {
-            //TestStream.Map = new Dictionary<String, String>();
-
             var expected = new List<String>
                 {
                     string.Format("{0}1 {0}",Environment.NewLine),
@@ -90,8 +86,6 @@ namespace ixts.Ausbildung.NameService.Test
         [TestCase]
         public void StopTest()
         {
-            //TestStream.Map = new Dictionary<String, String>();
-
             testSocket.SetTestProtokoll("StopTest");
             sut.Loop();
             
@@ -119,7 +113,6 @@ namespace ixts.Ausbildung.NameService.Test
         [TestCase]
         public void NormalizeDataTest()
         {
-            //TestStream.Map = new Dictionary<String, String>();
 
             var expected = new Dictionary<String, String>
                 {
@@ -131,10 +124,6 @@ namespace ixts.Ausbildung.NameService.Test
 
             var server = new PersistentNameServer(2000,new TestSocketFactory());
             server.Loop();
-
-            //var actual = TestStream.ServerFile;
-
-            //Assert.AreEqual(expected,actual);
         }
     }
 }

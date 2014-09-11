@@ -7,13 +7,13 @@ namespace ixts.Ausbildung.NameService
 
         private const String SERVER_FILENAME = "nameservermap.ser";
         private MapParser mapParser;
-        private Map map;
+        private IMap map;
 
         public PersistentNameServer(int port, ISocketFactory socketFactory = null):base(port,socketFactory)
         {
             mapParser = new MapParser(SERVER_FILENAME);
             map = mapParser.LoadMap();
-            Store = map.Store;
+            Store = map.GetStore();
         }
 
 
