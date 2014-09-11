@@ -39,7 +39,7 @@ namespace ixts.Ausbildung.NameService
 
                 if (command.Equals(COMMAND_PUT,StringComparison.InvariantCultureIgnoreCase) || command.Equals(COMMAND_DEL,StringComparison.InvariantCultureIgnoreCase))
                 {
-                    map.Store = Store;
+                    map.SetStore(Store);
                     mapParser.SaveMap(map);
                 }
                 run = HandleCommands(command, key, value);

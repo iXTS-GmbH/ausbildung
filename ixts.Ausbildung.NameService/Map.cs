@@ -6,17 +6,21 @@ namespace ixts.Ausbildung.NameService
     [Serializable]
     public class Map:IMap
     {
-        public Dictionary<String, String> Store;
+        private Dictionary<String, String> store;
 
         public Map(Dictionary<String,String> map )
         {
-            Store = map;
+            store = map;
         }
 
         public Dictionary<String,String> GetStore()
         {
-            return Store;
+            return store;
         }
 
+        public void SetStore(Dictionary<string, string> newStore)
+        {
+            store = newStore;
+        }
     }
 }

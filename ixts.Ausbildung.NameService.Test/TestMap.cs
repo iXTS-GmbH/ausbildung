@@ -16,5 +16,11 @@ namespace ixts.Ausbildung.NameService.Test
         {
             return Store;
         }
+
+
+        public void SetStore(Dictionary<string, string> newStore)
+        {
+            Store = newStore;
+        }
     }
 }
