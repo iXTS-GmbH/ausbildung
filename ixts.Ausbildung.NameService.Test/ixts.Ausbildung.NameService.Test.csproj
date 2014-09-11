@@ -48,6 +48,8 @@
     <Compile Include="NameServerTests.cs" />
     <Compile Include="NormalizeParametersTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestSocket.cs" />
+    <Compile Include="TestSocketFactory.cs" />
     <Compile Include="TestStream.cs" />
     <Compile Include="TestStreamFactory.cs" />
   </ItemGroup>

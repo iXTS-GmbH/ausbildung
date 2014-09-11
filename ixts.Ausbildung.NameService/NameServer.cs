@@ -35,9 +35,11 @@ namespace ixts.Ausbildung.NameService
             while (run)
             {
                 var data = GetData();
+
                 data = NormalizeData(data);
 
                 var parameters = data.Split(new[] { ' ' });
+
                 parameters = ParameterHandler.Normalize(parameters);
 
                 var command = parameters[0];

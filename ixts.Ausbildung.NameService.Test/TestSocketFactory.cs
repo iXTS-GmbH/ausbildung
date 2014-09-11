@@ -1,6 +1,6 @@
 ﻿using System.Net.Sockets;
 
-namespace ixts.Ausbildung.NameService
+namespace ixts.Ausbildung.NameService.Test
 {
     public class TestSocketFactory:ISocketFactory
     {
