@@ -1,5 +1,4 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace ixts.Ausbildung.NameService.Test
 {
@@ -9,7 +8,7 @@ namespace ixts.Ausbildung.NameService.Test
         [TestCase]
         public void NormalizeTest()
         {
-            String[] parameters = new []
+            var parameters = new []
                 {
                     "Command",
                     "Key",
@@ -18,14 +17,14 @@ namespace ixts.Ausbildung.NameService.Test
                     "Value3"
                 };
 
-            String[] expected = new []
+            var expected = new []
                 {
                     "Command",
                     "Key",
                     "Value1 Value2 Value3"
                 };
 
-            String[] actual = ParameterHandler.Normalize(parameters);
+            var actual = ParameterHandler.Normalize(parameters);
 
             Assert.AreEqual(expected,actual);
         }

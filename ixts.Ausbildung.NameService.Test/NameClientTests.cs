@@ -22,7 +22,7 @@ namespace ixts.Ausbildung.NameService.Test
         {
             testSocket.SetTestProtokoll("ClientPutTest");
             
-            String actual = sut.Action("PUT", "GET", "VALUE");
+            var actual = sut.Action("PUT", "GET", "VALUE");
             Assert.AreEqual(expected, actual);
 
         }
@@ -32,7 +32,7 @@ namespace ixts.Ausbildung.NameService.Test
         {
             testSocket.SetTestProtokoll("ClientGetTest");
 
-            String actual = sut.Action("GET", "GET");
+            var actual = sut.Action("GET", "GET");
             Assert.AreEqual(expected, actual);
         }
 
@@ -41,7 +41,7 @@ namespace ixts.Ausbildung.NameService.Test
         {
             testSocket.SetTestProtokoll("ClientDelTest");
 
-            String actual = sut.Action("DEL", "DEL");
+            var actual = sut.Action("DEL", "DEL");
             Assert.AreEqual(expected, actual);
         }
 
@@ -56,10 +56,10 @@ namespace ixts.Ausbildung.NameService.Test
         [TestCase]
         public void IPTest()
         {
-            IPAddress expected = IPAddress.Parse("172.16.92.128");
-            NameClient client = new NameClient("172.16.92.128", 2000, testSocketFactory);
+            var expected = IPAddress.Parse("172.16.92.128");
+            var client = new NameClient("172.16.92.128", 2000, testSocketFactory);
             client.Action("PUT", "IPTest", "172.16.92.128");
-            IPAddress actual = TestSocket.ServerIP;
+            var actual = TestSocket.ServerIP;
 
             Assert.AreEqual(expected,actual);
         }

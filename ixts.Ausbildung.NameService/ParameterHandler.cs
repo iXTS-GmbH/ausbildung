@@ -16,7 +16,7 @@ namespace ixts.Ausbildung.NameService
                     allParameters.Add(parameter);
                 }
             }
-            String[] normalizedParameters = new String[3];
+            var normalizedParameters = new String[3];
 
             normalizedParameters[0] = allParameters[0];
 

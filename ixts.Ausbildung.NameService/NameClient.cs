@@ -28,7 +28,7 @@ namespace ixts.Ausbildung.NameService
 
         public String Action(String command,String key,String value = null)
         {
-            var result;
+            var result = "";
 
             var valid = ValidateCommand(command);
 
