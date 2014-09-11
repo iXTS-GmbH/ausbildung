@@ -34,6 +34,7 @@ namespace ixts.Ausbildung.NameService
         {
             var fstream = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.ReadWrite);
             formatter.Serialize(fstream,map);
+            fstream.Close();
         }
 
         public static Boolean Exists(String filename)

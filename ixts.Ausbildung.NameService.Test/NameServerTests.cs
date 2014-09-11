@@ -129,7 +129,7 @@ namespace ixts.Ausbildung.NameService.Test
             testSocket.SetTestProtokoll("NormalizeDataTest");
             
 
-            var server = new PersistentNameServer(2000,new TestSocketFactory(),new TestStreamFactory());
+            var server = new PersistentNameServer(2000,new TestSocketFactory());
             server.Loop();
 
             //var actual = TestStream.ServerFile;

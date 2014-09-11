@@ -152,14 +152,13 @@ namespace ixts.Ausbildung.NameService
 
         protected Boolean HandleCommands(String command,String key, String value)
         {
-            if (COMMAND_PUT.Equals(command, StringComparison.InvariantCultureIgnoreCase))//TODO PUT GET DEL STOP toConstant
+            if (COMMAND_PUT.Equals(command, StringComparison.InvariantCultureIgnoreCase))
             {                
                 Send(Put(value, key));
             }
             else if (COMMAND_GET.Equals(command, StringComparison.InvariantCultureIgnoreCase))
             {
                 Send(Get(key));
-
             }
             else if (COMMAND_DEL.Equals(command, StringComparison.InvariantCultureIgnoreCase))
             {
