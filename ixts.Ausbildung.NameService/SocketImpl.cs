@@ -52,6 +52,7 @@ namespace ixts.Ausbildung.NameService
         public String Receive()
         {
             var bytes = new byte[1024];//TODO Problem beheben wenn buffer zu klein für nachricht ist
+            //Es gehen max 234 Zeichen in einen Befehl der Buffer ist also nie zu klein
             var bytesRec = socket.Receive(bytes);
 
             return Encoding.UTF8.GetString(bytes, 0, bytesRec);

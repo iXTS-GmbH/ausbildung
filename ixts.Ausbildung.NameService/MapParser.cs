@@ -26,7 +26,7 @@ namespace ixts.Ausbildung.NameService
             }
             else
             {
-                map = new Map(new Dictionary<String,String>());
+                map =  new Map(new Dictionary<String,String>());
             }
 
             return (Map)map;
