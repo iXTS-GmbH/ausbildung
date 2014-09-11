@@ -136,7 +136,7 @@ namespace ixts.Ausbildung.NameService.Test
                     string.Format("{0}1 {0}",Environment.NewLine)
                 };
             testSocket.SetTestProtokoll("LoadTest");
-            var server = new PersistenterNameServer(2000,new TestSocketFactory(),new TestStreamFactory());
+            var server = new PersistentNameServer(2000,new TestSocketFactory(),new TestStreamFactory());
             server.Loop();
             var actual = TestSocket.Output;
             TestSocket.Output = new List<String>();
@@ -165,7 +165,7 @@ namespace ixts.Ausbildung.NameService.Test
                 };
 
             testSocket.SetTestProtokoll("SaveTest");
-            var server = new PersistenterNameServer(2000,new TestSocketFactory(),new TestStreamFactory());
+            var server = new PersistentNameServer(2000,new TestSocketFactory(),new TestStreamFactory());
 
             server.Loop();
             var actual = TestStream.ServerFile;
@@ -182,7 +182,7 @@ namespace ixts.Ausbildung.NameService.Test
             var expected = new Dictionary<String, String>();
             testSocket.SetTestProtokoll("NoFileTest");
 
-            var server = new PersistenterNameServer(2000, new TestSocketFactory(),new TestStreamFactory());
+            var server = new PersistentNameServer(2000, new TestSocketFactory(),new TestStreamFactory());
             server.Loop();
 
             var actual = TestStream.ServerFile;
@@ -206,7 +206,7 @@ namespace ixts.Ausbildung.NameService.Test
             testSocket.SetTestProtokoll("NormalizeDataTest");
             
 
-            var server = new PersistenterNameServer(2000,new TestSocketFactory(),new TestStreamFactory());
+            var server = new PersistentNameServer(2000,new TestSocketFactory(),new TestStreamFactory());
             server.Loop();
 
             var actual = TestStream.ServerFile;

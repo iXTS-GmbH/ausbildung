@@ -56,7 +56,7 @@ namespace ixts.Ausbildung.NameService
         {
             var answer = value == null ? string.Format("{0}0{0}",Environment.NewLine) : string.Format("{1}1 {0}{1}", value,Environment.NewLine);
 
-            var msg = Encoding.UTF8.GetBytes(answer);
+            var msg = Encoding.UTF8.GetBytes(answer);//TODO runter in das Socket.Send
 
             ConSocket.Send(msg);
         }
@@ -122,11 +122,11 @@ namespace ixts.Ausbildung.NameService
 
         protected Boolean HandleCommands(String command,String key, String value)
         {
-            if ("PUT".Equals(command, StringComparison.InvariantCultureIgnoreCase))
+            if ("PUT".Equals(command, StringComparison.InvariantCultureIgnoreCase))//TODO PUT GET DEL STOP toConstant
             {
                 var contain = Store.ContainsKey(key);
                 
-                var answer = Put(contain, value, key);
+                var answer = Put(contain, value, key);//TODO contain raus answer umbennen(oldvalue)
                 Send(answer);
 
             }
@@ -147,7 +147,6 @@ namespace ixts.Ausbildung.NameService
             }
             else if ("STOP".Equals(command, StringComparison.InvariantCultureIgnoreCase))
             {
-                Send("");
                 return false;
             }
             else

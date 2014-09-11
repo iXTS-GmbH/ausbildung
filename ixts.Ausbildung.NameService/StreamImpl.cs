@@ -13,7 +13,7 @@ namespace ixts.Ausbildung.NameService
             serverFileName = fileName;
         }
 
-        public Dictionary<String, String> LoadMap()
+        public Dictionary<String, String> LoadMap()//TODO Parsen raus
         {
             var map = new Dictionary<String, String>();
             var allLines = File.ReadAllLines(serverFileName);

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace ixts.Ausbildung.NameService
 {
-    public class PersistenterNameServer:NameServer
+    public class PersistentNameServer:NameServer
     {
 
         private const String SERVER_FILENAME = "nameservermap.ser";
         private readonly IStream stream;
 
-        public PersistenterNameServer(int port, ISocketFactory socketFactory = null,IStreamFactory streamFactory = null):base(port,socketFactory)
+        public PersistentNameServer(int port, ISocketFactory socketFactory = null,IStreamFactory streamFactory = null):base(port,socketFactory)
         {
             streamFactory = streamFactory ?? new StreamFactory();
             stream = streamFactory.Make(SERVER_FILENAME);
@@ -38,7 +38,7 @@ namespace ixts.Ausbildung.NameService
 
                 run = HandleCommands(command, key, value);
 
-                stream.SaveMap(Store);
+                stream.SaveMap(Store);//TODO auch raus
 
             }
 

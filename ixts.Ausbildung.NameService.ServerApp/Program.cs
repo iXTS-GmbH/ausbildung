@@ -6,8 +6,8 @@ namespace ixts.Ausbildung.NameService.ServerApp
     {
         static void Main(string[] args)
         {
-            int port = args.Length == 0 ? 2000 : Int32.Parse(args[0]);
-            new PersistenterNameServer(port).Loop();
+            var port = args.Length == 0 ? 2000 : Int32.Parse(args[0]);
+            new PersistentNameServer(port).Loop();
         }
     }
 }

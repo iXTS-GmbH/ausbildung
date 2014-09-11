@@ -51,7 +51,7 @@ namespace ixts.Ausbildung.NameService
 
         public String Receive()
         {
-            var bytes = new byte[1024];
+            var bytes = new byte[1024];//TODO Problem beheben wenn buffer zu klein für nachricht ist
             var bytesRec = socket.Receive(bytes);
 
             return Encoding.UTF8.GetString(bytes, 0, bytesRec);
