@@ -48,7 +48,7 @@
     <Compile Include="RemoveLinesStartsWithMapper.cs" />
     <Compile Include="StreamFactory.cs" />
     <Compile Include="StreamImpl.cs" />
-    <Compile Include="TextFileLines.cs" />
+    <Compile Include="TextFileLine.cs" />
     <Compile Include="TextfileMapper.cs" />
     <Compile Include="TextFileSplitter.cs" />
     <Compile Include="TextSplitter.cs" />

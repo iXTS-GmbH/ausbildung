@@ -14,7 +14,7 @@ namespace ixts.Ausbildung.TextfileLines
 
             var counter = 0;
 
-            var allLines = new ixts.Ausbildung.TextfileLines.TextFileLines(sourceFile, str);
+            var allLines = new ixts.Ausbildung.TextfileLines.TextFileLine(sourceFile, str);
 
             foreach (var line in allLines)
             {

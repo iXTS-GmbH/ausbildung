@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 namespace ixts.Ausbildung.TextfileLines
 {
-    public class TextFileLines:IEnumerable<String>
+    public class TextFileLine:IEnumerable<String>
     {
         private readonly List<String> lineList = new List<String>();
 
-        public TextFileLines(String filename, IStreamFactory str = null)
+        public TextFileLine(String filename, IStreamFactory str = null)
         {
             str = str ?? new StreamFactory();
 

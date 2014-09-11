@@ -1,54 +1,36 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using NUnit.Framework;
+﻿using System;
+using System.Collections.Generic;
+using NUnit.Framework;
+using ixts.Ausbildung.TextfileLines;
+using ixts.Ausbildung.TextfileLines.Test;
 
-//namespace ixts.Ausbildung.TextFileLines.Test
-//{
-//    [TestFixture]
-//    public class TextFileSplitterTests
-//    {
-//        [TestCase("splitterTest","split")]
-//        public void TextFileSplitterTest(String input,String splitPoint)
-//        {
-//            var textFileSplitter = new TextSplitter();
-//            textFileSplitter.SetSplitPoint(splitPoint);
+namespace ixts.Ausbildung.TextFileLines.Test
+{
+    [TestFixture]
+    public class TextFileSplitterTests
+    {
 
-//            var expected = new []
-//                {
-//                    new []{"Das ist ein Testfile","split"}, 
-//                    new []{"Das ist ein zweites Testfile","split"},
-//                    new []{"Das ist ein mehrzeiliges","drittes split Testfile"} 
-//                };
+        [TestCase("BigFile")]
+        public void BigTextFileSplitterTest(String input)
+        {
+            var textFileSplitter = new TextSplitter();
+            var expected = new List<String[]>();
 
-//            var testStream = new TestStreamFactory();
+            for (var i = 0; i < 100; i++)
+            {
+                expected.Add(new[] { "Das ist ein großes TestFile", "break" });
+            }
 
-//            textFileSplitter.Split(input,testStream); 
+            var teststream = new TestStreamFactory();
 
-//            var actual = testStream.Make(input);
-//            var output = actual.GetOutput();
+            textFileSplitter.Split(input, teststream);
 
-//            Assert.AreEqual(expected,output);
-//        }
+            teststream.Make(input);
 
-//        [TestCase("BigFile")]
-//        public void BigTextFileSplitterTest(String input)
-//        {
-//            var textFileSplitter = new TextSplitter();
-//            var expected = new List<String[]>();
+            var actual = TestStream.OutputFiles.ToArray();
+            TestStream.OutputFiles = new List<String[]>();
 
-//            for (var i = 0; i < 101; i++)
-//            {
-//                expected.Add(new [] { "Das ist ein großes TestFile", "break" });
-//            }
-
-//            var teststream = new TestStreamFactory();
-
-//            textFileSplitter.Split(input, teststream);
-
-//            var actual = teststream.Make(input);
-//            var output = actual.GetOutput();
-
-//            Assert.AreEqual(expected.ToArray(),output);
-//        }
-//    }
-//}
+            Assert.AreEqual(expected.ToArray(), actual);
+        }
+    }
+}

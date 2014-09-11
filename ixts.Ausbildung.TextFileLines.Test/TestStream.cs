@@ -7,7 +7,7 @@ namespace ixts.Ausbildung.TextfileLines.Test
     {
         private static List<String> readFile = new List<String>();
         private static List<String> writeFile = new List<String>();
-        private static List<String[]> outputFiles = new List<String[]>();
+        public static List<String[]> OutputFiles = new List<String[]>();
         private String lastFile = "";
         private static List<String> currentFile = new List<String>(); 
         private readonly String outputFile;
@@ -134,13 +134,13 @@ namespace ixts.Ausbildung.TextfileLines.Test
             return null;
         }
 
-        public string[][] GetOutput()
-        {
-            outputFiles.Add(currentFile.ToArray());
-            var output = outputFiles;
-            outputFiles = new List<String[]>();
-            return output.ToArray();
-        }
+        //public string[][] GetOutput()
+        //{
+        //    OutputFiles.Add(currentFile.ToArray());
+        //    var output = OutputFiles;
+        //    OutputFiles = new List<String[]>();
+        //    return output.ToArray();
+        //}
 
         public void WriteLine(String line)
         {
@@ -163,7 +163,7 @@ namespace ixts.Ausbildung.TextfileLines.Test
             }
             else
             {
-                outputFiles.Add(currentFile.ToArray());
+                OutputFiles.Add(currentFile.ToArray());
                 currentFile = new List<string>{line};
                 lastFile = targetPath;
             }   
