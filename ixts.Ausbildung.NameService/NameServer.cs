@@ -55,9 +55,12 @@ namespace ixts.Ausbildung.NameService
             Socket.Close();
         }
 
-        protected void Send(String value)
+        protected void Send(String msg, Boolean check = false)
         {
-            var msg = value == null ? string.Format("{0}0{0}",Environment.NewLine) : string.Format("{1}1 {0}{1}", value,Environment.NewLine);
+            if (!check)
+            {
+               msg = msg == null ? string.Format("{0}0{0}",Environment.NewLine) : string.Format("{1}1 {0}{1}", msg,Environment.NewLine);
+            }
 
             ConSocket.Send(msg);
         }
@@ -170,7 +173,7 @@ namespace ixts.Ausbildung.NameService
             }
             else
             {
-                Send(IllegalCommand(command));
+                Send(IllegalCommand(command),true);
             }
             return true;
         }

@@ -5,7 +5,7 @@ namespace ixts.Ausbildung.NameService.Test
 {
     public class TestMap:IMap
     {
-        public static Dictionary<String, String> Store;
+        public static Dictionary<String, String> Store = new Dictionary<String, String>();
 
         public TestMap(Dictionary<String,String> map )
         {

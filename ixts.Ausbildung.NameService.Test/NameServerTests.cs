@@ -29,7 +29,6 @@ namespace ixts.Ausbildung.NameService.Test
                 {
                     string.Format("{0}1 {0}",Environment.NewLine),
                     string.Format("{0}1 firstValue{0}",Environment.NewLine),
-                    string.Format("{0}1 {0}",Environment.NewLine)
                 };
 
             testSocket.SetTestProtokoll("PutTest");
@@ -49,7 +48,6 @@ namespace ixts.Ausbildung.NameService.Test
                 {
                     string.Format("{0}1 {0}",Environment.NewLine),
                     string.Format("{0}1 firstValue{0}",Environment.NewLine),
-                    string.Format("{0}1 {0}",Environment.NewLine)
                 };
 
             testSocket.SetTestProtokoll("GetTest");
@@ -69,7 +67,6 @@ namespace ixts.Ausbildung.NameService.Test
                     string.Format("{0}1 {0}",Environment.NewLine),
                     string.Format("{0}1 firstValue{0}",Environment.NewLine),
                     string.Format("{0}0{0}",Environment.NewLine),
-                    string.Format("{0}1 {0}",Environment.NewLine)
                 };
 
             testSocket.SetTestProtokoll("DelTest");
@@ -99,7 +96,6 @@ namespace ixts.Ausbildung.NameService.Test
             var expected = new List<String>
                 {
                     string.Format("{0}Illegal Command: NotACommand{0}",Environment.NewLine),
-                    string.Format("{0}1 {0}",Environment.NewLine)
                 };
             testSocket.SetTestProtokoll("IllegalCommandTest");
             sut.Loop();
@@ -121,9 +117,12 @@ namespace ixts.Ausbildung.NameService.Test
 
             testSocket.SetTestProtokoll("NormalizeDataTest");
             
-
-            var server = new PersistentNameServer(2000,new TestSocketFactory());
+            var server = new PersistentNameServer(2000,new TestSocketFactory(),new TestMapParser());
             server.Loop();
+
+            var actual = TestMapParser.Store;
+
+            Assert.AreEqual(expected,actual);
         }
     }
 }
