@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
-using System.Text;
 
 namespace ixts.Ausbildung.NameService.Test
 {
@@ -152,14 +151,6 @@ namespace ixts.Ausbildung.NameService.Test
 
                     break;
 
-                case "NoFileTest":
-
-                    input = new List<String>
-                        {
-                            string.Format("STOP{0}",Environment.NewLine)
-                        };
-
-                    break;
                 case "NormalizeDataTest":
 
                     input = new List<String>

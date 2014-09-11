@@ -9,6 +9,15 @@ namespace ixts.Ausbildung.NameService.Test
     [TestFixture]
     public class MapParserTests
     {
+        private TestSocket sut;
+
+        [SetUp]
+        public void SetUp()
+        {
+            sut = new TestSocket();
+        }
+
+
         //[TestCase]
         //public void LoadTest()
         //{
@@ -37,54 +46,35 @@ namespace ixts.Ausbildung.NameService.Test
         //    Assert.AreEqual(expected, actual);
         //}
 
-        //[TestCase]
-        //public void SaveTest()
-        //{
-        //    TestStream.Map = new Dictionary<string, string>
-        //        {
-        //            {"firstKey","firstValue"},
-        //            {"secondKey","secondValue"},
-        //            {"thirdKey","thirdValue"},
-        //            {"fourdKey","fourdValue"}
-        //        };
+        [TestCase]
+        public void SaveTest()
+        {
+            TestMapParser.Store = new Dictionary<String, String>
+                {
+                    {"firstKey","firstValue"},
+                    {"secondKey","secondValue"},
+                    {"thirdKey","thirdValue"},
+                    {"fourdKey","fourdValue"}
+                };
 
-        //    var expected = new Dictionary<String, String>
-        //        {
-        //            {"firstKey","firstValue"},
-        //            {"fiftKey","fiftValue"},
-        //            {"thirdKey","thirdValue"},
-        //            {"fourdKey","newfourdValue"}
+            var expected = new Dictionary<String, String>
+                {
+                    {"firstKey","firstValue"},
+                    {"fiftKey","fiftValue"},
+                    {"thirdKey","thirdValue"},
+                    {"fourdKey","newfourdValue"}
                     
-        //        };
+                };
 
-        //    testSocket.SetTestProtokoll("SaveTest");
-        //    var server = new PersistentNameServer(2000, new TestSocketFactory(), new TestStreamFactory());
+            sut.SetTestProtokoll("SaveTest");
+            var server = new PersistentNameServer(2000, new TestSocketFactory(), new TestMapParser());
 
-        //    server.Loop();
-        //    var actual = TestStream.ServerFile;
+            server.Loop();
+            var actual = TestMapParser.Store;
 
-        //    TestStream.ServerFile = new Dictionary<String, String>();
+            TestMapParser.Store = new Dictionary<String, String>();
 
-        //    Assert.AreEqual(expected, actual);
-        //}
-
-        //[TestCase]
-        //public void NoFileTest()
-        //{
-        //    TestStream.Exist = false;
-        //    var expected = new Dictionary<String, String>();
-        //    testSocket.SetTestProtokoll("NoFileTest");
-
-        //    var server = new PersistentNameServer(2000, new TestSocketFactory(), new TestStreamFactory());
-        //    server.Loop();
-
-        //    var actual = TestStream.ServerFile;
-
-        //    TestStream.Exist = true;
-        //    TestSocket.Output = new List<String>();
-
-        //    Assert.AreEqual(expected, actual);
-        //}
-
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
