@@ -54,9 +54,7 @@ namespace ixts.Ausbildung.NameService
 
         protected void Send(String value)
         {
-            var answer = value == null ? string.Format("{0}0{0}",Environment.NewLine) : string.Format("{1}1 {0}{1}", value,Environment.NewLine);
-
-            var msg = Encoding.UTF8.GetBytes(answer);//TODO runter in das Socket.Send
+            var msg = value == null ? string.Format("{0}0{0}",Environment.NewLine) : string.Format("{1}1 {0}{1}", value,Environment.NewLine);
 
             ConSocket.Send(msg);
         }
@@ -153,7 +151,7 @@ namespace ixts.Ausbildung.NameService
             {
                 Console.WriteLine("Illegal Command recived: {0}", command);
 
-                ConSocket.Send(Encoding.UTF8.GetBytes(string.Format("{1}Illegal Command: {0}{1}", command, Environment.NewLine)));
+                ConSocket.Send(string.Format("{1}Illegal Command: {0}{1}", command, Environment.NewLine));
             }
             return true;
         }

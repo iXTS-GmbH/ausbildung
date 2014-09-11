@@ -34,9 +34,9 @@ namespace ixts.Ausbildung.NameService.Test
             return input[lineCounter - 1];
         }
 
-        public void Send(byte[] msg)
+        public void Send(String msg)
         {
-            Output.Add(Encoding.UTF8.GetString(msg));
+            Output.Add(msg);
         }
 
 

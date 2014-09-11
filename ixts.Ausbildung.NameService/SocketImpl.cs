@@ -57,9 +57,9 @@ namespace ixts.Ausbildung.NameService
             return Encoding.UTF8.GetString(bytes, 0, bytesRec);
         }
 
-        public void Send(byte[] msg)
+        public void Send(String msg)
         {
-            socket.Send(msg);
+            socket.Send(Encoding.UTF8.GetBytes(msg));
         }
 
 

@@ -9,7 +9,7 @@ namespace ixts.Ausbildung.NameService
         void Listen(int backlog);
         ISocket Accept();
         String Receive();
-        void Send(Byte[] msg);
+        void Send(String msg);
         void Close();
 
     }

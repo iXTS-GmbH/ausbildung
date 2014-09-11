@@ -54,9 +54,7 @@ namespace ixts.Ausbildung.NameService
 
         private String Send(String command)
         {
-            var msg = Encoding.UTF8.GetBytes(command);
-
-            s.Send(msg);
+            s.Send(command);
 
             var answer = s.Receive();
 
