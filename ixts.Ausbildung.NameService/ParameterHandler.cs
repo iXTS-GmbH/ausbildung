@@ -18,7 +18,7 @@ namespace ixts.Ausbildung.NameService
             }
             var normalizedParameters = new String[3];
 
-            normalizedParameters[0] = allParameters[0];
+            normalizedParameters[0] = allParameters.Count <=  1 ? string.Empty : allParameters[0];
 
             normalizedParameters[1] = allParameters.Count <= 1 ? null : allParameters[1];
 

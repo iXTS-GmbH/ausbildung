@@ -23,6 +23,7 @@ namespace ixts.Ausbildung.NameService
             Store = map.GetStore();
         }
 
+        //Bis auf das fehlt mit nichts mehr
         //Zeilen zum speichern:
         //map.SetStore(Store);
         //mapParser.SaveMap(map);
