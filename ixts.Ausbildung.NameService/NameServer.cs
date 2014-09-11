@@ -157,15 +157,15 @@ namespace ixts.Ausbildung.NameService
         {
             if (COMMAND_PUT.Equals(command, StringComparison.InvariantCultureIgnoreCase))
             {                
-                Send(Put(value, key));
+                Send(this.Put(value, key));
             }
             else if (COMMAND_GET.Equals(command, StringComparison.InvariantCultureIgnoreCase))
             {
-                Send(Get(key));
+                Send(this.Get(key));
             }
             else if (COMMAND_DEL.Equals(command, StringComparison.InvariantCultureIgnoreCase))
             {
-                Send(Del(key));
+                Send(this.Del(key));
             }
             else if (COMMAND_STOP.Equals(command, StringComparison.InvariantCultureIgnoreCase))
             {

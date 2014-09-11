@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace ixts.Ausbildung.NameService.ClientApp
 {
     class Program
     {
+
         static void Main(String[] args)
         {
             var host = args.Length > 0 ? args[0] : "localhost";
@@ -17,6 +17,7 @@ namespace ixts.Ausbildung.NameService.ClientApp
             while(run)
             {
                 var line = Console.ReadLine();
+
                 if (line != null)
                 {
                     var parameters = line.Split(' ');
