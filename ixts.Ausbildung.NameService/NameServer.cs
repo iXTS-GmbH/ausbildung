@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
-using System.Text;
 
 namespace ixts.Ausbildung.NameService
 {
@@ -13,6 +12,10 @@ namespace ixts.Ausbildung.NameService
         protected readonly int Port;
         protected readonly ISocket Socket;
         protected ISocket ConSocket;
+        protected const String COMMAND_PUT = "PUT";
+        protected const String COMMAND_GET = "GET";
+        protected const String COMMAND_DEL = "DEL";
+        protected const String COMMAND_STOP = "STOP";
 
         public NameServer(int port, ISocketFactory socketFactory = null)
         {
@@ -149,20 +152,20 @@ namespace ixts.Ausbildung.NameService
 
         protected Boolean HandleCommands(String command,String key, String value)
         {
-            if ("PUT".Equals(command, StringComparison.InvariantCultureIgnoreCase))//TODO PUT GET DEL STOP toConstant
+            if (COMMAND_PUT.Equals(command, StringComparison.InvariantCultureIgnoreCase))//TODO PUT GET DEL STOP toConstant
             {                
                 Send(Put(value, key));
             }
-            else if ("GET".Equals(command, StringComparison.InvariantCultureIgnoreCase))
+            else if (COMMAND_GET.Equals(command, StringComparison.InvariantCultureIgnoreCase))
             {
                 Send(Get(key));
 
             }
-            else if ("DEL".Equals(command, StringComparison.InvariantCultureIgnoreCase))
+            else if (COMMAND_DEL.Equals(command, StringComparison.InvariantCultureIgnoreCase))
             {
                 Send(Del(key));
             }
-            else if ("STOP".Equals(command, StringComparison.InvariantCultureIgnoreCase))
+            else if (COMMAND_STOP.Equals(command, StringComparison.InvariantCultureIgnoreCase))
             {
                 return Stop();
             }
