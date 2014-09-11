@@ -60,11 +60,11 @@ namespace ixts.Ausbildung.NameService
         }
 
 
-        protected String Put(Boolean contain,String newValue, String key)
+        protected String Put(String newValue, String key)
         {
             var oldvalue = "";
 
-            if (contain)
+            if (Store.ContainsKey(key))
             {
                 oldvalue = Store[key];
                 Store[key] = newValue;
@@ -75,6 +75,35 @@ namespace ixts.Ausbildung.NameService
             }
 
             return oldvalue;
+        }
+
+        protected String Del(String key)
+        {
+            if (key != null)
+            {
+                var oldvalue = Store[key];
+                Store.Remove(key);
+                return oldvalue;
+            }
+
+            return null;
+        }
+
+        protected String Get(String key)
+        {
+            return Store.ContainsKey(key) ? Store[key] : null;
+        }
+
+        protected Boolean Stop()
+        {
+            return false;
+        }
+
+        protected String IllegalCommand(String command)
+        {
+            Console.WriteLine("Illegal Command recived: {0}", command);
+
+            return string.Format("{1}Illegal Command: {0}{1}", command, Environment.NewLine);
         }
 
         protected String NormalizeData(String data)
@@ -121,37 +150,25 @@ namespace ixts.Ausbildung.NameService
         protected Boolean HandleCommands(String command,String key, String value)
         {
             if ("PUT".Equals(command, StringComparison.InvariantCultureIgnoreCase))//TODO PUT GET DEL STOP toConstant
-            {
-                var contain = Store.ContainsKey(key);
-                
-                var answer = Put(contain, value, key);//TODO contain raus answer umbennen(oldvalue)
-                Send(answer);
-
+            {                
+                Send(Put(value, key));
             }
             else if ("GET".Equals(command, StringComparison.InvariantCultureIgnoreCase))
             {
-                Send(Store.ContainsKey(key) ? Store[key] : null);
+                Send(Get(key));
 
             }
             else if ("DEL".Equals(command, StringComparison.InvariantCultureIgnoreCase))
             {
-                if (key != null)
-                {
-                    var oldvalue = Store[key];
-                    Store.Remove(key);
-                    Send(oldvalue);
-                }
-
+                Send(Del(key));
             }
             else if ("STOP".Equals(command, StringComparison.InvariantCultureIgnoreCase))
             {
-                return false;
+                return Stop();
             }
             else
             {
-                Console.WriteLine("Illegal Command recived: {0}", command);
-
-                ConSocket.Send(string.Format("{1}Illegal Command: {0}{1}", command, Environment.NewLine));
+                Send(IllegalCommand(command));
             }
             return true;
         }
