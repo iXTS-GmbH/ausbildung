@@ -7,12 +7,12 @@ namespace ixts.Ausbildung.NameService.Test
     {
         public static Dictionary<String, String> Store = new Dictionary<String, String>();
 
-        public IMap LoadMap()
+        public Map LoadMap()
         {
             return new Map(Store);
         }
 
-        public void SaveMap(IMap map)
+        public void SaveMap(Map map)
         {
             Store = map.GetStore();
         }

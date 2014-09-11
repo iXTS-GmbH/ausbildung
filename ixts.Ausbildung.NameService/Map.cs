@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace ixts.Ausbildung.NameService
 {
     [Serializable]
-    public class Map:IMap
+    public class Map
     {
         private Dictionary<String, String> store;
 

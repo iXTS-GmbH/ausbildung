@@ -3,7 +3,7 @@ namespace ixts.Ausbildung.NameService
 {
     public interface IMapParser
     {
-        IMap LoadMap();
-        void SaveMap(IMap map);
+        Map LoadMap();
+        void SaveMap(Map map);
     }
 }

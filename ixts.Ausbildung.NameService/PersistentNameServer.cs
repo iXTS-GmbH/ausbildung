@@ -7,7 +7,7 @@ namespace ixts.Ausbildung.NameService
 
         private const String SERVER_FILENAME = "nameservermap.ser";
         private readonly IMapParser mapParser;
-        private readonly IMap map;
+        private readonly Map map;
 
         public PersistentNameServer(int port, ISocketFactory socketFactory = null, IMapParser mapParser = null):base(port,socketFactory)
         {

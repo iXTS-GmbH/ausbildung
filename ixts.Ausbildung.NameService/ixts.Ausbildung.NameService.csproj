@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IMap.cs" />
     <Compile Include="IMapParser.cs" />
     <Compile Include="ISocket.cs" />
     <Compile Include="ISocketFactory.cs" />

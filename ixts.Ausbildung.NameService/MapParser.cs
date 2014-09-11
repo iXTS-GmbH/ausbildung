@@ -15,7 +15,7 @@ namespace ixts.Ausbildung.NameService
             this.filename = filename;
         }
 
-        public IMap LoadMap()
+        public Map LoadMap()
         {
             var map = new object();
 
@@ -32,7 +32,7 @@ namespace ixts.Ausbildung.NameService
             return (Map)map;
         }
 
-        public void SaveMap(IMap map)
+        public void SaveMap(Map map)
         {
             var fstream = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.ReadWrite);
             formatter.Serialize(fstream,map);
