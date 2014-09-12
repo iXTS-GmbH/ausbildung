@@ -135,9 +135,9 @@ namespace ixts.Ausbildung.NameService
         {
             data = data.Replace(Environment.NewLine, String.Empty);
 
-            while (data.IndexOf(DELETED_CHAR_MARKER, StringComparison.Ordinal) > -1)
+            while (data.Contains(DELETED_CHAR_MARKER))
             {
-                data = data.Remove(data.IndexOf(DELETED_CHAR_MARKER, StringComparison.Ordinal) - 1, 2);
+                data = data.Remove(data.IndexOf(DELETED_CHAR_MARKER, StringComparison.CurrentCulture) - 1, 2);
             }
 
             return data;
