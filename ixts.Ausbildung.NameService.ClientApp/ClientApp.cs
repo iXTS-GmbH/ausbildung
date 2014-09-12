@@ -34,7 +34,7 @@ namespace ixts.Ausbildung.NameService.ClientApp
             {
                 var line = Console.ReadLine();
 
-                if (line != string.Empty)
+                if (string.IsNullOrEmpty(line))
                 {
                     var parameters = ParameterHandler.Normalize(line.Split(Constants.PARAMETER_DELIMITER));
                     var response = nc.HandleCommand(parameters);
