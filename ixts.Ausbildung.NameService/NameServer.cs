@@ -37,7 +37,7 @@ namespace ixts.Ausbildung.NameService
             {
                 var parameters = GetParameters();
 
-                run = HandleCommands(parameters[0],parameters[1],parameters[2]);//TODO Gleich ganzes array übergeben
+                run = HandleCommands(parameters);//TODO Gleich ganzes array übergeben
             }
 
             Socket.Close();
@@ -65,7 +65,7 @@ namespace ixts.Ausbildung.NameService
             ConSocket.Send(string.Format("{0}{1}{0}", Environment.NewLine, Constants.SEND_FAILED));
         }
 
-        protected virtual String Put(String newValue, String key)
+        protected virtual String Put(String key, String newValue)
         {
             var oldvalue = string.Empty;
 
@@ -149,11 +149,15 @@ namespace ixts.Ausbildung.NameService
             }
         }
 
-        protected Boolean HandleCommands(String command,String key, String value)
+        protected Boolean HandleCommands(String[] parameters)
         {
+            var command = parameters[0];
+            var key = parameters[1];
+            var value = parameters[2];
+
             if (Constants.COMMAND_PUT.Equals(command, StringComparison.InvariantCultureIgnoreCase))
             {                
-                Send(Put(value, key));
+                Send(Put(key, value));
             }
             else if (Constants.COMMAND_GET.Equals(command, StringComparison.InvariantCultureIgnoreCase))
             {
