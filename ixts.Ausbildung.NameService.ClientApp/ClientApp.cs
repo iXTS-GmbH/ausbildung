@@ -4,23 +4,29 @@ namespace ixts.Ausbildung.NameService.ClientApp
 {
     class ClientApp
     {
+        private static NameClient nc;
 
         static void Main(String[] args)
         {
             var host = args.Length > 0 ? args[0] : Constants.LOCALHOST;
             var port = args.Length > 1 ? Int32.Parse(args[1]) : Constants.STANDARD_PORT;
 
-            var nc = new NameClient(host, port);
+            nc = new NameClient(host, port);
 
-            for (;;)
+            Loop();
+
+        }
+
+        private static void Loop()
+        {
+            for (; ; )
             {
                 var line = Console.ReadLine();
 
-                if (line != null)
+                if (line != string.Empty)
                 {
                     var parameters = ParameterHandler.Normalize(line.Split(Constants.PARAMETER_DELIMITER));
-
-                    var response = nc.HandleCommand(parameters[0], parameters[1], parameters[2]);
+                    var response = nc.HandleCommand(parameters);
 
                     Console.WriteLine(response);
 

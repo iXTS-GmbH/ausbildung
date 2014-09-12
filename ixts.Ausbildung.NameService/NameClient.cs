@@ -25,15 +25,17 @@ namespace ixts.Ausbildung.NameService
             s.Bind(port, true, ip);
         }
 
-        public String HandleCommand(String command,String key,String value = null)
+        public String HandleCommand(String[] parameters)
         {
+            var command = parameters[0];
+            var key = parameters[1];
+            var value = parameters[2];
 
             var valid = ValidateCommand(command);
 
             if (valid)
             {
-
-                var response = Send(string.Format("{0} {1} {2}{3}", command, key, value, Environment.NewLine));
+               var response = Send(string.Format("{0} {1} {2}{3}", command, key, value, Environment.NewLine));
 
                return response.Replace(Environment.NewLine,string.Empty);
             }

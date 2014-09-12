@@ -26,7 +26,7 @@ namespace ixts.Ausbildung.NameService.Test
         {
             testSocket.SetTestProtokoll("ClientPutTest");
 
-            var actual = sut.HandleCommand(Constants.COMMAND_PUT, Constants.COMMAND_GET, VALUE);
+            var actual = sut.HandleCommand(new []{Constants.COMMAND_PUT, Constants.COMMAND_GET, VALUE});
             Assert.AreEqual(expected, actual);
 
         }
@@ -36,7 +36,7 @@ namespace ixts.Ausbildung.NameService.Test
         {
             testSocket.SetTestProtokoll("ClientGetTest");
 
-            var actual = sut.HandleCommand(Constants.COMMAND_GET, Constants.COMMAND_GET);
+            var actual = sut.HandleCommand(new []{Constants.COMMAND_GET, Constants.COMMAND_GET,null});
             Assert.AreEqual(expected, actual);
         }
 
@@ -45,7 +45,7 @@ namespace ixts.Ausbildung.NameService.Test
         {
             testSocket.SetTestProtokoll("ClientDelTest");
 
-            var actual = sut.HandleCommand(Constants.COMMAND_DEL, Constants.COMMAND_DEL);
+            var actual = sut.HandleCommand(new []{Constants.COMMAND_DEL, Constants.COMMAND_DEL,null});
             Assert.AreEqual(expected, actual);
         }
 
@@ -56,7 +56,7 @@ namespace ixts.Ausbildung.NameService.Test
 
             TestSocket.Output = new List<String>();
 
-            sut.HandleCommand(COMMAND_UNKNOWN, KEY_UNKNOWN);
+            sut.HandleCommand(new []{COMMAND_UNKNOWN, KEY_UNKNOWN,null});
 
             var actual = TestSocket.Output;
 
@@ -68,7 +68,7 @@ namespace ixts.Ausbildung.NameService.Test
         {
             var expected = IPAddress.Parse(Constants.BACK_LOOP);
             var client = new NameClient(Constants.BACK_LOOP, Constants.STANDARD_PORT, testSocketFactory);
-            client.HandleCommand(Constants.COMMAND_PUT, VALUE, Constants.BACK_LOOP);
+            client.HandleCommand(new []{Constants.COMMAND_PUT, VALUE, Constants.BACK_LOOP});
             var actual = TestSocket.ServerIP;
 
             Assert.AreEqual(expected,actual);
