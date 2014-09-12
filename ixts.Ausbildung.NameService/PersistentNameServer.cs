@@ -8,24 +8,17 @@ namespace ixts.Ausbildung.NameService
 
         private const String SERVER_FILENAME = "nameservermap.ser";
         private readonly IMapParser mapParser;
-        private readonly Map map;
 
         public PersistentNameServer(int port, ISocketFactory socketFactory = null, IMapParser mapParser = null):base(port,socketFactory)
         {
             this.mapParser = mapParser ?? new MapParser(SERVER_FILENAME);
-            map = this.mapParser.LoadMap();
+           Dictionary<String,String> map = this.mapParser.LoadMap();
 
-            if (map.GetStore() == null)
+            if (map != null)
             {
-                map.SetStore(new Dictionary<String, String>());
+                Store = map;
             }
-
-            Store = map.GetStore();
         }
-
-        //Zeilen zum speichern:
-        //map.SetStore(Store);
-        //mapParser.SaveMap(map);
 
         protected override String Put(String newValue, String key)
         {
@@ -41,8 +34,7 @@ namespace ixts.Ausbildung.NameService
                 Store.Add(key, newValue);
             }
 
-            map.SetStore(Store);
-            mapParser.SaveMap(map);
+            mapParser.SaveMap(Store);
 
             return oldvalue;
         }
@@ -54,8 +46,7 @@ namespace ixts.Ausbildung.NameService
                 var oldvalue = Store[key];
                 Store.Remove(key);
 
-                map.SetStore(Store);
-                mapParser.SaveMap(map);
+                mapParser.SaveMap(Store);
 
                 return oldvalue;
             }

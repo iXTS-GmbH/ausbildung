@@ -15,7 +15,7 @@ namespace ixts.Ausbildung.NameService
             this.filename = filename;
         }
 
-        public Map LoadMap()
+        public Dictionary<String,String> LoadMap()
         {
             var map = new object();
 
@@ -26,13 +26,13 @@ namespace ixts.Ausbildung.NameService
             }
             else
             {
-                map =  new Map(new Dictionary<String,String>());
+                map =  new Dictionary<String,String>();
             }
 
-            return (Map)map;
+            return (Dictionary<String,String>)map;
         }
 
-        public void SaveMap(Map map)
+        public void SaveMap(Dictionary<String,String> map)
         {
             var fstream = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.ReadWrite);
             formatter.Serialize(fstream,map);

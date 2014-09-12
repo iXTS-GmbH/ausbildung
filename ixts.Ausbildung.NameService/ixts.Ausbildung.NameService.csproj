@@ -43,7 +43,6 @@
     <Compile Include="IMapParser.cs" />
     <Compile Include="ISocket.cs" />
     <Compile Include="ISocketFactory.cs" />
-    <Compile Include="Map.cs" />
     <Compile Include="MapParser.cs" />
     <Compile Include="NameClient.cs" />
     <Compile Include="NameServer.cs" />

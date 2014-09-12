@@ -1,9 +1,11 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
+
 namespace ixts.Ausbildung.NameService
 {
     public interface IMapParser
     {
-        Map LoadMap();
-        void SaveMap(Map map);
+        Dictionary<String,String> LoadMap();
+        void SaveMap(Dictionary<String,String> map);
     }
 }
