@@ -9,6 +9,7 @@ namespace ixts.Ausbildung.NameService
     public class SocketImpl:ISocket
     {
         private readonly Socket socket;
+        private const int BUFFER_SIZE = 1024;
 
         public SocketImpl(AddressFamily addressFamily, SocketType socketType, ProtocolType protocolType)
         {
@@ -52,7 +53,7 @@ namespace ixts.Ausbildung.NameService
 
         public String Receive()
         {
-            var bytes = new byte[1024];
+            var bytes = new byte[BUFFER_SIZE];
             var bytesRec = socket.Receive(bytes);
 
             return Encoding.UTF8.GetString(bytes, 0, bytesRec);

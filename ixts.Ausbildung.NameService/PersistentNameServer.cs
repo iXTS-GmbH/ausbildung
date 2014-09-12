@@ -22,7 +22,7 @@ namespace ixts.Ausbildung.NameService
 
         protected override String Put(String newValue, String key)
         {
-            var oldvalue = "";
+            var oldvalue = string.Empty;
 
             if (Store.ContainsKey(key))
             {

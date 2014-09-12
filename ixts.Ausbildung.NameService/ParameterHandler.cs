@@ -5,13 +5,15 @@ namespace ixts.Ausbildung.NameService
 {
     public class ParameterHandler
     {
+        private const String WHITE_SPACE = " ";
+
         public static String[] Normalize(String[] parameters)
         {
             var allParameters = new List<String>();
 
             foreach (var parameter in parameters)
             {
-                if (parameter != "" && parameter != " ")
+                if (parameter != string.Empty && parameter != WHITE_SPACE)
                 {
                     allParameters.Add(parameter);
                 }
@@ -24,7 +26,7 @@ namespace ixts.Ausbildung.NameService
 
             for (var i = 2; i < allParameters.Count; i++)
             {
-                normalizedParameters[2] += string.Format(" {0}", allParameters[i]);
+                normalizedParameters[2] += string.Format("{1}{0}", allParameters[i],WHITE_SPACE);
             }
 
             if (normalizedParameters[2] != null) 
