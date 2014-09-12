@@ -16,6 +16,14 @@ namespace ixts.Ausbildung.NameService
         protected const String COMMAND_GET = "GET";
         protected const String COMMAND_DEL = "DEL";
         protected const String COMMAND_STOP = "STOP";
+        protected const String COMMAND_ILLEGAL = "Illegal Command: ";
+        protected const String SEND_SUCCEESS = "1 ";
+        protected const String SEND_FAILED = "0";
+        protected const String SERVER_STARTED = "Server started on Port: ";
+        protected const String DELETED_CHAR_MARKER = "\b";
+        protected const char WHITE_SPACE = ' ';
+
+
 
         public NameServer(int port, ISocketFactory socketFactory = null)
         {
@@ -41,7 +49,7 @@ namespace ixts.Ausbildung.NameService
 
                 data = NormalizeData(data);
 
-                var parameters = data.Split(new[] { ' ' });
+                var parameters = data.Split(new[] {WHITE_SPACE});
 
                 parameters = ParameterHandler.Normalize(parameters);
 
@@ -55,20 +63,31 @@ namespace ixts.Ausbildung.NameService
             Socket.Close();
         }
 
-        protected void Send(String msg, Boolean check = false)//TODO Send in Snedsuccess und sendFailed aufspalten
+        protected void Send(String msg)
         {
-            if (!check)
+            if (msg == null )
             {
-               msg = msg == null ? string.Format("{0}0{0}",Environment.NewLine) : string.Format("{1}1 {0}{1}", msg,Environment.NewLine);
+                SendFailed();
             }
-
-            ConSocket.Send(msg);
+            else
+            {
+                SendSuccess(msg);
+            }
         }
 
+        protected void SendSuccess(String msg)
+        {
+            ConSocket.Send(msg.Contains(COMMAND_ILLEGAL)? string.Format("{1}{0}{1}", msg, Environment.NewLine): string.Format("{1}{2}{0}{1}", msg, Environment.NewLine, SEND_SUCCEESS));                     
+        }
+
+        protected void SendFailed()
+        {
+            ConSocket.Send(string.Format("{0}{1}{0}",Environment.NewLine,SEND_FAILED));
+        }
 
         protected virtual String Put(String newValue, String key)
         {
-            var oldvalue = "";
+            var oldvalue = string.Empty;
 
             if (Store.ContainsKey(key))
             {
@@ -107,18 +126,18 @@ namespace ixts.Ausbildung.NameService
 
         protected String IllegalCommand(String command)
         {
-            Console.WriteLine("Illegal Command recived: {0}", command);
+            Console.WriteLine("{1}{0}", command,COMMAND_ILLEGAL);
 
-            return string.Format("{1}Illegal Command: {0}{1}", command, Environment.NewLine);
+            return string.Format("{1}{0}", command,COMMAND_ILLEGAL);
         }
 
         protected String NormalizeData(String data)
         {
-            data = data.Replace(Environment.NewLine, "");
+            data = data.Replace(Environment.NewLine, String.Empty);
 
-            while (data.IndexOf("\b", StringComparison.Ordinal) > -1)
+            while (data.IndexOf(DELETED_CHAR_MARKER, StringComparison.Ordinal) > -1)
             {
-                data = data.Remove(data.IndexOf("\b", StringComparison.Ordinal) - 1, 2);
+                data = data.Remove(data.IndexOf(DELETED_CHAR_MARKER, StringComparison.Ordinal) - 1, 2);
             }
 
             return data;
@@ -128,7 +147,7 @@ namespace ixts.Ausbildung.NameService
         {
             Socket.Listen(10);
 
-            Console.WriteLine("Server started on Port: {0}", Port);
+            Console.WriteLine("{1}{0}", Port,SERVER_STARTED);
 
             ConSocket = Socket.Accept();
         }
@@ -136,7 +155,7 @@ namespace ixts.Ausbildung.NameService
         protected String GetData()
         {
             var receive = true;
-            var data = "";
+            var data = string.Empty;
 
             while (receive)
             {
@@ -173,7 +192,7 @@ namespace ixts.Ausbildung.NameService
             }
             else
             {
-                Send(IllegalCommand(command),true);
+                Send(IllegalCommand(command));
             }
             return true;
         }
