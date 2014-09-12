@@ -129,25 +129,28 @@ namespace ixts.Ausbildung.NameService
             var key = parameters[1];
             var value = parameters[2];
 
-            if (Constants.COMMAND_PUT.Equals(command, StringComparison.InvariantCultureIgnoreCase))
-            {                
-                Send(Put(key, value));
-            }
-            else if (Constants.COMMAND_GET.Equals(command, StringComparison.InvariantCultureIgnoreCase))
+            command = command.ToUpper();
+
+            switch (command)
             {
-                Send(Get(key));
-            }
-            else if (Constants.COMMAND_DEL.Equals(command, StringComparison.InvariantCultureIgnoreCase))
-            {
-                Send(Del(key));
-            }
-            else if (Constants.COMMAND_STOP.Equals(command, StringComparison.InvariantCultureIgnoreCase))
-            {
-                return Stop();
-            }
-            else
-            {
-                Send(HandleIllegalCommand(command));
+                case Constants.COMMAND_PUT:
+                    Send(Put(key, value));
+                    break;
+
+                case Constants.COMMAND_GET:
+                    Send(Get(key));
+                    break;
+
+                case Constants.COMMAND_DEL:
+                    Send(Del(key));
+                    break;
+
+                case Constants.COMMAND_STOP:
+                    return Stop();
+
+                default:
+                    Send(HandleIllegalCommand(command));
+                    break;
             }
             return true;
         }

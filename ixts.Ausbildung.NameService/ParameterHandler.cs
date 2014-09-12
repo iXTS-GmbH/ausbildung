@@ -19,7 +19,7 @@ namespace ixts.Ausbildung.NameService
                 {
                     Console.WriteLine(data);
 
-                    return Normalize(GetData(data));
+                    return NormalizeData(data);
                 }
             }
         }
@@ -55,7 +55,7 @@ namespace ixts.Ausbildung.NameService
             return normalizedParameters; 
         }
 
-        private static String[] GetData(String data)
+        private static String[] NormalizeData(String data)
         {
             data = data.Replace(Environment.NewLine, String.Empty);
 
@@ -64,7 +64,7 @@ namespace ixts.Ausbildung.NameService
                 data = data.Remove(data.IndexOf(Constants.DELETED_CHAR_MARKER, StringComparison.CurrentCulture) - 1, 2);
             }
 
-            return data.Split(Constants.PARAMETER_DELIMITER);
+            return Normalize(data.Split(Constants.PARAMETER_DELIMITER));
         }
 
 
