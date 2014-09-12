@@ -4,11 +4,15 @@ namespace ixts.Ausbildung.NameService.ClientApp
 {
     class Program
     {
+        private const String LOCALHOST = "localhost";
+        private const int STANDARDPORT = 2000;
+        private const char WHITE_SPACE = ' ';
+        private const String COMMAND_STOP = "STOP";
 
         static void Main(String[] args)
         {
-            var host = args.Length > 0 ? args[0] : "localhost";
-            var port = args.Length > 1 ? Int32.Parse(args[1]) : 2000;
+            var host = args.Length > 0 ? args[0] : LOCALHOST;
+            var port = args.Length > 1 ? Int32.Parse(args[1]) : STANDARDPORT;
 
             var nc = new NameClient(host, port);
 
@@ -20,10 +24,10 @@ namespace ixts.Ausbildung.NameService.ClientApp
 
                 if (line != null)
                 {
-                    var parameters = line.Split(' ');
+                    var parameters = line.Split(WHITE_SPACE);
                     parameters = ParameterHandler.Normalize(parameters);
 
-                    var key = parameters[0] == "STOP" ? null : parameters[1];
+                    var key = parameters[0] ==  COMMAND_STOP ? null : parameters[1];
 
                     
                     var value = parameters.Length > 2 ? parameters[2] : null;
@@ -37,7 +41,7 @@ namespace ixts.Ausbildung.NameService.ClientApp
                     }
                     
 
-                    if(parameters[0] == "STOP")
+                    if(parameters[0] == COMMAND_STOP)
                     {
                         run = false;
                     }

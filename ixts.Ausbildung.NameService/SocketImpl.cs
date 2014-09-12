@@ -9,6 +9,7 @@ namespace ixts.Ausbildung.NameService
     {
         private readonly Socket socket;
         private const int BUFFER_SIZE = 1024;
+        private const int BUFFER_OFFSET = 0;
 
         public SocketImpl(AddressFamily addressFamily, SocketType socketType, ProtocolType protocolType)
         {
@@ -55,7 +56,7 @@ namespace ixts.Ausbildung.NameService
             var bytes = new byte[BUFFER_SIZE];
             var bytesRec = socket.Receive(bytes);
 
-            return Encoding.UTF8.GetString(bytes, 0, bytesRec);
+            return Encoding.UTF8.GetString(bytes, BUFFER_OFFSET, bytesRec);
         }
 
         public void Send(String msg)
