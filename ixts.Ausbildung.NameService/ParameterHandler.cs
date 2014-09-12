@@ -7,8 +7,26 @@ namespace ixts.Ausbildung.NameService
     {
         private const String SPACE = " ";
 
+        public static String[] GetParameters(ISocket socket)
+        {
+            var data = string.Empty;
+
+            for (; ; )
+            {
+                data += socket.Receive();
+
+                if (data.Contains(Environment.NewLine))
+                {
+                    Console.WriteLine(data);
+
+                    return Normalize(GetData(data));
+                }
+            }
+        }
+
         public static String[] Normalize(String[] parameters)
         {
+
             var allParameters = new List<String>();
 
             foreach (var parameter in parameters)
@@ -36,5 +54,21 @@ namespace ixts.Ausbildung.NameService
 
             return normalizedParameters; 
         }
+
+        private static String[] GetData(String data)
+        {
+            data = data.Replace(Environment.NewLine, String.Empty);
+
+            while (data.Contains(Constants.DELETED_CHAR_MARKER))
+            {
+                data = data.Remove(data.IndexOf(Constants.DELETED_CHAR_MARKER, StringComparison.CurrentCulture) - 1, 2);
+            }
+
+            return data.Split(Constants.PARAMETER_DELIMITER);
+        }
+
+
+
+
     }
 }

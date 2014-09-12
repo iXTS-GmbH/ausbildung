@@ -35,9 +35,9 @@ namespace ixts.Ausbildung.NameService
 
             while (run)
             {
-                var parameters = GetParameters();
+                var parameters = ParameterHandler.GetParameters(ConSocket);
 
-                run = HandleCommands(parameters);//TODO Gleich ganzes array übergeben
+                run = HandleCommands(parameters);
             }
 
             Socket.Close();
@@ -111,18 +111,6 @@ namespace ixts.Ausbildung.NameService
             return string.Format("{1}{0}", command,COMMAND_ILLEGAL);
         }
 
-        protected String NormalizeData(String data)
-        {
-            data = data.Replace(Environment.NewLine, String.Empty);
-
-            while (data.Contains(Constants.DELETED_CHAR_MARKER))
-            {
-                data = data.Remove(data.IndexOf(Constants.DELETED_CHAR_MARKER, StringComparison.CurrentCulture) - 1, 2);
-            }
-
-            return data;
-        }
-
         protected void StartSocket()
         {
             Socket.Listen(10);//TODO Magic Number
@@ -130,23 +118,6 @@ namespace ixts.Ausbildung.NameService
             Console.WriteLine("{0}{1}", SERVER_STARTED_MESSAGE,Port);
 
             ConSocket = Socket.Accept();
-        }
-
-        protected String[] GetParameters()//TODO GETParameter in Parameterhandler zusammenfügen
-        {
-            var data = string.Empty;
-
-            for (;;)
-            {
-                data += ConSocket.Receive();
-
-                if (data.Contains(Environment.NewLine))
-                {
-                    Console.WriteLine(data);
-
-                    return ParameterHandler.Normalize(NormalizeData(data).Split(new[] {Constants.PARAMETER_DELIMITER}));//TODO Normalisieren zusammenfügen
-                }
-            }
         }
 
         protected Boolean HandleCommands(String[] parameters)
