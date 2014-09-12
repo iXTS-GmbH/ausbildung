@@ -55,7 +55,7 @@ namespace ixts.Ausbildung.NameService
             Socket.Close();
         }
 
-        protected void Send(String msg, Boolean check = false)
+        protected void Send(String msg, Boolean check = false)//TODO Send in Snedsuccess und sendFailed aufspalten
         {
             if (!check)
             {
@@ -66,7 +66,7 @@ namespace ixts.Ausbildung.NameService
         }
 
 
-        protected String Put(String newValue, String key)
+        protected virtual String Put(String newValue, String key)
         {
             var oldvalue = "";
 
@@ -83,7 +83,7 @@ namespace ixts.Ausbildung.NameService
             return oldvalue;
         }
 
-        protected String Del(String key)
+        protected virtual String Del(String key)
         {
             if (key != null)
             {
@@ -157,15 +157,15 @@ namespace ixts.Ausbildung.NameService
         {
             if (COMMAND_PUT.Equals(command, StringComparison.InvariantCultureIgnoreCase))
             {                
-                Send(this.Put(value, key));
+                Send(Put(value, key));
             }
             else if (COMMAND_GET.Equals(command, StringComparison.InvariantCultureIgnoreCase))
             {
-                Send(this.Get(key));
+                Send(Get(key));
             }
             else if (COMMAND_DEL.Equals(command, StringComparison.InvariantCultureIgnoreCase))
             {
-                Send(this.Del(key));
+                Send(Del(key));
             }
             else if (COMMAND_STOP.Equals(command, StringComparison.InvariantCultureIgnoreCase))
             {

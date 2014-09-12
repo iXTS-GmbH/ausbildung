@@ -50,9 +50,9 @@ namespace ixts.Ausbildung.NameService
             return new SocketImpl(socket.Accept());
         }
 
-        public String Receive()//Wie löse ich das problem das entsteht wenn der buffer zu klein ist? Und wie überprüfe ich ob es geht?
+        public String Receive()
         {
-            var bytes = new byte[1024];//TODO problem lösen wenn buffer zu klein ist
+            var bytes = new byte[1024];
             var bytesRec = socket.Receive(bytes);
 
             return Encoding.UTF8.GetString(bytes, 0, bytesRec);

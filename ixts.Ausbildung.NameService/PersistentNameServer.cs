@@ -27,9 +27,40 @@ namespace ixts.Ausbildung.NameService
         //map.SetStore(Store);
         //mapParser.SaveMap(map);
 
-        protected new String Put(String newValue, String key)
+        protected override String Put(String newValue, String key)
         {
-            return "Test";
+            var oldvalue = "";
+
+            if (Store.ContainsKey(key))
+            {
+                oldvalue = Store[key];
+                Store[key] = newValue;
+            }
+            else
+            {
+                Store.Add(key, newValue);
+            }
+
+            map.SetStore(Store);
+            mapParser.SaveMap(map);
+
+            return oldvalue;
+        }
+
+        protected override String Del(String key)
+        {
+            if (key != null)
+            {
+                var oldvalue = Store[key];
+                Store.Remove(key);
+
+                map.SetStore(Store);
+                mapParser.SaveMap(map);
+
+                return oldvalue;
+            }
+
+            return null;
         }
 
     }
