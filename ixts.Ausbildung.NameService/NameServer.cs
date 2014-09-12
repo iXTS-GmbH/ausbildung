@@ -14,6 +14,7 @@ namespace ixts.Ausbildung.NameService
         protected ISocket ConSocket;
         protected const String COMMAND_ILLEGAL = "Illegal Command: ";
         protected const String SERVER_STARTED_MESSAGE = "Server started on Port: ";
+        protected const int MAX_WORKABLE_CLIENTS = 10;
 
         public NameServer(int port, ISocketFactory socketFactory = null)
         {
@@ -113,7 +114,7 @@ namespace ixts.Ausbildung.NameService
 
         protected void StartSocket()
         {
-            Socket.Listen(10);//TODO Magic Number
+            Socket.Listen(MAX_WORKABLE_CLIENTS);
 
             Console.WriteLine("{0}{1}", SERVER_STARTED_MESSAGE,Port);
 

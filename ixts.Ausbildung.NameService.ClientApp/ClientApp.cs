@@ -20,12 +20,9 @@ namespace ixts.Ausbildung.NameService.ClientApp
                 {
                     var parameters = ParameterHandler.Normalize(line.Split(Constants.PARAMETER_DELIMITER));
 
-                    var response = nc.Action(parameters[0], parameters[1], parameters[2]);//TODO Action ist kein verb
+                    var response = nc.Action(parameters[0], parameters[1], parameters[2]);
 
-                    //if (response != null)
-                    //{
-                        Console.WriteLine(response);
-                    //}
+                    Console.WriteLine(response);
 
                     if (parameters[0] == Constants.COMMAND_STOP)
                     {

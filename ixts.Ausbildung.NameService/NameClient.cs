@@ -10,7 +10,6 @@ namespace ixts.Ausbildung.NameService
         private readonly int port;
         private readonly ISocketFactory socketFactory;
         private readonly ISocket s;
-        private Boolean lastCommandUnkown;//TODO Andere methode überelgen
         private const String COMMAND_ILLEGAL = "ist kein gültiger Befehl";
 
         public NameClient(String serverIP, int serverPort,ISocketFactory sFactory = null)
@@ -33,13 +32,11 @@ namespace ixts.Ausbildung.NameService
 
             if (valid)
             {
-                lastCommandUnkown = false;
 
                 var response = Send(string.Format("{0} {1} {2}{3}", command, key, value, Environment.NewLine));
 
                return response.Replace(Environment.NewLine,string.Empty);
             }
-            lastCommandUnkown = true;
 
             Console.WriteLine("{0} {1}{2}",command,COMMAND_ILLEGAL,Environment.NewLine);
 
