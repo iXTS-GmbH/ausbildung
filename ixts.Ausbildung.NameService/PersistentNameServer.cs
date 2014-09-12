@@ -21,17 +21,7 @@ namespace ixts.Ausbildung.NameService
 
         protected override String Put(String newValue, String key)
         {
-            var oldvalue = string.Empty;
-
-            if (Store.ContainsKey(key))
-            {
-                oldvalue = Store[key];
-                Store[key] = newValue;
-            }
-            else
-            {
-                Store.Add(key, newValue);
-            }
+            var oldvalue = base.Put(newValue, key);
 
             mapParser.SaveMap(Store);
 
@@ -40,17 +30,9 @@ namespace ixts.Ausbildung.NameService
 
         protected override String Del(String key)
         {
-            if (key != null)
-            {
-                var oldvalue = Store[key];
-                Store.Remove(key);
-
-                mapParser.SaveMap(Store);
-
-                return oldvalue;
-            }
-
-            return null;
+           var value = base.Del(key);
+           mapParser.SaveMap(Store);
+           return value;
         }
 
     }

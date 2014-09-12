@@ -19,9 +19,9 @@ namespace ixts.Ausbildung.NameService
         protected const String COMMAND_ILLEGAL = "Illegal Command: ";
         protected const String SEND_SUCCEESS = "1 ";
         protected const String SEND_FAILED = "0";
-        protected const String SERVER_STARTED = "Server started on Port: ";
+        protected const String SERVER_STARTED_MESSAGE = "Server started on Port: ";
         protected const String DELETED_CHAR_MARKER = "\b";
-        protected const char SPACE = ' ';
+        protected const char PARAMETER_DELIMITER = ' ';
 
         public NameServer(int port, ISocketFactory socketFactory = null)
         {
@@ -45,7 +45,7 @@ namespace ixts.Ausbildung.NameService
             {
                 var parameters = GetParameters();
 
-                run = HandleCommands(parameters[0],parameters[1],parameters[2]);
+                run = HandleCommands(parameters[0],parameters[1],parameters[2]);//TODO Gleich ganzes array übergeben
             }
 
             Socket.Close();
@@ -133,31 +133,28 @@ namespace ixts.Ausbildung.NameService
 
         protected void StartSocket()
         {
-            Socket.Listen(10);
+            Socket.Listen(10);//TODO Magic Number
 
-            Console.WriteLine("{1}{0}", Port,SERVER_STARTED);
+            Console.WriteLine("{0}{1}", SERVER_STARTED_MESSAGE,Port);
 
             ConSocket = Socket.Accept();
         }
 
-        protected String[] GetParameters()
+        protected String[] GetParameters()//TODO GETParameter in Parameterhandler zusammenfügen
         {
-            var receive = true;
             var data = string.Empty;
 
-            while (receive)
+            for (;;)
             {
                 data += ConSocket.Receive();
 
                 if (data.Contains(Environment.NewLine))
                 {
-                    receive = false;
+                    Console.WriteLine(data);
+
+                    return ParameterHandler.Normalize(NormalizeData(data).Split(new[] {PARAMETER_DELIMITER}));//TODO Normalisieren zusammenfügen
                 }
             }
-
-            Console.WriteLine(data);
-
-            return ParameterHandler.Normalize(NormalizeData(data).Split(new[] {SPACE}));
         }
 
         protected Boolean HandleCommands(String command,String key, String value)

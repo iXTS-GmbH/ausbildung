@@ -10,7 +10,7 @@ namespace ixts.Ausbildung.NameService
         private readonly int port;
         private readonly ISocketFactory socketFactory;
         private readonly ISocket s;
-        public Boolean LastCommandUnkown;
+        private Boolean lastCommandUnkown;//TODO Andere methode überelgen
         private const String LOCALHOST = "localhost";
         private const String BACK_LOOP = "127.0.0.1";
         private const String COMMAND_ILLEGAL = "ist kein gültiger Befehl";
@@ -38,13 +38,13 @@ namespace ixts.Ausbildung.NameService
 
             if (valid)
             {
-                LastCommandUnkown = false;
+                lastCommandUnkown = false;
 
-                var answer = Send(string.Format("{0} {1} {2}{3}", command, key, value, Environment.NewLine));
+                var response = Send(string.Format("{0} {1} {2}{3}", command, key, value, Environment.NewLine));
 
-               return answer.Replace(Environment.NewLine,string.Empty);
+               return response.Replace(Environment.NewLine,string.Empty);
             }
-            LastCommandUnkown = true;
+            lastCommandUnkown = true;
 
             Console.WriteLine("{0} {2}{1}",command,Environment.NewLine,COMMAND_ILLEGAL);
 

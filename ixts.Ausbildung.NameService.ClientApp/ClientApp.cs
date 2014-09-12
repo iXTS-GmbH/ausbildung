@@ -26,7 +26,7 @@ namespace ixts.Ausbildung.NameService.ClientApp
                 {
                     var parameters = ParameterHandler.Normalize(line.Split(SPACE));
 
-                    var answer = nc.Action(parameters[0], parameters[1], parameters[2]);
+                    var answer = nc.Action(parameters[0], parameters[1], parameters[2]);//TODO Action ist kein verb
 
                     if (answer != null)
                     {
@@ -36,7 +36,7 @@ namespace ixts.Ausbildung.NameService.ClientApp
 
                     if(parameters[0] == COMMAND_STOP)
                     {
-                        run = false;
+                        return;
                     }
                 }
             }
