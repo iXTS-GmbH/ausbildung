@@ -10,12 +10,15 @@ namespace ixts.Ausbildung.NameService.Test
     {
         private NameServer sut;
         private TestSocket testSocket;
+        private const int STANDARD_PORT = 2000;
+        private const String SUCCESS = "1 ";
+        private const String FAILED = "0";
 
         [SetUp]
         public void SetUp()
         {
             var testSocketFactory = new TestSocketFactory();
-            sut = new NameServer(2000,testSocketFactory);
+            sut = new NameServer(STANDARD_PORT,testSocketFactory);
             testSocket = new TestSocket();
         }
 
@@ -26,8 +29,8 @@ namespace ixts.Ausbildung.NameService.Test
 
             var expected = new List<String>
                 {
-                    string.Format("{0}1 {0}",Environment.NewLine),
-                    string.Format("{0}1 firstValue{0}",Environment.NewLine),
+                    string.Format("{0}{1}{0}",Environment.NewLine,SUCCESS),
+                    string.Format("{0}{1}firstValue{0}",Environment.NewLine,SUCCESS),
                 };
 
             testSocket.SetTestProtokoll("PutTest");
@@ -45,8 +48,8 @@ namespace ixts.Ausbildung.NameService.Test
 
             var expected = new List<String>
                 {
-                    string.Format("{0}1 {0}",Environment.NewLine),
-                    string.Format("{0}1 firstValue{0}",Environment.NewLine),
+                    string.Format("{0}{1}{0}",Environment.NewLine,SUCCESS),
+                    string.Format("{0}{1}firstValue{0}",Environment.NewLine,SUCCESS),
                 };
 
             testSocket.SetTestProtokoll("GetTest");
@@ -63,9 +66,9 @@ namespace ixts.Ausbildung.NameService.Test
         {
             var expected = new List<String>
                 {
-                    string.Format("{0}1 {0}",Environment.NewLine),
-                    string.Format("{0}1 firstValue{0}",Environment.NewLine),
-                    string.Format("{0}0{0}",Environment.NewLine),
+                    string.Format("{0}{1}{0}",Environment.NewLine,SUCCESS),
+                    string.Format("{0}{1}firstValue{0}",Environment.NewLine,SUCCESS),
+                    string.Format("{0}{1}{0}",Environment.NewLine,FAILED),
                 };
 
             testSocket.SetTestProtokoll("DelTest");
@@ -116,7 +119,7 @@ namespace ixts.Ausbildung.NameService.Test
 
             testSocket.SetTestProtokoll("NormalizeDataTest");
             
-            var server = new PersistentNameServer(2000,new TestSocketFactory(),new TestMapParser());
+            var server = new PersistentNameServer(STANDARD_PORT,new TestSocketFactory(),new TestMapParser());
             server.Loop();
 
             var actual = TestMapParser.Store;

@@ -10,11 +10,19 @@ namespace ixts.Ausbildung.NameService.Test
         private NameClient sut;
         private readonly TestSocketFactory testSocketFactory = new TestSocketFactory();
         private readonly TestSocket testSocket = new TestSocket();
+        private const int STANDARD_PORT = 2000;
+        private const String LOCALHOST = "localhost";
+        private const String COMMAND_PUT = "PUT";
+        private const String COMMAND_GET = "GET";
+        private const String COMMAND_DEL = "DEL";
+        private const String VALUE = "VALUE";
+        private const String COMMAND_UNKNOWN = "UnkownCommand";
+        private const String KEY_UNKNOWN = "UnkownKey";
         
         [SetUp]
         public void SetUp()
         {
-            sut = new NameClient("localhost",2000,testSocketFactory);
+            sut = new NameClient(LOCALHOST,STANDARD_PORT,testSocketFactory);
         }
 
         [TestCase("1 ")]
@@ -22,7 +30,7 @@ namespace ixts.Ausbildung.NameService.Test
         {
             testSocket.SetTestProtokoll("ClientPutTest");
             
-            var actual = sut.Action("PUT", "GET", "VALUE");
+            var actual = sut.Action(COMMAND_PUT, COMMAND_GET, VALUE);
             Assert.AreEqual(expected, actual);
 
         }
@@ -32,7 +40,7 @@ namespace ixts.Ausbildung.NameService.Test
         {
             testSocket.SetTestProtokoll("ClientGetTest");
 
-            var actual = sut.Action("GET", "GET");
+            var actual = sut.Action(COMMAND_GET, COMMAND_GET);
             Assert.AreEqual(expected, actual);
         }
 
@@ -41,14 +49,14 @@ namespace ixts.Ausbildung.NameService.Test
         {
             testSocket.SetTestProtokoll("ClientDelTest");
 
-            var actual = sut.Action("DEL", "DEL");
+            var actual = sut.Action(COMMAND_DEL, COMMAND_DEL);
             Assert.AreEqual(expected, actual);
         }
 
         [TestCase]
         public void UnkownCommandTest()
         {
-            sut.Action("UnkownCommand", "NoKey");
+            sut.Action(COMMAND_UNKNOWN, KEY_UNKNOWN);
 
             Assert.True(sut.LastCommandUnkown);
         }
@@ -56,9 +64,9 @@ namespace ixts.Ausbildung.NameService.Test
         [TestCase]
         public void IPTest()
         {
-            var expected = IPAddress.Parse("172.16.92.128");
-            var client = new NameClient("172.16.92.128", 2000, testSocketFactory);
-            client.Action("PUT", "IPTest", "172.16.92.128");
+            var expected = IPAddress.Parse(LOCALHOST);
+            var client = new NameClient(LOCALHOST, STANDARD_PORT, testSocketFactory);
+            client.Action(COMMAND_PUT, VALUE, LOCALHOST);
             var actual = TestSocket.ServerIP;
 
             Assert.AreEqual(expected,actual);
