@@ -8,9 +8,6 @@ namespace ixts.Ausbildung.NameService.Test
     public class MapParserTests
     {
         private TestSocket sut;
-        private const String SUCCESS = "1 ";
-        private const int STANDARD_PORT = 2000;
-
 
         [SetUp]
         public void SetUp()
@@ -32,15 +29,15 @@ namespace ixts.Ausbildung.NameService.Test
 
             var expected = new List<String>
                 {
-                    string.Format("{0}{1}firstValue{0}",Environment.NewLine,SUCCESS),
-                    string.Format("{0}{1}secondValue{0}",Environment.NewLine,SUCCESS),
-                    string.Format("{0}{1}thirdValue{0}",Environment.NewLine,SUCCESS),
-                    string.Format("{0}{1}fourdValue{0}",Environment.NewLine,SUCCESS),
+                    string.Format("{0}{1}firstValue{0}",Environment.NewLine,Constants.SEND_SUCCEESS),
+                    string.Format("{0}{1}secondValue{0}",Environment.NewLine,Constants.SEND_SUCCEESS),
+                    string.Format("{0}{1}thirdValue{0}",Environment.NewLine,Constants.SEND_SUCCEESS),
+                    string.Format("{0}{1}fourdValue{0}",Environment.NewLine,Constants.SEND_SUCCEESS),
                 };
 
             sut.SetTestProtokoll("LoadTest");
 
-            var server = new PersistentNameServer(STANDARD_PORT, new TestSocketFactory(), new TestMapParser());
+            var server = new PersistentNameServer(Constants.STANDARD_PORT, new TestSocketFactory(), new TestMapParser());
             server.Loop();
 
             var actual = TestSocket.Output;
@@ -70,7 +67,7 @@ namespace ixts.Ausbildung.NameService.Test
                 };
 
             sut.SetTestProtokoll("SaveTest");
-            var server = new PersistentNameServer(STANDARD_PORT, new TestSocketFactory(), new TestMapParser());
+            var server = new PersistentNameServer(Constants.STANDARD_PORT, new TestSocketFactory(), new TestMapParser());
 
             server.Loop();
             var actual = TestMapParser.Store;

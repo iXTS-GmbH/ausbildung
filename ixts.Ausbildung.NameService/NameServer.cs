@@ -12,16 +12,8 @@ namespace ixts.Ausbildung.NameService
         protected readonly int Port;
         protected readonly ISocket Socket;
         protected ISocket ConSocket;
-        protected const String COMMAND_PUT = "PUT";
-        protected const String COMMAND_GET = "GET";
-        protected const String COMMAND_DEL = "DEL";
-        protected const String COMMAND_STOP = "STOP";
         protected const String COMMAND_ILLEGAL = "Illegal Command: ";
-        protected const String SEND_SUCCEESS = "1 ";
-        protected const String SEND_FAILED = "0";
         protected const String SERVER_STARTED_MESSAGE = "Server started on Port: ";
-        protected const String DELETED_CHAR_MARKER = "\b";
-        protected const char PARAMETER_DELIMITER = ' ';
 
         public NameServer(int port, ISocketFactory socketFactory = null)
         {
@@ -65,12 +57,12 @@ namespace ixts.Ausbildung.NameService
 
         protected void SendSuccess(String msg)
         {
-            ConSocket.Send(msg.Contains(COMMAND_ILLEGAL)? string.Format("{1}{0}{1}", msg, Environment.NewLine): string.Format("{1}{2}{0}{1}", msg, Environment.NewLine, SEND_SUCCEESS));                     
+            ConSocket.Send(msg.Contains(COMMAND_ILLEGAL) ? string.Format("{1}{0}{1}", msg, Environment.NewLine) : string.Format("{1}{2}{0}{1}", msg, Environment.NewLine, Constants.SEND_SUCCEESS));                     
         }
 
         protected void SendFailed()
         {
-            ConSocket.Send(string.Format("{0}{1}{0}",Environment.NewLine,SEND_FAILED));
+            ConSocket.Send(string.Format("{0}{1}{0}", Environment.NewLine, Constants.SEND_FAILED));
         }
 
         protected virtual String Put(String newValue, String key)
@@ -123,9 +115,9 @@ namespace ixts.Ausbildung.NameService
         {
             data = data.Replace(Environment.NewLine, String.Empty);
 
-            while (data.Contains(DELETED_CHAR_MARKER))
+            while (data.Contains(Constants.DELETED_CHAR_MARKER))
             {
-                data = data.Remove(data.IndexOf(DELETED_CHAR_MARKER, StringComparison.CurrentCulture) - 1, 2);
+                data = data.Remove(data.IndexOf(Constants.DELETED_CHAR_MARKER, StringComparison.CurrentCulture) - 1, 2);
             }
 
             return data;
@@ -152,26 +144,26 @@ namespace ixts.Ausbildung.NameService
                 {
                     Console.WriteLine(data);
 
-                    return ParameterHandler.Normalize(NormalizeData(data).Split(new[] {PARAMETER_DELIMITER}));//TODO Normalisieren zusammenfügen
+                    return ParameterHandler.Normalize(NormalizeData(data).Split(new[] {Constants.PARAMETER_DELIMITER}));//TODO Normalisieren zusammenfügen
                 }
             }
         }
 
         protected Boolean HandleCommands(String command,String key, String value)
         {
-            if (COMMAND_PUT.Equals(command, StringComparison.InvariantCultureIgnoreCase))
+            if (Constants.COMMAND_PUT.Equals(command, StringComparison.InvariantCultureIgnoreCase))
             {                
                 Send(Put(value, key));
             }
-            else if (COMMAND_GET.Equals(command, StringComparison.InvariantCultureIgnoreCase))
+            else if (Constants.COMMAND_GET.Equals(command, StringComparison.InvariantCultureIgnoreCase))
             {
                 Send(Get(key));
             }
-            else if (COMMAND_DEL.Equals(command, StringComparison.InvariantCultureIgnoreCase))
+            else if (Constants.COMMAND_DEL.Equals(command, StringComparison.InvariantCultureIgnoreCase))
             {
                 Send(Del(key));
             }
-            else if (COMMAND_STOP.Equals(command, StringComparison.InvariantCultureIgnoreCase))
+            else if (Constants.COMMAND_STOP.Equals(command, StringComparison.InvariantCultureIgnoreCase))
             {
                 return Stop();
             }
