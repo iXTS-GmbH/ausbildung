@@ -126,5 +126,45 @@ namespace ixts.Ausbildung.NameService.Test
 
             Assert.AreEqual(expected,actual);
         }
+
+        [TestCase]
+        public void NullDelTest()
+        {
+            var expected = new List<String>
+                {
+                    string.Format("{1}{0}{1}",FAILED,Environment.NewLine)
+                };
+
+            testSocket.SetTestProtokoll("NullDelTest");
+            TestSocket.Output = new List<String>();
+
+            sut.Loop();
+
+            var actual = TestSocket.Output;
+            TestSocket.Output = new List<String>();
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestCase]
+        public void PersistentNullDelTest()
+        {
+            var expected = new List<String>
+                {
+                    string.Format("{1}{0}{1}",FAILED,Environment.NewLine)
+                };
+
+            testSocket.SetTestProtokoll("NullDelTest");
+            TestSocket.Output = new List<String>();
+            TestMapParser.Store = new Dictionary<String, String>();
+
+            var server = new PersistentNameServer(STANDARD_PORT, new TestSocketFactory(), new TestMapParser());
+            server.Loop();
+
+            var actual = TestSocket.Output;
+            TestSocket.Output = new List<String>();
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

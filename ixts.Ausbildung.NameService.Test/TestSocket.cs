@@ -89,6 +89,16 @@ namespace ixts.Ausbildung.NameService.Test
 
                     break;
 
+                case "NullDelTest":
+
+                    input = new List<String>
+                        {
+                            string.Format("{0} {1}{2}",COMMAND_DEL,null,Environment.NewLine),
+                            string.Format("{1}{0}",Environment.NewLine,COMMAND_STOP)
+                        };
+
+                    break;
+
                 case "StopTest":
 
                     input = new List<String>
