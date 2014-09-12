@@ -25,7 +25,7 @@ namespace ixts.Ausbildung.NameService
             s.Bind(port, true, ip);
         }
 
-        public String Action(String command,String key,String value = null)//TODO Muss umbenannt werden
+        public String HandleCommand(String command,String key,String value = null)
         {
 
             var valid = ValidateCommand(command);

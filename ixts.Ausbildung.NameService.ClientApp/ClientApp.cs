@@ -20,7 +20,7 @@ namespace ixts.Ausbildung.NameService.ClientApp
                 {
                     var parameters = ParameterHandler.Normalize(line.Split(Constants.PARAMETER_DELIMITER));
 
-                    var response = nc.Action(parameters[0], parameters[1], parameters[2]);
+                    var response = nc.HandleCommand(parameters[0], parameters[1], parameters[2]);
 
                     Console.WriteLine(response);
 

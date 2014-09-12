@@ -105,11 +105,13 @@ namespace ixts.Ausbildung.NameService
             return false;
         }
 
-        protected String IllegalCommand(String command)
+        protected String HandleIllegalCommand(String command)
         {
-            Console.WriteLine("{1}{0}", command,COMMAND_ILLEGAL);
+            var response = string.Concat(COMMAND_ILLEGAL, command);
 
-            return string.Format("{1}{0}", command,COMMAND_ILLEGAL);
+            Console.WriteLine(response);
+
+            return response;
         }
 
         protected void StartSocket()
@@ -145,7 +147,7 @@ namespace ixts.Ausbildung.NameService
             }
             else
             {
-                Send(IllegalCommand(command));
+                Send(HandleIllegalCommand(command));
             }
             return true;
         }
