@@ -10,7 +10,7 @@ namespace ixts.Ausbildung.TextfileLines
             str = str ?? new StreamFactory();
 
             var file = str.Make(sourcePath, targetPath);
-            var tfL = new ixts.Ausbildung.TextfileLines.TextFileLine(sourcePath, str);
+            var tfL = new TextFileLine(sourcePath, str);
 
             foreach (var line in tfL)
             {
