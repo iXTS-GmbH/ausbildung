@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
 
 namespace ixts.Ausbildung.NameService
 {
@@ -12,12 +11,19 @@ namespace ixts.Ausbildung.NameService
         private readonly ISocketFactory socketFactory;
         private readonly ISocket s;
         public Boolean LastCommandUnkown;
+        private const String LOCALHOST = "localhost";
+        private const String BACK_LOOP = "127.0.0.1";
+        private const String COMMAND_ILLEGAL = "ist kein gültiger Befehl";
+        private const String COMMAND_PUT = "PUT";
+        private const String COMMAND_GET = "GET";
+        private const String COMMAND_DEL = "DEL";
+        private const String COMMAND_ILLEGAL_RECIEVED = "0";
 
         public NameClient(String serverIP, int serverPort,ISocketFactory sFactory = null)
         {
             socketFactory = sFactory ?? new SocketFactory();
 
-            ip = serverIP == "localhost" ? IPAddress.Parse("127.0.0.1") : IPAddress.Parse(serverIP);
+            ip = serverIP == LOCALHOST ? IPAddress.Parse(BACK_LOOP) : IPAddress.Parse(serverIP);
 
             port = serverPort;
 
@@ -28,7 +34,7 @@ namespace ixts.Ausbildung.NameService
 
         public String Action(String command,String key,String value = null)
         {
-            var result = "";
+            var result = string.Empty;
 
             var valid = ValidateCommand(command);
 
@@ -38,18 +44,18 @@ namespace ixts.Ausbildung.NameService
 
                 var answer = Send(string.Format("{0} {1} {2}{3}", command, key, value, Environment.NewLine));
 
-                result = answer.Replace(Environment.NewLine,"");
+                result = answer.Replace(Environment.NewLine,string.Empty);
             }
             else
             {
                 LastCommandUnkown = true;
 
-                Console.WriteLine("{0} ist kein gültiger Befehl{1}",command,Environment.NewLine);
-                result = "0";
+                Console.WriteLine("{0} {2}{1}",command,Environment.NewLine,COMMAND_ILLEGAL);
+                result = COMMAND_ILLEGAL_RECIEVED;
 
             }
 
-            return result == "0" ? null : result;
+            return result == COMMAND_ILLEGAL_RECIEVED ? null : result;
         }
 
         private String Send(String command)
@@ -63,9 +69,9 @@ namespace ixts.Ausbildung.NameService
 
         private Boolean ValidateCommand(String command)
         {
-            if ("PUT".Equals(command, StringComparison.InvariantCultureIgnoreCase) ||
-                "GET".Equals(command, StringComparison.InvariantCultureIgnoreCase) ||
-                "DEL".Equals(command, StringComparison.InvariantCultureIgnoreCase))
+            if (COMMAND_PUT.Equals(command, StringComparison.InvariantCultureIgnoreCase) ||
+                COMMAND_GET.Equals(command, StringComparison.InvariantCultureIgnoreCase) ||
+                COMMAND_DEL.Equals(command, StringComparison.InvariantCultureIgnoreCase))
             {
                 return true;
             }
