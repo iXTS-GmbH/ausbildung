@@ -45,19 +45,9 @@ namespace ixts.Ausbildung.NameService
 
             while (run)
             {
-                var data = GetData();
+                var parameters = GetParameters();
 
-                data = NormalizeData(data);
-
-                var parameters = data.Split(new[] {WHITE_SPACE});
-
-                parameters = ParameterHandler.Normalize(parameters);
-
-                var command = parameters[0];
-                var key = parameters.Length > 1 ? parameters[1] : null;
-                var value = parameters.Length > 2 ? parameters[2] : null;
-
-                run = HandleCommands(command, key, value);
+                run = HandleCommands(parameters[0],parameters[1],parameters[2]);
             }
 
             Socket.Close();
@@ -152,7 +142,7 @@ namespace ixts.Ausbildung.NameService
             ConSocket = Socket.Accept();
         }
 
-        protected String GetData()
+        protected String[] GetParameters()
         {
             var receive = true;
             var data = string.Empty;
@@ -169,7 +159,8 @@ namespace ixts.Ausbildung.NameService
 
             Console.WriteLine(data);
 
-            return data;
+            
+            return ParameterHandler.Normalize(NormalizeData(data).Split(new[] {WHITE_SPACE}));;
         }
 
         protected Boolean HandleCommands(String command,String key, String value)
