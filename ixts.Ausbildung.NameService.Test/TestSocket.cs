@@ -81,7 +81,7 @@ namespace ixts.Ausbildung.NameService.Test
 
                     input = new List<String>
                         {
-                            string.Format("{1} firstKey firstValue{0}",Environment.NewLine,COMMAND_DEL),
+                            string.Format("{1} firstKey firstValue{0}",Environment.NewLine,COMMAND_PUT),
                             string.Format("{1} firstKey{0}",Environment.NewLine,COMMAND_DEL),
                             string.Format("{1} firstKey{0}",Environment.NewLine,COMMAND_GET),
                             string.Format("{1}{0}",Environment.NewLine,COMMAND_STOP)

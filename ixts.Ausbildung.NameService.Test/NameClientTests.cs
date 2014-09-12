@@ -12,6 +12,7 @@ namespace ixts.Ausbildung.NameService.Test
         private readonly TestSocket testSocket = new TestSocket();
         private const int STANDARD_PORT = 2000;
         private const String LOCALHOST = "localhost";
+        private const String BACK_LOOP = "127.0.0.1";
         private const String COMMAND_PUT = "PUT";
         private const String COMMAND_GET = "GET";
         private const String COMMAND_DEL = "DEL";
@@ -64,9 +65,9 @@ namespace ixts.Ausbildung.NameService.Test
         [TestCase]
         public void IPTest()
         {
-            var expected = IPAddress.Parse(LOCALHOST);
-            var client = new NameClient(LOCALHOST, STANDARD_PORT, testSocketFactory);
-            client.Action(COMMAND_PUT, VALUE, LOCALHOST);
+            var expected = IPAddress.Parse(BACK_LOOP);
+            var client = new NameClient(BACK_LOOP, STANDARD_PORT, testSocketFactory);
+            client.Action(COMMAND_PUT, VALUE, BACK_LOOP);
             var actual = TestSocket.ServerIP;
 
             Assert.AreEqual(expected,actual);
