@@ -24,16 +24,9 @@ namespace ixts.Ausbildung.NameService.ClientApp
 
                 if (line != null)
                 {
-                    var parameters = line.Split(WHITE_SPACE);
-                    parameters = ParameterHandler.Normalize(parameters);
+                    var parameters = ParameterHandler.Normalize(line.Split(WHITE_SPACE));
 
-                    var key = parameters[0] ==  COMMAND_STOP ? null : parameters[1];
-
-                    
-                    var value = parameters.Length > 2 ? parameters[2] : null;
-                    
-
-                    var answer = nc.Action(parameters[0], key, value);
+                    var answer = nc.Action(parameters[0], parameters[1], parameters[2]);
 
                     if (answer != null)
                     {

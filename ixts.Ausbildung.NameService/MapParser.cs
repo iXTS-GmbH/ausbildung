@@ -17,19 +17,16 @@ namespace ixts.Ausbildung.NameService
 
         public Dictionary<String,String> LoadMap()
         {
-            var map = new object();
-
             if (File.Exists(filename))
             {
                 var fstream = new FileStream(filename, FileMode.Open, FileAccess.Read);
-                map = formatter.Deserialize(fstream);
-            }
-            else
-            {
-                map =  new Dictionary<String,String>();
+                var map = formatter.Deserialize(fstream);
+                fstream.Close();
+
+                return (Dictionary<String, String>) map;
             }
 
-            return (Dictionary<String,String>)map;
+            return new Dictionary<String,String>();
         }
 
         public void SaveMap(Dictionary<String,String> map)

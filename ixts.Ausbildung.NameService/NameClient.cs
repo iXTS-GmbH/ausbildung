@@ -17,7 +17,6 @@ namespace ixts.Ausbildung.NameService
         private const String COMMAND_PUT = "PUT";
         private const String COMMAND_GET = "GET";
         private const String COMMAND_DEL = "DEL";
-        private const String COMMAND_ILLEGAL_RECIEVED = "0";
 
         public NameClient(String serverIP, int serverPort,ISocketFactory sFactory = null)
         {
@@ -34,7 +33,6 @@ namespace ixts.Ausbildung.NameService
 
         public String Action(String command,String key,String value = null)
         {
-            var result = string.Empty;
 
             var valid = ValidateCommand(command);
 
@@ -44,18 +42,13 @@ namespace ixts.Ausbildung.NameService
 
                 var answer = Send(string.Format("{0} {1} {2}{3}", command, key, value, Environment.NewLine));
 
-                result = answer.Replace(Environment.NewLine,string.Empty);
+               return answer.Replace(Environment.NewLine,string.Empty);
             }
-            else
-            {
-                LastCommandUnkown = true;
+            LastCommandUnkown = true;
 
-                Console.WriteLine("{0} {2}{1}",command,Environment.NewLine,COMMAND_ILLEGAL);
-                result = COMMAND_ILLEGAL_RECIEVED;
+            Console.WriteLine("{0} {2}{1}",command,Environment.NewLine,COMMAND_ILLEGAL);
 
-            }
-
-            return result == COMMAND_ILLEGAL_RECIEVED ? null : result;
+            return null;
         }
 
         private String Send(String command)

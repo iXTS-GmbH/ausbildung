@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace ixts.Ausbildung.NameService
 {
@@ -12,7 +11,7 @@ namespace ixts.Ausbildung.NameService
         public PersistentNameServer(int port, ISocketFactory socketFactory = null, IMapParser mapParser = null):base(port,socketFactory)
         {
             this.mapParser = mapParser ?? new MapParser(SERVER_FILENAME);
-           Dictionary<String,String> map = this.mapParser.LoadMap();
+            var map = this.mapParser.LoadMap();
 
             if (map != null)
             {
