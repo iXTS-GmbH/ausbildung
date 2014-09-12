@@ -2,7 +2,6 @@
 {
     class Erweiterungsmöglichkeiten
     {
-        //TODO Erweiterungen
         //
         //Erweiterungsmöglichkeiten:
         //

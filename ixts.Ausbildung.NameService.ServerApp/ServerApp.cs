@@ -2,7 +2,7 @@
 
 namespace ixts.Ausbildung.NameService.ServerApp
 {
-    public class Program
+    public class ServerApp
     {
         private const int STANDARD_PORT = 2000;
         static void Main(string[] args)

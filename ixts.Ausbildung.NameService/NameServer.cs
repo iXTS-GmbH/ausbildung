@@ -21,9 +21,7 @@ namespace ixts.Ausbildung.NameService
         protected const String SEND_FAILED = "0";
         protected const String SERVER_STARTED = "Server started on Port: ";
         protected const String DELETED_CHAR_MARKER = "\b";
-        protected const char WHITE_SPACE = ' ';
-
-
+        protected const char SPACE = ' ';
 
         public NameServer(int port, ISocketFactory socketFactory = null)
         {
@@ -159,8 +157,7 @@ namespace ixts.Ausbildung.NameService
 
             Console.WriteLine(data);
 
-            
-            return ParameterHandler.Normalize(NormalizeData(data).Split(new[] {WHITE_SPACE}));;
+            return ParameterHandler.Normalize(NormalizeData(data).Split(new[] {SPACE}));
         }
 
         protected Boolean HandleCommands(String command,String key, String value)

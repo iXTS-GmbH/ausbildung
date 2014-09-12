@@ -2,11 +2,11 @@
 
 namespace ixts.Ausbildung.NameService.ClientApp
 {
-    class Program
+    class ClientApp
     {
         private const String LOCALHOST = "localhost";
         private const int STANDARD_PORT = 2000;
-        private const char WHITE_SPACE = ' ';
+        private const char SPACE = ' ';
         private const String COMMAND_STOP = "STOP";
 
         static void Main(String[] args)
@@ -24,7 +24,7 @@ namespace ixts.Ausbildung.NameService.ClientApp
 
                 if (line != null)
                 {
-                    var parameters = ParameterHandler.Normalize(line.Split(WHITE_SPACE));
+                    var parameters = ParameterHandler.Normalize(line.Split(SPACE));
 
                     var answer = nc.Action(parameters[0], parameters[1], parameters[2]);
 

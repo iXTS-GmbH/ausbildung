@@ -5,7 +5,7 @@ namespace ixts.Ausbildung.NameService
 {
     public class ParameterHandler
     {
-        private const String WHITE_SPACE = " ";
+        private const String SPACE = " ";
 
         public static String[] Normalize(String[] parameters)
         {
@@ -13,7 +13,7 @@ namespace ixts.Ausbildung.NameService
 
             foreach (var parameter in parameters)
             {
-                if (parameter != string.Empty && parameter != WHITE_SPACE)
+                if (parameter != string.Empty && parameter != SPACE)
                 {
                     allParameters.Add(parameter);
                 }
@@ -26,7 +26,7 @@ namespace ixts.Ausbildung.NameService
 
             for (var i = 2; i < allParameters.Count; i++)
             {
-                normalizedParameters[2] += string.Format("{1}{0}", allParameters[i],WHITE_SPACE);
+                normalizedParameters[2] += string.Format("{1}{0}", allParameters[i],SPACE);
             }
 
             if (normalizedParameters[2] != null) 
