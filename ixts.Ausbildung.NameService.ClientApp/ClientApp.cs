@@ -11,10 +11,21 @@ namespace ixts.Ausbildung.NameService.ClientApp
             var host = args.Length > 0 ? args[0] : Constants.LOCALHOST;
             var port = args.Length > 1 ? Int32.Parse(args[1]) : Constants.STANDARD_PORT;
 
-            nc = new NameClient(host, port);
-
-            Loop();
-
+            try
+            {
+                nc = new NameClient(host, port);
+                Loop();
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine("Es wurde eine ungültige IP-Adresse angegeben");
+                ErrorEnd();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Es ist ein Fehler aufgetreten");
+                ErrorEnd();
+            }
         }
 
         private static void Loop()
@@ -36,6 +47,12 @@ namespace ixts.Ausbildung.NameService.ClientApp
                     }
                 }
             }
+        }
+
+        private static void ErrorEnd()
+        {
+            Console.WriteLine("Drücke beliebige Taste um das Programm zu beenden");
+            Console.ReadKey();
         }
     }
 }

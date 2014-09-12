@@ -16,13 +16,14 @@ namespace ixts.Ausbildung.NameService
         {
             socketFactory = sFactory ?? new SocketFactory();
 
-            ip = serverIP.ToUpper() == Constants.LOCALHOST.ToUpper() ? IPAddress.Parse(Constants.BACK_LOOP) : IPAddress.Parse(serverIP);
+            ip = IPAddress.Parse(serverIP);
 
             port = serverPort;
 
             s = socketFactory.Make(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
-            s.Bind(port, true, ip);
+            s.Bind(port, true, ip);IPAddress.Parse(serverIP);
+
         }
 
         public String HandleCommand(String[] parameters)
