@@ -18,7 +18,7 @@ namespace ixts.Ausbildung.NameService.Test
         [SetUp]
         public void SetUp()
         {
-            sut = new NameClient(Constants.LOCALHOST, Constants.STANDARD_PORT, testSocketFactory);
+            sut = new NameClient(Constants.LOOPBACK, Constants.STANDARD_PORT, testSocketFactory);
         }
 
         [TestCase("1 ")]
@@ -66,9 +66,9 @@ namespace ixts.Ausbildung.NameService.Test
         [TestCase]
         public void IPTest()
         {
-            var expected = IPAddress.Parse(Constants.BACK_LOOP);
-            var client = new NameClient(Constants.BACK_LOOP, Constants.STANDARD_PORT, testSocketFactory);
-            client.HandleCommand(new []{Constants.COMMAND_PUT, VALUE, Constants.BACK_LOOP});
+            var expected = IPAddress.Parse(Constants.LOOPBACK);
+            var client = new NameClient(Constants.LOOPBACK, Constants.STANDARD_PORT, testSocketFactory);
+            client.HandleCommand(new []{Constants.COMMAND_PUT, VALUE, Constants.LOOPBACK});
             var actual = TestSocket.ServerIP;
 
             Assert.AreEqual(expected,actual);

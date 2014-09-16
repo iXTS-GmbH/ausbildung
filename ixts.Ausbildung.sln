@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.TextFileLin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.TextFileLines.Test", "ixts.Ausbildung.TextFileLines.Test\ixts.Ausbildung.TextFileLines.Test.csproj", "{877DDDBD-4893-4F68-8202-0249C8773EDC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.NameService.ServerService", "ists.Ausbildung.NameService.ServerService\ixts.Ausbildung.NameService.ServerService.csproj", "{C31FA4D5-6C6E-42E0-BFA7-DFA4F579F70D}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = ixts.Ausbildung.vsmdi
@@ -212,6 +214,16 @@ Global
 		{877DDDBD-4893-4F68-8202-0249C8773EDC}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{877DDDBD-4893-4F68-8202-0249C8773EDC}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{877DDDBD-4893-4F68-8202-0249C8773EDC}.Release|x86.ActiveCfg = Release|Any CPU
+		{C31FA4D5-6C6E-42E0-BFA7-DFA4F579F70D}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{C31FA4D5-6C6E-42E0-BFA7-DFA4F579F70D}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{C31FA4D5-6C6E-42E0-BFA7-DFA4F579F70D}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{C31FA4D5-6C6E-42E0-BFA7-DFA4F579F70D}.Debug|x86.ActiveCfg = Debug|x86
+		{C31FA4D5-6C6E-42E0-BFA7-DFA4F579F70D}.Debug|x86.Build.0 = Debug|x86
+		{C31FA4D5-6C6E-42E0-BFA7-DFA4F579F70D}.Release|Any CPU.ActiveCfg = Release|x86
+		{C31FA4D5-6C6E-42E0-BFA7-DFA4F579F70D}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{C31FA4D5-6C6E-42E0-BFA7-DFA4F579F70D}.Release|Mixed Platforms.Build.0 = Release|x86
+		{C31FA4D5-6C6E-42E0-BFA7-DFA4F579F70D}.Release|x86.ActiveCfg = Release|x86
+		{C31FA4D5-6C6E-42E0-BFA7-DFA4F579F70D}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

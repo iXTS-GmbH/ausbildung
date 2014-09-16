@@ -94,7 +94,7 @@ namespace ixts.Ausbildung.NameService.Test
 
             var expected = new List<String>
                 {
-                    string.Format("{0}Illegal Command: NotACommand{0}",Environment.NewLine),
+                    string.Format("{0}Illegal Command: NOTACOMMAND{0}",Environment.NewLine),
                 };
             testSocket.SetTestProtokoll("IllegalCommandTest");
             sut.Loop();

@@ -26,7 +26,29 @@ namespace ixts.Ausbildung.NameService
 
         }
 
-        public String HandleCommand(String[] parameters)
+        public void Loop()
+        {
+            for (; ; )
+            {
+                var line = Console.ReadLine();
+
+                if (!string.IsNullOrEmpty(line))
+                {
+                    var parameters = ParameterHandler.Normalize(line.Split(Constants.PARAMETER_DELIMITER));
+                    var response = HandleCommand(parameters);
+
+                    Console.WriteLine(response);
+
+                    if (parameters[0] == Constants.COMMAND_STOP)
+                    {
+                        return;
+                    }
+                }
+            }
+        }
+
+
+        private String HandleCommand(String[] parameters)
         {
             var command = parameters[0];
             var key = parameters[1];
