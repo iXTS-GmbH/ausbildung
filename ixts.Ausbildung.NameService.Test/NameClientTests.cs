@@ -6,27 +6,27 @@ using NUnit.Framework;
 namespace ixts.Ausbildung.NameService.Test
 {
     [TestFixture]
-    public class NameClientTests
+    public class NameClientTests//TODO Alle Tests auf Loop umschreiben und den Input als switch in TestConsole
     {
         private NameClient sut;
         private readonly TestSocketFactory testSocketFactory = new TestSocketFactory();
         private readonly TestSocket testSocket = new TestSocket();
-        private const String VALUE = "VALUE";
-        private const String COMMAND_UNKNOWN = "UnkownCommand";
-        private const String KEY_UNKNOWN = "UnkownKey";
         
         [SetUp]
         public void SetUp()
         {
-            sut = new NameClient(Constants.LOOPBACK, Constants.STANDARD_PORT, testSocketFactory);
+            sut = new NameClient(Constants.LOOPBACK, Constants.STANDARD_PORT, testSocketFactory,new TestConsole());
         }
 
         [TestCase("1 ")]
         public void ClientPutTest(String expected)
         {
             testSocket.SetTestProtokoll("ClientPutTest");
+            TestConsole.SetTestProtokoll("ClientPutTest");
 
-            var actual = sut.HandleCommand(new []{Constants.COMMAND_PUT, Constants.COMMAND_GET, VALUE});
+            TestConsole.WriteList = new List<String>();
+            sut.Loop();
+            var actual = TestConsole.WriteList[0];
             Assert.AreEqual(expected, actual);
 
         }
@@ -35,8 +35,12 @@ namespace ixts.Ausbildung.NameService.Test
         public void ClientGetTest(String expected)
         {
             testSocket.SetTestProtokoll("ClientGetTest");
+            TestConsole.SetTestProtokoll("ClientGetTest");
 
-            var actual = sut.HandleCommand(new []{Constants.COMMAND_GET, Constants.COMMAND_GET,null});
+            TestConsole.WriteList = new List<String>();
+            sut.Loop();
+            var actual = TestConsole.WriteList[0];
+
             Assert.AreEqual(expected, actual);
         }
 
@@ -44,21 +48,25 @@ namespace ixts.Ausbildung.NameService.Test
         public void ClientDelTest(String expected)
         {
             testSocket.SetTestProtokoll("ClientDelTest");
+            TestConsole.SetTestProtokoll("ClientDelTest");
 
-            var actual = sut.HandleCommand(new []{Constants.COMMAND_DEL, Constants.COMMAND_DEL,null});
+            TestConsole.WriteList = new List<String>();
+            sut.Loop();
+            var actual = TestConsole.WriteList[0];
+
             Assert.AreEqual(expected, actual);
         }
 
         [TestCase]
         public void UnkownCommandTest()
         {
-            var expected = new List<String>();
+            TestConsole.SetTestProtokoll("UnkownCommandTest");
 
-            TestSocket.Output = new List<String>();
+            var expected = string.Format("UnkownCommand ist kein gültiger Befehl{0}",Environment.NewLine);
 
-            sut.HandleCommand(new []{COMMAND_UNKNOWN, KEY_UNKNOWN,null});
-
-            var actual = TestSocket.Output;
+            TestConsole.WriteList = new List<String>();
+            sut.Loop();
+            var actual = TestConsole.WriteList[0];
 
             Assert.AreEqual(expected,actual);
         }
@@ -66,9 +74,13 @@ namespace ixts.Ausbildung.NameService.Test
         [TestCase]
         public void IPTest()
         {
+            TestConsole.SetTestProtokoll("IPTest");
             var expected = IPAddress.Parse(Constants.LOOPBACK);
-            var client = new NameClient(Constants.LOOPBACK, Constants.STANDARD_PORT, testSocketFactory);
-            client.HandleCommand(new []{Constants.COMMAND_PUT, VALUE, Constants.LOOPBACK});
+            var client = new NameClient(Constants.LOOPBACK, Constants.STANDARD_PORT, testSocketFactory,new TestConsole());
+            TestConsole.WriteList = new List<String>();
+
+            client.Loop();
+
             var actual = TestSocket.ServerIP;
 
             Assert.AreEqual(expected,actual);
