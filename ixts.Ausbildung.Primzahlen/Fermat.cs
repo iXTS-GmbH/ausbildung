@@ -6,30 +6,6 @@ namespace ixts.Ausbildung.Primzahlen
     {
         private static readonly Random Random = new Random();
 
-
-        private static Boolean FermatTest(int number, int a)
-        {
-            var pow = Math.Pow(a/100000.0, (number - 1)/100000.0);// a/100000.0 um infinity vorzubeugen
-
-            var abs = Math.Abs(pow%number - 1);
-
-            return abs <= 1.0 && abs > 0.001;
-        }
-
-        private static Boolean IsPrime(int number)
-        {
-            for (var i = 0; i < 100; i++)
-            {
-                var a = Random.Next(number - 1);
-
-                if (!FermatTest(number,a))
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
         public static int RandomPrime()
         {
             var isPrime = false;
@@ -42,6 +18,46 @@ namespace ixts.Ausbildung.Primzahlen
             }
 
             return number;
+        }
+
+        private static Boolean IsPrime(int number)
+        {
+            for (var i = 0; i < 100; i++)
+            {
+                var a = Random.Next(number - 1);
+
+                if (!FermatTest(number, a))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private static Boolean FermatTest(int number, int a)
+        {
+            return Pow(a, number - 1, number) == 1;
+        }
+
+        private static int Pow(int powBase, int powExponent, int moduloValue)
+        {
+            long bigPowBase = powBase;
+            long z = 1;
+
+            while (powExponent > 0)
+            {
+                if (powExponent%2 == 0)
+                {
+                    powExponent /= 2;
+                    bigPowBase = bigPowBase*bigPowBase%moduloValue;
+                }
+                else
+                {
+                    powExponent--;
+                    z = z*bigPowBase%moduloValue;
+                }
+            }
+            return (int)z;
         }
     }
 }
