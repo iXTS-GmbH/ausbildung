@@ -39,7 +39,7 @@ namespace ixts.Ausbildung.Primzahlen
             return Pow(a, number - 1, number) == 1;
         }
 
-        private static int Pow(int powBase, int powExponent, int moduloValue)
+        public static int Pow(int powBase, int powExponent, int moduloValue)
         {
             long bigPowBase = powBase;
             long z = 1;

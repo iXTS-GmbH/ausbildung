@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Fermat.cs" />
+    <Compile Include="PrimeGenerator.cs" />
     <Compile Include="Primes.cs" />
     <Compile Include="PrimTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
