@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Card.cs" />
     <Compile Include="Kind.cs" />
+    <Compile Include="Rank.cs" />
     <Compile Include="Suit.cs" />
     <Compile Include="Hand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

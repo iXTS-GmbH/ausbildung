@@ -7,5 +7,6 @@ namespace ixts.Ausbildung.Spielkarten
 {
     public class Hand
     {
+
     }
 }

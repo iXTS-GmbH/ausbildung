@@ -7,6 +7,5 @@ namespace ixts.Ausbildung.Spielkarten.Tests
 {
     public class HandTests
     {
-        
     }
 }
