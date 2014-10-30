@@ -23,7 +23,7 @@ namespace ixts.Ausbildung.Primzahlen
 
             var nubmerRoot = (int) Math.Sqrt(number);
 
-            for (int i = 3; i <= nubmerRoot ; i += 2)
+            for (var i = 3; i <= nubmerRoot ; i += 2)
             {
                 if (number%i == 0)
                 {
