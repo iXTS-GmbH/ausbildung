@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FermatTests.cs" />
+    <Compile Include="PrimesTest.cs" />
     <Compile Include="PrimTestTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
