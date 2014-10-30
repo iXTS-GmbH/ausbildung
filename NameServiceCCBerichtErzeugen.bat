@@ -3,3 +3,5 @@
 .\Misc\ReportGenerator_1.9.1.0\bin\ReportGenerator.exe -reports:".\CCB.xml" -targetdir:".\CCBericht"
 
 "C:\Program Files (x86)\Mozilla Firefox\firefox.exe" .\CCBericht\index.htm
+
+pause
