@@ -54,7 +54,7 @@ namespace ixts.Ausbildung.Primzahlen.ConsoleApp
 
             for (var i = 2; i < value; i++)
             {
-                if (PrimTest.IsPrime(i))
+                if (PrimeTest.IsPrime(i))
                 {
                     Console.WriteLine(i);
                 }
@@ -78,14 +78,14 @@ namespace ixts.Ausbildung.Primzahlen.ConsoleApp
             var value = int.Parse(line);
 
 
-            Console.WriteLine(PrimTest.IsPrime(value) ? "Ihre Zahl ist eine Primzahl" : "Ihre Zahl ist keine Primzahl");
+            Console.WriteLine(PrimeTest.IsPrime(value) ? "Ihre Zahl ist eine Primzahl" : "Ihre Zahl ist keine Primzahl");
         }
 
         private static void GetGenerator()
         {
             Console.WriteLine("Bitte geben sie eine Primzahl ein");
             var line = Console.ReadLine();
-            if (String.IsNullOrEmpty(line) || !PrimTest.IsPrime(int.Parse(line)))
+            if (String.IsNullOrEmpty(line) || !PrimeTest.IsPrime(int.Parse(line)))
             {
                 throw new ArgumentException("Keine Primzahl angegeben");
             }
@@ -102,7 +102,7 @@ namespace ixts.Ausbildung.Primzahlen.ConsoleApp
             Console.WriteLine("Bitte geben sie eine Primzahl ein");
             var primeLine = Console.ReadLine();
 
-            if (String.IsNullOrEmpty(primeLine) || !PrimTest.IsPrime(int.Parse(primeLine)))
+            if (String.IsNullOrEmpty(primeLine) || !PrimeTest.IsPrime(int.Parse(primeLine)))
             {
                 throw new ArgumentException("Keine Primzahl angegeben");
             }

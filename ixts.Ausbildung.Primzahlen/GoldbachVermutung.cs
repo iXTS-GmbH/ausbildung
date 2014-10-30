@@ -22,7 +22,7 @@ namespace ixts.Ausbildung.Primzahlen
         {
             foreach (var prime in new Primes())
             {
-                if (PrimTest.IsPrime(number-prime))
+                if (PrimeTest.IsPrime(number-prime))
                 {
                     return true;
                 }

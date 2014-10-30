@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace ixts.Ausbildung.Primzahlen.Test
 {
     [TestFixture]
-    public class PrimTestTests
+    public class PrimeTestTests
     {
         [TestCase(1,true)]
         [TestCase(2,true)]
@@ -14,7 +14,7 @@ namespace ixts.Ausbildung.Primzahlen.Test
         [TestCase(999999, false)]
         public void IsPrimeTest(int number, Boolean expected)
         {
-            var actual = PrimTest.IsPrime(number);
+            var actual = PrimeTest.IsPrime(number);
 
             Assert.AreEqual(expected,actual);
         }
@@ -22,7 +22,7 @@ namespace ixts.Ausbildung.Primzahlen.Test
         [TestCase(-15)]
         public void NegativPrimeTest(int number)
         {
-            PrimTest.IsPrime(number);
+            PrimeTest.IsPrime(number);
         }
     }
 }

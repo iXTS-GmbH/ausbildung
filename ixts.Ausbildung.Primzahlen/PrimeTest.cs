@@ -2,7 +2,7 @@
 
 namespace ixts.Ausbildung.Primzahlen
 {
-    public class PrimTest
+    public class PrimeTest
     {
         public static Boolean IsPrime(int number)
         {

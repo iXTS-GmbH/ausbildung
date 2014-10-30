@@ -45,7 +45,7 @@ namespace ixts.Ausbildung.Primzahlen
 
             currentPrime = currentPrime + 2;
 
-            while (!PrimTest.IsPrime(currentPrime))
+            while (!PrimeTest.IsPrime(currentPrime))
             {
 
                 currentPrime = currentPrime + 2;
