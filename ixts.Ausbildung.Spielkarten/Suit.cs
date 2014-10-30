@@ -7,5 +7,9 @@ namespace ixts.Ausbildung.Spielkarten
 {
     public enum Suit
     {
+        Spade = 4,
+        Heart = 3,
+        Diamond = 2,
+        Leaf = 1
     }
 }
