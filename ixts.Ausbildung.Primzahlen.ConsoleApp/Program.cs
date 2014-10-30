@@ -8,11 +8,12 @@ namespace ixts.Ausbildung.Primzahlen.ConsoleApp
         {
             Console.WriteLine("Was wollen sie tun?");
             Console.WriteLine();
-            Console.WriteLine("Alle Primzahlen bis zu einem Wert ermitteln lassen (AP)");
-            Console.WriteLine("Eine zufällige Primzahl generieren lassen (RP)");
+            Console.WriteLine("Alle Primzahlen bis zu einem Wert ermitteln (AP)");
+            Console.WriteLine("Eine zufällige Primzahl generieren (RP)");
             Console.WriteLine("Prüfen ob eine Zahl eine Primzahl ist (CP)");
-            Console.WriteLine("Einen Generator zu einer Primzahl ermitteln lassen (GG)");
+            Console.WriteLine("Einen Generator zu einer Primzahl ermitteln (GG)");
             Console.WriteLine("Prüfen ob eine Zahl ein Generator für eine Primzahl ist (CG)");
+            Console.WriteLine("Eine zufällige Zahl generieren RN");
             var command = Console.ReadLine();
 
             if (string.IsNullOrEmpty(command))
@@ -36,6 +37,9 @@ namespace ixts.Ausbildung.Primzahlen.ConsoleApp
                     break;
                 case "CG":
                     CheckGenerator();
+                    break;
+                case "RN":
+                    GetRandomNumber();
                     break;
                 default:
                     throw new ArgumentException(string.Format("{0} ist kein gültiger Befehl",command));
@@ -118,6 +122,15 @@ namespace ixts.Ausbildung.Primzahlen.ConsoleApp
             var generator = int.Parse(generatorLine);
 
             Console.WriteLine(PrimeGenerator.IsGenerator(prime, generator) ? "Ihre Zahl ist ein Generator dieser Primzahl" : "Ihre Zahl ist kein Generator dieser Primzahl");
+        }
+
+        private static void GetRandomNumber()
+        {
+            var prime = Fermat.RandomPrime();
+            var random = new Random();
+
+            Console.WriteLine("Ihre zufällig generierte Zahl ist: ");
+            Console.WriteLine(new RandomGenerator(prime, random.Next(prime - 1)).Current);
         }
     }
 }

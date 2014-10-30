@@ -24,10 +24,7 @@ namespace ixts.Ausbildung.Primzahlen
         {
             get
             {
-                var a = Fermat.Pow(generator, exponent, prime);
-                var b = a + last*generator;
-                var c = b - (last*generator)%prime;
-                current = c;
+                current = Fermat.Pow(generator, exponent, prime) + last*generator - (last*generator)%prime;
                 return current;
             }
         }
