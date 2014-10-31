@@ -19,7 +19,7 @@ namespace ixts.Ausbildung.Spielkarten
         private String CheckRank()
         {
             //wie prüfe ich auf die Typen
-            return "";
+
         }
     }
 }
