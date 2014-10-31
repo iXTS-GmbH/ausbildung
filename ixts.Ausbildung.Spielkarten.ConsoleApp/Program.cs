@@ -9,6 +9,7 @@ namespace ixts.Ausbildung.Spielkarten.ConsoleApp
     {
         static void Main(string[] args)
         {
+           Console.WriteLine(Enum.GetName(typeof (Suit), 1));
         }
     }
 }
