@@ -5,35 +5,49 @@ namespace ixts.Ausbildung.Spielkarten
 {
     public class Kind
     {
-        private static readonly Dictionary<String,int> keyValue = new Dictionary<string, int>
+        private const int ACE = 14;
+        private const int KING = 13;
+        private const int QUEEN = 12;
+        private const int JACK = 11;
+        private const int NUM10 = 10;
+        private const int NUM9 = 9;
+        private const int NUM8 = 8;
+        private const int NUM7 = 7;
+        private const int NUM6 = 6;
+        private const int NUM5 = 5;
+        private const int NUM4 = 4;
+        private const int NUM3 = 3;
+        private const int NUM2 = 2;
+
+        public static readonly Dictionary<int,String> ValueString = new Dictionary<int,String>
             {
-                {"A",14},
-                {"K",13},
-                {"Q",12},
-                {"J",11},
-                {"N10",10},
-                {"N9",9},
-                {"N8",8},
-                {"N7",7},
-                {"N6",6},
-                {"N5",5},
-                {"N4",4},
-                {"N3",3},
-                {"N2",2}
+                {14,"A"},
+                {13,"K"},
+                {12,"Q"},
+                {11,"J"},
+                {10,"N10"},
+                {9,"N9"},
+                {8,"N8"},
+                {7,"N7"},
+                {6,"N6"},
+                {5,"N5"},
+                {4,"N4"},
+                {3,"N3"},
+                {2,"N2"}
             };
 
-        public static int A { get { return keyValue["A"]; } }
-        public static int K { get { return keyValue["K"]; } }
-        public static int Q { get { return keyValue["Q"]; } }
-        public static int J { get { return keyValue["J"]; } }
-        public static int N10 { get { return keyValue["N10"]; } }
-        public static int N9 { get { return keyValue["N9"]; } }
-        public static int N8 { get { return keyValue["N8"]; } }
-        public static int N7 { get { return keyValue["N7"]; } }
-        public static int N6 { get { return keyValue["N6"]; } }
-        public static int N5 { get { return keyValue["N5"]; } }
-        public static int N4 { get { return keyValue["N4"]; } }
-        public static int N3 { get { return keyValue["N3"]; } }
-        public static int N2 { get { return keyValue["N2"]; } }
+        public static int A { get { return ACE; } }
+        public static int K { get { return KING; } }
+        public static int Q { get { return QUEEN; } }
+        public static int J { get { return JACK; } }
+        public static int N10 { get { return NUM10; } }
+        public static int N9 { get { return NUM9; } }
+        public static int N8 { get { return NUM8; } }
+        public static int N7 { get { return NUM7; } }
+        public static int N6 { get { return NUM6; } }
+        public static int N5 { get { return NUM5; } }
+        public static int N4 { get { return NUM4; } }
+        public static int N3 { get { return NUM3; } }
+        public static int N2 { get { return NUM2; } }
     }
 }

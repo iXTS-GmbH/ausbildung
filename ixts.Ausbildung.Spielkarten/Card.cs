@@ -5,18 +5,23 @@ namespace ixts.Ausbildung.Spielkarten
 {
     public class Card
     {
-        public int Kind;
-        public int Suit;
+        public int CardKind;
+        public int CardSuit;
 
         public Card(int suit, int kind)
         {
-            Suit = suit;
-            Kind = kind;
+            CardSuit = suit;
+            CardKind = kind;
         }
 
         public Boolean Equals(Card otherCard)
         {
-            return Kind == otherCard.Kind && Suit == otherCard.Suit;
+            return CardKind == otherCard.CardKind && CardSuit == otherCard.CardSuit;
+        }
+
+        public String CardString()
+        {
+            return string.Format("{0} {1}",Suit.ValueString[CardSuit],Kind.ValueString[CardKind]);
         }
     }
 }

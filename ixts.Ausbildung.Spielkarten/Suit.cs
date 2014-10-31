@@ -5,17 +5,23 @@ namespace ixts.Ausbildung.Spielkarten
 {
     public class Suit
     {
-        private static readonly Dictionary<String,int> keyValue = new Dictionary<string, int>
+        private const int SPADE = 4;
+        private const int HEART = 3;
+        private const int DIAMOND = 2;
+        private const int LEAF = 1;
+
+        public static readonly Dictionary<int,String> ValueString = new Dictionary<int,String>
             {
-                {"Spade",4},
-                {"Heart",3},
-                {"Diamond",2},
-                {"Leaf",1}
+                {SPADE,"Spade"},
+                {HEART,"Heart"},
+                {DIAMOND,"Diamond"},
+                {LEAF,"Leaf"}
             };
 
-        public static int Spade{get { return keyValue["Spade"]; }}
-        public static int Heart{get { return keyValue["Heart"]; }}
-        public static int Diamond{get { return keyValue["Diamond"]; }}
-        public static int Leaf{get { return keyValue["Leaf"]; }}
+
+        public static int Spade{get { return SPADE; }}
+        public static int Heart{get { return HEART; }}
+        public static int Diamond{get { return DIAMOND; }}
+        public static int Leaf{get { return LEAF; }}
     }
 }

@@ -21,16 +21,16 @@ namespace ixts.Ausbildung.Spielkarten
         public Rank(Hand hand)
         {
             this.hand = hand;
-            ichiNi = hand.CardIchi.Kind == hand.CardNi.Kind;
-            ichiSan = hand.CardIchi.Kind == hand.CardSan.Kind;
-            ichiYon = hand.CardIchi.Kind == hand.CardYon.Kind;
-            ichiGo = hand.CardIchi.Kind == hand.CardGo.Kind;
-            niSan = hand.CardNi.Kind == hand.CardSan.Kind;
-            niYon = hand.CardNi.Kind == hand.CardYon.Kind;
-            niGo = hand.CardNi.Kind == hand.CardGo.Kind;
-            sanYon = hand.CardSan.Kind == hand.CardYon.Kind;
-            sanGo = hand.CardSan.Kind == hand.CardGo.Kind;
-            yonGo = hand.CardYon.Kind == hand.CardGo.Kind;
+            ichiNi = hand.CardIchi.CardKind == hand.CardNi.CardKind;
+            ichiSan = hand.CardIchi.CardKind == hand.CardSan.CardKind;
+            ichiYon = hand.CardIchi.CardKind == hand.CardYon.CardKind;
+            ichiGo = hand.CardIchi.CardKind == hand.CardGo.CardKind;
+            niSan = hand.CardNi.CardKind == hand.CardSan.CardKind;
+            niYon = hand.CardNi.CardKind == hand.CardYon.CardKind;
+            niGo = hand.CardNi.CardKind == hand.CardGo.CardKind;
+            sanYon = hand.CardSan.CardKind == hand.CardYon.CardKind;
+            sanGo = hand.CardSan.CardKind == hand.CardGo.CardKind;
+            yonGo = hand.CardYon.CardKind == hand.CardGo.CardKind;
             optionList = new[] { ichiNi, ichiSan, ichiYon, ichiGo, niSan, niYon, niGo, sanYon, sanGo, yonGo };
 
         }
@@ -53,8 +53,8 @@ namespace ixts.Ausbildung.Spielkarten
             {
                 if (CheckFlush())
                 {
-                    if (hand.CardIchi.Kind == Kind.A || hand.CardNi.Kind == Kind.A || hand.CardSan.Kind == Kind.A ||
-                        hand.CardYon.Kind == Kind.A || hand.CardGo.Kind == Kind.A)
+                    if (hand.CardIchi.CardKind == Kind.A || hand.CardNi.CardKind == Kind.A || hand.CardSan.CardKind == Kind.A ||
+                        hand.CardYon.CardKind == Kind.A || hand.CardGo.CardKind == Kind.A)
                     {
                         return "Royal Flush";
                     }
@@ -96,14 +96,14 @@ namespace ixts.Ausbildung.Spielkarten
                 {
                     for (var i = 0; i < handList.Count; i++)
                     {
-                        if (handList[i].Kind - 1 == goalList[0].Kind)
+                        if (handList[i].CardKind - 1 == goalList[0].CardKind)
                         {
                             goalList.Add(handList[i]);
                             handList.RemoveAt(i);
                             break;
                         }
 
-                        if (handList[i].Kind + 1 == goalList[0].Kind || handList[i].Kind - 12 == goalList[0].Kind)
+                        if (handList[i].CardKind + 1 == goalList[0].CardKind || handList[i].CardKind - 12 == goalList[0].CardKind)
                         {
                             goalList.Insert(0,handList[i]);
                             handList.RemoveAt(i);
@@ -121,17 +121,17 @@ namespace ixts.Ausbildung.Spielkarten
                     var count = goalList.Count;
                     for (var i = 0; i < handList.Count; i++)
                     {
-                        if (handList[i].Kind - 1 == goalList[0].Kind)
+                        if (handList[i].CardKind - 1 == goalList[0].CardKind)
                         {
                             return false;
                         }
-                        if (handList[i].Kind + 1 == goalList[0].Kind || handList[i].Kind - 12 == goalList[0].Kind)
+                        if (handList[i].CardKind + 1 == goalList[0].CardKind || handList[i].CardKind - 12 == goalList[0].CardKind)
                         {
                             goalList.Insert(0,handList[i]);
                             handList.RemoveAt(i);
                             break;
                         }
-                        if (handList[i].Kind - 1 == goalList[goalList.Count - 1].Kind)
+                        if (handList[i].CardKind - 1 == goalList[goalList.Count - 1].CardKind)
                         {
                             goalList.Add(handList[i]);
                             handList.RemoveAt(i);
@@ -149,8 +149,8 @@ namespace ixts.Ausbildung.Spielkarten
 
         private Boolean CheckFlush()
         {
-            return hand.CardIchi.Suit == hand.CardNi.Suit && hand.CardNi.Suit == hand.CardSan.Suit &&
-                   hand.CardSan.Suit == hand.CardYon.Suit && hand.CardYon.Suit == hand.CardGo.Suit;
+            return hand.CardIchi.CardSuit == hand.CardNi.CardSuit && hand.CardNi.CardSuit == hand.CardSan.CardSuit &&
+                   hand.CardSan.CardSuit == hand.CardYon.CardSuit && hand.CardYon.CardSuit == hand.CardGo.CardSuit;
         }
 
         private Boolean CheckFourOfAKind()

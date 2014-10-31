@@ -26,5 +26,10 @@ namespace ixts.Ausbildung.Spielkarten
         {
             return rank.GetRank();
         }
+
+        public String GetHand()
+        {
+            return string.Format("{0} {1} {2} {3} {4}",CardIchi.CardString(),CardNi.CardString(),CardSan.CardString(),CardYon.CardString(),CardGo.CardString());
+        }
     }
 }
