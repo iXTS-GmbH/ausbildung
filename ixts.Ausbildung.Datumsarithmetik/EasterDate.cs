@@ -16,7 +16,7 @@ namespace ixts.Ausbildung.Datumsarithmetik
             var m = 3 + (l + 40)/44;
             var d = l + 28 - 31*(m/4);
 
-            return string.Format("{0} {1}",d,m);
+            return string.Format("{0}.{1}",d,m);
         }
 
     }
