@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EasterDate.cs" />
     <Compile Include="Weekday.cs" />
     <Compile Include="Zeller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
