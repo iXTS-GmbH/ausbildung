@@ -27,8 +27,6 @@ namespace ixts.Ausbildung.Spielkarten.Tests
                 new object[]{new Hand(new Card(Suit.Diamond, Kind.A), new Card(Suit.Heart,Kind.A), new Card(Suit.Leaf,Kind.A), new Card(Suit.Spade,Kind.K), new Card(Suit.Diamond,Kind.K)),"Full House"},
                 //Straight
                 new object[]{new Hand(new Card(Suit.Spade, Kind.K), new Card(Suit.Heart, Kind.Q), new Card(Suit.Leaf, Kind.J), new Card(Suit.Heart, Kind.N10), new Card(Suit.Diamond, Kind.N9)), "Straight"},
-                //Straight with Ace == 1
-                new object[]{new Hand(new Card(Suit.Leaf,Kind.A),new Card(Suit.Spade,Kind.N2),new Card(Suit.Heart,Kind.N3),new Card(Suit.Diamond,Kind.N4),new Card(Suit.Leaf,Kind.N5)), "Straight"},
                 //Three of a Kind/Drilling
                 new object[]{new Hand(new Card(Suit.Diamond, Kind.A), new Card(Suit.Heart,Kind.A), new Card(Suit.Leaf,Kind.A), new Card(Suit.Spade,Kind.Q), new Card(Suit.Diamond,Kind.K)),"Three of a Kind"},
                 //Two Pairs
