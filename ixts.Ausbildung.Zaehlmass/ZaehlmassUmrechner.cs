@@ -20,15 +20,15 @@ namespace ixts.Ausbildung.Zaehlmass
                 if (number/GROS >= 1)
                 {
                     grosZaehler += number/GROS;
-                    number -= number/GROS*GROS;
+                    number = number%GROS;
                 }else if(number/SCHOCK >= 1)
                 {
                     schokZaehler += number/SCHOCK;
-                    number -= number/SCHOCK*SCHOCK;
+                    number = number%SCHOCK;
                 }else if (number/DUTZEND >= 1)
                 {
                     dutzendZaehler += number/DUTZEND;
-                    number -= number/DUTZEND*DUTZEND;
+                    number = number%DUTZEND;
                 }else if (number < DUTZEND)
                 {
                     einzelZaehler += number;
