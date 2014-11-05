@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{14A399FA-9EFB-418E-BA25-1ADAED94653C}</ProjectGuid>
+    <ProjectGuid>{FFF7E6AA-68C0-41EF-88BF-FF4A1BFAB03D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ixts.Ausbildung.Primzahlen</RootNamespace>
-    <AssemblyName>ixts.Ausbildung.Primzahlen</AssemblyName>
+    <RootNamespace>ixts.Ausbildung.Potenzieren.Test</RootNamespace>
+    <AssemblyName>ixts.Ausbildung.Potenzieren.Test</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\NUnit 2.6.3\bin\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,13 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Fermat.cs" />
-    <Compile Include="PrimeGenerator.cs" />
-    <Compile Include="Primes.cs" />
-    <Compile Include="PrimeTest.cs" />
+    <Compile Include="PotenzTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="GoldbachVermutung.cs" />
-    <Compile Include="RandomGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ixts.Ausbildung.Potenzieren\ixts.Ausbildung.Potenzieren.csproj">

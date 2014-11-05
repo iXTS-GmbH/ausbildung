@@ -36,28 +36,9 @@ namespace ixts.Ausbildung.Primzahlen
 
         private static Boolean FermatTest(int number, int a)
         {
-            return Pow(a, number - 1, number) == 1;
+            return Potenzieren.Potenz.Pow(a, number - 1, number) == 1;
         }
 
-        public static int Pow(int powBase, int powExponent, int moduloValue)
-        {
-            long bigPowBase = powBase;
-            long z = 1;
-
-            while (powExponent > 0)
-            {
-                if (powExponent%2 == 0)
-                {
-                    powExponent /= 2;
-                    bigPowBase = bigPowBase*bigPowBase%moduloValue;
-                }
-                else
-                {
-                    powExponent--;
-                    z = z*bigPowBase%moduloValue;
-                }
-            }
-            return (int)z;
-        }
+        
     }
 }

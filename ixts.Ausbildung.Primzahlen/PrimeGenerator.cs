@@ -9,7 +9,7 @@ namespace ixts.Ausbildung.Primzahlen
         {
             for (var i = 1; i <= (prime-1)/2; i++)
             {
-                var a = Fermat.Pow(generator,i,prime);
+                var a = Potenzieren.Potenz.Pow(generator,i,prime);
 
                 if (a == 1)
                 {
