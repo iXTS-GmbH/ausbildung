@@ -127,6 +127,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.Binomialkoe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.Binomialkoeffizienten.Test", "ixts.Ausbildung.Binomialkoeffizienten.Test\ixts.Ausbildung.Binomialkoeffizienten.Test.csproj", "{6C6A4AD7-D5A7-4346-8217-384719B869B6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.Rhombs.ConsoleApp", "ixts.Ausbildung.Rhombs.ConsoleApp\ixts.Ausbildung.Rhombs.ConsoleApp.csproj", "{6142FAA6-2C16-4F1A-858D-73B5ED105ECC}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = ixts.Ausbildung.vsmdi
@@ -740,6 +742,16 @@ Global
 		{6C6A4AD7-D5A7-4346-8217-384719B869B6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{6C6A4AD7-D5A7-4346-8217-384719B869B6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{6C6A4AD7-D5A7-4346-8217-384719B869B6}.Release|x86.ActiveCfg = Release|Any CPU
+		{6142FAA6-2C16-4F1A-858D-73B5ED105ECC}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{6142FAA6-2C16-4F1A-858D-73B5ED105ECC}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{6142FAA6-2C16-4F1A-858D-73B5ED105ECC}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{6142FAA6-2C16-4F1A-858D-73B5ED105ECC}.Debug|x86.ActiveCfg = Debug|x86
+		{6142FAA6-2C16-4F1A-858D-73B5ED105ECC}.Debug|x86.Build.0 = Debug|x86
+		{6142FAA6-2C16-4F1A-858D-73B5ED105ECC}.Release|Any CPU.ActiveCfg = Release|x86
+		{6142FAA6-2C16-4F1A-858D-73B5ED105ECC}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{6142FAA6-2C16-4F1A-858D-73B5ED105ECC}.Release|Mixed Platforms.Build.0 = Release|x86
+		{6142FAA6-2C16-4F1A-858D-73B5ED105ECC}.Release|x86.ActiveCfg = Release|x86
+		{6142FAA6-2C16-4F1A-858D-73B5ED105ECC}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
