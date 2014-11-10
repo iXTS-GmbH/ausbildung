@@ -159,6 +159,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.E-Camel.Tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.Mobiles", "ixts.Ausbildung.Mobiles\ixts.Ausbildung.Mobiles.csproj", "{A307BAB3-BE1E-4F40-90B8-080AD5DCECFE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.Widerstandsnetzwerke", "ixts.Ausbildung.Widerstandsnetzwerke\ixts.Ausbildung.Widerstandsnetzwerke.csproj", "{0E1D7D1B-EC46-4EED-9B2D-5722F3AB4CC3}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = ixts.Ausbildung.vsmdi
@@ -932,6 +934,16 @@ Global
 		{A307BAB3-BE1E-4F40-90B8-080AD5DCECFE}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{A307BAB3-BE1E-4F40-90B8-080AD5DCECFE}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{A307BAB3-BE1E-4F40-90B8-080AD5DCECFE}.Release|x86.ActiveCfg = Release|Any CPU
+		{0E1D7D1B-EC46-4EED-9B2D-5722F3AB4CC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E1D7D1B-EC46-4EED-9B2D-5722F3AB4CC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E1D7D1B-EC46-4EED-9B2D-5722F3AB4CC3}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{0E1D7D1B-EC46-4EED-9B2D-5722F3AB4CC3}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{0E1D7D1B-EC46-4EED-9B2D-5722F3AB4CC3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0E1D7D1B-EC46-4EED-9B2D-5722F3AB4CC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E1D7D1B-EC46-4EED-9B2D-5722F3AB4CC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E1D7D1B-EC46-4EED-9B2D-5722F3AB4CC3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{0E1D7D1B-EC46-4EED-9B2D-5722F3AB4CC3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{0E1D7D1B-EC46-4EED-9B2D-5722F3AB4CC3}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
