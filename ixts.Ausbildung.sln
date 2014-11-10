@@ -163,6 +163,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.Widerstands
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.Stoppuhren", "ixts.Ausbildung.Stoppuhren\ixts.Ausbildung.Stoppuhren.csproj", "{1E6B9573-5932-42BD-B436-1579C06457C1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.Zahlenfolgen", "ixts.Ausbildung.Zahlenfolgen\ixts.Ausbildung.Zahlenfolgen.csproj", "{97AF690C-E8D2-45F1-A8C0-07A6A36CCA24}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = ixts.Ausbildung.vsmdi
@@ -956,6 +958,16 @@ Global
 		{1E6B9573-5932-42BD-B436-1579C06457C1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{1E6B9573-5932-42BD-B436-1579C06457C1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{1E6B9573-5932-42BD-B436-1579C06457C1}.Release|x86.ActiveCfg = Release|Any CPU
+		{97AF690C-E8D2-45F1-A8C0-07A6A36CCA24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97AF690C-E8D2-45F1-A8C0-07A6A36CCA24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97AF690C-E8D2-45F1-A8C0-07A6A36CCA24}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{97AF690C-E8D2-45F1-A8C0-07A6A36CCA24}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{97AF690C-E8D2-45F1-A8C0-07A6A36CCA24}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{97AF690C-E8D2-45F1-A8C0-07A6A36CCA24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97AF690C-E8D2-45F1-A8C0-07A6A36CCA24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97AF690C-E8D2-45F1-A8C0-07A6A36CCA24}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{97AF690C-E8D2-45F1-A8C0-07A6A36CCA24}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{97AF690C-E8D2-45F1-A8C0-07A6A36CCA24}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
