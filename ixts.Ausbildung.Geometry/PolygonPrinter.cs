@@ -9,22 +9,25 @@ namespace ixts.Ausbildung.Geometry
     {
         private const string TRIANGLE = "Triangle";
         private const string QUADLITERAL = "Quadliteral";
-        private const string COLORNAME = "Black";
+        public Color Color = new Color();
         internal Dictionary<string, Polygon> Polygons = new Dictionary<string, Polygon>();
         private int triangleCounter;
         private int quadliteralCounter;
 
+        public PolygonPrinter()
+        {
+            Color = Color.Black;
+        }
+
         public void MovePolygon(string polygon, double moveX, double moveY)
         {
             Polygons[polygon] = Polygons[polygon].Moved(moveX, moveY);
-            Polygons[polygon].Points = NegativCoordinatesCheck(Polygons[polygon].Points);
         }
 
         public void ZoomPolygon(string polygon, double factor)
         {
             var middlepoint = Polygons[polygon].Middle();
             Polygons[polygon] = Polygons[polygon].Zoomed(middlepoint, factor);
-            Polygons[polygon].Points = NegativCoordinatesCheck(Polygons[polygon].Points);
 
         }
 
@@ -37,8 +40,8 @@ namespace ixts.Ausbildung.Geometry
 
         public String Create(Point point1, Point point2, Point point3)//Triangle
         {
-            var points = NegativCoordinatesCheck(new[] {point1,point2,point3});
-            var newTriangle = new Triangle(points);
+            var points = new[] {point1,point2,point3};
+            var newTriangle = new Triangle(points,Color);
             triangleCounter = triangleCounter + 1;
             var formname = string.Format("{0}{1}", TRIANGLE, triangleCounter);
             Polygons.Add(formname,newTriangle);
@@ -47,52 +50,23 @@ namespace ixts.Ausbildung.Geometry
 
         public String Create(Point point1, Point point2, Point point3, Point point4)//Quadliteral
         {
-            var points = NegativCoordinatesCheck(new[] {point1,point2,point3,point4});
-            var newQuadliteral = new Quadliteral(points);
+            var points = new[] {point1,point2,point3,point4};
+            var newQuadliteral = new Quadliteral(points, Color);
             quadliteralCounter = quadliteralCounter + 1;
             var formname = string.Format("{0}{1}", QUADLITERAL, quadliteralCounter);
             Polygons.Add(formname, newQuadliteral);
             return formname; 
         }
 
-        private Point[] NegativCoordinatesCheck(Point[] points)
-        {
-            foreach (var point in points)
-            {
-                if (point.X<0)
-                {
-                    for (int i = 0; i < points.Length; i++)
-                    {
-                        points[i] = points[i].Moved(Math.Abs(point.X), 0);
-                    }
-                    //foreach (var polygon in Polygons)//Nicht Funktional InvalidOperationExeption
-                    //{
-                    //    MovePolygon(polygon.Key, Math.Abs(point.X), 0);
-                    //}
-                }
-                if (point.Y<0)
-                {
-                    for (int i = 0; i < points.Length; i++)
-                    {
-                        points[i] = points[i].Moved(0, Math.Abs(point.Y));
-                    }
-                    //foreach (var polygon in Polygons)
-                    //{
-                    //    MovePolygon(polygon.Key,0,Math.Abs(point.Y));
-                    //}
-                }
-            }
-            return points;
-        }
-
         public Bitmap Print(int width, int height)
         {
             var bitmap = new Bitmap(width,height);
             var g = Graphics.FromImage(bitmap);
-            var p = new Pen(Color.FromName(COLORNAME));
-            var sb = new SolidBrush(Color.FromName(COLORNAME));
             foreach (var polygon in Polygons)
             {
+                var p = new Pen(polygon.Value.Color);
+                var sb = new SolidBrush(polygon.Value.Color);
+
                 var drawpoints = new List<System.Drawing.Point>();
                 foreach (var point in polygon.Value.Points)
                 {

@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 
 namespace ixts.Ausbildung.Geometry
@@ -8,10 +9,12 @@ namespace ixts.Ausbildung.Geometry
     public class Polygon
     {
         public Point[] Points;
+        public Color Color;
 
-        public Polygon(Point[] points)
+        public Polygon(Point[] points,Color color)
         {
             Points = points;
+            Color = color;
         }
 
         public double Perimeter()
@@ -97,7 +100,7 @@ namespace ixts.Ausbildung.Geometry
             {
                 mpoints.Add(new Point(Points[i].X + moveX, Points[i].Y + moveY));
             }
-            return new Polygon(mpoints.ToArray());
+            return new Polygon(mpoints.ToArray(),Color);
         }
 
         public Polygon Zoomed(double factor)
@@ -107,7 +110,7 @@ namespace ixts.Ausbildung.Geometry
             {
                 zoomedpoints.Add(new Point(Points[i].X*factor, Points[i].Y*factor));
             }
-            return new Polygon(zoomedpoints.ToArray());
+            return new Polygon(zoomedpoints.ToArray(),Color);
         }
 
         public Polygon Zoomed(Point point, double factor)
@@ -118,7 +121,7 @@ namespace ixts.Ausbildung.Geometry
             {
                 zoomedPoints.Add(new Point((Points[i].X - point.X) * factor + point.X, (Points[i].Y - point.Y) * factor + point.Y));
             }
-            return new Polygon(zoomedPoints.ToArray());
+            return new Polygon(zoomedPoints.ToArray(),Color);
         }
 
         public Polygon Rotate(double angle)
@@ -130,7 +133,7 @@ namespace ixts.Ausbildung.Geometry
                 var rY = Math.Round(point.X * (0 - Math.Sin(angle*Math.PI/180)) + point.Y * Math.Cos(angle*Math.PI/180),3);      //y' = x·(-sinφ) + y·cosφ
                 rPoints.Add(new Point(rX,rY));
             }
-            return new Polygon(rPoints.ToArray());
+            return new Polygon(rPoints.ToArray(),Color);
         }
 
         public Polygon Rotate(Point point, double angle)
@@ -140,7 +143,7 @@ namespace ixts.Ausbildung.Geometry
             {
                rotatedPoints.Add(Points[i].Moved(-point.X, -point.Y));
             }
-            var movedPolygon = new Polygon(rotatedPoints.ToArray()).Rotate(angle);
+            var movedPolygon = new Polygon(rotatedPoints.ToArray(),Color).Rotate(angle);
             var rotatedPolygon = movedPolygon.Moved(point.X, point.Y);
             return rotatedPolygon;
         }

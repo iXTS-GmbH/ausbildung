@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Drawing;
 
 namespace ixts.Ausbildung.Geometry
 {
     public class Triangle : Polygon
     {
 
-        public Triangle(Point[] points):base(points)//Constructor
+        public Triangle(Point[] points, Color color):base(points, color)//Constructor
         {
 
         }

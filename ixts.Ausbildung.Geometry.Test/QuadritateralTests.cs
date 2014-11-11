@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using NUnit.Framework;
 
 namespace ixts.Ausbildung.Geometry.Test
@@ -15,7 +16,7 @@ namespace ixts.Ausbildung.Geometry.Test
             var b = new Point(3,2);
             var c = new Point(3,4);
             var d = new Point(1,4);
-            sut = new Quadliteral(new []{a,b,c,d});
+            sut = new Quadliteral(new []{a,b,c,d},Color.Black);
         }
 
        
@@ -60,16 +61,16 @@ namespace ixts.Ausbildung.Geometry.Test
 
         public static readonly object[] IsSameTestSource =
             {
-                new object[]{new Quadliteral(new []{new Point(1,2),new Point(3,2),new Point(2,3), new Point(1,4)}), 1, true}, //innerhalb des Rahmens
+                new object[]{new Quadliteral(new []{new Point(1,2),new Point(3,2),new Point(2,3), new Point(1,4)},Color.Black), 1, true}, //innerhalb des Rahmens
 
-                new object[]{new Quadliteral(new []{new Point(1,0),new Point(3,2),new Point(2,3), new Point(1,4)}), 1, false}, //außerhalb des Rahmens 1 Wert  (aY)
-                new object[]{new Quadliteral(new []{new Point(1,0),new Point(3,0),new Point(2,3), new Point(1,4)}), 1, false}, //außerhalb des Rahmens 2 Werte (aY,bY)
-                new object[]{new Quadliteral(new []{new Point(1,0),new Point(3,0),new Point(0,3), new Point(1,4)}), 1, false}, //außerhalb des Rahmens 3 Werte (aY,bY,cX)
-                new object[]{new Quadliteral(new []{new Point(1,0),new Point(3,0),new Point(0,3), new Point(1,2)}), 1, false}, //außerhalb des Rahmens 4 Werte (aY,bY,cX,dY)
-                new object[]{new Quadliteral(new []{new Point(1,0),new Point(1,0),new Point(0,3), new Point(1,2)}), 1, false}, //außerhalb des Rahmens 5 Werte (aY,B,cX,dY)
-                new object[]{new Quadliteral(new []{new Point(1,0),new Point(1,0),new Point(0,1), new Point(1,2)}), 1, false}, //außerhalb des Rahmens 6 Werte (aY,B,C,dY)
-                new object[]{new Quadliteral(new []{new Point(-1,0),new Point(1,0),new Point(0,1), new Point(1,2)}), 1, false}, //außerhalb des Rahmens 7 Werte (A,B,C,dY)
-                new object[]{new Quadliteral(new []{new Point(-1,0),new Point(1,0),new Point(0,1), new Point(-1,2)}), 1, false} //außerhalb des Rahmens 8 Werte (A,B,C,d)
+                new object[]{new Quadliteral(new []{new Point(1,0),new Point(3,2),new Point(2,3), new Point(1,4)},Color.Black), 1, false}, //außerhalb des Rahmens 1 Wert  (aY)
+                new object[]{new Quadliteral(new []{new Point(1,0),new Point(3,0),new Point(2,3), new Point(1,4)},Color.Black), 1, false}, //außerhalb des Rahmens 2 Werte (aY,bY)
+                new object[]{new Quadliteral(new []{new Point(1,0),new Point(3,0),new Point(0,3), new Point(1,4)},Color.Black), 1, false}, //außerhalb des Rahmens 3 Werte (aY,bY,cX)
+                new object[]{new Quadliteral(new []{new Point(1,0),new Point(3,0),new Point(0,3), new Point(1,2)},Color.Black), 1, false}, //außerhalb des Rahmens 4 Werte (aY,bY,cX,dY)
+                new object[]{new Quadliteral(new []{new Point(1,0),new Point(1,0),new Point(0,3), new Point(1,2)},Color.Black), 1, false}, //außerhalb des Rahmens 5 Werte (aY,B,cX,dY)
+                new object[]{new Quadliteral(new []{new Point(1,0),new Point(1,0),new Point(0,1), new Point(1,2)},Color.Black), 1, false}, //außerhalb des Rahmens 6 Werte (aY,B,C,dY)
+                new object[]{new Quadliteral(new []{new Point(-1,0),new Point(1,0),new Point(0,1), new Point(1,2)},Color.Black), 1, false}, //außerhalb des Rahmens 7 Werte (A,B,C,dY)
+                new object[]{new Quadliteral(new []{new Point(-1,0),new Point(1,0),new Point(0,1), new Point(-1,2)},Color.Black), 1, false} //außerhalb des Rahmens 8 Werte (A,B,C,d)
             };
 
         [TestCaseSource("MovedTestSource")]
@@ -81,14 +82,14 @@ namespace ixts.Ausbildung.Geometry.Test
 
         public static readonly object[] MovedTestSource =
             {
-                new object[]{0,1,new Quadliteral(new []{new Point(1,3), new Point(3,3), new Point(3,5), new Point(1,5)})},//Nach oben verschieben
-                new object[]{0,-1,new Quadliteral(new []{new Point(1,1), new Point(3,1), new Point(3,3), new Point(1,3)})},//Nach unten verschieben
-                new object[]{-1,0,new Quadliteral(new []{new Point(0,2), new Point(2,2), new Point(2,4), new Point(0,4)})},//Nach links verschieben
-                new object[]{1,0,new Quadliteral(new []{new Point(2,2), new Point(4,2), new Point(4,4), new Point(2,4)})},//Nach rechts verschieben
-                new object[]{-1,1,new Quadliteral(new []{new Point(0,3), new Point(2,3), new Point(2,5), new Point(0,5)})},//Nach obenlinks verschieben
-                new object[]{1,1,new Quadliteral(new []{new Point(2,3), new Point(4,3), new Point(4,5), new Point(2,5)})},//Nach obenrechts verschieben
-                new object[]{1,-1,new Quadliteral(new []{new Point(2,1), new Point(4,1), new Point(4,3), new Point(2,3)})},//Nach untenrechts verschieben
-                new object[]{-1,-1,new Quadliteral(new []{new Point(0,1), new Point(2,1), new Point(2,3), new Point(0,3)})}//Nach untenLinks verschieben
+                new object[]{0,1,new Quadliteral(new []{new Point(1,3), new Point(3,3), new Point(3,5), new Point(1,5)},Color.Black)},//Nach oben verschieben
+                new object[]{0,-1,new Quadliteral(new []{new Point(1,1), new Point(3,1), new Point(3,3), new Point(1,3)},Color.Black)},//Nach unten verschieben
+                new object[]{-1,0,new Quadliteral(new []{new Point(0,2), new Point(2,2), new Point(2,4), new Point(0,4)},Color.Black)},//Nach links verschieben
+                new object[]{1,0,new Quadliteral(new []{new Point(2,2), new Point(4,2), new Point(4,4), new Point(2,4)},Color.Black)},//Nach rechts verschieben
+                new object[]{-1,1,new Quadliteral(new []{new Point(0,3), new Point(2,3), new Point(2,5), new Point(0,5)},Color.Black)},//Nach obenlinks verschieben
+                new object[]{1,1,new Quadliteral(new []{new Point(2,3), new Point(4,3), new Point(4,5), new Point(2,5)},Color.Black)},//Nach obenrechts verschieben
+                new object[]{1,-1,new Quadliteral(new []{new Point(2,1), new Point(4,1), new Point(4,3), new Point(2,3)},Color.Black)},//Nach untenrechts verschieben
+                new object[]{-1,-1,new Quadliteral(new []{new Point(0,1), new Point(2,1), new Point(2,3), new Point(0,3)},Color.Black)}//Nach untenLinks verschieben
             };
 
         [TestCaseSource("ZoomedTestSource")]
@@ -101,10 +102,10 @@ namespace ixts.Ausbildung.Geometry.Test
         public static readonly object[] ZoomedTestSource =
             {
                 
-                new object[]{0, new Quadliteral(new []{new Point(0,0),new Point(0,0),new Point(0,0),new Point(0,0)})},//f = 0
-                new object[]{0.5,new Quadliteral(new []{new Point(0.5,1),new Point(1.5,1),new Point(1.5,2),new Point(0.5,2)})},//1 > f > 0
-                new object[]{1,new Quadliteral(new []{new Point(1,2),new Point(3,2),new Point(3,4),new Point(1,4)})},//f = 1
-                new object[]{2,new Quadliteral(new []{new Point(2,4),new Point(6,4),new Point(6,8),new Point(2,8)})}//f > 1
+                new object[]{0, new Quadliteral(new []{new Point(0,0),new Point(0,0),new Point(0,0),new Point(0,0)},Color.Black)},//f = 0
+                new object[]{0.5,new Quadliteral(new []{new Point(0.5,1),new Point(1.5,1),new Point(1.5,2),new Point(0.5,2)},Color.Black)},//1 > f > 0
+                new object[]{1,new Quadliteral(new []{new Point(1,2),new Point(3,2),new Point(3,4),new Point(1,4)},Color.Black)},//f = 1
+                new object[]{2,new Quadliteral(new []{new Point(2,4),new Point(6,4),new Point(6,8),new Point(2,8)},Color.Black)}//f > 1
             };
         [TestCase]
         public void RotateTest()
@@ -139,8 +140,8 @@ namespace ixts.Ausbildung.Geometry.Test
 
         public static readonly object[] QuadratTestSource =
             {
-                new object[]{true, new Quadliteral(new []{new Point(1,1),new Point(1,5),new Point(5,5), new Point(5,1)})},
-                new object[]{false,new Quadliteral(new []{new Point(1,1),new Point(1,5),new Point(5,5), new Point(5,2)})}
+                new object[]{true, new Quadliteral(new []{new Point(1,1),new Point(1,5),new Point(5,5), new Point(5,1)},Color.Black)},
+                new object[]{false,new Quadliteral(new []{new Point(1,1),new Point(1,5),new Point(5,5), new Point(5,2)},Color.Black)}
             };
 
         [TestCaseSource("QuadratTestSource")]

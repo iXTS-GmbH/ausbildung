@@ -16,7 +16,7 @@ namespace ixts.Ausbildung.Geometry.Test
         [TestCase]
         public void TriangleCreateTest()
         {
-            var expected = new Triangle(new[] { new Point(20, 20), new Point(40, 20), new Point(30, 40)});
+            var expected = new Triangle(new[] { new Point(20, 20), new Point(40, 20), new Point(30, 40) }, Color.Black);
             var actual = sut.Create(new Point(20, 20), new Point(40, 20), new Point(30, 40));
             Assert.AreEqual(expected,sut.Polygons[actual]);
         }
@@ -24,7 +24,7 @@ namespace ixts.Ausbildung.Geometry.Test
         [TestCase]
         public void QuadliteralCreateTest()
         {
-            var expected = new Quadliteral(new[] {new Point(20, 20), new Point(40, 20), new Point(40, 40), new Point(20, 40)});
+            var expected = new Quadliteral(new[] { new Point(20, 20), new Point(40, 20), new Point(40, 40), new Point(20, 40) }, Color.Black);
             var actual = sut.Create(new Point(20, 20), new Point(40, 20), new Point(40, 40), new Point(20, 40));
             Assert.AreEqual(expected,sut.Polygons[actual]);
         }
@@ -32,7 +32,7 @@ namespace ixts.Ausbildung.Geometry.Test
         [TestCase]
         public void NegativCreateTest()
         {
-            var expected = new Quadliteral(new[] {new Point(10, 0), new Point(50, 0), new Point(50, 50), new Point(10, 50)});
+            var expected = new Quadliteral(new[] { new Point(10, 0), new Point(50, 0), new Point(50, 50), new Point(10, 50) }, Color.Black);
             sut.Create(new Point(10,-10),new Point(50,-10),new Point(50,40),new Point(10,40));
             Assert.AreEqual(expected, sut.Polygons["Quadliteral1"]);
         }
@@ -42,7 +42,7 @@ namespace ixts.Ausbildung.Geometry.Test
         {
             const string formname = "Triangle1";
             sut.Create(new Point(20, 20), new Point(40, 20), new Point(30, 40));
-            var expected = new Triangle(new[] {new Point(30, 20), new Point(50, 20), new Point(40, 40)});
+            var expected = new Triangle(new[] { new Point(30, 20), new Point(50, 20), new Point(40, 40) }, Color.Black);
             sut.MovePolygon(formname,10,0);
             Assert.AreEqual(expected,sut.Polygons[formname]);
         }
@@ -52,7 +52,7 @@ namespace ixts.Ausbildung.Geometry.Test
         {
             const string formname = "Quadliteral1";
             sut.Create(new Point(10, 0), new Point(60, 0), new Point(60, 50), new Point(10, 50));
-            var expected = new Quadliteral(new[] { new Point(10, 0), new Point(60, 0), new Point(60, 50), new Point(10, 50) });
+            var expected = new Quadliteral(new[] { new Point(10, 0), new Point(60, 0), new Point(60, 50), new Point(10, 50) }, Color.Black);
             sut.MovePolygon(formname, 0, -10);
             Assert.AreEqual(expected, sut.Polygons[formname]);
         }
@@ -62,7 +62,7 @@ namespace ixts.Ausbildung.Geometry.Test
         {
             const string formname = "Triangle1";
             sut.Create(new Point(20, 20), new Point(40, 20), new Point(30, 40));
-            var expected = new Triangle(new[] {new Point(10, 10), new Point(50, 10), new Point(30, 50)});
+            var expected = new Triangle(new[] { new Point(10, 10), new Point(50, 10), new Point(30, 50) }, Color.Black);
             sut.ZoomPolygon(formname,2);
             Assert.AreEqual(expected,sut.Polygons[formname]);
         }
@@ -72,7 +72,7 @@ namespace ixts.Ausbildung.Geometry.Test
         {
             const string formname = "Quadliteral1";
             sut.Create(new Point(10, 50), new Point(60, 50), new Point(60, 80),new Point(10,80));
-            var expected = new Quadliteral(new[] { new Point(0, 35), new Point(100, 35), new Point(100, 95),new Point(0,95)});
+            var expected = new Quadliteral(new[] { new Point(0, 35), new Point(100, 35), new Point(100, 95), new Point(0, 95) }, Color.Black);
             sut.ZoomPolygon(formname, 2);
             Assert.AreEqual(expected.Points[0].X, sut.Polygons[formname].Points[0].X);
             Assert.AreEqual(expected.Points[1].X, sut.Polygons[formname].Points[1].X);

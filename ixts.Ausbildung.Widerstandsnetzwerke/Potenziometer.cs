@@ -25,6 +25,7 @@ namespace ixts.Ausbildung.Widerstandsnetzwerke
             {
                 ohm = newOhm;
             }
+            return ohm;
         }
 
         public double GetOhm()
