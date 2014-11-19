@@ -21,8 +21,10 @@ namespace ixts.Ausbildung.GroßeGanzzahlen
             return value;
         }
 
-        public Boolean Equals(BigInt b)
+        public override Boolean Equals(object x)
         {
+            var b = (BigInt) x;
+
             return value == b.ToString();
         }
 

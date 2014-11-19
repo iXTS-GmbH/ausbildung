@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ixts.Ausbildung.Objektpaare
 {
-    public class Pair<T,U>
+    public class Pair<T,U> where T:IComparable
     {
         private readonly T first;
         private readonly U second;
@@ -75,8 +75,7 @@ namespace ixts.Ausbildung.Objektpaare
                 {
                     return 1;
                 }
-                //return p0.compareTo(p1.First);
-                return -1;
+                return p0.First.CompareTo(p1.First);
             }
 
         }
@@ -93,8 +92,7 @@ namespace ixts.Ausbildung.Objektpaare
                 {
                     return 1;
                 }
-                //return p0.compareTo(p1.Second);  
-                return -1;
+                return p0.First.CompareTo(p1.Second);  
             }
         }
     }
