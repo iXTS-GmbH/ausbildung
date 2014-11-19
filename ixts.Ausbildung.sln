@@ -201,6 +201,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.GenerischeM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.GenerischeMethoden.Tests", "ixts.Ausbildung.GenerischeMethoden.Tests\ixts.Ausbildung.GenerischeMethoden.Tests.csproj", "{A2DC4287-A4A2-4BAE-BAC7-49D87F749620}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.Relationen", "ixts.Ausbildung.Relationen\ixts.Ausbildung.Relationen.csproj", "{096F9B90-977C-4B55-8054-ABF44C7B2E7B}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = ixts.Ausbildung.vsmdi
@@ -1184,6 +1186,16 @@ Global
 		{A2DC4287-A4A2-4BAE-BAC7-49D87F749620}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{A2DC4287-A4A2-4BAE-BAC7-49D87F749620}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{A2DC4287-A4A2-4BAE-BAC7-49D87F749620}.Release|x86.ActiveCfg = Release|Any CPU
+		{096F9B90-977C-4B55-8054-ABF44C7B2E7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{096F9B90-977C-4B55-8054-ABF44C7B2E7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{096F9B90-977C-4B55-8054-ABF44C7B2E7B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{096F9B90-977C-4B55-8054-ABF44C7B2E7B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{096F9B90-977C-4B55-8054-ABF44C7B2E7B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{096F9B90-977C-4B55-8054-ABF44C7B2E7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{096F9B90-977C-4B55-8054-ABF44C7B2E7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{096F9B90-977C-4B55-8054-ABF44C7B2E7B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{096F9B90-977C-4B55-8054-ABF44C7B2E7B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{096F9B90-977C-4B55-8054-ABF44C7B2E7B}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
