@@ -209,6 +209,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.Ring-Queue.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.Ring-Queue.Test", "ixts.Ausbildung.Ring-Queue.Test\ixts.Ausbildung.Ring-Queue.Test.csproj", "{B85502E0-0642-4EBC-822C-6C4DCCAF73E0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.ListenUndWarteschlangen", "ixts.Ausbildung.ListenUndWarteschlangen\ixts.Ausbildung.ListenUndWarteschlangen.csproj", "{7DA4659E-828C-45F3-96D7-32FE8D189D4D}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = ixts.Ausbildung.vsmdi
@@ -1232,6 +1234,16 @@ Global
 		{B85502E0-0642-4EBC-822C-6C4DCCAF73E0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{B85502E0-0642-4EBC-822C-6C4DCCAF73E0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{B85502E0-0642-4EBC-822C-6C4DCCAF73E0}.Release|x86.ActiveCfg = Release|Any CPU
+		{7DA4659E-828C-45F3-96D7-32FE8D189D4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DA4659E-828C-45F3-96D7-32FE8D189D4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DA4659E-828C-45F3-96D7-32FE8D189D4D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{7DA4659E-828C-45F3-96D7-32FE8D189D4D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{7DA4659E-828C-45F3-96D7-32FE8D189D4D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7DA4659E-828C-45F3-96D7-32FE8D189D4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DA4659E-828C-45F3-96D7-32FE8D189D4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DA4659E-828C-45F3-96D7-32FE8D189D4D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{7DA4659E-828C-45F3-96D7-32FE8D189D4D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{7DA4659E-828C-45F3-96D7-32FE8D189D4D}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
