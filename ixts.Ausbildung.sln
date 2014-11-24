@@ -211,6 +211,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.Ring-Queue.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.ListenUndWarteschlangen", "ixts.Ausbildung.ListenUndWarteschlangen\ixts.Ausbildung.ListenUndWarteschlangen.csproj", "{7DA4659E-828C-45F3-96D7-32FE8D189D4D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.Algebraische_Strukturen", "ixts.Ausbildung.Algebraische_Strukturen\ixts.Ausbildung.Algebraische_Strukturen.csproj", "{86B82A97-E684-41A9-9322-E4ADB1E24278}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.Algebraische_Strukturen.Test", "ixts.Ausbildung.Algebraische_Strukturen.Test\ixts.Ausbildung.Algebraische_Strukturen.Test.csproj", "{EE2FF848-A0A4-4A0C-AE77-D74CB1A83D82}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = ixts.Ausbildung.vsmdi
@@ -1244,6 +1248,26 @@ Global
 		{7DA4659E-828C-45F3-96D7-32FE8D189D4D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{7DA4659E-828C-45F3-96D7-32FE8D189D4D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{7DA4659E-828C-45F3-96D7-32FE8D189D4D}.Release|x86.ActiveCfg = Release|Any CPU
+		{86B82A97-E684-41A9-9322-E4ADB1E24278}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86B82A97-E684-41A9-9322-E4ADB1E24278}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86B82A97-E684-41A9-9322-E4ADB1E24278}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{86B82A97-E684-41A9-9322-E4ADB1E24278}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{86B82A97-E684-41A9-9322-E4ADB1E24278}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{86B82A97-E684-41A9-9322-E4ADB1E24278}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86B82A97-E684-41A9-9322-E4ADB1E24278}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86B82A97-E684-41A9-9322-E4ADB1E24278}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{86B82A97-E684-41A9-9322-E4ADB1E24278}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{86B82A97-E684-41A9-9322-E4ADB1E24278}.Release|x86.ActiveCfg = Release|Any CPU
+		{EE2FF848-A0A4-4A0C-AE77-D74CB1A83D82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE2FF848-A0A4-4A0C-AE77-D74CB1A83D82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE2FF848-A0A4-4A0C-AE77-D74CB1A83D82}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{EE2FF848-A0A4-4A0C-AE77-D74CB1A83D82}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{EE2FF848-A0A4-4A0C-AE77-D74CB1A83D82}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EE2FF848-A0A4-4A0C-AE77-D74CB1A83D82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE2FF848-A0A4-4A0C-AE77-D74CB1A83D82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE2FF848-A0A4-4A0C-AE77-D74CB1A83D82}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{EE2FF848-A0A4-4A0C-AE77-D74CB1A83D82}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{EE2FF848-A0A4-4A0C-AE77-D74CB1A83D82}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
