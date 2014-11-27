@@ -221,6 +221,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.Kommentar_Z
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.Mustervergleich", "ixts.Ausbildung.Mustervergleich\ixts.Ausbildung.Mustervergleich.csproj", "{24CF4F3F-BD4A-4D66-907E-5F1F2A866322}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ixts.Ausbildung.Intervalle", "ixts.Ausbildung.Intervalle\ixts.Ausbildung.Intervalle.csproj", "{0E9F6606-E0C0-487B-BF22-C0BD3BA50D73}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = ixts.Ausbildung.vsmdi
@@ -1304,6 +1306,16 @@ Global
 		{24CF4F3F-BD4A-4D66-907E-5F1F2A866322}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{24CF4F3F-BD4A-4D66-907E-5F1F2A866322}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{24CF4F3F-BD4A-4D66-907E-5F1F2A866322}.Release|x86.ActiveCfg = Release|Any CPU
+		{0E9F6606-E0C0-487B-BF22-C0BD3BA50D73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E9F6606-E0C0-487B-BF22-C0BD3BA50D73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E9F6606-E0C0-487B-BF22-C0BD3BA50D73}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{0E9F6606-E0C0-487B-BF22-C0BD3BA50D73}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{0E9F6606-E0C0-487B-BF22-C0BD3BA50D73}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0E9F6606-E0C0-487B-BF22-C0BD3BA50D73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E9F6606-E0C0-487B-BF22-C0BD3BA50D73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E9F6606-E0C0-487B-BF22-C0BD3BA50D73}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{0E9F6606-E0C0-487B-BF22-C0BD3BA50D73}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{0E9F6606-E0C0-487B-BF22-C0BD3BA50D73}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
