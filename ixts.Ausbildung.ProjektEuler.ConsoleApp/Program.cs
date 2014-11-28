@@ -6,7 +6,7 @@ namespace ixts.Ausbildung.ProjektEuler.ConsoleApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(EvenFibonacciNumbers.CalculateSum());
+            Console.WriteLine(LagestPrimeFaktor.Calculate());
             Console.ReadLine();
         }
     }
