@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EvenFibonacciNumbers.cs" />
     <Compile Include="Multiplesof3And5.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

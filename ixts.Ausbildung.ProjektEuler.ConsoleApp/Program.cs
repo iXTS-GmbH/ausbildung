@@ -6,7 +6,7 @@ namespace ixts.Ausbildung.ProjektEuler.ConsoleApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Multiplesof3And5.CalculateSum());
+            Console.WriteLine(EvenFibonacciNumbers.CalculateSum());
             Console.ReadLine();
         }
     }
