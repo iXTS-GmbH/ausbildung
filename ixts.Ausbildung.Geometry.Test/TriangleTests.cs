@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using NUnit.Framework;
 
 namespace ixts.Ausbildung.Geometry.Test
@@ -14,7 +15,7 @@ namespace ixts.Ausbildung.Geometry.Test
             var a = new Point(1, 2);
             var b = new Point(3, 2);
             var c = new Point(2, 3);
-            sut = new Triangle(new []{a, b, c});
+            sut = new Triangle(new[] { a, b, c }, Color.Black);
         }
 
         [TestCase] 
@@ -58,13 +59,13 @@ namespace ixts.Ausbildung.Geometry.Test
 
         public static readonly object[] IsSameTestSource =
             {
-                new object[]{new Triangle(new []{new Point(1,2),new Point(3,2),new Point(2,3)}), 1, true},  //innerhalb des Rahmens
-                new object[]{new Triangle(new []{new Point(1,1),new Point(1,1),new Point(1,3)}), 1, false}, //außerhalb des Rahmens 1 Wert (bX)
-                new object[]{new Triangle(new []{new Point(1,1),new Point(1,1),new Point(1,1)}), 1, false}, //außerhalb des Rahmens 2 Werte (bX,cY)
-                new object[]{new Triangle(new []{new Point(1,0),new Point(1,1),new Point(1,1)}), 1, false}, //außerhalb des Rahmens 3 Werte (aY,bX,cY)
-                new object[]{new Triangle(new []{new Point(1,0),new Point(1,0),new Point(1,1)}), 1, false}, //außerhalb des Rahmens 4 Werte (aY,B,cY)
-                new object[]{new Triangle(new []{new Point(1,0),new Point(1,0),new Point(0,1)}), 1, false}, //außerhalb des Rahmens 5 Werte (aY,B,C)
-                new object[]{new Triangle(new []{new Point(-1,0),new Point(1,0),new Point(0,1)}), 1, false} //außerhalb des Rahmens 6 Werte (A,B,C)
+                new object[]{new Triangle(new []{new Point(1,2),new Point(3,2),new Point(2,3)},Color.Black), 1, true},  //innerhalb des Rahmens
+                new object[]{new Triangle(new []{new Point(1,1),new Point(1,1),new Point(1,3)},Color.Black), 1, false}, //außerhalb des Rahmens 1 Wert (bX)
+                new object[]{new Triangle(new []{new Point(1,1),new Point(1,1),new Point(1,1)},Color.Black), 1, false}, //außerhalb des Rahmens 2 Werte (bX,cY)
+                new object[]{new Triangle(new []{new Point(1,0),new Point(1,1),new Point(1,1)},Color.Black), 1, false}, //außerhalb des Rahmens 3 Werte (aY,bX,cY)
+                new object[]{new Triangle(new []{new Point(1,0),new Point(1,0),new Point(1,1)},Color.Black), 1, false}, //außerhalb des Rahmens 4 Werte (aY,B,cY)
+                new object[]{new Triangle(new []{new Point(1,0),new Point(1,0),new Point(0,1)},Color.Black), 1, false}, //außerhalb des Rahmens 5 Werte (aY,B,C)
+                new object[]{new Triangle(new []{new Point(-1,0),new Point(1,0),new Point(0,1)},Color.Black), 1, false} //außerhalb des Rahmens 6 Werte (A,B,C)
             };
 
         [TestCaseSource("MovedTestSource")]
@@ -76,14 +77,14 @@ namespace ixts.Ausbildung.Geometry.Test
 
         public static readonly object[] MovedTestSource =
             {
-                new object[]{1,0,new Triangle(new []{new Point(2,2),new Point(4,2),new Point(3,3)})},  //Nach oben verschieben
-                new object[]{-1,0,new Triangle(new []{new Point(0,2),new Point(2,2),new Point(1,3)})}, //Nach unten verschieben
-                new object[]{0,-1,new Triangle(new []{new Point(1,1),new Point(3,1),new Point(2,2)})}, //Nach links verschieben
-                new object[]{0,1,new Triangle(new []{new Point(1,3),new Point(3,3),new Point(2,4)})},  //Nach rechts verschieben
-                new object[]{1,-1,new Triangle(new []{new Point(2,1),new Point(4,1),new Point(3,2)})}, //Nach obenlinks verschieben
-                new object[]{1,1,new Triangle(new []{new Point(2,3),new Point(4,3),new Point(3,4)})},  //Nach obenrechts verschieben
-                new object[]{-1,1,new Triangle(new []{new Point(0,3),new Point(2,3),new Point(1,4)})}, //Nach untenrechts verschieben
-                new object[]{-1,-1,new Triangle(new []{new Point(0,1),new Point(2,1),new Point(1,2)})} //Nuch untenlinks verschieben
+                new object[]{1,0,new Triangle(new []{new Point(2,2),new Point(4,2),new Point(3,3)},Color.Black)},  //Nach oben verschieben
+                new object[]{-1,0,new Triangle(new []{new Point(0,2),new Point(2,2),new Point(1,3)},Color.Black)}, //Nach unten verschieben
+                new object[]{0,-1,new Triangle(new []{new Point(1,1),new Point(3,1),new Point(2,2)},Color.Black)}, //Nach links verschieben
+                new object[]{0,1,new Triangle(new []{new Point(1,3),new Point(3,3),new Point(2,4)},Color.Black)},  //Nach rechts verschieben
+                new object[]{1,-1,new Triangle(new []{new Point(2,1),new Point(4,1),new Point(3,2)},Color.Black)}, //Nach obenlinks verschieben
+                new object[]{1,1,new Triangle(new []{new Point(2,3),new Point(4,3),new Point(3,4)},Color.Black)},  //Nach obenrechts verschieben
+                new object[]{-1,1,new Triangle(new []{new Point(0,3),new Point(2,3),new Point(1,4)},Color.Black)}, //Nach untenrechts verschieben
+                new object[]{-1,-1,new Triangle(new []{new Point(0,1),new Point(2,1),new Point(1,2)},Color.Black)} //Nuch untenlinks verschieben
             };
         [TestCaseSource("ZoomedTestSource")]
         public void ZoomedTest(double f, Triangle expected)
@@ -94,12 +95,12 @@ namespace ixts.Ausbildung.Geometry.Test
 
         public static readonly object[] ZoomedTestSource =
             {
-                new object[]{2, new Triangle(new []{new Point(2,4),new Point(6,4),new Point(4,6)})},               //f > 1
-                new object[]{1, new Triangle(new []{new Point(1,2),new Point(3,2),new Point(2,3)})},               //f = 1
-                new object[]{0.5,new Triangle(new []{new Point(0.5,1),new Point(1.5,1),new Point(1,1.5)})},        //0 < f < 1
-                new object[]{0, new Triangle(new []{new Point(0,0),new Point(0,0),new Point(0,0)})},               //f = 0
-                new object[]{-0.5, new Triangle(new []{new Point(-0.5,-1),new Point(-1.5,-1),new Point(-1,-1.5)})},//-1 < f < 0
-                new object[]{-1, new Triangle(new []{new Point(-1,-2),new Point(-3,-2),new Point(-2,-3)})}         //f = -1
+                new object[]{2, new Triangle(new []{new Point(2,4),new Point(6,4),new Point(4,6)},Color.Black)},               //f > 1
+                new object[]{1, new Triangle(new []{new Point(1,2),new Point(3,2),new Point(2,3)},Color.Black)},               //f = 1
+                new object[]{0.5,new Triangle(new []{new Point(0.5,1),new Point(1.5,1),new Point(1,1.5)},Color.Black)},        //0 < f < 1
+                new object[]{0, new Triangle(new []{new Point(0,0),new Point(0,0),new Point(0,0)},Color.Black)},               //f = 0
+                new object[]{-0.5, new Triangle(new []{new Point(-0.5,-1),new Point(-1.5,-1),new Point(-1,-1.5)},Color.Black)},//-1 < f < 0
+                new object[]{-1, new Triangle(new []{new Point(-1,-2),new Point(-3,-2),new Point(-2,-3)},Color.Black)}         //f = -1
                 
 
             };
@@ -113,12 +114,12 @@ namespace ixts.Ausbildung.Geometry.Test
 
         public static readonly object[] PointZoomedTestSource =
             {
-                new object[]{new Point(1,1),2, new Triangle(new []{new Point(1,3),new Point(5,3),new Point(3,5)})},             //f > 1
-                new object[]{new Point(1,1),1, new Triangle(new []{new Point(1,2),new Point(3,2),new Point(2,3)})},             //f = 1
-                new object[]{new Point(1,1),0.5,new Triangle(new []{new Point(1,1.5),new Point(2,1.5),new Point(1.5,2)})},      //0 < f < 1
-                new object[]{new Point(1,1),0, new Triangle(new []{new Point(1,1),new Point(1,1),new Point(1,1)})},             //f = 0
-                new object[]{new Point(1,1),-0.5,new Triangle(new []{new Point(1,0.5),new Point(0,0.5),new Point(0.5,0)})},     //-1 < f < 0 
-                new object[]{new Point(1,1),-1, new Triangle(new []{new Point(1,0),new Point(-1,0),new Point(0,-1)})}           //f = -1     
+                new object[]{new Point(1,1),2, new Triangle(new []{new Point(1,3),new Point(5,3),new Point(3,5)},Color.Black)},             //f > 1
+                new object[]{new Point(1,1),1, new Triangle(new []{new Point(1,2),new Point(3,2),new Point(2,3)},Color.Black)},             //f = 1
+                new object[]{new Point(1,1),0.5,new Triangle(new []{new Point(1,1.5),new Point(2,1.5),new Point(1.5,2)},Color.Black)},      //0 < f < 1
+                new object[]{new Point(1,1),0, new Triangle(new []{new Point(1,1),new Point(1,1),new Point(1,1)},Color.Black)},             //f = 0
+                new object[]{new Point(1,1),-0.5,new Triangle(new []{new Point(1,0.5),new Point(0,0.5),new Point(0.5,0)},Color.Black)},     //-1 < f < 0 
+                new object[]{new Point(1,1),-1, new Triangle(new []{new Point(1,0),new Point(-1,0),new Point(0,-1)},Color.Black)}           //f = -1     
             };
         [TestCase]
         public void RotateTest()
@@ -138,7 +139,7 @@ namespace ixts.Ausbildung.Geometry.Test
         [TestCase]
         public void MiddleTest()
         {
-            var triangle = new Triangle(new []{new Point(1,1),new Point(3,1),new Point(2,3)});
+            var triangle = new Triangle(new[] { new Point(1, 1), new Point(3, 1), new Point(2, 3) }, Color.Black);
             var expected = new Point(2,2);
             var actual = triangle.Middle();
             Assert.AreEqual(actual,expected);
@@ -153,8 +154,8 @@ namespace ixts.Ausbildung.Geometry.Test
 
         public static readonly object[] EquilateralTestSource =
             {
-                new object[]{true, new Triangle(new []{new Point(1,1),new Point(5,1), new Point(3,4.464)})},
-                new object[]{false, new Triangle(new []{new Point(1,2),new Point(3,2), new Point(2,3)})}
+                new object[]{true, new Triangle(new []{new Point(1,1),new Point(5,1), new Point(3,4.464)},Color.Black)},
+                new object[]{false, new Triangle(new []{new Point(1,2),new Point(3,2), new Point(2,3)},Color.Black)}
             };
 
         [TestCaseSource("IsoscelesTestSource")]//Gleichschenklig
@@ -166,8 +167,8 @@ namespace ixts.Ausbildung.Geometry.Test
 
         public static readonly object[] IsoscelesTestSource =
             {
-                new object[]{false, new Triangle(new []{new Point(1,1),new Point(5,1), new Point(4,5)})},
-                new object[]{true, new Triangle(new []{new Point(1,2),new Point(3,2), new Point(2,3)})}
+                new object[]{false, new Triangle(new []{new Point(1,1),new Point(5,1), new Point(4,5)},Color.Black)},
+                new object[]{true, new Triangle(new []{new Point(1,2),new Point(3,2), new Point(2,3)},Color.Black)}
             };
     }
 }

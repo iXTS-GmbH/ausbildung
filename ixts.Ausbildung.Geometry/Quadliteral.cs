@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Drawing;
 
 namespace ixts.Ausbildung.Geometry
 {
     public class Quadliteral:Polygon
     {
 
-        public Quadliteral(Point[] points):base(points)
+        public Quadliteral(Point[] points,Color color):base(points,color)
         {
 
         }

@@ -22,13 +22,14 @@ namespace ixts.Ausbildung.Geometry
         private void EvalCommand(string command)
         {
             var parameter = command.Split(' ');//um Befehlstyp bestimmen zu können
+            parameter[0] = parameter[0].ToUpper();
             switch (parameter[0])
             {
-                case "draw":
+                case "DRAW":
                     ValidateFormat.CheckPointStringFormat(parameter.Skip(2).ToArray());
-                    Draw(parameter.Skip(2).ToArray(), parameter[1]);
+                    Draw(parameter.Skip(2).ToArray());
                     break;
-                case "move":
+                case "MOVE":
                     if (LastPolygonName == null)
                     {
                         throw new NoFormExeption("Keine verschiebbare Form vorhanden!");
@@ -39,7 +40,7 @@ namespace ixts.Ausbildung.Geometry
                         break;
                     }
                     throw new FalseArgumentExeption(string.Format("{0} ist kein gültiger Verschiebungsparameter",parameter[2]));
-                case "zoom":
+                case "ZOOM":
                     if (LastPolygonName == null)
                     {
                         throw new NoFormExeption("Keine zoombare Form vorhanden!");
@@ -50,30 +51,33 @@ namespace ixts.Ausbildung.Geometry
                     break;
                     }
                     throw new FalseArgumentExeption(string.Format("{0} ist kein gültiger Zoomparameter",parameter[1]));
-                case "print":
+                case "PRINT":
                     if (LastPolygonName == null)
                     {
                         throw new NoFormExeption("Keine zeichenbare Form vorhanden");
                     }
                     Print(parameter[1]);
                     break;
+                case "CHANGECOLOR":
+                    if (parameter.Length == 5)
+                    {
+                        ChangeColor(int.Parse(parameter[1]),int.Parse(parameter[2]),int.Parse(parameter[3]),int.Parse(parameter[4]));
+                    }
+                    if (parameter.Length == 2)
+                    {
+                        ChangeColor(parameter[1]);
+                    }
+                    break;
                 default:
-                    throw new NoCommandExeption(string.Format("Der Befehl {0} ist nicht definiert (Definierte Befehle: draw,move,zoom,print)", parameter[0]));          
+                    throw new NoCommandExeption(string.Format("Der Befehl {0} ist nicht definiert (Definierte Befehle: DRAW,MOVE,ZOOM,PRINT,CHANGECOLOR)", parameter[0]));          
             }
            
         }
 
-        private void Draw(String[] parameter, string type)
+        private void Draw(String[] parameter)
         {
             var points = StringToPointsParser.Parse(parameter);
-                if (parameter.Length == 3)
-                {
-                    LastPolygonName = PolygonPrinter.Create(points[0], points[1], points[2]);
-                }
-                else
-                {
-                    LastPolygonName = PolygonPrinter.Create(points[0], points[1], points[2], points[3]);
-                }
+            LastPolygonName = parameter.Length == 3 ? PolygonPrinter.Create(points[0], points[1], points[2]) : PolygonPrinter.Create(points[0], points[1], points[2], points[3]);
         }
 
         private void Move(string direction, int offset)
@@ -106,14 +110,19 @@ namespace ixts.Ausbildung.Geometry
         }
 
         private void Print(string path)
-        {
-            if (!Directory.Exists(path))
-            {
-                throw new NotExistingDirectoryException(string.Format("Verzeichnis {0} existiert nicht",path ));
-            }
-            
-            Bitmap bitmap = PolygonPrinter.Print();
+        {   
+            var bitmap = PolygonPrinter.Print();
             bitmap.Save(path); //Wichtig das path den Dateinamen enthält(Fehlerquelle)
+        }
+
+        private void ChangeColor(String colorname)
+        {
+            PolygonPrinter.Color = Color.FromName(colorname);
+        }
+
+        private void ChangeColor(int alpha,int red,int green,int blue)
+        {
+            PolygonPrinter.Color = Color.FromArgb(alpha, red, green, blue);
         }
     }
 }

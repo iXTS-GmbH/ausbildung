@@ -14,7 +14,8 @@ namespace ixts.Ausbildung.Geometry.PrinterConsole
             }
             catch (Exception e)
             {
-               Console.WriteLine(e.Message);  
+                Console.WriteLine(e.Message);
+                Console.ReadLine();
             }
         }
     }

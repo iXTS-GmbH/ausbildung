@@ -34,17 +34,17 @@ namespace ixts.Ausbildung.Geometry.Test
 
         public static readonly object[] EvalMoveTestSource =
             {
-                new object[] {"draw Triangle 20/20 40/20 30/40","move north 10","Triangle1",new Triangle(new[] {new Point(20, 30), new Point(40, 30), new Point(30, 50)})},
-                new object[] {"draw Triangle 20/20 40/20 30/40","move east 10","Triangle1",new Triangle(new[] {new Point(30, 20), new Point(50, 20), new Point(40, 40)})},
-                new object[] {"draw Triangle 20/20 40/20 30/40","move south 10","Triangle1",new Triangle(new[] {new Point(20, 10), new Point(40, 10), new Point(30, 30)})},
-                new object[] {"draw Triangle 20/20 40/20 30/40","move west 10","Triangle1",new Triangle(new[] {new Point(10, 20), new Point(30, 20), new Point(20, 40)})}
+                new object[] {"draw Triangle 20/20 40/20 30/40","move north 10","Triangle1",new Triangle(new[] {new Point(20, 30), new Point(40, 30), new Point(30, 50)},Color.Black)},
+                new object[] {"draw Triangle 20/20 40/20 30/40","move east 10","Triangle1",new Triangle(new[] {new Point(30, 20), new Point(50, 20), new Point(40, 40)},Color.Black)},
+                new object[] {"draw Triangle 20/20 40/20 30/40","move south 10","Triangle1",new Triangle(new[] {new Point(20, 10), new Point(40, 10), new Point(30, 30)},Color.Black)},
+                new object[] {"draw Triangle 20/20 40/20 30/40","move west 10","Triangle1",new Triangle(new[] {new Point(10, 20), new Point(30, 20), new Point(20, 40)},Color.Black)}
             };
 
         [TestCase]
         public void EvalZoomTest()
         {
             
-            var expected = new Triangle(new[] {new Point(10, 10), new Point(50, 10), new Point(30, 50)});
+            var expected = new Triangle(new[] {new Point(10, 10), new Point(50, 10), new Point(30, 50)},Color.Black);
             sut.Eval("draw Triangle 20/20 40/20 30/40");
             sut.Eval("zoom 2");
             Assert.AreEqual(expected,sut.PolygonPrinter.Polygons["Triangle1"]);

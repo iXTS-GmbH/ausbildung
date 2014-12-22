@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsoleImpl.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="IConsole.cs" />
     <Compile Include="IMapParser.cs" />
     <Compile Include="ISocket.cs" />
     <Compile Include="ISocketFactory.cs" />

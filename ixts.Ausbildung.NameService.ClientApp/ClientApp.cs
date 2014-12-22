@@ -8,13 +8,13 @@ namespace ixts.Ausbildung.NameService.ClientApp
 
         static void Main(String[] args)
         {
-            var host = args.Length > 0 ? args[0] : Constants.LOCALHOST;
+            var host = args.Length > 0 ? args[0] : Constants.LOOPBACK;
             var port = args.Length > 1 ? Int32.Parse(args[1]) : Constants.STANDARD_PORT;
 
             try
             {
                 nc = new NameClient(host, port);
-                Loop();
+                nc.Loop();
             }
             catch (FormatException e)
             {
@@ -25,27 +25,6 @@ namespace ixts.Ausbildung.NameService.ClientApp
             {
                 Console.WriteLine("Es ist ein Fehler aufgetreten");
                 ErrorEnd();
-            }
-        }
-
-        private static void Loop()
-        {
-            for (; ; )
-            {
-                var line = Console.ReadLine();
-
-                if (line != string.Empty)
-                {
-                    var parameters = ParameterHandler.Normalize(line.Split(Constants.PARAMETER_DELIMITER));
-                    var response = nc.HandleCommand(parameters);
-
-                    Console.WriteLine(response);
-
-                    if (parameters[0] == Constants.COMMAND_STOP)
-                    {
-                        return;
-                    }
-                }
             }
         }
 

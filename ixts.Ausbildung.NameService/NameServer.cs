@@ -15,6 +15,7 @@ namespace ixts.Ausbildung.NameService
         protected const String COMMAND_ILLEGAL = "Illegal Command: ";
         protected const String SERVER_STARTED_MESSAGE = "Server started on Port: ";
         protected const int MAX_WORKABLE_CLIENTS = 10;
+        private Boolean run = true;
 
         public NameServer(int port, ISocketFactory socketFactory = null)
         {
@@ -25,14 +26,11 @@ namespace ixts.Ausbildung.NameService
             Socket = socketFactory.Make(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
             Socket.Bind(port,false);
-
         }
 
         public void Loop()
         {
             StartSocket();
-
-            var run = true;
 
             while (run)
             {
@@ -100,7 +98,7 @@ namespace ixts.Ausbildung.NameService
             return Store.ContainsKey(key) ? Store[key] : null;
         }
 
-        protected Boolean Stop()
+        protected Boolean HandleStop()
         {
             return false;
         }
@@ -146,13 +144,19 @@ namespace ixts.Ausbildung.NameService
                     break;
 
                 case Constants.COMMAND_STOP:
-                    return Stop();
+                    return HandleStop();
 
                 default:
                     Send(HandleIllegalCommand(command));
                     break;
             }
             return true;
+        }
+
+        public void Stop()
+        {
+            run = false;
+            Socket.Close();
         }
     }
 }
